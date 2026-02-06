@@ -4,7 +4,12 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "prepare": "husky",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "format": "prettier --write .",
+        "format:check": "prettier --check ."
     },
     "dependencies": {
         "@tailwindcss/vite": "^4.1.11",
@@ -19,5 +24,27 @@
         "@rollup/rollup-linux-x64-gnu": "4.9.5",
         "@tailwindcss/oxide-linux-x64-gnu": "^4.0.1",
         "lightningcss-linux-x64-gnu": "^1.29.1"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.39.2",
+        "@eslint/json": "^1.0.0",
+        "@eslint/markdown": "^7.5.1",
+        "eslint": "^9.39.2",
+        "globals": "^17.3.0",
+        "husky": "^9.1.7",
+        "lint-staged": "^16.2.7",
+        "prettier": "3.8.1"
+    },
+    "lint-staged": {
+        "*.{js,mjs,cjs}": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "*.{json,css,md}": [
+            "prettier --write"
+        ],
+        "{app,config,database,routes,tests}/**/*.php": [
+            "./vendor/bin/pint"
+        ]
     }
 }

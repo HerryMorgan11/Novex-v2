@@ -1,0 +1,29 @@
+
+# Dependencias
+   /vendor
+   /node_modules
+
+# Laravel archivos compilados
+   /public/build
+   /public/hot
+   /public/storage
+   /bootstrap/cache
+   /storage
+
+# Blade templates (usar Pint para PHP)
+   *.blade.php
+
+# Build artifacts
+   build
+   coverage
+   dist
+
+# Configuración y locks
+   .env
+   composer.lock
+   package-lock.json
+   pnpm-lock.yaml
+
+# Cache
+   *.cache
+   .phpunit.cache
