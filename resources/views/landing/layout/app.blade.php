@@ -7,6 +7,7 @@
     <title>Document</title>
     @vite('resources/css/app.css')
     @vite('resources/css/landing/shared/navbar.css')
+    @vite('resources/css/landing/sections/home/header.css')
 
 </head>
 <body>
