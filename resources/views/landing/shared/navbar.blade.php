@@ -2,7 +2,7 @@
     <div class="navbar-container">
         <!-- Logo -->
         <div class="navbar-logo">
-            <img src="{{ asset('images/logo/logo-novex-color.png') }}" alt="Novex" class="logo-img">
+            <img src="{{ Vite::asset('resources/images/logo/logo-novex-color.png') }}" alt="Novex" class="logo-img">
         </div>
 
         <!-- Menu items -->
