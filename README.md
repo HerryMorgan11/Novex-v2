@@ -3,8 +3,9 @@
 Sistema ERP completo con multi-tenancy, construido con Laravel 12 y Clean Architecture.
 
 > ## 🚨 ¿No ves las Issues en GitHub?
+>
 > **Las issues NO están creadas todavía.** Lee [LEEME_ISSUES.md](LEEME_ISSUES.md) para instrucciones simples de cómo crearlas.
-> 
+>
 > **TL;DR:** Copia el contenido de `docs/issues/fase-1/issue-1.1-....md` y pégalo en https://github.com/HerryMorgan11/Novex-v2/issues/new
 
 ## 📋 Descripción
@@ -20,6 +21,7 @@ Novex v2 es un sistema ERP (Enterprise Resource Planning) moderno y escalable qu
 ## 🏗️ Arquitectura
 
 El proyecto está construido siguiendo los principios de **Clean Architecture** para mantener el código:
+
 - ✅ Independiente de frameworks
 - ✅ Altamente testeable
 - ✅ Independiente de la UI
@@ -28,6 +30,7 @@ El proyecto está construido siguiendo los principios de **Clean Architecture** 
 ### Multi-Tenancy
 
 Utilizamos el paquete [stancl/tenancy](https://tenancyforlaravel.com/) con estrategia de **database por tenant** para:
+
 - Máximo aislamiento de datos
 - Backups independientes por cliente
 - Escalado por cliente
@@ -45,12 +48,14 @@ Utilizamos el paquete [stancl/tenancy](https://tenancyforlaravel.com/) con estra
 ## 📚 Documentación
 
 ### 🗺️ Planificación del Proyecto
+
 - **[QUICK START](docs/QUICK_START.md)** - 🔥 **EMPIEZA AQUÍ** - Guía de inicio rápido
 - **[ROADMAP](docs/ROADMAP.md)** - Resumen ejecutivo y progreso general
 - **[PROJECT PHASES](docs/PROJECT_PHASES.md)** - Plan detallado de todas las fases
 - **[GITHUB ISSUES TEMPLATES](docs/GITHUB_ISSUES_TEMPLATES.md)** - Templates para crear issues
 
 ### 🏛️ Arquitectura y Diseño
+
 - **[Arquitectura](docs/arquitectura.md)** - Clean Architecture y Multi-Tenancy
 - **[Base de Datos](docs/baseDeDatos.md)** - Esquema completo de la BD
 - **[Landing Design](docs/landingDesign.md)** - Estructura de vistas
@@ -121,6 +126,7 @@ $tenant->domains()->create(['domain' => 'test.localhost']);
 ### Progreso General: 6% (Semana 1 de 16)
 
 #### ✅ Completado (Fase 0)
+
 - [x] Proyecto Laravel 12 inicializado
 - [x] Livewire 4 instalado
 - [x] Estructura básica de vistas
@@ -128,11 +134,13 @@ $tenant->domains()->create(['domain' => 'test.localhost']);
 - [x] Planificación completa del proyecto
 
 #### 🔄 En Progreso (Fase 1)
+
 - [ ] Estructura Clean Architecture (40%)
 - [ ] Configuración de Base de Datos (20%)
 - [ ] Landing page básica (20%)
 
 #### ⏳ Pendiente
+
 - [ ] Multi-tenancy (Fase 2)
 - [ ] Sistema de autenticación (Fase 2)
 - [ ] Dashboard foundation (Fase 4)
@@ -144,6 +152,7 @@ Ver [ROADMAP.md](docs/ROADMAP.md) para detalles completos.
 ## 🎯 Próximos Pasos
 
 ### Esta Semana (Fase 1)
+
 1. ✅ Completar planificación
 2. ⏳ Configurar entorno de desarrollo
 3. ⏳ Instalar multi-tenancy
@@ -151,6 +160,7 @@ Ver [ROADMAP.md](docs/ROADMAP.md) para detalles completos.
 5. ⏳ Configurar herramientas de desarrollo
 
 ### Próxima Semana (Fase 2)
+
 1. Implementar sistema de autenticación
 2. Configurar flujo multi-tenant
 3. Crear migraciones de BD central
@@ -294,17 +304,20 @@ Este es un proyecto en desarrollo activo. Si quieres contribuir:
 ## 📝 Convenciones de Código
 
 ### PHP
+
 - PSR-12 (enforced by Laravel Pint)
 - Type hints en todos los métodos
 - PHPDoc para métodos públicos
 - Use statements ordenados alfabéticamente
 
 ### JavaScript
+
 - ESLint Standard config
 - Prettier para formateo
 - Comentarios JSDoc para funciones complejas
 
 ### Git Commits
+
 ```
 [Fase X.Y] Título del commit
 
@@ -315,10 +328,6 @@ Descripción detallada de los cambios
 Refs: #123
 ```
 
-## 📄 Licencia
-
-Este proyecto es privado y propietario.
-
 ## 👥 Equipo
 
 - **Desarrollo**: [Tu Nombre]
@@ -328,6 +337,7 @@ Este proyecto es privado y propietario.
 ## 🔗 Enlaces Útiles
 
 ### Documentación Externa
+
 - [Laravel 12 Docs](https://laravel.com/docs/12.x)
 - [Livewire 4 Docs](https://livewire.laravel.com/docs)
 - [Tenancy for Laravel](https://tenancyforlaravel.com/docs)
@@ -335,12 +345,14 @@ Este proyecto es privado y propietario.
 - [Alpine.js](https://alpinejs.dev/start-here)
 
 ### Clean Architecture
+
 - [Clean Architecture - Uncle Bob](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 - [Domain-Driven Design](https://martinfowler.com/bliki/DomainDrivenDesign.html)
 
 ## 📞 Soporte
 
 Para preguntas o problemas:
+
 1. Revisa la [documentación](docs/)
 2. Busca en [Issues](https://github.com/HerryMorgan11/Novex-v2/issues)
 3. Crea un nuevo Issue si es necesario
