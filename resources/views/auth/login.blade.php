@@ -9,6 +9,7 @@
 </head>
 <body>
     <main class="container-main">
+        <img src="{{ asset('assets/background/fondo-login.jpg') }}" alt="Background" class="background-image">
         <form action="" method="POST" class="form-container">
             <div class="email">
                 <label>Email</label>
