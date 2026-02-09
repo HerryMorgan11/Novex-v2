@@ -2,6 +2,11 @@
 
 Sistema ERP completo con multi-tenancy, construido con Laravel 12 y Clean Architecture.
 
+> ## 🚨 ¿No ves las Issues en GitHub?
+> **Las issues NO están creadas todavía.** Lee [LEEME_ISSUES.md](LEEME_ISSUES.md) para instrucciones simples de cómo crearlas.
+> 
+> **TL;DR:** Copia el contenido de `docs/issues/fase-1/issue-1.1-....md` y pégalo en https://github.com/HerryMorgan11/Novex-v2/issues/new
+
 ## 📋 Descripción
 
 Novex v2 es un sistema ERP (Enterprise Resource Planning) moderno y escalable que permite a múltiples empresas (tenants) gestionar sus operaciones de forma independiente y segura. Incluye módulos de:
