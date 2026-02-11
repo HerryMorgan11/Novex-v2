@@ -45,7 +45,7 @@
             "prettier --write"
         ],
         "{app,config,database,routes,tests}/**/*.php": [
-            "./vendor/bin/pint"
+            "php vendor/bin/pint"
         ]
     }
 }
