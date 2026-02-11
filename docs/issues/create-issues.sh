@@ -122,12 +122,14 @@ create_phase_issues() {
 
 # Mostrar uso
 show_usage() {
-    echo "Uso: $0 [fase-1|fase-2|fase-3|all|list|help]"
+    echo "Uso: $0 [fase-1|fase-2|fase-3|fase-4|fase-5|all|list|help]"
     echo ""
     echo "Comandos:"
     echo "  fase-1    Crear issues de Fase 1 (Infraestructura)"
     echo "  fase-2    Crear issues de Fase 2 (Auth + Multi-Tenancy)"
     echo "  fase-3    Crear issues de Fase 3 (Landing Page)"
+    echo "  fase-4    Crear issues de Fase 4 (Dashboard Foundation)"
+    echo "  fase-5    Crear issues de Fase 5 (Módulo Inventario)"
     echo "  all       Crear TODOS los issues"
     echo "  list      Listar issues disponibles"
     echo "  help      Mostrar esta ayuda"
@@ -170,7 +172,7 @@ create_all_issues() {
         exit 0
     fi
     
-    for phase in fase-1 fase-2 fase-3; do
+    for phase in fase-1 fase-2 fase-3 fase-4 fase-5; do
         if [ -d "docs/issues/$phase" ]; then
             create_phase_issues "$phase"
         fi
@@ -193,7 +195,7 @@ main() {
     fi
     
     case "$1" in
-        fase-1|fase-2|fase-3)
+        fase-1|fase-2|fase-3|fase-4|fase-5)
             create_phase_issues "$1"
             ;;
         all)

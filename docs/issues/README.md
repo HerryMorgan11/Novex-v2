@@ -6,11 +6,11 @@ Este directorio contiene archivos individuales de issues listos para ser copiado
 
 ```
 docs/issues/
-├── fase-1/          # Infraestructura y Core (4 issues)
-├── fase-2/          # Auth + Multi-Tenancy (4 issues)
-├── fase-3/          # Landing Page (3 issues)
-├── fase-4/          # Dashboard Foundation (pendiente)
-├── fase-5/          # Módulo Inventario (pendiente)
+├── fase-1/          # Infraestructura y Core (4 issues) ✅
+├── fase-2/          # Auth + Multi-Tenancy (4 issues) ✅
+├── fase-3/          # Landing Page (3 issues) ✅
+├── fase-4/          # Dashboard Foundation (3 issues) ✅
+├── fase-5/          # Módulo Inventario (5 issues) ✅
 └── README.md        # Este archivo
 ```
 
@@ -18,12 +18,12 @@ docs/issues/
 
 ### ✅ Fase 1: Infraestructura y Core (4 issues)
 
-| # | Issue | Estimación | Prioridad | Labels |
-|---|-------|------------|-----------|--------|
-| 1.1 | [Crear Estructura Clean Architecture](fase-1/issue-1.1-estructura-clean-architecture.md) | 3 días | Alta | fase-1, infrastructure, clean-architecture |
-| 1.2 | [Configuración Base de Datos](fase-1/issue-1.2-configuracion-base-datos.md) | 1 día | Alta | fase-1, database, configuration |
-| 1.3 | [Configurar Herramientas de Desarrollo](fase-1/issue-1.3-herramientas-desarrollo.md) | 1 día | Media | fase-1, devtools, configuration |
-| 1.4 | [Ajustar Docker Compose](fase-1/issue-1.4-docker-compose.md) | 1 día | Media | fase-1, docker, infrastructure |
+| #   | Issue                                                                                    | Estimación | Prioridad | Labels                                     |
+| --- | ---------------------------------------------------------------------------------------- | ---------- | --------- | ------------------------------------------ |
+| 1.1 | [Crear Estructura Clean Architecture](fase-1/issue-1.1-estructura-clean-architecture.md) | 3 días     | Alta      | fase-1, infrastructure, clean-architecture |
+| 1.2 | [Configuración Base de Datos](fase-1/issue-1.2-configuracion-base-datos.md)              | 1 día      | Alta      | fase-1, database, configuration            |
+| 1.3 | [Configurar Herramientas de Desarrollo](fase-1/issue-1.3-herramientas-desarrollo.md)     | 1 día      | Media     | fase-1, devtools, configuration            |
+| 1.4 | [Ajustar Docker Compose](fase-1/issue-1.4-docker-compose.md)                             | 1 día      | Media     | fase-1, docker, infrastructure             |
 
 **Total Fase 1:** ~6 días
 
@@ -31,12 +31,12 @@ docs/issues/
 
 ### ✅ Fase 2: Autenticación y Multi-Tenancy (4 issues)
 
-| # | Issue | Estimación | Prioridad | Labels |
-|---|-------|------------|-----------|--------|
-| 2.1 | [Instalar y Configurar Multi-Tenancy](fase-2/issue-2.1-instalar-multi-tenancy.md) | 2 días | Alta | fase-2, multi-tenancy, critical |
-| 2.2 | [Crear Migraciones BD Central](fase-2/issue-2.2-migraciones-bd-central.md) | 2 días | Alta | fase-2, database, migrations |
-| 2.3 | [Implementar Sistema de Autenticación](fase-2/issue-2.3-sistema-autenticacion.md) | 3 días | Alta | fase-2, authentication, frontend, backend |
-| 2.4 | [Implementar Flujo Multi-Tenant Login](fase-2/issue-2.4-flujo-multi-tenant-login.md) | 2 días | Alta | fase-2, multi-tenancy, authentication, complex |
+| #   | Issue                                                                                | Estimación | Prioridad | Labels                                         |
+| --- | ------------------------------------------------------------------------------------ | ---------- | --------- | ---------------------------------------------- |
+| 2.1 | [Instalar y Configurar Multi-Tenancy](fase-2/issue-2.1-instalar-multi-tenancy.md)    | 2 días     | Alta      | fase-2, multi-tenancy, critical                |
+| 2.2 | [Crear Migraciones BD Central](fase-2/issue-2.2-migraciones-bd-central.md)           | 2 días     | Alta      | fase-2, database, migrations                   |
+| 2.3 | [Implementar Sistema de Autenticación](fase-2/issue-2.3-sistema-autenticacion.md)    | 3 días     | Alta      | fase-2, authentication, frontend, backend      |
+| 2.4 | [Implementar Flujo Multi-Tenant Login](fase-2/issue-2.4-flujo-multi-tenant-login.md) | 2 días     | Alta      | fase-2, multi-tenancy, authentication, complex |
 
 **Total Fase 2:** ~9 días
 
@@ -44,33 +44,39 @@ docs/issues/
 
 ### ✅ Fase 3: Landing Page (3 issues)
 
-| # | Issue | Estimación | Prioridad | Labels |
-|---|-------|------------|-----------|--------|
-| 3.1 | [Layout y Componentes Landing](fase-3/issue-3.1-layout-componentes-landing.md) | 2 días | Media | fase-3, landing, frontend, ui-ux |
-| 3.2 | [Implementar Home Page Completa](fase-3/issue-3.2-home-page.md) | 2 días | Alta | fase-3, landing, frontend, content |
-| 3.3 | [Implementar Pricing Page](fase-3/issue-3.3-pricing-page.md) | 1 día | Alta | fase-3, landing, pricing, frontend |
+| #   | Issue                                                                          | Estimación | Prioridad | Labels                             |
+| --- | ------------------------------------------------------------------------------ | ---------- | --------- | ---------------------------------- |
+| 3.1 | [Layout y Componentes Landing](fase-3/issue-3.1-layout-componentes-landing.md) | 2 días     | Media     | fase-3, landing, frontend, ui-ux   |
+| 3.2 | [Implementar Home Page Completa](fase-3/issue-3.2-home-page.md)                | 2 días     | Alta      | fase-3, landing, frontend, content |
+| 3.3 | [Implementar Pricing Page](fase-3/issue-3.3-pricing-page.md)                   | 1 día      | Alta      | fase-3, landing, pricing, frontend |
 
 **Total Fase 3:** ~5 días
 
 ---
 
-### ⏳ Fase 4: Dashboard Foundation (Pendiente)
+### ✅ Fase 4: Dashboard Foundation (3 issues)
 
-Issues a crear:
-- 4.1: Layout Dashboard
-- 4.2: Componentes Compartidos Dashboard
-- 4.3: Dashboard Home con Widgets
+| #   | Issue                                                                              | Estimación | Prioridad | Labels                        |
+| --- | ---------------------------------------------------------------------------------- | ---------- | --------- | ----------------------------- |
+| 4.1 | [Layout y Navegación del Dashboard](fase-4/issue-4.1-layout-dashboard.md)          | 2-3 días   | Alta      | fase-4, dashboard, frontend   |
+| 4.2 | [Componentes Compartidos del Dashboard](fase-4/issue-4.2-componentes-dashboard.md) | 2-3 días   | Alta      | fase-4, dashboard, components |
+| 4.3 | [Dashboard Home con Widgets](fase-4/issue-4.3-dashboard-home.md)                   | 2-3 días   | Alta      | fase-4, dashboard, widgets    |
+
+**Total Fase 4:** ~6-9 días
 
 ---
 
-### ⏳ Fase 5: Módulo Inventario (Pendiente)
+### ✅ Fase 5: Módulo Inventario (5 issues)
 
-Issues a crear:
-- 5.1: Estructura del Módulo
-- 5.2: Migraciones del Módulo
-- 5.3: Domain Layer
-- 5.4: Application Layer
-- 5.5: CRUD Productos con Livewire
+| #   | Issue                                                                             | Estimación | Prioridad | Labels                                |
+| --- | --------------------------------------------------------------------------------- | ---------- | --------- | ------------------------------------- |
+| 5.1 | [Estructura Clean Architecture del Módulo](fase-5/issue-5.1-estructura-modulo.md) | 3-4 días   | Alta      | fase-5, inventory, clean-architecture |
+| 5.2 | [Migraciones y Modelos Base](fase-5/issue-5.2-migraciones-modelos.md)             | 2-3 días   | Alta      | fase-5, inventory, database           |
+| 5.3 | [Domain Layer del Módulo](fase-5/issue-5.3-domain-layer.md)                       | 3-4 días   | Alta      | fase-5, inventory, backend            |
+| 5.4 | [Application & Presentation Layer](fase-5/issue-5.4-application-layer.md)         | 3-4 días   | Alta      | fase-5, inventory, backend            |
+| 5.5 | [CRUD Productos con Livewire](fase-5/issue-5.5-crud-productos.md)                 | 3-4 días   | Alta      | fase-5, inventory, frontend           |
+
+**Total Fase 5:** ~14-19 días
 
 ---
 
@@ -136,6 +142,7 @@ chmod +x docs/issues/create-issues.sh
 ## 🏷️ Sistema de Labels
 
 ### Por Fase
+
 - `fase-1` - Infraestructura y Core
 - `fase-2` - Auth + Multi-Tenancy
 - `fase-3` - Landing Page
@@ -143,6 +150,7 @@ chmod +x docs/issues/create-issues.sh
 - `fase-5` - Módulo Inventario
 
 ### Por Área
+
 - `frontend` - Trabajo de frontend
 - `backend` - Trabajo de backend
 - `database` - Base de datos
@@ -150,18 +158,21 @@ chmod +x docs/issues/create-issues.sh
 - `documentation` - Documentación
 
 ### Por Prioridad
+
 - `priority-high` - Prioridad alta
 - `priority-medium` - Prioridad media
 - `priority-low` - Prioridad baja
 - `critical` - Crítico/bloqueante
 
 ### Por Tecnología
+
 - `livewire` - Componentes Livewire
 - `tailwind` - Estilos Tailwind
 - `clean-architecture` - Clean Architecture
 - `multi-tenancy` - Multi-tenancy
 
 ### Por Tipo
+
 - `infrastructure` - Infraestructura
 - `configuration` - Configuración
 - `authentication` - Autenticación
@@ -174,34 +185,42 @@ chmod +x docs/issues/create-issues.sh
 Cada archivo de issue contiene:
 
 ### 1. Frontmatter (YAML)
+
 ```yaml
 ---
-title: "[Fase X.Y] Título del Issue"
+title: '[Fase X.Y] Título del Issue'
 labels: fase-x, area, priority
-assignees: 
+assignees:
 milestone: Fase X - Nombre
 ---
 ```
 
 ### 2. Descripción
+
 Breve descripción del objetivo del issue
 
 ### 3. Objetivos
+
 Lista de tareas específicas a completar
 
 ### 4. Implementación
+
 Código de ejemplo y guías de implementación
 
 ### 5. Criterios de Aceptación
+
 Lista verificable de lo que debe estar completo
 
 ### 6. Testing
+
 Ejemplos de tests a crear
 
 ### 7. Referencias
+
 Links a documentación relevante
 
 ### 8. Metadata
+
 - **Estimación**: Tiempo estimado
 - **Dependencias**: Issues que deben completarse primero
 - **Notas**: Información adicional importante
@@ -211,13 +230,16 @@ Links a documentación relevante
 ## 🎯 Orden Recomendado de Creación
 
 ### Sprint 1 (Semana 1-2)
+
 1. Crear todos los issues de **Fase 1** (1.1 - 1.4)
 2. Crear todos los issues de **Fase 2** (2.1 - 2.4)
 
 ### Sprint 2 (Semana 3)
+
 3. Crear todos los issues de **Fase 3** (3.1 - 3.3)
 
 ### Sprint 3 (Semana 4+)
+
 4. Crear issues de **Fase 4** cuando estés listo para trabajar en dashboard
 5. Crear issues de **Fase 5** cuando estés listo para el módulo inventario
 
