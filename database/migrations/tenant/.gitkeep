@@ -1,0 +1,12 @@
+# Tenant Migrations
+
+Las migraciones en esta carpeta se ejecutan SOLO en las bases de datos de cada tenant.
+
+Ejemplo:
+- 2024_01_01_000000_create_projects_table.php
+- 2024_01_02_000000_create_invoices_table.php
+
+NO incluyas aquí migraciones de:
+- users (van en migrations/ central)
+- tenants (van en migrations/ central)
+- domains (van en migrations/ central)
