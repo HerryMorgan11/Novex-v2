@@ -32,7 +32,7 @@ class GoogleController extends Controller
         if ($socialAccount) {
             Auth::login($socialAccount->user);
 
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/app');
         }
 
         // 2️⃣ Si no existe, buscar usuario por email
@@ -59,6 +59,6 @@ class GoogleController extends Controller
 
         Auth::login($user);
 
-        return redirect()->intended('/dashboard');
+        return redirect()->intended('/app');
     }
 }

@@ -62,6 +62,17 @@ Route::post('/logout', function () {
     return 'Logged out';
 })->name('logout');
 
+/*
+Route::get('/dashboard', function () {
+    return view('dashboard.dashboard');
+})->name('dashboard');
+*/
+
+// Dashboard central (pre-tenant)
+Route::get('/app', function () {
+    return view('dashboard.dashboard');
+})->name('dashboard');
+
 // Health checks
 Route::get('/health', fn () => 'CENTRAL HEALTH OK');
 
