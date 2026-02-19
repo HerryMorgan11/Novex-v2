@@ -20,8 +20,8 @@ use Stancl\Tenancy\Facades\Tenancy;
 |
 */
 
-// Dashboard del tenant
-Route::get('/', function () {
+// Dashboard del tenant (evita colisión con "/" del dominio central)
+Route::get('/dashboard', function () {
     return 'Tenant: '.tenant('id').' | Database: '.DB::connection()->getDatabaseName();
 })->name('tenant.dashboard');
 
