@@ -10,7 +10,7 @@ export default defineConfig({
                 'resources/css/landing/shared/navbar.css',
                 'resources/css/landing/sections/home/header.css',
                 'resources/js/app.js',
-                'resources/css/auth/login.css',
+                'resources/css/auth/auth.css',
             ],
             refresh: true,
         }),
