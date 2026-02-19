@@ -20,19 +20,21 @@ use Stancl\Tenancy\Facades\Tenancy;
 |
 */
 
-// Dashboard del tenant (evita colisión con "/" del dominio central)
-Route::get('/dashboard', function () {
-    return 'Tenant: '.tenant('id').' | Database: '.DB::connection()->getDatabaseName();
-})->name('tenant.dashboard');
+Route::middleware(['auth'])->group(function () {
+    // Dashboard del tenant (evita colisión con "/" del dominio central)
+    Route::get('/dashboard', function () {
+        return 'Tenant: '.tenant('id').' | Database: '.DB::connection()->getDatabaseName();
+    })->name('tenant.dashboard');
+
+    // Endpoint de debug (eliminar en producción)
+    Route::get('/__tenancy', function () {
+        return [
+            'host' => request()->getHost(),
+            'tenant_id' => optional(Tenancy::getTenant())->id,
+            'connection' => DB::connection()->getName(),
+            'database' => DB::connection()->getDatabaseName(),
+        ];
+    });
+});
 
 Route::get('/health', fn () => 'TENANT HEALTH OK');
-
-// Endpoint de debug (eliminar en producción)
-Route::get('/__tenancy', function () {
-    return [
-        'host' => request()->getHost(),
-        'tenant_id' => optional(Tenancy::getTenant())->id,
-        'connection' => DB::connection()->getName(),
-        'database' => DB::connection()->getDatabaseName(),
-    ];
-});
