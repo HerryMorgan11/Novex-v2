@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
+use App\Models\Tenant as TenantModel;
 use Stancl\Tenancy\Bootstrappers\CacheTenancyBootstrapper;
 use Stancl\Tenancy\Bootstrappers\DatabaseTenancyBootstrapper;
 use Stancl\Tenancy\Bootstrappers\FilesystemTenancyBootstrapper;
 use Stancl\Tenancy\Bootstrappers\QueueTenancyBootstrapper;
 use Stancl\Tenancy\Database\Models\Domain;
-use Stancl\Tenancy\Database\Models\Tenant;
 use Stancl\Tenancy\TenantDatabaseManagers\MySQLDatabaseManager;
 
 return [
@@ -17,7 +17,7 @@ return [
     | Models
     |--------------------------------------------------------------------------
     */
-    'tenant_model' => Tenant::class,
+    'tenant_model' => TenantModel::class,
 
     // ✅ Si tu tenants.id lo genera el paquete, deja UUIDGenerator.
     // ✅ Si tú asignas id manual (recomendado: usar el id del paquete), también sirve.

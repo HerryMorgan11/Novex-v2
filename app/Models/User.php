@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -41,6 +42,11 @@ class User extends Authenticatable
     public function createdTenants(): HasMany
     {
         return $this->hasMany(Tenant::class, 'created_by_user_id');
+    }
+
+    public function currentTenant(): BelongsTo
+    {
+        return $this->belongsTo(Tenant::class, 'current_tenant_id');
     }
 
     public function socialAccounts(): HasMany

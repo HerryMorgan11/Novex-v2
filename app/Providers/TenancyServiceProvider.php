@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Tenancy\Jobs\FinalizeProvisioning;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
@@ -34,8 +35,8 @@ class TenancyServiceProvider extends ServiceProvider
                 JobPipeline::make([
                     Jobs\CreateDatabase::class,
                     Jobs\MigrateDatabase::class,
-                    // Jobs\SeedDatabase::class, // activar cuando tengas migraciones/seed tenant
-                    // \App\Tenancy\Jobs\FinalizeProvisioning::class, // opcional
+                    // Jobs\SeedDatabase::class,
+                    FinalizeProvisioning::class, // ✅ actualiza status a 'active'
                 ])
                     ->send(fn (Events\TenantCreated $event) => $event->tenant)
                     ->shouldBeQueued(true),
