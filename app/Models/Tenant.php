@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Stancl\Tenancy\Contracts\TenantWithDatabase;
+use Stancl\Tenancy\Database\Concerns\HasDatabase;
 use Stancl\Tenancy\Database\Models\Tenant as BaseTenant;
 
-class Tenant extends BaseTenant
+class Tenant extends BaseTenant implements TenantWithDatabase
 {
-    use SoftDeletes;
+    use HasDatabase, HasUuids, SoftDeletes;
 
     protected $connection = 'mysql';
 
@@ -27,6 +30,21 @@ class Tenant extends BaseTenant
     protected $casts = [
         'data' => 'array',
     ];
+
+    public static function getCustomColumns(): array
+    {
+        return [
+            'id',
+            'name',
+            'slug',
+            'status',
+            'db_name',
+            'created_by_user_id',
+            'created_at',
+            'updated_at',
+            'deleted_at',
+        ];
+    }
 
     public function createdBy(): BelongsTo
     {

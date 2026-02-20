@@ -119,7 +119,7 @@ return [
             'host' => env('TENANT_DB_HOST', env('DB_HOST', '127.0.0.1')),
             'port' => env('TENANT_DB_PORT', env('DB_PORT', '3306')),
 
-            // 🔥 clave: null, Stancl lo establece por tenant
+            // clave: null, Stancl lo establece por tenant
             'database' => null,
 
             'username' => env('TENANT_DB_USERNAME', env('DB_USERNAME', 'root')),

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,14 +26,10 @@ Route::get('/pricing', function () {
 
 // Autenticación (pre-tenant)
 Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/login', function () {
-    return 'Login POST logic implementation needed';
-});
+Route::post('/login', [AuthController::class, 'authenticate']);
 
 Route::get('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/register', function () {
-    return 'Register POST logic implementation needed';
-});
+Route::post('/register', [AuthController::class, 'store']);
 
 Route::get('/forgot-password', function () {
     return view('auth.forgot-password');
@@ -58,21 +55,51 @@ Route::post('/email/verification-notification', function () {
     return 'Verification Email Sent';
 })->name('verification.send');
 
-Route::post('/logout', function () {
-    return 'Logged out';
-})->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 /*
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard');
 })->name('dashboard');
 */
+Route::middleware(['auth', 'initializeTenant'])->group(function () {
+    Route::get('/app', function () {
+        $tenancyInitialized = null;
+        $tenancyTenant = null;
+        $tenancyError = null;
 
-// Dashboard central (pre-tenant)
-Route::get('/app', function () {
-    return view('dashboard.dashboard');
-})->name('dashboard');
+        if (function_exists('tenancy')) {
+            $tenancyInitialized = tenancy()->initialized;
+        }
 
+        if (function_exists('tenant')) {
+            try {
+                $tenancyTenant = tenant();
+            } catch (\Throwable $e) {
+                $tenancyError = $e->getMessage();
+            }
+        } else {
+            $tenancyError = 'function tenant not found';
+        }
+
+        return view('dashboard.dashboard', [
+            'currentConnection' => DB::connection()->getName(),
+            'currentDatabase' => DB::connection()->getDatabaseName(),
+            'tenancyInitialized' => $tenancyInitialized,
+            'tenancyTenant' => $tenancyTenant,
+            'tenancyError' => $tenancyError,
+        ]);
+    })->name('dashboard');
+});
+
+// Provisioning page shown after registration while tenant is being prepared
+Route::middleware('auth')->group(function () {
+    Route::get('/provisioning', [App\Http\Controllers\ProvisioningController::class, 'page'])
+        ->name('provisioning.page');
+
+    Route::get('/provisioning/status', [App\Http\Controllers\ProvisioningController::class, 'status'])
+        ->name('provisioning.status');
+});
 // Health checks
 Route::get('/health', fn () => 'CENTRAL HEALTH OK');
 
