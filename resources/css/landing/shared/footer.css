@@ -1,0 +1,144 @@
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+    width: 100%;
+    padding-top: 40px;
+}
+
+.footer-elementos {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 95%;
+    margin-bottom: 40px;
+}
+
+.footer-info {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.box-logo-description {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 10px;
+    max-width: 30%;
+    align-items: flex-start;
+}
+
+.logo-footer {
+    width: 150px;
+    height: auto;
+}
+
+.box-container {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.title-links {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.box-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 150px;
+    width: 100%;
+}
+
+hr {
+    width: 100%;
+    border: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ff9b4f 0%, #f45caf 50%, #8d7df9 100%);
+    background-repeat: no-repeat;
+}
+
+.hr-footer {
+    width: 100%;
+    border: 0;
+    height: 1px;
+    border-top: 1px solid #ccc;
+    max-width: 95%;
+}
+.link-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.iconos {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.iconos iconify-icon {
+    color: #5f5e5e; /* color por defecto */
+    font-size: 17px; /* ajustar tamaño del icono */
+    transition: color 0.2s ease;
+}
+
+.iconos iconify-icon:hover {
+    color: #f45caf; /* color al pasar el cursor */
+    cursor: pointer;
+}
+
+/* Seleccionar iconos concretos por atributo `icon` si se desea color individual */
+/* Ejemplo:
+iconify-icon[icon="line-md:facebook"]{ color: #1877F2; }
+iconify-icon[icon="line-md:twitter"]{ color: #1DA1F2; }
+iconify-icon[icon="line-md:linkedin"]{ color: #0A66C2; }
+*/
+
+.footer-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 95%;
+    margin-top: 30px;
+}
+
+.footer-legal {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.description-footer {
+    font-size: 14px;
+    color: #666;
+    max-width: 400px;
+    text-align: left;
+}
+
+ul a {
+    font-size: 14px;
+    color: #666;
+    max-width: 400px;
+    text-align: left;
+}
+
+.iconos {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.icon {
+    color: #666;
+}

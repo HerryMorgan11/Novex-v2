@@ -48,7 +48,6 @@ La lógica de negocio debe sobrevivir incluso si el framework cambia.
 ## 🎯 Principio Clave: Regla de Dependencia
 
 > **Las dependencias del código deben apuntar siempre hacia adentro.**
-> 
 
 Esto implica:
 
@@ -478,10 +477,8 @@ Esta arquitectura:
 - Mantiene bajo acoplamiento
 
 > **La arquitectura es una guía, no una prisión.**
-> 
-> 
+>
 > Empieza simple, diseña para evolucionar.
-> 
 
 ---
 
