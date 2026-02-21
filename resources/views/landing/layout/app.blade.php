@@ -9,7 +9,6 @@
     @vite('resources/js/app.js')
     @vite('resources/css/landing/shared/navbar.css')
     @vite('resources/css/landing/sections/home/header.css')
-    @vite('resources/css/landing/sections/choose.css')
     @vite('resources/css/landing/shared/footer.css')
 
 </head>
