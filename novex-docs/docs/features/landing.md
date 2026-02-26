@@ -59,7 +59,6 @@ Nuestra aplicación tiene **dos contextos claramente separados**:
 ✅ **Multi-tenancy**: Solo en dashboard
 
 **_Workflow_**
-**_Workflow_**
 
 1. Usuario hace click en Login en la landing
 2. Redirección a: [https://auth.miapp.com/login](https://auth.miapp.com/login)
@@ -68,11 +67,14 @@ Nuestra aplicación tiene **dos contextos claramente separados**:
 5. ERP detecta a qué tenant pertenece
 6. ERP genera redirección segura
 7. Usuario es redirigido a:
-<<<<<<< HEAD
-=======
+   <<<<<<< HEAD
+   <<<<<<< HEAD
+   =======
    https://\{tenant\}.miapp.com/auth/consume
->>>>>>> b2a706c (fix: conflicts)
-   https://{tenant}.miapp.com/auth/consume
+    > > > > > > > b2a706c (fix: conflicts)
+    # https://{tenant}.miapp.com/auth/consume
+    https://\{tenant\}.miapp.com/auth/consume
+    > > > > > > > origin/develop
 8. El tenant:
     - Inicializa tenancy
     - Crea sesión Laravel
@@ -1473,6 +1475,7 @@ public function test_can_login_and_redirect_to_dashboard()
 ## ** Resumen**
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 | Característica | Landing | Dashboard |
 | --- | --- | --- |
 | **Dominio** | www.miapp.com | {tenant}.miapp.com |
@@ -1483,25 +1486,31 @@ public function test_can_login_and_redirect_to_dashboard()
 | **Middleware** | `guest`, `RedirectIfAuthenticated` | `tenant`, `auth:tenant` |
 | **Propósito** | Marketing, registro, login | Operación del ERP |
 =======
-| Característica    | Landing                            | Dashboard               |
-| ----------------- | ---------------------------------- | ----------------------- |
-| **Dominio**       | www.miapp.com                      | \{tenant\}.miapp.com    |
-| **Contexto**      | Landlord (Central)                 | Tenant (Separado)       |
-| **Autenticación** | Opcional                           | Requerida               |
-| **Base de Datos** | Landlord DB                        | Tenant DB (separada)    |
-| **Guard**         | `web`                              | `tenant`                |
-| **Middleware**    | `guest`, `RedirectIfAuthenticated` | `tenant`, `auth:tenant` |
-| **Propósito**     | Marketing, registro, login         | Operación del ERP       |
-| Característica    | Landing                            | Dashboard               |
-| ----------------- | ---------------------------------- | ----------------------- |
-| **Dominio**       | www.miapp.com                      | {tenant}.miapp.com      |
-| **Contexto**      | Landlord (Central)                 | Tenant (Separado)       |
-| **Autenticación** | Opcional                           | Requerida               |
-| **Base de Datos** | Landlord DB                        | Tenant DB (separada)    |
-| **Guard**         | `web`                              | `tenant`                |
-| **Middleware**    | `guest`, `RedirectIfAuthenticated` | `tenant`, `auth:tenant` |
-| **Propósito**     | Marketing, registro, login         | Operación del ERP       |
->>>>>>> b2a706c (fix: conflicts)
+=======
+
+> > > > > > > origin/develop
+> > > > > > > | Característica | Landing | Dashboard |
+> > > > > > > | ----------------- | ---------------------------------- | ----------------------- |
+> > > > > > > | **Dominio** | www.miapp.com | \{tenant\}.miapp.com |
+> > > > > > > | **Contexto** | Landlord (Central) | Tenant (Separado) |
+> > > > > > > | **Autenticación** | Opcional | Requerida |
+> > > > > > > | **Base de Datos** | Landlord DB | Tenant DB (separada) |
+> > > > > > > | **Guard** | `web` | `tenant` |
+> > > > > > > | **Middleware** | `guest`, `RedirectIfAuthenticated` | `tenant`, `auth:tenant` |
+> > > > > > > | **Propósito** | Marketing, registro, login | Operación del ERP |
+> > > > > > > <<<<<<< HEAD
+> > > > > > > | Característica | Landing | Dashboard |
+> > > > > > > | ----------------- | ---------------------------------- | ----------------------- |
+> > > > > > > | **Dominio** | www.miapp.com | {tenant}.miapp.com |
+> > > > > > > | **Contexto** | Landlord (Central) | Tenant (Separado) |
+> > > > > > > | **Autenticación** | Opcional | Requerida |
+> > > > > > > | **Base de Datos** | Landlord DB | Tenant DB (separada) |
+> > > > > > > | **Guard** | `web` | `tenant` |
+> > > > > > > | **Middleware** | `guest`, `RedirectIfAuthenticated` | `tenant`, `auth:tenant` |
+> > > > > > > | **Propósito** | Marketing, registro, login | Operación del ERP |
+> > > > > > > b2a706c (fix: conflicts)
+> > > > > > > =======
+> > > > > > > origin/develop
 
 ---
 
