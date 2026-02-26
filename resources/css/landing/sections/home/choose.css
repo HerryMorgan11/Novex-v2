@@ -1,4 +1,205 @@
-.titulos-texto{
-    font-size: 30px;
+.choose-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7rem 5%;
+    background-color: transparent;
+    gap: 4rem;
+    font-family:
+        'Inter',
+        system-ui,
+        -apple-system,
+        sans-serif;
+    max-width: 1450px;
+    margin: 0 auto;
+}
 
+.choose-text-container {
+    flex: 1;
+    max-width: 550px;
+}
+
+.titulos-texto h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0;
+    color: #1f2937;
+    letter-spacing: -0.02em;
+}
+
+.titulos-texto .title-gradient {
+    color: #f43f5e;
+    display: block;
+    margin-bottom: 2rem;
+}
+
+.texto p {
+    font-size: 1.05rem;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+}
+
+/* Lista de ventajas */
+.lista ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.list-icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #d1fae5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #10b981;
+    flex-shrink: 0;
+}
+
+.list-icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.list-text h4 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.list-text p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+/* Grilla de Cajas */
+.box {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.box > div {
+    background: #ffffff;
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem;
+    border: 1px solid #f3f4f6;
+    text-align: left;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.05),
+        0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.box > div:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Desplazamiento de la columna derecha */
+.right-col {
+    transform: translateY(3rem);
+}
+
+.right-col:hover {
+    transform: translateY(calc(3rem - 5px)) !important;
+}
+
+/* Textos de las cajas */
+.box > div p:first-child {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.025em;
+    margin-top: 0;
+}
+
+.box > div p:last-child {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0;
+}
+
+/* Colores personalizados */
+.box-eficiencia p:first-child {
+    color: #f97316;
+}
+
+/* Naranja */
+.box-user p:first-child {
+    color: #ef4444;
+}
+
+/* Rojo/Rosa */
+.box-roi p:first-child {
+    color: #a855f7;
+}
+
+/* Morado */
+
+/* Caja de Soporte con fondo gradiente */
+.box-support.colored {
+    background: linear-gradient(135deg, #f97316, #e11d48);
+    border: none;
+    box-shadow: 0 10px 25px -5px rgba(225, 29, 72, 0.4);
+}
+
+.box-support.colored p:first-child {
+    color: #ffffff;
+}
+
+.box-support.colored p:last-child {
+    color: #ffffff;
+    font-weight: 400;
+}
+
+.box-support.colored:hover {
+    box-shadow: 0 20px 25px -5px rgba(225, 29, 72, 0.5);
+}
+
+/* Responsivo */
+@media (max-width: 960px) {
+    .choose-section {
+        flex-direction: column;
+        padding: 4rem 2rem;
+    }
+
+    .choose-text-container {
+        max-width: 100%;
+    }
+
+    .right-col {
+        transform: translateY(0);
+    }
+
+    .right-col:hover {
+        transform: translateY(-5px) !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .box {
+        grid-template-columns: 1fr;
+    }
 }
