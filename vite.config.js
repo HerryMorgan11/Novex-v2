@@ -9,6 +9,7 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/css/landing/shared/navbar.css',
                 'resources/css/landing/sections/home/header.css',
+                'resources/css/landing/sections/home/modules-section.css',
                 'resources/js/app.js',
                 'resources/css/auth/auth.css',
             ],

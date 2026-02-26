@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,5 +17,12 @@ use Illuminate\Support\Facades\Route;
 | Debería registrar central.php en su lugar.
 |
 */
+
+Route::get('/pricing', function () {
+    return view('landing.pages.pricing');
+})->name('pricing');
+
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
 
 Route::get('/', fn () => 'DEPRECATED: Use routes/central.php or routes/tenant.php');
