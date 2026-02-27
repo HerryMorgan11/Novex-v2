@@ -8,11 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="{{ Vite::asset('resources/images/background/fondo-forms.jpg') }}">
     @vite('resources/css/auth/auth.css')
 </head>
 
 <body>
-    <div class="login-wrapper">
+    <div class="login-wrapper" style="--bg-image: url('{{ Vite::asset('resources/images/background/fondo-forms.jpg') }}')">
         <!-- Abstract Background Elements -->
         <div class="bg-shape shape-1"></div>
         <div class="bg-shape shape-2"></div>
