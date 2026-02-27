@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="{{ Vite::asset('resources/images/background/fondo-forms.jpg') }}">
-    @vite('resources/css/auth/auth.css')
+    @vite(['resources/css/auth/auth.css', 'resources/js/app.js'])
 </head>
 
 <body>
@@ -31,11 +31,7 @@
                     <label for="name">FULL NAME</label>
                     <div class="input-wrapper">
                         <span class="input-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
+                            <iconify-icon icon="lucide:user"></iconify-icon>
                         </span>
                         <input type="text" id="name" name="name" placeholder="John Doe" required autofocus>
                     </div>
@@ -61,13 +57,12 @@
                     <label for="password">PASSWORD</label>
                     <div class="input-wrapper">
                         <span class="input-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                            </svg>
+                            <iconify-icon icon="iconoir:lock"></iconify-icon>
                         </span>
                         <input type="password" id="password" name="password" placeholder="Create a password" required>
+                        <button type="button" class="toggle-password" onclick="togglePassword()">
+                            <iconify-icon id="icon-eye-password" icon="iconoir:eye"></iconify-icon>
+                        </button>
                     </div>
                 </div>
 
@@ -76,14 +71,13 @@
                     <label for="password_confirmation">CONFIRM PASSWORD</label>
                     <div class="input-wrapper">
                         <span class="input-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                            </svg>
+                            <iconify-icon icon="iconoir:lock"></iconify-icon>
                         </span>
                         <input type="password" id="password_confirmation" name="password_confirmation"
                             placeholder="Confirm your password" required>
+                        <button type="button" class="toggle-password" onclick="togglePassword()">
+                            <iconify-icon id="icon-eye-password" icon="iconoir:eye"></iconify-icon>
+                        </button>
                     </div>
                 </div>
 
@@ -114,6 +108,16 @@
             </div>
         </div>
     </div>
-</body>
 
+      <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            document.getElementById('icon-eye-password').setAttribute('icon', type === 'password' ? 'iconoir:eye' : 'codicon:eye-closed');
+        }
+    </script>
+
+</body>
 </html>

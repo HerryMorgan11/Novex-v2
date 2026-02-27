@@ -139,6 +139,11 @@ body {
     pointer-events: none;
 }
 
+.input-icon iconify-icon {
+    font-size: 20px;
+    display: block;
+}
+
 .toggle-password {
     position: absolute;
     right: 12px;
@@ -154,6 +159,11 @@ body {
 
 .toggle-password:hover {
     color: #6b7280;
+}
+
+.toggle-password iconify-icon {
+    font-size: 20px;
+    display: block;
 }
 
 /* Options Row */
@@ -209,6 +219,7 @@ body {
 
 /* Google Button */
 .btn-google {
+    max-width: 390px;
     width: 100%;
     background-color: #ffffff;
     color: #374151;
@@ -236,6 +247,11 @@ body {
 .btn-google svg {
     width: 18px;
     height: 18px;
+}
+
+.btn-google iconify-icon {
+    font-size: 18px;
+    display: block;
 }
 
 .divider {
