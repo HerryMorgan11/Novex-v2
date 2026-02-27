@@ -19,10 +19,7 @@
         <div class="bg-shape shape-2"></div>
 
         <div class="login-container">
-            <div class="login-header">
-                <h1>Sign In</h1>
-                <p>Enter your credentials to continue</p>
-            </div>
+            <img src="{{ Vite::asset('resources/images/logo/logo-novex-color.png') }}" alt="Novex Logo" class="logo">
 
             <form action="{{ route('login') }}" method="POST" class="login-form">
                 @csrf

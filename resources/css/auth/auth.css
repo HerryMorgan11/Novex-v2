@@ -28,30 +28,6 @@ body {
     background-repeat: no-repeat;
 }
 
-.bg-shape {
-    position: absolute;
-    border-radius: 50%;
-    z-index: 0;
-}
-
-/* Simulating the wave/gradient using large blurred shapes or gradients */
-.shape-1 {
-    top: -20%;
-    left: -10%;
-    width: 800px;
-    height: 800px;
-    background: radial-gradient(circle, rgba(229, 231, 235, 0.8) 0%, rgba(243, 244, 246, 0) 70%);
-    transform: rotate(45deg);
-}
-
-.shape-2 {
-    bottom: -30%;
-    right: -10%;
-    width: 1000px;
-    height: 1000px;
-    background: radial-gradient(circle, rgba(209, 213, 219, 0.5) 0%, rgba(243, 244, 246, 0) 70%);
-}
-
 /* Card Container */
 .login-container {
     position: relative;
@@ -60,20 +36,35 @@ body {
     backdrop-filter: blur(4px);
     width: 100%;
     max-width: 420px;
-    padding: 48px;
+    padding: 40px;
     border-radius: 12px;
+}
+
+/* Logo inside the card: centered and responsive */
+.login-container .logo {
+    display: block;
+    max-width: 200px;
+    width: 48%;
+    height: auto;
+    margin: 0 auto 18px;
+}
+
+@media (max-width: 640px) {
+    .login-container .logo {
+        width: 120px;
+    }
 }
 
 /* Header */
 .login-header {
-    text-align: left;
-    margin-bottom: 32px;
+    text-align: center;
+    margin-bottom: 25px;
 }
 
 .login-header h1 {
     font-size: 24px;
     font-weight: 600;
-    color: #111827;
+    color: #3d3d3d;
     margin: 0 0 8px 0;
     letter-spacing: -0.025em;
 }

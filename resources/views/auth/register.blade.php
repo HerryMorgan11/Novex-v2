@@ -18,9 +18,9 @@
         <div class="bg-shape shape-2"></div>
 
         <div class="login-container">
+            <img src="{{ Vite::asset('resources/images/logo/logo-novex-color.png') }}" alt="Novex Logo" class="logo">
             <div class="login-header">
                 <h1>Create Account</h1>
-                <p>Join us to get started</p>
             </div>
 
             <form action="{{ route('register') }}" method="POST" class="login-form">
@@ -75,8 +75,8 @@
                         </span>
                         <input type="password" id="password_confirmation" name="password_confirmation"
                             placeholder="Confirm your password" required>
-                        <button type="button" class="toggle-password" onclick="togglePassword()">
-                            <iconify-icon id="icon-eye-password" icon="iconoir:eye"></iconify-icon>
+                        <button type="button" class="toggle-password" onclick="togglePasswordConfirmation()">
+                            <iconify-icon id="icon-eye-password-confirmation" icon="iconoir:eye"></iconify-icon>
                         </button>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                     <label class="checkbox-container">
                         <input type="checkbox" name="terms" required>
                         <span class="checkmark"></span>
-                        I agree to the <a href="#" class="forgot-password" style="margin-left: 4px;">Terms &
+                        I agree to the <a href="{{ asset('assets/pdf/TermsAndCoinditions.pdf') }}" class="forgot-password" style="margin-left: 4px;">Terms &
                             Conditions</a>
                     </label>
                 </div>
@@ -116,6 +116,14 @@
             passwordInput.setAttribute('type', type);
 
             document.getElementById('icon-eye-password').setAttribute('icon', type === 'password' ? 'iconoir:eye' : 'codicon:eye-closed');
+        }
+
+        function togglePasswordConfirmation() {
+            const passwordConfirmationInput = document.getElementById('password_confirmation');
+            const type = passwordConfirmationInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordConfirmationInput.setAttribute('type', type);
+
+            document.getElementById('icon-eye-password-confirmation').setAttribute('icon', type === 'password' ? 'iconoir:eye' : 'codicon:eye-closed');
         }
     </script>
 
