@@ -30,6 +30,11 @@
     'error' => $tenancyError,
 ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) }}
     </pre>
+
+    <form method="POST" action="{{ route('logout') }}" style="display:inline">
+        @csrf
+        <button type="submit" style="background:none;border:none;padding:0;color:#3490dc;cursor:pointer">Logout</button>
+    </form>
 </body>
 
 </html>

@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\AuthController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,21 +33,28 @@ Route::post('/login', [AuthController::class, 'authenticate']);
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'store']);
 
+// Forgot password: show form and send reset link
 Route::get('/forgot-password', function () {
     return view('auth.forgot-password');
 })->name('password.request');
 
-Route::post('/forgot-password', function () {
-    return 'Password Reset Link Sent';
+Route::post('/forgot-password', function (Request $request) {
+    $request->validate(['email' => 'required|email']);
+
+    $status = Password::sendResetLink(
+        $request->only('email')
+    );
+
+    return $status === Password::RESET_LINK_SENT
+                ? back()->with('status', __($status))
+                : back()->withErrors(['email' => __($status)]);
 })->name('password.email');
 
-Route::get('/reset-password/{token}', function ($token) {
-    return view('auth.reset-password', ['token' => $token]);
-})->name('password.reset');
+// Fortify registers routes via its service provider; no explicit call needed here.
 
-Route::post('/reset-password', function () {
-    return 'Password Reset Successful';
-})->name('password.update');
+// If you prefer custom views, FortifyServiceProvider already points
+// the views to the templates in resources/views/auth/*.blade.php
+// so keeping the GET view routes is optional. Fortify handles them.
 
 Route::get('/verify-email', function () {
     return view('auth.verify-email');
