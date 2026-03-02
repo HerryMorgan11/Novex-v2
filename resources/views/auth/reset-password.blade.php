@@ -46,13 +46,13 @@
                     <label for="password">NEW PASSWORD</label>
                     <div class="input-wrapper">
                         <span class="input-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                            </svg>
+                            <iconify-icon icon="iconoir:lock"></iconify-icon>
                         </span>
-                        <input type="password" id="password" name="password" required>
+                        <input type="password" id="password_confirmation" name="password_confirmation"
+                            placeholder="Confirm your password" required>
+                        <button type="button" class="toggle-password" onclick="togglePasswordConfirmation()">
+                            <iconify-icon id="icon-eye-password-confirmation" icon="iconoir:eye"></iconify-icon>
+                        </button>
                     </div>
                 </div>
 
@@ -60,13 +60,13 @@
                     <label for="password_confirmation">CONFIRM PASSWORD</label>
                     <div class="input-wrapper">
                         <span class="input-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                            </svg>
+                            <iconify-icon icon="iconoir:lock"></iconify-icon>
                         </span>
-                        <input type="password" id="password_confirmation" name="password_confirmation" required>
+                        <input type="password" id="password_confirmation" name="password_confirmation"
+                            placeholder="Confirm your password" required>
+                        <button type="button" class="toggle-password" onclick="togglePasswordConfirmation()">
+                            <iconify-icon id="icon-eye-password-confirmation" icon="iconoir:eye"></iconify-icon>
+                        </button>
                     </div>
                 </div>
 
@@ -74,6 +74,24 @@
             </form>
         </div>
     </div>
-</body>
 
+     <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            document.getElementById('icon-eye-password').setAttribute('icon', type === 'password' ? 'iconoir:eye' : 'codicon:eye-closed');
+        }
+
+        function togglePasswordConfirmation() {
+            const passwordConfirmationInput = document.getElementById('password_confirmation');
+            const type = passwordConfirmationInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordConfirmationInput.setAttribute('type', type);
+
+            document.getElementById('icon-eye-password-confirmation').setAttribute('icon', type === 'password' ? 'iconoir:eye' : 'codicon:eye-closed');
+        }
+    </script>
+
+</body>
 </html>
