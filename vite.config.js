@@ -8,6 +8,7 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/css/landing/shared/navbar.css',
+                'resources/css/landing/shared/footer.css',
                 'resources/css/landing/sections/home/header.css',
                 'resources/css/landing/sections/home/modules-section.css',
                 'resources/css/landing/sections/home/choose.css',
