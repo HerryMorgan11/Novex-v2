@@ -1,0 +1,69 @@
+name: ERP CI-CD Deployment
+
+on:
+  push:
+    branches: [ main, develop, workos ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  # --- ETAPA 1: TEST Y CALIDAD (Se ejecuta en todas las ramas) ---
+  tests:
+    name: Run Tests & Linter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.4"
+
+      - name: Flux UI Credentials
+        run: composer config http-basic.composer.fluxui.dev "${{ secrets.FLUX_USERNAME }}" "${{ secrets.FLUX_LICENSE_KEY }}"
+
+      - name: Install Dependencies
+        run: |
+          composer install -q --no-interaction --prefer-dist
+          npm install
+          npm run build
+
+      - name: Quality Check (Pint)
+        run: ./vendor/bin/pint --test
+
+      - name: Run PHPUnit
+        run: php artisan test
+
+  # --- ETAPA 2: DESPLIEGUE (Solo si es 'main' y los tests pasaron) ---
+  deploy:
+    name: Deploy to Amazon Linux
+    needs: tests
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute Remote SSH Commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ec2-user
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /var/www/erp
+            
+            # Sincronizar código
+            git pull origin main
+            
+            # Construir imagen pasando credenciales de Flux para el Dockerfile
+            # Amazon Linux utiliza 'docker compose' (V2)
+            docker compose build --build-arg FLUX_USER="${{ secrets.FLUX_USERNAME }}" --build-arg FLUX_KEY="${{ secrets.FLUX_LICENSE_KEY }}"
+            
+            # Levantar servicios
+            docker compose up -d
+            
+            # Limpiar imágenes antiguas para no saturar el t3.micro
+            docker image prune -f
+            
+            # Comandos internos de Laravel
+            docker exec erp-app php artisan migrate --force
+            docker exec erp-app php artisan optimize
+            docker exec erp-app php artisan view:cache
