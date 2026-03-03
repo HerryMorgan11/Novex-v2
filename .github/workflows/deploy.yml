@@ -1,60 +1,62 @@
-name: Deploy Second Life Platform - Amazon Linux
+name: ERP CI-CD Deployment
 
-# 1. RESTRICCIÓN DE RAMA: Solo ejecuta en main
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch: # Permite ejecución manual para regenerar el grafo
+    branches: [ main, develop, workos ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  build-and-test:
-    name: Build & Backend Validation
+  # --- ETAPA 1: TEST Y CALIDAD ---
+  tests:
+    name: Run Tests & Linter
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Set up Python (FastAPI)
-        uses: actions/setup-python@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          python-version: '3.9'
+          php-version: "8.4"
+          extensions: mbstring, xml, ctype, iconv, mysql, sqlite3
+          tools: composer:v2
 
-      - name: Install Dependencies
+      - name: Flux UI Credentials
+        run: composer config http-basic.composer.fluxui.dev "${{ secrets.FLUX_USERNAME }}" "${{ secrets.FLUX_LICENSE_KEY }}"
+
+      - name: Install PHP Dependencies
+        run: composer install -q --no-interaction --prefer-dist
+
+      - name: Install Node Dependencies & Build
         run: |
-          pip install -r requirements.txt
-          pip install paho-mqtt # Necesario para la nueva lógica del PLC
+          npm install
+          npm run build
 
-      - name: Lint & Syntax Check
+      # --- SOLUCIÓN AL ERROR DE APP_KEY ---
+      - name: Prepare Environment for Tests
         run: |
-          # Validación de sintaxis antes del despliegue
-          python -m compileall .
+          cp .env.example .env
+          php artisan key:generate
+      # ------------------------------------
 
-  deploy-to-amazon-linux:
-    name: Deploy to Amazon Linux (Production)
-    needs: build-and-test
-    # 2. TARGET ESPECÍFICO: Solo servidores Amazon Linux
-    runs-on: [self-hosted, linux, amazon-linux]
-    
+      - name: Quality Check (Pint)
+        run: ./vendor/bin/pint --test
+
+      - name: Run PHPUnit
+        # Forzamos sqlite en memoria para que los tests no necesiten un servidor MySQL real
+        run: php artisan test
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ":memory:"
+
+  # --- ETAPA 2: DESPLIEGUE (Solo si es 'main' y los tests pasaron) ---
+  deploy:
+    name: Deploy to Amazon Linux
+    needs: tests
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Update Services
-        run: |
-          sudo systemctl stop second-life-api
-          # Sincronización de archivos
-          rsync -avz --exclude '.git' ./ /var/www/second-life/
-          
-      - name: Configure PLC Control Bridge
-        run: |
-          # Configuración de permisos para la escritura MQTT 
-          # necesaria para el nuevo alcance de iluminación
-          echo "Configurando ACLs para comunicación bidireccional..."
-          chmod +x scripts/plc_control_sync.sh
-          ./scripts/plc_control_sync.sh
-
-      - name: Restart and Verify
-        run: |
-          sudo systemctl start second-life-api
-          sudo systemctl status second-life-api --no-pager
+      - name: Execute Remote SSH Commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.
