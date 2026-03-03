@@ -32,24 +32,21 @@ jobs:
           npm install
           npm run build
 
-      # --- SOLUCIÓN AL ERROR DE APP_KEY ---
       - name: Prepare Environment for Tests
         run: |
           cp .env.example .env
           php artisan key:generate
-      # ------------------------------------
 
       - name: Quality Check (Pint)
         run: ./vendor/bin/pint --test
 
       - name: Run PHPUnit
-        # Forzamos sqlite en memoria para que los tests no necesiten un servidor MySQL real
         run: php artisan test
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: ":memory:"
 
-  # --- ETAPA 2: DESPLIEGUE (Solo si es 'main' y los tests pasaron) ---
+  # --- ETAPA 2: DESPLIEGUE (Solo para 'main') ---
   deploy:
     name: Deploy to Amazon Linux
     needs: tests
@@ -59,4 +56,23 @@ jobs:
       - name: Execute Remote SSH Commands
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.
+          host: ${{ secrets.HOST }}
+          username: ec2-user
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /var/www/erp
+            
+            # Sincronizar código
+            git pull origin main
+            
+            # Construir con build-args para Flux UI
+            docker compose build --build-arg FLUX_USER=${{ secrets.FLUX_USERNAME }} --build-arg FLUX_KEY=${{ secrets.FLUX_LICENSE_KEY }}
+            
+            # Reiniciar contenedores
+            docker compose up -d
+            
+            # Limpieza y optimización
+            docker image prune -f
+            docker exec erp-app php artisan migrate --force
+            docker exec erp-app php artisan optimize
+            docker exec erp-app php artisan view:cache
