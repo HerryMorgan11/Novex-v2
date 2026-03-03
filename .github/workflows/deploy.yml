@@ -1,32 +1,60 @@
-tests:
-    name: Run Tests & Linter
+name: Deploy Second Life Platform - Amazon Linux
+
+# 1. RESTRICCIÓN DE RAMA: Solo ejecuta en main
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Permite ejecución manual para regenerar el grafo
+
+jobs:
+  build-and-test:
+    name: Build & Backend Validation
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - name: Set up Python (FastAPI)
+        uses: actions/setup-python@v4
         with:
-          php-version: "8.4"
-
-      - name: Flux UI Credentials
-        run: composer config http-basic.composer.fluxui.dev "${{ secrets.FLUX_USERNAME }}" "${{ secrets.FLUX_LICENSE_KEY }}"
+          python-version: '3.9'
 
       - name: Install Dependencies
         run: |
-          composer install -q --no-interaction --prefer-dist
-          npm install
-          npm run build
+          pip install -r requirements.txt
+          pip install paho-mqtt # Necesario para la nueva lógica del PLC
 
-      # --- AQUÍ ESTÁ LA SOLUCIÓN ---
-      - name: Prepare Environment for Tests
+      - name: Lint & Syntax Check
         run: |
-          cp .env.example .env
-          php artisan key:generate
-      # -----------------------------
+          # Validación de sintaxis antes del despliegue
+          python -m compileall .
 
-      - name: Quality Check (Pint)
-        run: ./vendor/bin/pint --test
+  deploy-to-amazon-linux:
+    name: Deploy to Amazon Linux (Production)
+    needs: build-and-test
+    # 2. TARGET ESPECÍFICO: Solo servidores Amazon Linux
+    runs-on: [self-hosted, linux, amazon-linux]
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-      - name: Run PHPUnit
-        run: php artisan test
+      - name: Update Services
+        run: |
+          sudo systemctl stop second-life-api
+          # Sincronización de archivos
+          rsync -avz --exclude '.git' ./ /var/www/second-life/
+          
+      - name: Configure PLC Control Bridge
+        run: |
+          # Configuración de permisos para la escritura MQTT 
+          # necesaria para el nuevo alcance de iluminación
+          echo "Configurando ACLs para comunicación bidireccional..."
+          chmod +x scripts/plc_control_sync.sh
+          ./scripts/plc_control_sync.sh
+
+      - name: Restart and Verify
+        run: |
+          sudo systemctl start second-life-api
+          sudo systemctl status second-life-api --no-pager
