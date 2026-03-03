@@ -1,8 +1,6 @@
-# Landing Publica Dashboard
+# Arquitectura: Landing Pública + Dashboard Privado
 
-# **🚀 Arquitectura: Landing Pública + Dashboard Privado**
-
-## **📋 Índice**
+## Índice
 
 1. [Visión General](https://file+.vscode-resource.vscode-cdn.net/Users/davidjacobocastillo/Documents/Programacion/LANDING_DASHBOARD_ARCHITECTURE.md#visi%C3%B3n-general)
 2. [Arquitectura de Dominios](https://file+.vscode-resource.vscode-cdn.net/Users/davidjacobocastillo/Documents/Programacion/LANDING_DASHBOARD_ARCHITECTURE.md#arquitectura-de-dominios)
@@ -16,7 +14,7 @@
 
 ---
 
-## **🎯 Visión General**
+## ** Visión General**
 
 ### **Concepto**
 
@@ -41,7 +39,7 @@ Nuestra aplicación tiene **dos contextos claramente separados**:
 │  • Datos específicos del tenant                              │
 │  • Requiere autenticación                                    │
 │  • Multi-tenancy activo                                      │
-│  Dominio: {tenant}.miapp.com o miapp.com/{tenant}           │
+│  Dominio: \{tenant\}.miapp.com o miapp.com/\{tenant\}           │
 └─────────────────────────────────────────────────────────────┘
 
 ```
@@ -60,7 +58,7 @@ Nuestra aplicación tiene **dos contextos claramente separados**:
 
 ✅ **Multi-tenancy**: Solo en dashboard
 
-***Workflow***
+**_Workflow_**
 
 1. Usuario hace click en Login en la landing
 2. Redirección a: [https://auth.miapp.com/login](https://auth.miapp.com/login)
@@ -69,7 +67,14 @@ Nuestra aplicación tiene **dos contextos claramente separados**:
 5. ERP detecta a qué tenant pertenece
 6. ERP genera redirección segura
 7. Usuario es redirigido a:
-https://{tenant}.miapp.com/auth/consume
+   <<<<<<< HEAD
+   <<<<<<< HEAD
+   =======
+   https://\{tenant\}.miapp.com/auth/consume
+    > > > > > > > b2a706c (fix: conflicts)
+    # https://{tenant}.miapp.com/auth/consume
+    https://\{tenant\}.miapp.com/auth/consume
+    > > > > > > > origin/develop
 8. El tenant:
     - Inicializa tenancy
     - Crea sesión Laravel
@@ -131,7 +136,7 @@ www.miapp.com/techcorp  → Dashboard de TechCorp
                             ↓ Redirect after login
 
 ┌────────────────────────────────────────────────────────┐
-│                 {tenant}.miapp.com                      │
+│                 \{tenant\}.miapp.com                      │
 │                  (Tenant Context)                       │
 │  ┌──────────────────────────────────────────────┐      │
 │  │  Dashboard Routes (Protected)                 │      │
@@ -250,7 +255,7 @@ APP_URL=https://miapp.com
 
 ---
 
-## **🔐 Sistema de Autenticación**
+## ** Sistema de Autenticación**
 
 ### **Guards de Laravel**
 
@@ -383,7 +388,7 @@ class TenantUser extends Authenticatable
 
 ---
 
-## **🛣️ Rutas y Middleware**
+## ** Rutas y Middleware**
 
 ### **Configuración de Rutas**
 
@@ -569,7 +574,7 @@ class EnsureAuthenticated
 
 ---
 
-## **🔌 Conexión via Endpoints**
+## ** Conexión via Endpoints**
 
 ### **API Endpoints**
 
@@ -726,7 +731,7 @@ class AuthenticationService
 
 ---
 
-## **🔄 Flujos Completos**
+## ** Flujos Completos**
 
 ### **Flujo 1: Usuario Nuevo - Registro**
 
@@ -752,7 +757,7 @@ class AuthenticationService
    ↓
 6. Autenticación automática
    ↓
-7. Redirección a https://{tenant}.miapp.com/dashboard
+7. Redirección a https://\{tenant\}.miapp.com/dashboard
    ↓
 8. InitializeTenancyByDomain detecta el tenant
    ↓
@@ -891,7 +896,7 @@ class TenantRegistrationService
    ↓
 7. Crea sesión de autenticación
    ↓
-8. Redirección a https://{tenant}.miapp.com/dashboard
+8. Redirección a https://\{tenant\}.miapp.com/dashboard
    ↓
 9. InitializeTenancyByDomain detecta el tenant
    ↓
@@ -970,7 +975,7 @@ class AuthController extends Controller
    ↓
 3. Obtiene el tenant del usuario
    ↓
-4. Redirección automática a https://{tenant}.miapp.com/dashboard
+4. Redirección automática a https://\{tenant\}.miapp.com/dashboard
    ↓
 5. Usuario llega directamente al dashboard
 
@@ -1035,7 +1040,7 @@ class RedirectIfAuthenticated
 
 ---
 
-## **🔨 Implementación Paso a Paso**
+## ** Implementación Paso a Paso**
 
 ### **Paso 1: Configurar .env**
 
@@ -1467,8 +1472,10 @@ public function test_can_login_and_redirect_to_dashboard()
 
 ---
 
-## **📚 Resumen**
+## ** Resumen**
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 | Característica | Landing | Dashboard |
 | --- | --- | --- |
 | **Dominio** | www.miapp.com | {tenant}.miapp.com |
@@ -1478,10 +1485,36 @@ public function test_can_login_and_redirect_to_dashboard()
 | **Guard** | `web` | `tenant` |
 | **Middleware** | `guest`, `RedirectIfAuthenticated` | `tenant`, `auth:tenant` |
 | **Propósito** | Marketing, registro, login | Operación del ERP |
+=======
+=======
+
+> > > > > > > origin/develop
+> > > > > > > | Característica | Landing | Dashboard |
+> > > > > > > | ----------------- | ---------------------------------- | ----------------------- |
+> > > > > > > | **Dominio** | www.miapp.com | \{tenant\}.miapp.com |
+> > > > > > > | **Contexto** | Landlord (Central) | Tenant (Separado) |
+> > > > > > > | **Autenticación** | Opcional | Requerida |
+> > > > > > > | **Base de Datos** | Landlord DB | Tenant DB (separada) |
+> > > > > > > | **Guard** | `web` | `tenant` |
+> > > > > > > | **Middleware** | `guest`, `RedirectIfAuthenticated` | `tenant`, `auth:tenant` |
+> > > > > > > | **Propósito** | Marketing, registro, login | Operación del ERP |
+> > > > > > > <<<<<<< HEAD
+> > > > > > > | Característica | Landing | Dashboard |
+> > > > > > > | ----------------- | ---------------------------------- | ----------------------- |
+> > > > > > > | **Dominio** | www.miapp.com | {tenant}.miapp.com |
+> > > > > > > | **Contexto** | Landlord (Central) | Tenant (Separado) |
+> > > > > > > | **Autenticación** | Opcional | Requerida |
+> > > > > > > | **Base de Datos** | Landlord DB | Tenant DB (separada) |
+> > > > > > > | **Guard** | `web` | `tenant` |
+> > > > > > > | **Middleware** | `guest`, `RedirectIfAuthenticated` | `tenant`, `auth:tenant` |
+> > > > > > > | **Propósito** | Marketing, registro, login | Operación del ERP |
+> > > > > > > b2a706c (fix: conflicts)
+> > > > > > > =======
+> > > > > > > origin/develop
 
 ---
 
-## **🎯 Conclusión**
+## ** Conclusión**
 
 Esta arquitectura proporciona:
 

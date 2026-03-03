@@ -2,66 +2,68 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Notifications\CustomResetPassword;
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Str;
 
-/**
- * @property string $name
- * @property string $email
- * @property string $password
- * @property \Illuminate\Support\Carbon|null $email_verified_at
- */
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasUlids, SoftDeletes;
+    use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+    protected $connection = 'mysql';
+
     protected $fillable = [
         'name',
         'email',
         'password',
+        'is_active',
+        'current_tenant_id',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'is_active' => 'boolean',
+        'last_login_at' => 'datetime',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    public function membership(): HasOne
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->hasOne(TenantMembership::class, 'user_id');
     }
 
-    /**
-     * Get the user's initials
-     */
-    public function initials(): string
+    public function memberships(): HasMany
     {
-        return Str::of($this->name)
-            ->explode(' ')
-            ->take(2)
-            ->map(fn ($word) => Str::substr($word, 0, 1))
-            ->implode('');
+        return $this->hasMany(TenantMembership::class, 'user_id');
+    }
+
+    public function createdTenants(): HasMany
+    {
+        return $this->hasMany(Tenant::class, 'created_by_user_id');
+    }
+
+    public function currentTenant(): BelongsTo
+    {
+        return $this->belongsTo(Tenant::class, 'current_tenant_id');
+    }
+
+    public function socialAccounts(): HasMany
+    {
+        return $this->hasMany(SocialAccount::class);
+    }
+
+    public function auditLogs(): HasMany
+    {
+        return $this->hasMany(TenantAuditLog::class);
+    }
+
+    public function sendPasswordResetNotification($token): void
+    {
+        $this->notify(new CustomResetPassword($token));
     }
 }

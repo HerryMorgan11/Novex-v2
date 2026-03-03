@@ -1,12 +1,12 @@
 # Documentación Arquitectura
 
-# 📚 Guía Completa
+# Guía Completa
 
 # Clean Architecture & Multi-Tenancy para ERP en Laravel
 
 ---
 
-## 📖 Índice
+## Índice
 
 1. ¿Qué es Clean Architecture?
 2. Principios Fundamentales
@@ -31,7 +31,7 @@
 
 ---
 
-## 🏛️ ¿Qué es Clean Architecture?
+## ¿Qué es Clean Architecture?
 
 **Clean Architecture** es un enfoque arquitectónico propuesto por **Robert C. Martin (Uncle Bob)** cuyo objetivo es construir sistemas:
 
@@ -45,10 +45,9 @@ La lógica de negocio debe sobrevivir incluso si el framework cambia.
 
 ---
 
-## 🎯 Principio Clave: Regla de Dependencia
+## Principio Clave: Regla de Dependencia
 
 > **Las dependencias del código deben apuntar siempre hacia adentro.**
-> 
 
 Esto implica:
 
@@ -59,7 +58,7 @@ Esto implica:
 
 ---
 
-## 🧱 Capas de Clean Architecture
+## Capas de Clean Architecture
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -78,7 +77,7 @@ Las dependencias siempre apuntan hacia el dominio
 
 ---
 
-## 🏗️ Estructura Recomendada de Inventario
+## Estructura Recomendada de Inventario
 
 Arquitectura **modular**, sin CQRS, clara y mantenible:
 
@@ -108,7 +107,7 @@ app/
 
 ---
 
-## 🏗️ Estructura Recomendada Core
+## Estructura Recomendada Core
 
 ```jsx
 
@@ -152,11 +151,11 @@ app/
            └── Redis/
 ```
 
-## 🧩 Componentes Principales
+## Componentes Principales
 
 ---
 
-### 1️⃣ Entidades (Domain Models)
+### 1️ Entidades (Domain Models)
 
 Representan conceptos centrales del negocio y **contienen lógica de negocio**.
 
@@ -189,7 +188,7 @@ class Product
 
 ---
 
-### 2️⃣ Value Objects
+### 2️ Value Objects
 
 Objetos **inmutables**, comparables por valor.
 
@@ -223,7 +222,7 @@ final class SKU
 
 ---
 
-### 3️⃣ Repositories
+### 3️ Repositories
 
 Abstraen el acceso a datos.
 
@@ -259,7 +258,7 @@ class EloquentProductRepository implements ProductRepositoryInterface
 
 ---
 
-### 4️⃣ DTOs (Data Transfer Objects)
+### 4️ DTOs (Data Transfer Objects)
 
 Objetos simples para transportar datos entre capas.
 
@@ -286,7 +285,7 @@ class ProductDTO
 
 ---
 
-### 5️⃣ Use Cases (Casos de Uso)
+### 5️ Use Cases (Casos de Uso)
 
 Orquestan el flujo de la aplicación.
 
@@ -316,7 +315,7 @@ class CreateProductUseCase
 
 ---
 
-### 6️⃣ Domain Events
+### 6️ Domain Events
 
 Representan hechos importantes del dominio.
 
@@ -338,7 +337,7 @@ Permiten:
 
 ---
 
-### 7️⃣ Domain Services
+### 7️ Domain Services
 
 Lógica de negocio que no pertenece a una sola entidad.
 
@@ -355,13 +354,13 @@ class StockCalculationService
 
 ---
 
-## 🏢 Multi-Tenancy en Laravel
+## Multi-Tenancy en Laravel
 
 **Multi-Tenancy** permite que una sola aplicación sirva a múltiples clientes (tenants) con aislamiento total de datos.
 
 ---
 
-## 🧠 Estrategias de Multi-Tenancy
+## Estrategias de Multi-Tenancy
 
 ### ✅ Elegida: **Database por Tenant**
 
@@ -381,7 +380,7 @@ tenant3_db
 
 ---
 
-## 📦 Paquete: stancl/tenancy
+## Paquete: stancl/tenancy
 
 Paquete recomendado para Laravel.
 
@@ -418,7 +417,7 @@ class Tenant extends BaseTenant implements TenantWithDatabase
 
 ---
 
-## 🔄 Flujo Completo: Crear Producto
+## Flujo Completo: Crear Producto
 
 ```
 HTTP Request
@@ -434,7 +433,7 @@ HTTP Request
 
 ---
 
-## 🧪 Testing con Multi-Tenancy
+## Testing con Multi-Tenancy
 
 ```php
 $tenant = Tenant::create(['name' => 'Test']);
@@ -448,7 +447,7 @@ $this->assertDatabaseHas('products', [...]);
 
 ---
 
-## 🔐 Seguridad y Aislamiento
+## Seguridad y Aislamiento
 
 - Cada tenant tiene su propia BD
 - Cache y storage aislados
@@ -457,7 +456,7 @@ $this->assertDatabaseHas('products', [...]);
 
 ---
 
-## 📚 Referencias
+## Referencias
 
 - Clean Architecture – Robert C. Martin
 - Domain-Driven Design – Eric Evans
@@ -467,7 +466,7 @@ $this->assertDatabaseHas('products', [...]);
 
 ---
 
-## 🎯 Conclusión
+## Conclusión
 
 Esta arquitectura:
 
@@ -478,10 +477,8 @@ Esta arquitectura:
 - Mantiene bajo acoplamiento
 
 > **La arquitectura es una guía, no una prisión.**
-> 
-> 
+>
 > Empieza simple, diseña para evolucionar.
-> 
 
 ---
 

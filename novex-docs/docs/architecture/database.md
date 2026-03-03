@@ -2,9 +2,9 @@
 
 ```sql
 
-  🗄️ ESTRUCTURA DE BASE DE DATOS - MULTI-TENANCY
+  ESTRUCTURA DE BASE DE DATOS - MULTI-TENANCY
 
-  📌 BASE DE DATOS CENTRAL (Landlord DB)
+  BASE DE DATOS CENTRAL (Landlord DB)
 
   Base de datos única que gestiona todos los tenants
 
@@ -127,7 +127,7 @@
 
   ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-  📌 BASE DE DATOS POR TENANT
+  BASE DE DATOS POR TENANT
 
   Cada tenant tiene su propia base de datos con estas tablas
 
@@ -588,7 +588,7 @@
        UNIQUE KEY unique_product_supplier (product_id, supplier_id)
    );
 
-  📊 Resumen de Entidades por Módulo
+  Resumen de Entidades por Módulo
 
   BD CENTRAL (Landlord):
 
