@@ -14,3 +14,6 @@
             <a href="{{ route('register') }}" class="hero-btn">Comenzar</a>
         </div>
 </section>
+
+    <!-- Elemento que aparece bajo el navbar cuando el hero se desplaza fuera de la vista -->
+    <div class="navbar-surface" aria-hidden="true"></div>
