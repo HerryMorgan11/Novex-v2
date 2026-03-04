@@ -6,3 +6,4 @@ storage/*.key
 .env
 Dockerfile
 docker-compose.yml
+docker/mysql_data

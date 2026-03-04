@@ -66,15 +66,19 @@ jobs:
             
             git pull origin main
             
-            # 1. Construir la imagen con las librerías dentro
+            # Limpiar el archivo que causaba conflictos antes
+            rm -f compose.yaml
+            
+            # 1. Intentar build (ahora funcionará con el .dockerignore)
             docker-compose build --build-arg FLUX_USER=${{ secrets.FLUX_USERNAME }} --build-arg FLUX_KEY=${{ secrets.FLUX_LICENSE_KEY }}
             
-            # 2. Levantar los contenedores
+            # 2. Levantar servicios
             docker-compose up -d
             
-            # 3. EXTRAER la carpeta vendor del contenedor al host 
-            # (Esto arregla el problema del volumen para que artisan funcione)
-            docker cp erp-app:/var/www/vendor .
+            # 3. Si el contenedor no tiene vendor, lo instalamos desde fuera (Plan B seguro)
+            if [ ! -d "vendor" ]; then
+                docker run --rm -v $(pwd):/app -w /app composer install --ignore-platform-reqs --no-interaction --no-dev
+            fi
             
             # 4. Comandos de Laravel
             docker exec erp-app php artisan migrate --force
