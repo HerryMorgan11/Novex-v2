@@ -4,12 +4,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      # Eliminamos el aislamiento excesivo para evitar el error de Buildx
       args:
         FLUX_USER: ${FLUX_USER:-none}
         FLUX_KEY: ${FLUX_KEY:-none}
     container_name: erp-app
     restart: unless-stopped
     working_dir: /var/www
+    # Importante: En producción, a veces es mejor no montar todo el volumen si el Dockerfile ya copia los archivos
     volumes:
       - ./:/var/www
     networks:
@@ -32,14 +34,13 @@ services:
 
   # Base de Datos MySQL
   db:
-    image: mysql:8.0
+    image: mysql:8.4  # Actualizado a 8.4 para que coincida con lo que ya bajaste
     container_name: erp-db
     restart: always
     environment:
       MYSQL_DATABASE: ${DB_DATABASE:-laravel}
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD} # No pongas default aquí por seguridad
     volumes:
-      # Los datos se guardarán en esta carpeta de tu instancia AWS
       - ./docker/mysql_data:/var/lib/mysql
     networks:
       - erp-network
