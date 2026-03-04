@@ -66,20 +66,28 @@ jobs:
             
             git pull origin main
             
-            # Limpiar el archivo que causaba conflictos antes
+            # 1. Compilar Assets (Vite) - Forzamos que los archivos sean del usuario actual
+            docker run --rm -v $(pwd):/app -w /app node:20-alpine sh -c "npm install && npm run build"
+            sudo chown -R ec2-user:ec2-user public/build
+            
+            # 2. Limpiar conflictos
             rm -f compose.yaml
             
-            # 1. Intentar build (ahora funcionará con el .dockerignore)
+            # 3. Build de la imagen de PHP
             docker-compose build --build-arg FLUX_USER=${{ secrets.FLUX_USERNAME }} --build-arg FLUX_KEY=${{ secrets.FLUX_LICENSE_KEY }}
             
-            # 2. Levantar servicios
+            # 4. Levantar servicios
             docker-compose up -d
             
-            # 3. Si el contenedor no tiene vendor, lo instalamos desde fuera (Plan B seguro)
+            # 5. Plan B para Vendor y permisos finales
             if [ ! -d "vendor" ]; then
                 docker run --rm -v $(pwd):/app -w /app composer install --ignore-platform-reqs --no-interaction --no-dev
             fi
             
-            # 4. Comandos de Laravel
+            # Asegurar que Laravel pueda escribir en storage tras el despliegue
+            sudo chown -R ec2-user:ec2-user storage bootstrap/cache
+            docker exec -u root erp-app chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+            
+            # 6. Comandos de Laravel
             docker exec erp-app php artisan migrate --force
             docker exec erp-app php artisan optimize
