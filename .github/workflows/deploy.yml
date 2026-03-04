@@ -62,18 +62,16 @@ jobs:
           script: |
             cd /var/www/novex
             
-            # Sincronizar código
+            # Forzar el motor de construcción clásico para evitar el error de Buildx
+            export DOCKER_BUILDKIT=0
+            export COMPOSE_DOCKER_CLI_BUILD=0
+            
             git pull origin main
             
-            # Usamos el comando con guion para asegurar que encuentre el binario manual
+            # Usar docker-compose (con guion) para el build y el up
             docker-compose build --build-arg FLUX_USER=${{ secrets.FLUX_USERNAME }} --build-arg FLUX_KEY=${{ secrets.FLUX_LICENSE_KEY }}
-            
-            # Levantar contenedores
             docker-compose up -d
             
-            # Limpiar imágenes viejas
             docker image prune -f
-            
-            # Comandos de Laravel (asumiendo que tus servicios se llaman 'app' y 'nginx')
             docker exec erp-app php artisan migrate --force
             docker exec erp-app php artisan optimize
