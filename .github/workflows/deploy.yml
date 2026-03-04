@@ -65,14 +65,15 @@ jobs:
             # Sincronizar código
             git pull origin main
             
-            # Construir con build-args para Flux UI
-            docker compose build --build-arg FLUX_USER=${{ secrets.FLUX_USERNAME }} --build-arg FLUX_KEY=${{ secrets.FLUX_LICENSE_KEY }}
+            # Usamos el comando con guion para asegurar que encuentre el binario manual
+            docker-compose build --build-arg FLUX_USER=${{ secrets.FLUX_USERNAME }} --build-arg FLUX_KEY=${{ secrets.FLUX_LICENSE_KEY }}
             
-            # Reiniciar contenedores
-            docker compose up -d
+            # Levantar contenedores
+            docker-compose up -d
             
-            # Limpieza y optimización
+            # Limpiar imágenes viejas
             docker image prune -f
+            
+            # Comandos de Laravel (asumiendo que tus servicios se llaman 'app' y 'nginx')
             docker exec erp-app php artisan migrate --force
             docker exec erp-app php artisan optimize
-            docker exec erp-app php artisan view:cache
