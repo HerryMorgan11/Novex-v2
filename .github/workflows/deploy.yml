@@ -61,17 +61,18 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /var/www/novex
-            
-            # Forzar el motor de construcción clásico para evitar el error de Buildx
             export DOCKER_BUILDKIT=0
             export COMPOSE_DOCKER_CLI_BUILD=0
             
             git pull origin main
             
-            # Usar docker-compose (con guion) para el build y el up
             docker-compose build --build-arg FLUX_USER=${{ secrets.FLUX_USERNAME }} --build-arg FLUX_KEY=${{ secrets.FLUX_LICENSE_KEY }}
             docker-compose up -d
             
-            docker image prune -f
+            # --- PASO CLAVE: Instalar dependencias dentro del contenedor ---
+            docker exec erp-app composer install --no-dev --optimize-autoloader --no-interaction
+            
+            # Ahora sí, los comandos de Laravel funcionarán
             docker exec erp-app php artisan migrate --force
             docker exec erp-app php artisan optimize
+            docker exec erp-app php artisan view:cache
