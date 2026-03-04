@@ -66,13 +66,16 @@ jobs:
             
             git pull origin main
             
+            # 1. Construir la imagen con las librerías dentro
             docker-compose build --build-arg FLUX_USER=${{ secrets.FLUX_USERNAME }} --build-arg FLUX_KEY=${{ secrets.FLUX_LICENSE_KEY }}
+            
+            # 2. Levantar los contenedores
             docker-compose up -d
             
-            # --- PASO CLAVE: Instalar dependencias dentro del contenedor ---
-            docker exec erp-app composer install --no-dev --optimize-autoloader --no-interaction
+            # 3. EXTRAER la carpeta vendor del contenedor al host 
+            # (Esto arregla el problema del volumen para que artisan funcione)
+            docker cp erp-app:/var/www/vendor .
             
-            # Ahora sí, los comandos de Laravel funcionarán
+            # 4. Comandos de Laravel
             docker exec erp-app php artisan migrate --force
             docker exec erp-app php artisan optimize
-            docker exec erp-app php artisan view:cache
