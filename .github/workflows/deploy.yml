@@ -7,9 +7,9 @@ on:
     branches: [ main ]
 
 jobs:
-  # --- ETAPA 1: TEST Y CALIDAD ---
+  # --- ETAPA 1: TEST, CALIDAD Y COMPILACIÓN ---
   tests:
-    name: Run Tests & Linter
+    name: Run Tests & Build Assets
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,7 +27,7 @@ jobs:
       - name: Install PHP Dependencies
         run: composer install -q --no-interaction --prefer-dist
 
-      - name: Install Node Dependencies & Build
+      - name: Install Node Dependencies & Build Assets (Vite)
         run: |
           npm install
           npm run build
@@ -46,6 +46,13 @@ jobs:
           DB_CONNECTION: sqlite
           DB_DATABASE: ":memory:"
 
+      # Guardamos el build de Vite como un "artefacto" para que el job de deploy lo use
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vite-build
+          path: public/build/
+
   # --- ETAPA 2: DESPLIEGUE (Solo para 'main') ---
   deploy:
     name: Deploy to Amazon Linux
@@ -53,6 +60,26 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
+      # Recuperamos el build compilado en el Job anterior
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: vite-build
+          path: public/build/
+
+      # 1. Enviamos la carpeta public/build por SCP (Muy ligero para el servidor)
+      - name: Upload Build Folder to AWS
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ec2-user
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "public/build"
+          target: "/var/www/novex"
+
+      # 2. Ejecutamos comandos ligeros por SSH
       - name: Execute Remote SSH Commands
         uses: appleboy/ssh-action@master
         with:
@@ -66,28 +93,26 @@ jobs:
             
             git pull origin main
             
-            # 1. Compilar Assets (Vite) - Forzamos que los archivos sean del usuario actual
-            docker run --rm -v $(pwd):/app -w /app node:20-alpine sh -c "npm install && npm run build"
-            sudo chown -R ec2-user:ec2-user public/build
-            
-            # 2. Limpiar conflictos
+            # Limpiar conflictos de archivos
             rm -f compose.yaml
             
-            # 3. Build de la imagen de PHP
+            # Arreglar permisos de la carpeta build que acabamos de subir por SCP
+            sudo chown -R ec2-user:ec2-user public/build
+            
+            # 3. Build de la imagen de PHP (Ahora es rápido porque no hace npm install)
             docker-compose build --build-arg FLUX_USER=${{ secrets.FLUX_USERNAME }} --build-arg FLUX_KEY=${{ secrets.FLUX_LICENSE_KEY }}
             
             # 4. Levantar servicios
             docker-compose up -d
             
-            # 5. Plan B para Vendor y permisos finales
+            # 5. Asegurar Vendor y permisos de Laravel
             if [ ! -d "vendor" ]; then
                 docker run --rm -v $(pwd):/app -w /app composer install --ignore-platform-reqs --no-interaction --no-dev
             fi
             
-            # Asegurar que Laravel pueda escribir en storage tras el despliegue
             sudo chown -R ec2-user:ec2-user storage bootstrap/cache
             docker exec -u root erp-app chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
             
-            # 6. Comandos de Laravel
+            # 6. Finalizar Laravel
             docker exec erp-app php artisan migrate --force
             docker exec erp-app php artisan optimize
