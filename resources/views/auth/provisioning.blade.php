@@ -12,9 +12,9 @@
 </head>
 
 <body>
-    <div class="login-wrapper" style="--bg-image: url('{{ Vite::asset('resources/images/background/fondo-forms.jpg') }}')">
+    <div class="login-wrapper" style="--bg-image: url('{{ asset('assets/background/fondo-forms.jpg') }}')">
         <div class="login-container" style="max-width:540px; text-align:center">
-            <img src="{{ Vite::asset('resources/images/logo/logo-novex-color.png') }}" alt="Novex Logo" class="logo" style="height:64px; margin-bottom:18px">
+            <img src="{{ asset('assets/logo/logo-novex-color.png') }}" alt="Novex Logo" class="logo" style="height:64px; margin-bottom:18px">
 
             <h1>Provisioning your workspace</h1>
             <p id="message">We're preparing your tenant. This may take a minute.</p>

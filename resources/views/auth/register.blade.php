@@ -8,17 +8,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="preload" as="image" href="{{ Vite::asset('resources/images/background/fondo-forms.jpg') }}">
     @vite(['resources/css/auth/auth.css', 'resources/js/app.js'])
 </head>
 
 <body>
-    <div class="login-wrapper" style="--bg-image: url('{{ Vite::asset('resources/images/background/fondo-forms.jpg') }}')">
+    <div class="login-wrapper" style="--bg-image: url('{{ asset('assets/background/fondo-forms.jpg') }}')">
         <div class="bg-shape shape-1"></div>
         <div class="bg-shape shape-2"></div>
 
         <div class="login-container">
-            <img src="{{ Vite::asset('resources/images/logo/logo-novex-color.png') }}" alt="Novex Logo" class="logo">
+            <img src="{{ asset('assets/logo/logo-novex-color.png') }}" alt="Novex Logo" class="logo">
             <div class="login-header">
                 <h1>Create Account</h1>
             </div>
