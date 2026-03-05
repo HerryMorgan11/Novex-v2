@@ -26,7 +26,7 @@
 }
 
 .modules-subtitle {
-    color: #6b7280;
+    color: var(--muted);
     font-size: 1.1rem;
     max-width: 650px;
     margin: 0 auto 3.5rem auto;
@@ -42,8 +42,8 @@
 }
 
 .module-card {
-    background-color: #fafafa;
-    border: 1px solid #f1f2f4;
+    background-color: var(--card-bg);
+    border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: 1.5rem;
     padding: 2.5rem;
     text-align: left;
@@ -89,27 +89,6 @@
     height: 1.5rem;
 }
 
-.module-card h3 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #1f2937;
-    margin-bottom: 0.75rem;
-}
-
-.module-card-desc {
-    color: #6b7280;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 1.5rem;
-}
-
-.module-submodules-title {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #374151;
-    margin-bottom: 0.75rem;
-}
-
 .module-list {
     list-style: none;
     padding-left: 0;
@@ -117,9 +96,27 @@
     flex-grow: 1;
 }
 
+.module-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+}
+.module-card-desc {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+.module-submodules-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+}
 .module-list li {
     font-size: 0.9rem;
-    color: #4b5563;
+    color: var(--muted);
     margin-bottom: 0.5rem;
     position: relative;
     padding-left: 1.25rem;
@@ -127,30 +124,12 @@
 
 .module-list li::before {
     content: '•';
-    color: #9ca3af;
+    color: rgba(0, 0, 0, 0.32);
     position: absolute;
     left: 0;
     font-size: 1.25rem;
     line-height: 1;
     top: -2px;
-}
-
-.module-link {
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    justify-content: flex-start;
-}
-
-.module-link.orange {
-    color: #ea580c;
-}
-
-.module-link.red {
-    color: #ef4444;
 }
 
 .module-link.blue {

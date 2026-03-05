@@ -4,27 +4,24 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background-color: #f8f8f8;
+    background-color: var(--card-bg);
     width: 100%;
     padding-top: 40px;
-<<<<<<< HEAD
-    border-top: 1px solid #e9e9e9;
-=======
->>>>>>> b2a706c (fix: conflicts)
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .footer-elementos {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    max-width: 95%;
+    max-width: 80%;
     margin-bottom: 40px;
 }
 
 .footer-info {
     text-align: center;
     font-size: 14px;
-    color: #666;
+    color: var(--muted);
     margin-bottom: 10px;
 }
 
@@ -75,7 +72,7 @@ hr {
     width: 100%;
     border: 0;
     height: 1px;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
     max-width: 95%;
 }
 .link-box {
@@ -93,13 +90,13 @@ hr {
 }
 
 .iconos iconify-icon {
-    color: #5f5e5e; /* color por defecto */
+    color: var(--muted); /* color por defecto */
     font-size: 17px; /* ajustar tamaño del icono */
     transition: color 0.2s ease;
 }
 
 .iconos iconify-icon:hover {
-    color: #f45caf; /* color al pasar el cursor */
+    color: var(--accent); /* color al pasar el cursor */
     cursor: pointer;
 }
 
@@ -114,7 +111,7 @@ iconify-icon[icon="line-md:linkedin"]{ color: #0A66C2; }
     display: flex;
     justify-content: space-between;
     width: 100%;
-    max-width: 95%;
+    max-width: 80%;
     margin-top: 30px;
 }
 
@@ -122,18 +119,34 @@ iconify-icon[icon="line-md:linkedin"]{ color: #0A66C2; }
     display: flex;
     gap: 20px;
     align-items: center;
+    justify-content: center;
 }
 
 .description-footer {
     font-size: 14px;
-    color: #666;
+    color: var(--muted);
     max-width: 400px;
     text-align: left;
 }
 
+.theme-toggle {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.theme-toggle:hover {
+    background-color: rgba(201, 201, 201, 0.112);
+    transition: background-color 200ms ease;
+}
+
 ul a {
     font-size: 14px;
-    color: #666;
+    color: var(--muted);
     max-width: 400px;
     text-align: left;
 }
@@ -144,5 +157,5 @@ ul a {
     align-items: center;
 }
 .icon {
-    color: #666;
+    color: var(--muted);
 }

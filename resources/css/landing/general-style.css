@@ -1,0 +1,43 @@
+:root {
+    --bg: #f5f5f5;
+    --card-bg: #ffffff;
+    --text: #222222;
+    --muted: #6b6b6b;
+    --primary: #0066ff;
+    --accent: #00bfa6;
+    /* Hero gradient stops (light theme) */
+    --hero-left:
+        #e8e5fa 0%, #ede8fa 10%, #f3e5f8 25%, #f9e5f5 40%, #fde8f5 55%, #fef0f5 70%, #fef5f0 85%,
+        transparent 100%;
+    --hero-right:
+        #e8e5fa 0%, #ede8fa 10%, #f3e5f8 25%, #f9e5f5 40%, #fde8f5 55%, #fef0f5 70%, #fef5f0 85%,
+        transparent 100%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    transition:
+        background-color 200ms ease,
+        color 200ms ease;
+}
+
+/* Dark theme overrides */
+.dark-theme {
+    --bg: #0f1724;
+    --card-bg: #0b1220;
+    --text: #e6eef8;
+    --muted: #9aa6bd;
+    --primary: #60a5fa;
+    --accent: #34d399;
+    /* Subtle, desaturated gradients for dark theme to avoid high-contrast bright blobs */
+    --hero-left:
+        rgba(99, 102, 241, 0.06) 0%, rgba(99, 102, 241, 0.04) 10%, rgba(99, 102, 241, 0.02) 25%,
+        transparent 60%;
+    --hero-right:
+        rgba(236, 72, 153, 0.05) 0%, rgba(236, 72, 153, 0.03) 12%, rgba(236, 72, 153, 0.02) 30%,
+        transparent 65%;
+}

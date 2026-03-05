@@ -14,6 +14,7 @@ export default defineConfig({
                 'resources/css/landing/sections/home/choose.css',
                 'resources/js/app.js',
                 'resources/css/auth/auth.css',
+                'resources/css/landing/general-style.css',
             ],
             refresh: true,
         }),

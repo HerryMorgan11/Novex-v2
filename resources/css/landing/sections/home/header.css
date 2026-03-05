@@ -5,30 +5,10 @@
     align-items: center;
     justify-content: center;
     /* Gradientes radiales duales - uno en cada lado */
+    /* Use theme-aware gradient stops defined in general-style.css */
     background:
-        radial-gradient(
-            ellipse 1000px 600px at 10% 20%,
-            /* Lado izquierdo */ #e8e5fa 0%,
-            #ede8fa 10%,
-            #f3e5f8 25%,
-            #f9e5f5 40%,
-            #fde8f5 55%,
-            #fef0f5 70%,
-            #fef5f0 85%,
-            transparent 100%
-        ),
-        radial-gradient(
-            ellipse 1000px 600px at 90% 80%,
-            /* Lado derecho */ #e8e5fa 0%,
-            #ede8fa 10%,
-            #f3e5f8 25%,
-            #f9e5f5 40%,
-            #fde8f5 55%,
-            #fef0f5 70%,
-            #fef5f0 85%,
-            transparent 100%
-        ),
-        #fef8f0; /* Color de fondo base */
+        radial-gradient(ellipse 1000px 600px at 10% 20%, var(--hero-left)),
+        radial-gradient(ellipse 1000px 600px at 90% 80%, var(--hero-right)), var(--bg); /* Color de fondo base */
 
     /* Pull the hero up so its background sits behind the navbar */
     margin-top: -80px;
@@ -52,7 +32,7 @@
 .title-black {
     font-size: 72px;
     font-weight: 800;
-    color: #1a1a1a;
+    color: var(--text);
     line-height: 1.1;
 }
 
@@ -69,7 +49,7 @@
 /* Description */
 .hero-description {
     font-size: 16px;
-    color: #4a4a4a;
+    color: var(--muted);
     margin-bottom: 48px;
     max-width: 720px;
     margin-left: auto;
