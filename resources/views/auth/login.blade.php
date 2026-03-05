@@ -12,14 +12,13 @@
 </head>
 
 <body>
-    <div class="login-wrapper" style="--bg-image: url('{{ asset('assets/background/fondo-forms.jpg') }}')">
         <!-- Abstract Background Elements -->
         <div class="bg-shape shape-1"></div>
         <div class="bg-shape shape-2"></div>
 
         <div class="login-container">
             <img src="{{ asset('assets/logo/logo-novex-color.png') }}" alt="Novex Logo" class="logo">
-
+            <h2 class="title-sing">Sign in to Novex</h2>
             <form action="{{ route('login') }}" method="POST" class="login-form">
                 @csrf
 
