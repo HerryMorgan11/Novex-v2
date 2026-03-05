@@ -27,14 +27,11 @@
                     <li>Replenishment Rules</li>
                     <li>Goods Receipts &amp; Issues</li>
                 </ul>
-
-                <a href="#" class="module-link orange">
-                    Learn more
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                    </svg>
-                </a>
+                
+                <div class="learn-more-container"> 
+                    <a href="#" class="module-link orange">Learn more</a>
+                    <iconify-icon icon="material-symbols:arrow-forward-rounded" class="icon-arrow"></iconify-icon>
+                </div>
             </div>
 
             <!-- Card 2 -->
@@ -61,13 +58,10 @@
                     <li>Financial Reporting</li>
                 </ul>
 
-                <a href="#" class="module-link red">
-                    Learn more
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                    </svg>
-                </a>
+                <div class="learn-more-container"> 
+                    <a href="#" class="module-link orange">Learn more</a>
+                    <iconify-icon icon="material-symbols:arrow-forward-rounded" class="icon-arrow"></iconify-icon>
+                </div>
             </div>
 
             <!-- Card 3 -->
@@ -93,13 +87,10 @@
                     <li>Marketing Campaigns</li>
                 </ul>
 
-                <a href="#" class="module-link blue">
-                    Learn more
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                    </svg>
-                </a>
+                <div class="learn-more-container"> 
+                    <a href="#" class="module-link orange">Learn more</a>
+                    <iconify-icon icon="material-symbols:arrow-forward-rounded" class="icon-arrow"></iconify-icon>
+                </div>
             </div>
 
             <!-- Card 4 -->
@@ -125,13 +116,10 @@
                     <li>Performance Reviews</li>
                 </ul>
 
-                <a href="#" class="module-link green">
-                    Learn more
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                    </svg>
-                </a>
+                <div class="learn-more-container"> 
+                    <a href="#" class="module-link orange">Learn more</a>
+                    <iconify-icon icon="material-symbols:arrow-forward-rounded" class="icon-arrow"></iconify-icon>
+                </div>
             </div>
         </div>
     </div>

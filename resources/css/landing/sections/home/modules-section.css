@@ -25,6 +25,22 @@
     display: inline-block;
 }
 
+.learn-more-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.icon-arrow {
+    display: inline-block;
+    transition: transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+}
+
+.learn-more-container:hover .icon-arrow {
+    transform: translateX(6px);
+}
+
 .modules-subtitle {
     color: var(--muted);
     font-size: 1.1rem;
