@@ -68,12 +68,10 @@
         body.classList.toggle('dark-theme');
 
         // Cambia el icono del botón
-        const themeToggleBtn = document.querySelector('.theme-toggle iconify-icon');
-        //cambiamos el icono dependiendo del tema actual
-        if (body.classList.contains('dark-theme')) {
-            themeToggleBtn.setAttribute('icon', 'mynaui:moon');
-        } else {
-            themeToggleBtn.setAttribute('icon', 'mynaui:sun');
-        }
+        const isDark = body.classList.contains('dark-theme');
+        const icons = document.querySelectorAll('.theme-toggle iconify-icon');
+        icons.forEach(icon => {
+            if (icon && icon.setAttribute) icon.setAttribute('icon', isDark ? 'mynaui:moon' : 'mynaui:sun');
+        });
     }
-</script>
+</script>z

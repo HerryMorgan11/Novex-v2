@@ -8,6 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @vite(['resources/css/dashboard/sidebar.css'])
     @vite(['resources/css/dashboard/general-dashboard.css'])
+    @vite(['resources/css/dashboard/navbar.css'])
 </head>
 <body>
     <div class="app">
@@ -15,10 +16,12 @@
 
         <main class="main-layout">
             <div class="main-panel">
-                <h1>Bienvenido a Novex</h1>
+                <nav>
+                    @include('dashboard.shared.navbar')
+                </nav>
                 @yield('content')
             </div>
         </main>
     </div>
-</body>ºº
+</body>
 </html>
