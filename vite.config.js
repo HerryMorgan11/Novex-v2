@@ -15,6 +15,8 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/css/auth/auth.css',
                 'resources/css/landing/general-style.css',
+                'resources/css/dashboard/sidebar.css',
+                'resources/css/dashboard/general-dashboard.css',
             ],
             refresh: true,
         }),

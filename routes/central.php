@@ -91,7 +91,7 @@ Route::middleware(['auth', 'initializeTenant'])->group(function () {
             $tenancyError = 'function tenant not found';
         }
 
-        return view('dashboard.dashboard', [
+        return view('dashboard.app.dashboard', [
             'currentConnection' => DB::connection()->getName(),
             'currentDatabase' => DB::connection()->getDatabaseName(),
             'tenancyInitialized' => $tenancyInitialized,
