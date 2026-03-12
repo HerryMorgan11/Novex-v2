@@ -102,8 +102,6 @@
         </div>
         
         <!-- Sidebar Bottom -->
-        <div class="sidebar-bottom">
-          
           <div class="sidebar-section">
             <div class="sidebar-section-title">Other</div>
 
@@ -123,9 +121,7 @@
                 <span class="nav-label">Help Center</span>
               </a>
             </nav>
-          </div>
-
-
+         
             <form method="POST" action="{{ route('logout') }}" style="display:inline">
                 @csrf
                 <button type="submit" style="background:none;border:none;padding:0;color:#3490dc;cursor:pointer">Logout</button>
