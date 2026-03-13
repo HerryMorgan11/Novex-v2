@@ -9,6 +9,10 @@
     @vite(['resources/css/dashboard/sidebar.css'])
     @vite(['resources/css/dashboard/general-dashboard.css'])
     @vite(['resources/css/dashboard/navbar.css'])
+    @vite(['resources/css/dashboard/settings-profile.css'])
+
+    @livewireStyles
+
 </head>
 <body>
     <div class="app">
@@ -23,5 +27,6 @@
             </div>
         </main>
     </div>
+    @livewireScripts
 </body>
 </html>

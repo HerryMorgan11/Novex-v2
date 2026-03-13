@@ -106,7 +106,15 @@
             <div class="sidebar-section-title">Other</div>
 
             <nav class="nav" aria-label="Navegación pages">
-              <a class="nav-item" href="#">
+              <a class="nav-item" href="{{ route('settings.profile') }}">
+                <span class="nav-icon" aria-hidden="true">
+                  <iconify-icon icon="mingcute:dashboard-3-line"></iconify-icon>
+                </span>
+                <span class="nav-label">Control Panel</span>
+                
+              </a>
+
+              <a class="nav-item" href="{{ route('settings.profile') }}">
                 <span class="nav-icon" aria-hidden="true">
                   <iconify-icon icon="lucide:settings" width="16"></iconify-icon>
                 </span>

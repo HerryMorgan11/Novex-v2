@@ -99,6 +99,12 @@ Route::middleware(['auth', 'initializeTenant'])->group(function () {
             'tenancyError' => $tenancyError,
         ]);
     })->name('dashboard');
+
+    // Route::livewire('/settings/profile', 'settings.profile')->name("settings.profile");
+    Route::get('/settings/profile', function () {
+        return view('dashboard.features.settings.settingsApp');
+    })->name('settings.profile');
+
 });
 
 // Provisioning page shown after registration while tenant is being prepared

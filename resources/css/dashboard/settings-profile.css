@@ -1,0 +1,218 @@
+.settings-container {
+    min-height: 100vh;
+    background-color: var(--color-bg-secondary);
+}
+
+.settings-wrapper {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+@media (min-width: 640px) {
+    .settings-wrapper {
+        padding: 2rem;
+    }
+}
+
+.settings-header {
+    margin-bottom: 2rem;
+}
+
+.settings-header h1 {
+    font-size: 1.875rem;
+    font-weight: 300;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.settings-layout {
+    display: flex;
+    gap: 2rem;
+}
+
+/* SIDEBAR STYLES */
+.settings-sidebar {
+    width: 14rem;
+    flex-shrink: 0;
+}
+
+.settings-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.settings-nav button {
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    background: none;
+    color: var(--color-text-secondary);
+    transition: all 0.2s ease;
+}
+
+.settings-nav button:hover {
+    color: var(--color-text-primary);
+    background-color: var(--color-accent-light);
+}
+
+.settings-nav button.active {
+    background-color: var(--color-accent-light);
+    color: var(--color-text-primary);
+    border-left: 2px solid var(--color-text-primary);
+    padding-left: calc(1rem - 2px);
+}
+
+/* CONTENT AREA */
+.settings-content {
+    flex: 1;
+    max-width: 56rem;
+}
+
+.settings-section h2 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--color-text-primary);
+    margin: 0 0 2rem 0;
+}
+
+.settings-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* FIELD STYLES */
+.settings-field {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.settings-field label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.settings-field p {
+    font-size: 1.125rem;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+/* BUTTON STYLES */
+.settings-btn {
+    display: inline-flex;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.settings-btn-primary {
+    background-color: var(--color-button-bg);
+    color: #ffffff;
+}
+
+.settings-btn-primary:hover {
+    background-color: var(--color-button-hover);
+}
+
+.settings-btn-secondary {
+    background-color: var(--color-accent-light);
+    color: var(--color-text-primary);
+}
+
+.settings-btn-secondary:hover {
+    background-color: var(--color-border);
+}
+
+/* SECURITY SECTION */
+.settings-security-item {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.settings-security-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.settings-security-item h3 {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin: 0 0 0.5rem 0;
+}
+
+.settings-security-item p {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin: 0 0 1rem 0;
+}
+
+/* NOTIFICATION STYLES */
+.settings-notification-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    background-color: var(--color-bg-primary);
+    transition: all 0.2s ease;
+}
+
+.settings-notification-item h3 {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin: 0 0 0.25rem 0;
+}
+
+.settings-notification-item p {
+    font-size: 0.75rem;
+    color: var(--color-text-tertiary);
+    margin: 0;
+}
+
+.settings-notification-item input[type='checkbox'] {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .settings-layout {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .settings-sidebar {
+        width: 100%;
+    }
+
+    .settings-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .settings-nav button {
+        flex: 1;
+        min-width: 150px;
+    }
+}

@@ -17,6 +17,7 @@ export default defineConfig({
                 'resources/css/landing/general-style.css',
                 'resources/css/dashboard/sidebar.css',
                 'resources/css/dashboard/general-dashboard.css',
+                'resources/css/dashboard/settings-profile.css',
             ],
             refresh: true,
         }),

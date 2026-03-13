@@ -2,14 +2,14 @@
 .app {
     min-height: 100vh;
     display: grid;
-    grid-template-columns: 288px 1fr;
+    grid-template-columns: 240px 1fr;
 }
 
 .sidebar {
     position: sticky;
     top: 0;
     height: 100vh;
-    background: var(--sidebar);
+    background: transparent;
     display: grid;
     grid-template-rows: auto 1fr auto;
 }
