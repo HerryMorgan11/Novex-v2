@@ -18,6 +18,7 @@ export default defineConfig({
                 'resources/css/dashboard/sidebar.css',
                 'resources/css/dashboard/general-dashboard.css',
                 'resources/css/dashboard/settings-profile.css',
+                'resources/css/dashboard/control-panel.css',
             ],
             refresh: true,
         }),

@@ -19,6 +19,7 @@ return new class extends Component
     <div class="settings-wrapper">
         <div class="settings-header">
             <h1>Configuración</h1>
+            <p>Administra la configuración de tu cuenta y preferencias.</p>
         </div>
 
         <div class="settings-layout">
@@ -29,18 +30,21 @@ return new class extends Component
                         wire:click="changeSection('perfil')"
                         @class(['active' => $section === 'perfil'])
                     >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                         Perfil
                     </button>
                     <button 
                         wire:click="changeSection('seguridad')"
                         @class(['active' => $section === 'seguridad'])
                     >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                         Seguridad
                     </button>
                     <button 
                         wire:click="changeSection('notificaciones')"
                         @class(['active' => $section === 'notificaciones'])
                     >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
                         Notificaciones
                     </button>
                 </nav>

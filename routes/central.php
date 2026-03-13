@@ -105,6 +105,10 @@ Route::middleware(['auth', 'initializeTenant'])->group(function () {
         return view('dashboard.features.settings.settingsApp');
     })->name('settings.profile');
 
+    Route::get('/controlpanel/home', function () {
+        return view('dashboard.features.control-panel.controlPanelApp');
+    })->name('controlpanel.home');
+
 });
 
 // Provisioning page shown after registration while tenant is being prepared

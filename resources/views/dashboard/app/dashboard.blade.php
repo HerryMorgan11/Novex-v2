@@ -10,6 +10,7 @@
     @vite(['resources/css/dashboard/general-dashboard.css'])
     @vite(['resources/css/dashboard/navbar.css'])
     @vite(['resources/css/dashboard/settings-profile.css'])
+    @vite(['resources/css/dashboard/control-panel.css'])
 
     @livewireStyles
 
