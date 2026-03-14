@@ -1,5 +1,4 @@
 .settings-container {
-    background-color: var(--color-bg-primary, #ffffff);
     color: var(--color-text-primary, #09090b);
     font-family: inherit;
 }
@@ -13,7 +12,6 @@
     display: flex;
     min-height: 85vh;
     border-radius: 0.75rem;
-    background: var(--color-bg-primary, #ffffff);
     overflow: hidden;
 }
 
@@ -55,7 +53,7 @@
 }
 
 .settings-nav button.active {
-    background-color: var(--color-bg-secondary, #e4e4e7);
+    background-color: var(--color-bg-secondary, #e4e4e765);
     color: var(--color-text-primary, #09090b);
     font-weight: 600;
 }
@@ -65,7 +63,6 @@
     flex: 1;
     max-width: 56rem;
     padding: 2rem 3rem;
-    background-color: var(--color-bg-primary, #ffffff);
     overflow-y: auto;
     border: 1px solid var(--color-border, #e4e4e7);
     border-radius: 0.75rem;
