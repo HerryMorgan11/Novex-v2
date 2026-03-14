@@ -42,13 +42,14 @@
     font-size: 14px;
     color: var(--muted);
 }
-.breadcrumb-item a {
+.breadcrumb-item {
     color: var(--muted);
     text-decoration: none;
 }
 .breadcrumb-item + .breadcrumb-item::before {
-    content: '>';
-    margin: 0 8px;
+    content: '/';
+    margin-left: 4px;
+    margin-right: 4px;
     color: var(--muted);
 }
 

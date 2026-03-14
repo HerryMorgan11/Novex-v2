@@ -1,12 +1,13 @@
 <div class="panel-header">
     <h1>Panel de Control</h1>
+    <p>Resumen general de la actividad y estado de la plataforma.</p>
 </div>
 
 <div class="kpi-grid">
     <div class="kpi-card">
         <div class="kpi-label">Total de Usuarios</div>
         <div class="kpi-value">24</div>
-        <div class="kpi-subtext">+3 este mes</div>
+        <div class="kpi-subtext" style="color: #10b981;">↑ +3 este mes</div>
     </div>
 
     <div class="kpi-card">
@@ -18,7 +19,7 @@
     <div class="kpi-card">
         <div class="kpi-label">Plan Actual</div>
         <div class="kpi-value">Premium</div>
-        <div class="kpi-subtext">Activo hasta diciembre</div>
+        <div class="kpi-subtext" style="color: var(--accent);">Activo hasta diciembre</div>
     </div>
 
     <div class="kpi-card">

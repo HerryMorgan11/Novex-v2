@@ -34,6 +34,11 @@ return new class extends Component
 
             <!-- Contenido principal -->
             <div class="settings-content">
+                <div class="settings-header">
+                    <h1>Ajustes de la Cuenta</h1>
+                    <p>Configura las opciones de tu perfil, seguridad y preferencias del sistema general.</p>
+                </div>
+
                 <div x-show="section === 'perfil'">
                     @include('dashboard.features.settings.ui.profile-content')
                 </div>

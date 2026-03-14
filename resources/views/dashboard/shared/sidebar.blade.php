@@ -10,7 +10,7 @@
           <div class="sidebar-section-title">General</div>
 
           <nav class="nav" aria-label="Navegación general">
-            <a class="nav-item" href="#">
+            <a class="nav-item" href="{{ route('dashboard') }}">
               <span class="nav-icon" aria-hidden="true">
                 <iconify-icon icon="lucide:layout-grid" width="16"></iconify-icon>
               </span>
