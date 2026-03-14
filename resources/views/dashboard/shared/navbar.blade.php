@@ -217,14 +217,27 @@
     });
 
     function themeToggle() {
-        const body = document.body;
-        body.classList.toggle('dark-theme');
+        const html = document.documentElement;
+        html.classList.toggle('dark-theme');
 
-        // Cambia el icono del botón
-        const isDark = body.classList.contains('dark-theme');
+        const isDark = html.classList.contains('dark-theme');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+        updateThemeIcons(isDark);
+    }
+
+    function updateThemeIcons(isDark) {
         const icons = document.querySelectorAll('.theme-toggle iconify-icon');
         icons.forEach(icon => {
-            if (icon && icon.setAttribute) icon.setAttribute('icon', isDark ? 'mynaui:moon' : 'mynaui:sun');
+            if (icon && icon.setAttribute) {
+                icon.setAttribute('icon', isDark ? 'mynaui:moon' : 'mynaui:sun');
+            }
         });
     }
+
+    // Sync icons on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        const isDark = document.documentElement.classList.contains('dark-theme');
+        updateThemeIcons(isDark);
+    });
 </script>

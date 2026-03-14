@@ -28,7 +28,7 @@
 }
 
 /* ===== Dark Theme ===== */
-body.dark-theme {
+.dark-theme {
     /* Fondo principal y textos */
     --bg: #1c1417; /* Un tono súper oscuro del burdeos */
     --fg: #fce7f3; /* pink-100 para textos principales */

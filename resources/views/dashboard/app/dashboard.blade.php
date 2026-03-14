@@ -13,7 +13,14 @@
     @vite(['resources/css/dashboard/control-panel.css'])
 
     @livewireStyles
-
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark-theme');
+            }
+        })();
+    </script>
 </head>
 <body>
     <div class="app">
