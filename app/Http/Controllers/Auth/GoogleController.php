@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\SocialAccount;
-use App\Models\Tenant;
-use App\Models\TenantMembership;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
@@ -36,28 +34,12 @@ class GoogleController extends Controller
             $user = $socialAccount->user;
             Auth::login($user);
 
-            // Ensure tenant exists for this user (existing social account case)
-            if (! $user->current_tenant_id) {
-                $tenant = Tenant::create([
-                    'name' => $user->name.' Workspace',
-                    'slug' => Str::slug($user->name).'-'.Str::lower(Str::random(6)),
-                    'status' => 'provisioning',
-                    'created_by_user_id' => $user->id,
-                ]);
-
-                TenantMembership::create([
-                    'user_id' => $user->id,
-                    'tenant_id' => $tenant->id,
-                    'is_owner' => true,
-                    'status' => 'active',
-                    'joined_at' => now(),
-                ]);
-
-                $user->forceFill(['current_tenant_id' => $tenant->id])->save();
-
-                return redirect()->route('provisioning.page');
+            // Si el usuario ya tiene un tenant, redirigir a /app
+            if ($user->current_tenant_id) {
+                return redirect()->intended('/app');
             }
 
+            // Si no tiene tenant, redirigir a /app para que vea el modal
             return redirect()->intended('/app');
         }
 
@@ -65,10 +47,12 @@ class GoogleController extends Controller
         $user = User::where('email', $googleUser->getEmail())->first();
 
         if (! $user) {
+            // Crear usuario SIN tenant (igual que en CreateNewUser)
             $user = User::create([
                 'name' => $googleUser->getName(),
                 'email' => $googleUser->getEmail(),
                 'password' => bcrypt(Str::random(32)),
+                'current_tenant_id' => null,  // NO crear tenant automáticamente
             ]);
 
             // Fire Registered event for consistency
@@ -86,34 +70,9 @@ class GoogleController extends Controller
             'token_expires_at' => isset($googleUser->expiresIn) ? now()->addSeconds($googleUser->expiresIn) : null,
         ]);
 
-        // Ensure tenant exists for this user. If none, create a provisioning tenant.
-        if (! $user->current_tenant_id) {
-            $tenant = Tenant::create([
-                'name' => $user->name.' Workspace',
-                'slug' => Str::slug($user->name).'-'.Str::lower(Str::random(6)),
-                'status' => 'provisioning',
-                'created_by_user_id' => $user->id,
-            ]);
-
-            TenantMembership::create([
-                'user_id' => $user->id,
-                'tenant_id' => $tenant->id,
-                'is_owner' => true,
-                'status' => 'active',
-                'joined_at' => now(),
-            ]);
-
-            $user->forceFill(['current_tenant_id' => $tenant->id])->save();
-        }
-
         Auth::login($user);
 
-        // If tenant is still provisioning, redirect to provisioning page
-        $tenant = $user->currentTenant;
-        if ($tenant && $tenant->status === 'provisioning') {
-            return redirect()->route('provisioning.page');
-        }
-
+        // Redirigir a /app (donde el middleware checkHasTenant mostrará el modal)
         return redirect()->intended('/app');
     }
 }

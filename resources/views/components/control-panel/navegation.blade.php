@@ -1,10 +1,17 @@
 <?php
 
 use Livewire\Component;
+use App\Models\User;
 
 return new class extends Component
 {
     public $section = "home";
+    public $users = [];
+
+    public function mount()
+    {
+        $this->users = User::all();
+    }
 
     public function changeSection($section)
     {

@@ -54,8 +54,8 @@ class AuthController extends Controller
         Auth::login($user);
         $request->session()->regenerate();
 
-        // After registration, show provisioning page while tenant is being prepared
-        return redirect()->route('provisioning.page');
+        // Redirigir a /app donde el modal de crear empresa aparecerá
+        return redirect('/app');
     }
 
     public function logout(Request $request): RedirectResponse

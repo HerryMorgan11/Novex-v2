@@ -16,12 +16,20 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td colspan="5" class="empty-state">
-                        <iconify-icon icon="lucide:users" width="48" height="48" style="margin-bottom: 1rem; color: var(--muted-2);"></iconify-icon>
-                        No hay usuarios disponibles en este momento
-                    </td>
-                </tr>
+                @forelse ($users as $user)
+                    <tr>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->role }}</td>
+                        <td>{{ $user->status }}</td>
+                        <td>{{ $user->created_at }}</td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="5" style="text-align: center;">No se encontraron usuarios.</td>
+                    </tr>
+                @endforelse
+                
             </tbody>
         </table>
     </div>

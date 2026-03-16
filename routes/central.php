@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\controlPanel\UserCompany;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Password;
@@ -71,7 +72,7 @@ Route::get('/dashboard', function () {
     return view('dashboard.dashboard');
 })->name('dashboard');
 */
-Route::middleware(['auth', 'initializeTenant'])->group(function () {
+Route::middleware(['auth', 'checkHasTenant'])->group(function () {
     Route::get('/app', function () {
         $tenancyInitialized = null;
         $tenancyTenant = null;
@@ -105,9 +106,8 @@ Route::middleware(['auth', 'initializeTenant'])->group(function () {
         return view('dashboard.features.settings.settingsApp');
     })->name('settings.profile');
 
-    Route::get('/controlpanel/home', function () {
-        return view('dashboard.features.control-panel.controlPanelApp');
-    })->name('controlpanel.home');
+    Route::get('/controlpanel/home', [UserCompany::class, 'UserControl'])
+        ->name('controlpanel.home');
 
 });
 

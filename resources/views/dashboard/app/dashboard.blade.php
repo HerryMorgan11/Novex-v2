@@ -35,6 +35,9 @@
             </div>
         </main>
     </div>
+
+    <!-- Modal de creación de empresa (solo se muestra si usuario no tiene tenant) -->
+    @livewire('create-company-modal')
     
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @livewireScripts
