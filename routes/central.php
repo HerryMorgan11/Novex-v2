@@ -23,9 +23,9 @@ Route::get('/', function () {
     return view('landing.pages.home');
 })->name('home');
 
-Route::get('/pricing', function () {
+Route::get('/precios', function () {
     return view('landing.pages.pricing');
-})->name('pricing');
+})->name('precios');
 
 // Autenticación (pre-tenant)
 Route::get('/login', [AuthController::class, 'login'])->name('login');

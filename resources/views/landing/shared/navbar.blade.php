@@ -2,13 +2,15 @@
     <div class="navbar-container">
         <!-- Logo -->
         <div class="navbar-logo">
-            <img src="{{ asset('assets/logo/logo-novex-color.png') }}" alt="Novex" class="logo-img">
+            <a href="{{ route('home') }}">
+                <img src="{{ asset('assets/logo/logo-novex-color.png') }}" alt="Novex" class="logo-img">
+            </a>
         </div>
 
         <!-- Menu items -->
-        <div class="navbar-menu">            
+        <div class="navbar-menu">
             <div class="navbar-link-arrow" onclick="toggleProductsMenu(event)">
-                <button  class="product-btn">Productos</button>
+                <button class="product-btn">Productos</button>
                 <iconify-icon icon="material-symbols:arrow-back-ios-new-rounded" class="arrow-icon"></iconify-icon>
 
                 <div class="drop-productos">
@@ -16,7 +18,7 @@
                 </div>
             </div>
             <a href="#soluciones" class="navbar-link">Soluciones</a>
-            <a href="#precios" class="navbar-link">Precios</a>
+            <a href="{{ route('precios') }}" class="navbar-link">Precios</a>
             <a href="#acerca-de" class="navbar-link">Acerca de</a>
         </div>
 
@@ -68,7 +70,8 @@
         }
     }
 
-    window.addEventListener('scroll', updateNavbarSolid, { passive: true });
+    window.addEventListener('scroll', updateNavbarSolid, {
+        passive: true
+    });
     document.addEventListener('DOMContentLoaded', updateNavbarSolid);
 </script>
-
