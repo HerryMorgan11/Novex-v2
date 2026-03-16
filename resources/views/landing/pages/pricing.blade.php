@@ -2,6 +2,6 @@
 
 @section('content')
 <main>
-    @include('landing.sections.precios')
+    @include('landing.sections.precios.precios')
 </main>
 @endsection
