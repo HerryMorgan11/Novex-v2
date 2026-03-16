@@ -1,26 +1,6 @@
 <?php
-
 use Livewire\Component;
 use App\Models\User;
-
-return new class extends Component
-{
-    public $section = "home";
-    public $users = [];
-
-    public function mount()
-    {
-        // Filtrar usuarios solo del tenant actual
-        $tenantId = tenant()->id;
-        $this->users = User::where('current_tenant_id', $tenantId)->get();
-    }
-
-    public function changeSection($section)
-    {
-        $this->section = $section;
-    }
-};
-
 ?>
 
 <div x-data="{ section: 'home' }" x-cloak class="panel-container">
