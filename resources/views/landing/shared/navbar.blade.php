@@ -8,11 +8,14 @@
         <!-- Menu items -->
         <div class="navbar-menu">            
             <div class="navbar-link-arrow" onclick="toggleProductsMenu(event)">
-                <button  class="product-btn">Productos</button>
+                <button  class="product-btn">Módulos</button>
                 <iconify-icon icon="material-symbols:arrow-back-ios-new-rounded" class="arrow-icon"></iconify-icon>
 
                 <div class="drop-productos">
-                    <a href="#producto1" class="navbar-link">Producto1</a>
+                    <a href="#producto1" class="navbar-link">Módulo de inventario</a>
+                    <a href="#producto2" class="navbar-link">Módulo de finanzas</a>
+                    <a href="#producto3" class="navbar-link">Módulo de ventas</a>
+                    <a href="#producto4" class="navbar-link">Módulo de recursos humanos</a>
                 </div>
             </div>
             <a href="#soluciones" class="navbar-link">Soluciones</a>
