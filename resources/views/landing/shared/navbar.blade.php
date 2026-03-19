@@ -20,6 +20,8 @@
             <a href="#soluciones" class="navbar-link">Soluciones</a>
             <a href="{{ route('precios') }}" class="navbar-link">Precios</a>
             <a href="{{ route('about') }}" class="navbar-link">Acerca de</a>
+            <a href="{{ route('contabilidad') }}" class="navbar-link">Contabilidad</a>
+            <a href="{{ route('recursos-humanos') }}" class="navbar-link">Recursos Humanos</a>
         </div>
 
         <!-- Right side actions -->

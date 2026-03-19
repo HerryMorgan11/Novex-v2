@@ -1,0 +1,471 @@
+/* Contabilidad Section Styles */
+.contabilidad-wrapper {
+    font-family:
+        'Inter',
+        system-ui,
+        -apple-system,
+        sans-serif;
+    color: #1a1a24;
+    background-color: #f8f8fa;
+    padding-bottom: 80px;
+    overflow: hidden;
+}
+
+/* Hero Section */
+.conta-hero {
+    text-align: center;
+    padding: 120px 20px 80px;
+    background: radial-gradient(
+        circle at top center,
+        rgba(255, 230, 220, 0.5) 0%,
+        rgba(248, 248, 250, 1) 70%
+    );
+}
+
+.conta-hero-subtitle {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #e55c3c;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.conta-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0 auto 30px;
+    max-width: 800px;
+    color: #1a1a24;
+}
+
+.conta-hero h1 .highlight {
+    background: linear-gradient(90deg, #e55c3c, #f28b6d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.conta-hero p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+}
+
+.conta-hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.conta-btn-primary {
+    background-color: #e55c3c;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(229, 92, 60, 0.3);
+}
+
+.conta-btn-primary:hover {
+    background-color: #d14a2b;
+    transform: translateY(-2px);
+}
+
+.conta-btn-secondary {
+    background-color: rgba(229, 92, 60, 0.1);
+    color: #e55c3c;
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.conta-btn-secondary:hover {
+    background-color: rgba(229, 92, 60, 0.2);
+}
+
+/* Features Section */
+.conta-features {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.conta-features-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.conta-features-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.conta-features-header p {
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+.conta-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .conta-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .conta-card.full-width {
+        grid-column: 1 / span 2;
+        width: 100%;
+    }
+}
+
+.conta-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.conta-card:hover {
+    transform: translateY(-5px);
+}
+
+.conta-card.orange {
+    background: #df5a3c;
+    color: white;
+}
+
+.conta-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #ffefec;
+    color: #df5a3c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.conta-card.orange .conta-icon-wrapper {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.conta-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.conta-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.conta-card.orange p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Specific mockups */
+.conta-mockup {
+    background: #f4f5f5;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: auto;
+}
+
+.mockup-item {
+    background: white;
+    padding: 12px 15px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.mockup-item.level-2 {
+    background: transparent;
+    padding-left: 30px;
+}
+
+.mockup-item .amount-red {
+    color: #df5a3c;
+}
+
+.mockup-item .amount-dark {
+    color: #333;
+}
+
+.dot-indicator {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: #df5a3c;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.dot-indicator.faded {
+    opacity: 0.6;
+}
+
+/* Glass mockup for Orange Card */
+.mockup-glass {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.glass-badge {
+    background: #ffb8c6;
+    color: #d1225b;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.65rem;
+}
+
+.glass-progress {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.glass-progress-bar {
+    height: 100%;
+    width: 65%;
+    background: white;
+    border-radius: 10px;
+}
+
+/* Full Width Card Layout */
+.full-width-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+@media (min-width: 900px) {
+    .full-width-content {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .full-width-text {
+        flex: 1;
+        padding-right: 40px;
+    }
+
+    .full-width-visual {
+        flex: 1;
+    }
+}
+
+.stats-grid {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.stat-item h4 {
+    font-size: 1.5rem;
+    color: #d1225b;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.stat-item p {
+    font-size: 0.75rem;
+    color: #666;
+    margin: 0;
+}
+
+.dashboard-mockup {
+    background: #568a83;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 1;
+}
+
+.dashboard-inner {
+    background: #f4f5f5;
+    border-radius: 6px;
+    height: 200px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.dash-header {
+    height: 8px;
+    width: 20%;
+    background: #ddd;
+    border-radius: 4px;
+}
+
+.dash-body {
+    display: flex;
+    height: 120px;
+    align-items: flex-end;
+    gap: 8px;
+    justify-content: center;
+}
+
+.dash-bar {
+    width: 12px;
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+.dash-bar.active {
+    background: #568a83;
+}
+
+/* Testimonial Section */
+.conta-testimonial {
+    text-align: center;
+    padding: 80px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.quote-icon {
+    font-size: 3rem;
+    color: #e55c3c;
+    opacity: 0.3;
+    margin-bottom: 20px;
+}
+
+.conta-testimonial blockquote {
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    color: #1a1a24;
+}
+
+.conta-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.conta-author img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.conta-author-info {
+    text-align: left;
+}
+
+.conta-author-name {
+    font-weight: 700;
+    display: block;
+}
+
+.conta-author-role {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* CTA Section */
+.conta-cta {
+    background: #1a1a24;
+    color: white;
+    border-radius: 30px;
+    padding: 80px 40px;
+    text-align: center;
+    max-width: 1000px;
+    margin: 40px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.conta-cta h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.conta-cta p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto 40px;
+}
+
+.conta-cta-link {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 25px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.conta-cta-link:hover {
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .conta-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .conta-cta {
+        margin: 20px;
+        padding: 60px 20px;
+    }
+}

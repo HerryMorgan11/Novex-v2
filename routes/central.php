@@ -31,6 +31,14 @@ Route::get('/about', function () {
     return view('landing.pages.about');
 })->name('about');
 
+Route::get('/contabilidad', function () {
+    return view('landing.pages.contabilidad');
+})->name('contabilidad');
+
+Route::get('/recursos-humanos', function () {
+    return view('landing.pages.recursos-humanos');
+})->name('recursos-humanos');
+
 // Autenticación (pre-tenant)
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate']);
