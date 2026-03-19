@@ -1,5 +1,5 @@
 <style>
-    {!! file_get_contents(resource_path('views/landing/sections/contabilidad/contabilidad.css')) !!}
+    {!! file_get_contents(resource_path('css/landing/sections/contabilidad.css')) !!}
 </style>
 
 <div class="contabilidad-wrapper">
@@ -12,7 +12,7 @@
         </h1>
         <p>Transformamos datos contables en narrativas de crecimiento. Un ledger moderno para mentes que construuyen el futuro.</p>
         <div class="conta-hero-buttons">
-            <button class="conta-btn-primary">Comenzar Gratis</button>
+            <button class="conta-btn-primary" onclick="window.location.href='{{ route('register') }}'">Comenzar Gratis</button>
         </div>
     </section>
 
@@ -124,12 +124,30 @@
     <section class="conta-cta">
         <h2>Únete a la nueva era de la contabilidad</h2>
         <p>Diseña el futuro financiero de tu empresa con la herramienta más sofisticada del mercado.</p>
-        <button class="conta-btn-primary">Comenzar Ahora</button>
+        <button class="conta-btn-primary" onclick="window.location.href='{{ route('register') }}'">Comenzar Ahora</button>
         <br>
         <a href="#" class="conta-cta-link">Agendar una consultoría →</a>
     </section>
 </div>
 
 <script>
-    {!! file_get_contents(resource_path('views/landing/sections/contabilidad/contabilidad.js')) !!}
+document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    });
+
+    document.querySelectorAll('.conta-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'all 0.6s ease';
+        observer.observe(el);
+    });
+});
+
 </script>

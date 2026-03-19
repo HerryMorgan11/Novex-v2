@@ -1,5 +1,5 @@
 <style>
-    {!! file_get_contents(resource_path('views/landing/sections/recursos-humanos/rh.css')) !!}
+    {!! file_get_contents(resource_path('css/landing/sections/rh.css')) !!}
 </style>
 
 <div class="rh-wrapper">
@@ -19,7 +19,7 @@
                 arquitectos de equipos de alto impacto.
             </p>
             <div class="rh-buttons">
-                <button class="btn-rh-primary">Empieza Gratis</button>
+                <button class="btn-rh-primary" onclick="window.location.href='{{ route('register') }}'">Empieza Gratis</button>
             </div>
         </div>
         
@@ -103,12 +103,31 @@
         <h2>¿Listo para <br> potenciar tu <br> equipo?</h2>
         <p>Únete a cientos de empresas que ya están transformando su gestión administrativa en una ventaja competitiva.</p>
         <div class="rh-cta-buttons">
-            <button class="btn-cta-prim">Comenzar ahora</button>
+            <button class="btn-cta-prim" onclick="window.location.href='{{ route('register') }}'">Comenzar ahora</button>
             <button class="btn-cta-sec">Hablar con un experto</button>
         </div>
     </section>
 </div>
 
+
+
 <script>
-    {!! file_get_contents(resource_path('views/landing/sections/recursos-humanos/rh.js')) !!}
+   document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    });
+
+    document.querySelectorAll('.rh-card, .rh-mockup-person, .rh-testi-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'all 0.6s ease';
+        observer.observe(el);
+    });
+});
 </script>

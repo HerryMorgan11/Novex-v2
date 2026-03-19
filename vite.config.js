@@ -14,6 +14,8 @@ export default defineConfig({
                 'resources/css/landing/sections/home/choose.css',
                 'resources/css/landing/sections/precios.css',
                 'resources/css/landing/sections/about.css',
+                'resources/css/landing/sections/contabilidad.css',
+                'resources/css/landing/sections/rh.css',
                 'resources/js/app.js',
                 'resources/css/auth/auth.css',
                 'resources/css/landing/general-style.css',

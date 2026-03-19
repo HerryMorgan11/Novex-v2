@@ -38,8 +38,8 @@
                             <span class="input-icon">
                                 <iconify-icon icon="iconoir:user"></iconify-icon>
                             </span>
-                            <input type="text" id="name" name="name" placeholder="Juan Pérez" required autofocus
-                                value="{{ old('name') }}">
+                            <input type="text" id="name" name="name" placeholder="Juan Pérez" required
+                                autofocus value="{{ old('name') }}">
                         </div>
                         @error('name')
                             <span class="error-message">{{ $message }}</span>
@@ -99,7 +99,8 @@
                     <div class="form-group checkbox-group">
                         <label class="checkbox-container">
                             <input type="checkbox" name="terms" required>
-                            <span>Acepto los <a href="{{ asset('assets/pdf/TermsAndCoinditions.pdf') }}" class="link-inline" target="_blank">términos y condiciones</a></span>
+                            <span>Acepto los <a href="{{ asset('assets/pdf/TermsAndCoinditions.pdf') }}"
+                                    class="link-inline" target="_blank">términos y condiciones</a></span>
                         </label>
                     </div>
 
@@ -140,7 +141,8 @@
                     <img src="{{ asset('assets/logo/logo-novex-color.png') }}" alt="Novex Logo" class="header-logo">
                 </div>
                 <!-- Tagline -->
-                <p class="branding-tagline">El espacio de trabajo moderno para que equipos de alto rendimiento colaboren y entreguen resultados.</p>
+                <p class="branding-tagline">El espacio de trabajo moderno para que equipos de alto rendimiento colaboren
+                    y entreguen resultados.</p>
 
                 <!-- Stats -->
                 <div class="branding-stats">
@@ -170,7 +172,7 @@
             const passwordInput = document.getElementById(fieldId);
             const iconElement = passwordInput.parentElement.querySelector('button').querySelector('iconify-icon');
             const isPassword = passwordInput.getAttribute('type') === 'password';
-            
+
             passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
             iconElement.setAttribute('icon', isPassword ? 'iconoir:eye-off' : 'iconoir:eye');
         }
@@ -179,7 +181,7 @@
         document.getElementById('registerForm').addEventListener('submit', function(e) {
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('password_confirmation').value;
-            
+
             if (password !== confirmPassword) {
                 e.preventDefault();
                 alert('Las contraseñas no coinciden');
