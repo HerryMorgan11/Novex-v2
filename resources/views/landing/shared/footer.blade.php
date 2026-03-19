@@ -74,4 +74,4 @@
             if (icon && icon.setAttribute) icon.setAttribute('icon', isDark ? 'mynaui:moon' : 'mynaui:sun');
         });
     }
-</script>z
+</script>

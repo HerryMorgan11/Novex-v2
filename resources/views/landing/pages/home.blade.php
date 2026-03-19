@@ -9,7 +9,5 @@
          @include('landing.sections.home.scaleFast')
 
         @include('landing.sections.home.choose')
-
-        @include('landing.sections.home.pricing')
     </main>
 @endsection
