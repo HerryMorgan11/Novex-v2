@@ -378,6 +378,26 @@ body {
     text-decoration: underline;
 }
 
+/* Back to Home Link */
+.back-home {
+    margin-top: 48px;
+    text-align: left;
+}
+
+.back-home a {
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s;
+}
+
+.back-home a:hover {
+    color: #111827;
+}
+
 /* ========================
    RIGHT COLUMN - BRANDING SECTION
    ======================== */

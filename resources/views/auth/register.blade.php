@@ -122,6 +122,13 @@
                         ¿Ya tienes cuenta? <a href="{{ route('login') }}" class="link-primary">Inicia sesión</a>
                     </div>
                 </form>
+
+                <!-- Back to Home Button -->
+                <div class="back-home">
+                    <a href="/">
+                        &lt; Back to Home
+                    </a>
+                </div>
             </div>
         </section>
 
