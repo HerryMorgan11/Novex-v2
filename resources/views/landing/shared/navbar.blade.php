@@ -19,7 +19,7 @@
             </div>
             <a href="#soluciones" class="navbar-link">Soluciones</a>
             <a href="{{ route('precios') }}" class="navbar-link">Precios</a>
-            <a href="#acerca-de" class="navbar-link">Acerca de</a>
+            <a href="{{ route('about') }}" class="navbar-link">Acerca de</a>
         </div>
 
         <!-- Right side actions -->

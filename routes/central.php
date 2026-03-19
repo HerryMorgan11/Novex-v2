@@ -27,6 +27,10 @@ Route::get('/precios', function () {
     return view('landing.pages.pricing');
 })->name('precios');
 
+Route::get('/about', function () {
+    return view('landing.pages.about');
+})->name('about');
+
 // Autenticación (pre-tenant)
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate']);
