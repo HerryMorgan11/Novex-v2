@@ -7,14 +7,37 @@
         
         <div class="scale-fast-cards">
             <div class="scale-fast-card">
+                <div class="icon-container">
+                    <iconify-icon icon="mdi:cloud-check-variant" style="font-size: 30px; color: #fca311; margin-bottom: 10px;" class="cloud-icon"></iconify-icon>
+                </div>
                 <div class="scale-fast-card-header">
                     <h3 class="scale-fast-card-title">Cloud Infrastructure</h3>
                     <p class="scale-fast-card-desc"> Enterprise-grade cloud solutuons that scale automatically with your demand. Global reach with local speed. </p>
                 </div>
             </div>
 
+            <div class="scale-fast-card">
+                <div class="icon-container">
+                    <iconify-icon icon="carbon:analytics" style="font-size: 30px; color: #fca311; margin-bottom: 10px;" class="analytics-icon"></iconify-icon>
+                </div>
+                <div class="scale-fast-card-header">
+                    <h3 class="scale-fast-card-title">Data Analytics </h3>
+                    <p class="scale-fast-card-desc"> Transform raw data into actionable insights with our powerful real-time visualizator engines. </p>
+                </div>
+            </div>
+
+            <div class="scale-fast-card">
+                <div class="icon-container">
+                    <iconify-icon icon="fa-solid:robot" style="font-size: 30px; color: #fca311; margin-bottom: 10px;" class="robot-icon"></iconify-icon>
+                </div>
+                <div class="scale-fast-card-header">
+                    <h3 class="scale-fast-card-title">AI Integration</h3>
+                    <p class="scale-fast-card-desc"> Seamlessly integrate neural networks and machine learning to automate complex operational workflows. </p>
+                </div>
+            </div>
         </div>
 
+       
 
 
     </div>
