@@ -130,9 +130,84 @@
               </a>
             </nav>
          
-            <form method="POST" action="{{ route('logout') }}" style="display:inline">
-                @csrf
-                <button type="submit" style="background:none;border:none;padding:0;color:#3490dc;cursor:pointer">Logout</button>
-            </form>
+            <div
+              x-data="{
+                open: false,
+                toggle() {
+                  if (this.open) {
+                    return this.close()
+                  }
+                  this.$refs.button.focus()
+                  this.open = true
+                },
+                close(focusAfter) {
+                  if (!this.open) return
+                  this.open = false
+                  focusAfter && focusAfter.focus()
+                }
+              }"
+              x-on:keydown.escape.prevent.stop="close($refs.button)"
+              x-on:focusin.window="!$refs.panel.contains($event.target) && close()"
+              x-id="['user-dropdown']"
+              class="user-dropdown"
+            >
+              <!-- User Button -->
+              <button
+                x-ref="button"
+                x-on:click="toggle()"
+                :aria-expanded="open"
+                :aria-controls="$id('user-dropdown')"
+                type="button"
+                class="user"
+              >
+                <div class="avatar">DJ</div>
+                <div class="user-meta">
+                  <span class="user-name">David Jacobo</span>
+                  <span class="user-email">Admin</span>
+                </div>
+                <iconify-icon icon="lucide:chevron-right" width="16" class="user-icon"></iconify-icon>
+              </button>
+
+              <!-- Dropdown Panel -->
+              <div
+                x-ref="panel"
+                x-show="open"
+                x-transition.origin.bottom.left.duration.150ms
+                x-on:click.outside="close($refs.button)"
+                :id="$id('user-dropdown')"
+                x-cloak
+                class="dropdown-panel"
+              >
+                <!-- Profile Settings -->
+                <a 
+                  href="{{ route('settings.profile') }}"
+                  class="dropdown-item"
+                >
+                  <iconify-icon icon="lucide:user" width="16"></iconify-icon>
+                  <span>Profile Settings</span>
+                </a>
+
+                <!-- Control Panel -->
+                <a 
+                  href="{{ route('controlpanel.home') }}"
+                  class="dropdown-item"
+                >
+                  <iconify-icon icon="lucide:sliders" width="16"></iconify-icon>
+                  <span>Control Panel</span>
+                </a>
+
+                <!-- Logout -->
+                <form method="POST" action="{{ route('logout') }}" style="display: contents;">
+                  @csrf
+                  <button 
+                    type="submit"
+                    class="dropdown-item logout"
+                  >
+                    <iconify-icon icon="lucide:log-out" width="16"></iconify-icon>
+                    <span>Logout</span>
+                  </button>
+                </form>
+              </div>
+            </div>
         </div>
       </aside>
