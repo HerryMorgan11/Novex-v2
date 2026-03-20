@@ -1,60 +1,103 @@
 <div class="panel-header">
     <h1>Módulos Disponibles</h1>
-    <p>Explora y administra los diferentes módulos instalados en tu ecosistema o adquiere nuevos complementos.</p>
+    <p>Activa o desactiva los módulos que necesitas. Los módulos activos aparecerán en tu menú lateral.</p>
 </div>
 
-<div class="modules-grid">
+<div x-data="moduleManager()" class="modules-grid">
+    <!-- Inventario Module -->
     <div class="module-card">
-        <div class="module-icon">
-            <iconify-icon icon="lucide:package"></iconify-icon>
+        <div class="module-card-header">
+            <div>
+                <div class="module-icon">
+                    <iconify-icon icon="streamline-ultimate:warehouse-cart-packages-2-bold"></iconify-icon>
+                </div>
+                <h3 class="module-name">Inventario</h3>
+            </div>
+            <label class="switch">
+                <input 
+                    type="checkbox" 
+                    x-model="modules.inventory"
+                    @change="saveModules()"
+                >
+                <span class="slider"></span>
+            </label>
         </div>
-        <h3 class="module-name">Inventario</h3>
         <p class="module-description">Gestiona tu inventario, variantes y todo el stock de tus productos de forma unificada.</p>
-        <div class="module-status">Activo y Funcionando</div>
+        <div class="module-status" :class="modules.inventory ? 'active' : 'inactive'">
+            <span x-show="modules.inventory">✓ Activo</span>
+            <span x-show="!modules.inventory">Inactivo</span>
+        </div>
     </div>
 
+    <!-- Contabilidad Module -->
     <div class="module-card">
-        <div class="module-icon">
-            <iconify-icon icon="lucide:receipt"></iconify-icon>
+        <div class="module-card-header">
+            <div>
+                <div class="module-icon">
+                    <iconify-icon icon="material-symbols:finance-rounded"></iconify-icon>
+                </div>
+                <h3 class="module-name">Contabilidad</h3>
+            </div>
+            <label class="switch disabled">
+                <input 
+                    type="checkbox" 
+                    disabled
+                >
+                <span class="slider"></span>
+            </label>
         </div>
-        <h3 class="module-name">Facturación</h3>
-        <p class="module-description">Genera facturas legales, controla tus ingresos, impuestos contables mensuales automáticamente.</p>
-        <div class="module-status">Activo y Funcionando</div>
+        <p class="module-description">Genera facturas, controla tus ingresos e impuestos contables mensuales automáticamente.</p>
+        <div class="module-status developing">
+            <span><iconify-icon icon="tabler:tool"></iconify-icon> En desarrollo</span>
+        </div>
     </div>
 
+    <!-- Recursos Humanos Module -->
     <div class="module-card">
-        <div class="module-icon">
-            <iconify-icon icon="lucide:bar-chart-3"></iconify-icon>
+        <div class="module-card-header">
+            <div>
+                <div class="module-icon">
+                    <iconify-icon icon="formkit:people"></iconify-icon>
+                </div>
+                <h3 class="module-name">Recursos Humanos</h3>
+            </div>
+            <label class="switch disabled">
+                <input 
+                    type="checkbox" 
+                    disabled
+                >
+                <span class="slider"></span>
+            </label>
         </div>
-        <h3 class="module-name">Reportes</h3>
-        <p class="module-description">Analiza el crecimiento de todos tus datos financieros y genera reportes detallados configurables.</p>
-        <div class="module-status">Activo y Funcionando</div>
-    </div>
-
-    <div class="module-card">
-        <div class="module-icon" style="color: var(--muted); background: var(--surface); border-color: var(--border);">
-            <iconify-icon icon="lucide:users"></iconify-icon>
+        <p class="module-description">Gestiona tu equipo, nómina, evaluaciones y todo lo relacionado con recursos humanos.</p>
+        <div class="module-status developing">
+            <span><iconify-icon icon="tabler:tool"></iconify-icon> En desarrollo</span>
         </div>
-        <h3 class="module-name">CRM Comercial</h3>
-        <p class="module-description">Gestiona tus clientes frecuentes, prospectos y mantén siempre cerca tus relaciones comerciales.</p>
-        <div class="module-status" style="color: var(--muted);"><span style="background: var(--muted-2);"></span> Disponible para instalar</div>
-    </div>
-
-    <div class="module-card">
-        <div class="module-icon" style="color: var(--muted); background: var(--surface); border-color: var(--border);">
-            <iconify-icon icon="lucide:mail"></iconify-icon>
-        </div>
-        <h3 class="module-name">Email Marketing</h3>
-        <p class="module-description">Configura campañas masivas de email y automatizaciones completas de embudos de ventas.</p>
-        <div class="module-status" style="color: var(--muted);"><span style="background: var(--muted-2);"></span> Disponible para instalar</div>
-    </div>
-
-    <div class="module-card">
-        <div class="module-icon" style="color: var(--muted); background: var(--surface); border-color: var(--border);">
-            <iconify-icon icon="lucide:webhook"></iconify-icon>
-        </div>
-        <h3 class="module-name">API Integrations</h3>
-        <p class="module-description">Conecta Novex con las otras aplicaciones de tu suite o con automatizaciones a nivel de webhook.</p>
-        <div class="module-status" style="color: var(--muted);"><span style="background: var(--muted-2);"></span> Disponible para instalar</div>
     </div>
 </div>
+
+<script>
+    function moduleManager() {
+        return {
+            modules: {
+                inventory: true,
+                accounting: false,
+                hr: false
+            },
+            init() {
+                this.loadModules();
+            },
+            loadModules() {
+                const saved = localStorage.getItem('novex_modules');
+                if (saved) {
+                    this.modules = JSON.parse(saved);
+                }
+            },
+            saveModules() {
+                localStorage.setItem('novex_modules', JSON.stringify(this.modules));
+                // Dispatch custom event para que el sidebar se actualice
+                window.dispatchEvent(new CustomEvent('modules-updated', { detail: this.modules }));
+            }
+        }
+    }
+</script>

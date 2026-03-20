@@ -20,29 +20,34 @@
           </nav>
         </div>
 
-        <div class="sidebar-section">
+        <div class="sidebar-section" x-data="sidebarModules()" @modules-updated.window="loadModules()">
           <div class="sidebar-section-title">Modules</div>
 
           <nav class="nav" aria-label="Navegación de módulos">
-            <a class="nav-item" href="#">
+            <!-- Inventario -->
+            <a class="nav-item" href="#" x-show="modules.inventory">
               <span class="nav-icon" aria-hidden="true">
                 <iconify-icon icon="streamline-ultimate:warehouse-cart-packages-2-bold"></iconify-icon>
               </span>
               <span class="nav-label">Inventario</span>
             </a>
 
-            <a class="nav-item is-active" href="#">
+            <!-- Contabilidad -->
+            <a class="nav-item disabled" href="#" :class="{ 'opacity-50': !modules.accounting }">
               <span class="nav-icon" aria-hidden="true">
                 <iconify-icon icon="material-symbols:finance-rounded"></iconify-icon>
               </span>
               <span class="nav-label">Contabilidad</span>
+              <iconify-icon icon="uil:padlock"></iconify-icon>
             </a>
 
-            <a class="nav-item" href="#">
+            <!-- Recursos Humanos -->
+            <a class="nav-item disabled" href="#" :class="{ 'opacity-50': !modules.hr }">
               <span class="nav-icon" aria-hidden="true">
                 <iconify-icon icon="formkit:people"></iconify-icon>
               </span>
               <span class="nav-label">Recursos Humanos</span>
+              <iconify-icon icon="uil:padlock"></iconify-icon>
             </a>
           </nav>
         </div>
@@ -103,33 +108,6 @@
         
         <!-- Sidebar Bottom -->
           <div class="sidebar-section">
-            <div class="sidebar-section-title">Other</div>
-
-            <nav class="nav" aria-label="Navegación pages">
-              <a class="nav-item" href="{{ route('controlpanel.home') }}">
-                <span class="nav-icon" aria-hidden="true">
-                  <iconify-icon icon="mingcute:dashboard-3-line"></iconify-icon>
-                </span>
-                <span class="nav-label">Control Panel</span>
-                
-              </a>
-
-              <a class="nav-item" href="{{ route('settings.profile') }}">
-                <span class="nav-icon" aria-hidden="true">
-                  <iconify-icon icon="lucide:settings" width="16"></iconify-icon>
-                </span>
-                <span class="nav-label">Settings</span>
-                
-              </a>
-
-              <a class="nav-item" href="#">
-                <span class="nav-icon" aria-hidden="true">
-                  <iconify-icon icon="lucide:help-circle" width="16"></iconify-icon>
-                </span>
-                <span class="nav-label">Help Center</span>
-              </a>
-            </nav>
-         
             <div
               x-data="{
                 open: false,
@@ -211,3 +189,24 @@
             </div>
         </div>
       </aside>
+
+<script>
+  function sidebarModules() {
+    return {
+      modules: {
+        inventory: true,
+        accounting: true,
+        hr: true
+      },
+      init() {
+        this.loadModules();
+      },
+      loadModules() {
+        const saved = localStorage.getItem('novex_modules');
+        if (saved) {
+          this.modules = JSON.parse(saved);
+        }
+      }
+    }
+  }
+</script>

@@ -325,10 +325,28 @@ tbody tr:last-child td {
     padding-top: 1.5rem;
     font-size: 0.8rem;
     font-weight: 600;
-    color: var(--muted);
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+.module-status.active {
+    color: #10b981;
+}
+
+.module-status.inactive {
+    color: #ef4444;
+}
+
+.module-status.developing {
+    color: #9ca3af;
+}
+
+.module-status.developing span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
 
 .module-status::before {
@@ -337,8 +355,106 @@ tbody tr:last-child td {
     width: 0.6rem;
     height: 0.6rem;
     border-radius: 50%;
-    background-color: #10b981; /* green-500 */
+    background-color: currentColor;
     box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+.module-status.inactive::before {
+    background-color: #ef4444;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+.module-status.developing::before {
+    background-color: #9ca3af;
+    box-shadow: 0 0 0 2px rgba(156, 163, 175, 0.2);
+}
+
+/* MODULE CARD HEADER WITH SWITCH */
+.module-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.module-card-header > div {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.module-card-header .module-icon {
+    margin-bottom: 0;
+}
+
+/* SWITCH TOGGLE */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ef4444;
+    transition: 0.3s;
+    border-radius: 26px;
+    border: 1px solid #dc2626;
+}
+
+.slider:before {
+    position: absolute;
+    content: '';
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+input:checked + .slider {
+    background-color: #10b981;
+    border-color: #059669;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #10b981;
+}
+
+input:disabled + .slider {
+    background-color: #d1d5db;
+    border-color: #9ca3af;
+    cursor: not-allowed;
+}
+
+input:disabled + .slider:before {
+    background-color: #f3f4f6;
+}
+
+.switch.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 /* RESPONSIVE */

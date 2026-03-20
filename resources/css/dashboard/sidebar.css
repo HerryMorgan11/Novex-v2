@@ -214,7 +214,9 @@
     transition:
         background 0.15s ease,
         border-color 0.15s ease,
-        transform 0.05s ease;
+        transform 0.05s ease,
+        opacity 0.15s ease,
+        color 0.15s ease;
 }
 .nav-item:hover {
     background: var(--surface-2);
@@ -226,6 +228,20 @@
 .nav-item:focus-visible {
     outline: none;
     box-shadow: 0 0 0 4px var(--ring);
+}
+
+.nav-item.disabled {
+    cursor: not-allowed;
+    color: var(--muted);
+    pointer-events: none;
+}
+
+.nav-item.disabled:hover {
+    background: transparent;
+}
+
+.opacity-50 {
+    opacity: 0.5;
 }
 
 .nav-icon {
