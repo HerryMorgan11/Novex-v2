@@ -13,6 +13,7 @@ export default defineConfig({
                 'resources/css/landing/sections/home/modules-section.css',
                 'resources/css/landing/sections/home/choose.css',
                 'resources/css/landing/sections/home/pricing.css',
+                'resources/css/landing/sections/home/scale-fast.css',
                 'resources/js/app.js',
                 'resources/css/auth/auth.css',
                 'resources/css/landing/general-style.css',
