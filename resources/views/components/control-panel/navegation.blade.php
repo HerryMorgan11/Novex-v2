@@ -10,7 +10,13 @@ return new class extends Component
 
     public function mount()
     {
-        $this->users = User::all();
+        $currentTenant = tenant();
+        
+        if ($currentTenant) {
+            $this->users = User::whereHas('memberships', function ($query) use ($currentTenant) {
+                $query->where('tenant_id', $currentTenant->id);
+            })->get();
+        }
     }
 
     public function changeSection($section)
@@ -65,7 +71,7 @@ return new class extends Component
                 </div>
 
                 <div x-show="section === 'users'">
-                    @include('dashboard.features.control-panel.ui.users')
+                    @include('dashboard.features.control-panel.ui.users', ['users' => $users])
                 </div>
 
                 <div x-show="section === 'company'">
