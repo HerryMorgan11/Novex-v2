@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\controlPanel\UserCompany;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Password;
@@ -106,8 +105,9 @@ Route::middleware(['auth', 'checkHasTenant'])->group(function () {
         return view('dashboard.features.settings.settingsApp');
     })->name('settings.profile');
 
-    Route::get('/controlpanel/home', [UserCompany::class, 'UserControl'])
-        ->name('controlpanel.home');
+    Route::get('/controlpanel/home', function () {
+        return view('dashboard.features.control-panel.controlPanelApp');
+    })->name('controlpanel.home');
 
 });
 

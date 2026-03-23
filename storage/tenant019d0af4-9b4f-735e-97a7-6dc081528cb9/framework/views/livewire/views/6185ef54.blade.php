@@ -1,30 +1,6 @@
 <?php
-
 use Livewire\Component;
 use App\Models\User;
-
-return new class extends Component
-{
-    public $section = "home";
-    public $users = [];
-
-    public function mount()
-    {
-        $currentTenant = tenant();
-        
-        if ($currentTenant) {
-            $this->users = User::whereHas('memberships', function ($query) use ($currentTenant) {
-                $query->where('tenant_id', $currentTenant->id);
-            })->get();
-        }
-    }
-
-    public function changeSection($section)
-    {
-        $this->section = $section;
-    }
-};
-
 ?>
 
 <div x-data="{ section: 'home' }" x-cloak class="panel-container">

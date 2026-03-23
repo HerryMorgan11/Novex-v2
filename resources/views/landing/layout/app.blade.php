@@ -12,8 +12,9 @@
     @vite('resources/css/landing/shared/navbar.css')
     @vite('resources/css/landing/sections/home/header.css')
     @vite('resources/css/landing/sections/home/modules-section.css')
+    @vite('resources/css/landing/sections/home/scale-fast.css')
     @vite('resources/css/landing/sections/home/choose.css')
-    @vite('resources/css/landing/sections/precios.css')
+    @vite('resources/css/landing/sections/home/pricing.css')
     @vite('resources/css/landing/shared/footer.css')
 
 </head>

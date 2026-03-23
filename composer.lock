@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc32ed49a3dc6e0f15c717dd8caec850",
+    "content-hash": "3d3c13dd51e82665a769d94bf04ac72a",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1408,16 +1408,16 @@
         },
         {
             "name": "laravel/fortify",
-            "version": "v1.34.1",
+            "version": "v1.36.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/fortify.git",
-                "reference": "412575e9c0cb21d49a30b7045ad4902019f538c2"
+                "reference": "cad8bfeb63f6818f173d40090725c565c92651d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/fortify/zipball/412575e9c0cb21d49a30b7045ad4902019f538c2",
-                "reference": "412575e9c0cb21d49a30b7045ad4902019f538c2",
+                "url": "https://api.github.com/repos/laravel/fortify/zipball/cad8bfeb63f6818f173d40090725c565c92651d4",
+                "reference": "cad8bfeb63f6818f173d40090725c565c92651d4",
                 "shasum": ""
             },
             "require": {
@@ -1467,7 +1467,7 @@
                 "issues": "https://github.com/laravel/fortify/issues",
                 "source": "https://github.com/laravel/fortify"
             },
-            "time": "2026-02-03T06:55:55+00:00"
+            "time": "2026-03-10T19:59:49+00:00"
         },
         {
             "name": "laravel/framework",
