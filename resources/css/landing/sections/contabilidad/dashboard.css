@@ -1,0 +1,300 @@
+/* === Contabilidad Dashboard Section === */
+.conta2-dash-section {
+    padding: 100px 48px;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.dark-theme .conta2-dash-section {
+    background: #000000;
+}
+
+.conta2-dash-section::before {
+    content: '';
+    position: absolute;
+    top: -150px;
+    right: -100px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.07) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+.conta2-dash-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 64px;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .conta2-dash-inner {
+        grid-template-columns: 1fr;
+    }
+    .conta2-dash-section {
+        padding: 60px 24px;
+    }
+}
+
+/* Text side */
+.conta2-dash-pretitle {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ff6b35;
+    margin-bottom: 14px;
+}
+
+.conta2-dash-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #111827;
+    line-height: 1.2;
+    margin: 0 0 20px;
+}
+
+.dark-theme .conta2-dash-title {
+    color: #f9fafb;
+}
+
+.conta2-dash-desc {
+    font-size: 1rem;
+    color: #6b6b7b;
+    line-height: 1.7;
+    margin: 0 0 32px;
+}
+
+.dark-theme .conta2-dash-desc {
+    color: #9ca3af;
+}
+
+.conta2-dash-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.conta2-dash-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    color: #111827;
+}
+
+.dark-theme .conta2-dash-features li {
+    color: #d1d5db;
+}
+
+.conta2-dash-features li .chk {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: rgba(255, 64, 129, 0.15);
+    border: 1px solid rgba(255, 64, 129, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff4081;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+}
+
+/* Dashboard mockup */
+.conta2-dashboard-mock {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 28px;
+    position: relative;
+}
+
+.dark-theme .conta2-dashboard-mock {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.conta2-mock-topbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.conta2-mock-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.conta2-mock-dot.red {
+    background: #ff5f57;
+}
+.conta2-mock-dot.yellow {
+    background: #febc2e;
+}
+.conta2-mock-dot.green {
+    background: #28c840;
+}
+
+.conta2-mock-tabs {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+}
+
+.conta2-mock-tab {
+    background: #e5e7eb;
+    border: none;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    color: #6b6b7b;
+    cursor: pointer;
+}
+
+.dark-theme .conta2-mock-tab {
+    background: rgba(255, 255, 255, 0.06);
+    color: #9ca3af;
+}
+
+.conta2-mock-tab.active {
+    background: rgba(255, 64, 129, 0.15);
+    color: #ff4081;
+}
+
+/* KPI row */
+.conta2-kpi-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.conta2-kpi-box {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.dark-theme .conta2-kpi-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.conta2-kpi-label {
+    font-size: 0.68rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.conta2-kpi-value {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #1a1a24;
+    letter-spacing: -0.02em;
+}
+
+.dark-theme .conta2-kpi-value {
+    color: #f9fafb;
+}
+
+.conta2-kpi-value.positive {
+    color: #10b981;
+}
+.conta2-kpi-value.negative {
+    color: #ff4081;
+}
+
+/* Bar chart */
+.conta2-chart-area {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px;
+    height: 120px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+.dark-theme .conta2-chart-area {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.conta2-bar {
+    flex: 1;
+    border-radius: 4px 4px 0 0;
+    background: rgba(255, 64, 129, 0.25);
+    transition: background 200ms;
+}
+
+.conta2-bar:hover {
+    background: rgba(255, 64, 129, 0.5);
+}
+.conta2-bar.accent {
+    background: linear-gradient(180deg, #ff6b35, #ff4081);
+}
+
+/* Transaction list */
+.conta2-txn-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.conta2-txn-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    color: #6b6b7b;
+}
+
+.dark-theme .conta2-txn-item {
+    color: #9ca3af;
+}
+
+.conta2-txn-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #111827;
+}
+
+.dark-theme .conta2-txn-name {
+    color: #d1d5db;
+}
+
+.conta2-txn-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+}
+
+.conta2-txn-amount.green {
+    color: #10b981;
+    font-weight: 600;
+}
+.conta2-txn-amount.red {
+    color: #ef4444;
+    font-weight: 600;
+}

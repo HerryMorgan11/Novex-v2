@@ -29,7 +29,10 @@
 }
 
 .titulos-texto .title-gradient {
-    color: var(--accent);
+    background: linear-gradient(135deg, #ff6b35 0%, #ff4081 50%, #9c27b0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     display: block;
     margin-bottom: 2rem;
 }

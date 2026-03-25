@@ -1,0 +1,229 @@
+/* === CRM Métricas Section === */
+.crm-metricas-section {
+    padding: 100px 48px;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.dark-theme .crm-metricas-section {
+    background: #000000;
+}
+
+.crm-metricas-section::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.crm-metricas-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.crm-metricas-header {
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+.crm-metricas-pretitle {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ff6b35;
+    margin-bottom: 14px;
+}
+
+.crm-metricas-title {
+    font-size: 2.6rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #111827;
+    margin: 0 0 16px;
+    line-height: 1.15;
+}
+
+.dark-theme .crm-metricas-title {
+    color: #f9fafb;
+}
+
+.crm-metricas-subtitle {
+    font-size: 1.05rem;
+    color: #6b6b7b;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.65;
+}
+
+.dark-theme .crm-metricas-subtitle {
+    color: #9ca3af;
+}
+
+.crm-metricas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+}
+
+@media (max-width: 768px) {
+    .crm-metricas-grid {
+        grid-template-columns: 1fr;
+    }
+    .crm-metricas-section {
+        padding: 60px 24px;
+    }
+}
+
+.crm-metric-card {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 40px 32px;
+    text-align: center;
+    transition:
+        background 250ms,
+        border-color 250ms;
+}
+
+.dark-theme .crm-metric-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.crm-metric-card:hover {
+    background: #efe8e1;
+    border-color: #ff6b35;
+}
+
+.dark-theme .crm-metric-card:hover {
+    background: rgba(255, 107, 53, 0.06);
+    border-color: rgba(255, 107, 53, 0.2);
+}
+
+.crm-metric-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgba(255, 107, 53, 0.1);
+    color: #ff6b35;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 20px;
+}
+
+.crm-metric-value {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, #ff6b35 0%, #ff4081 50%, #9c27b0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 12px;
+}
+
+.crm-metric-label {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1a1a24;
+    margin-bottom: 8px;
+}
+
+.dark-theme .crm-metric-label {
+    color: #f9fafb;
+}
+
+.crm-metric-desc {
+    font-size: 0.88rem;
+    color: #6b6b7b;
+    line-height: 1.6;
+}
+
+.dark-theme .crm-metric-desc {
+    color: #9ca3af;
+}
+
+/* Testimonial quote */
+.crm-quote-block {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 48px 56px;
+    text-align: center;
+}
+
+.dark-theme .crm-quote-block {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+@media (max-width: 768px) {
+    .crm-quote-block {
+        padding: 32px 24px;
+    }
+}
+
+.crm-quote-mark {
+    font-size: 4rem;
+    line-height: 1;
+    color: rgba(255, 107, 53, 0.4);
+    margin-bottom: 16px;
+    font-family: Georgia, serif;
+}
+
+.crm-quote-text {
+    font-size: 1.2rem;
+    color: #111827;
+    line-height: 1.7;
+    font-style: italic;
+    max-width: 700px;
+    margin: 0 auto 28px;
+}
+
+.dark-theme .crm-quote-text {
+    color: #e5e7eb;
+}
+
+.crm-quote-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+.crm-quote-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.crm-quote-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1a1a24;
+}
+
+.dark-theme .crm-quote-name {
+    color: #f9fafb;
+}
+
+.crm-quote-role {
+    font-size: 0.8rem;
+    color: #6b6b7b;
+}
+
+.dark-theme .crm-quote-role {
+    color: #9ca3af;
+}

@@ -34,6 +34,14 @@ Route::get('/contabilidad', function () {
     return view('landing.pages.contabilidad');
 })->name('contabilidad');
 
+Route::get('/inventario', function () {
+    return view('landing.pages.inventario');
+})->name('inventario');
+
+Route::get('/crm', function () {
+    return view('landing.pages.crm');
+})->name('crm');
+
 Route::get('/recursos-humanos', function () {
     return view('landing.pages.recursos-humanos');
 })->name('recursos-humanos');
