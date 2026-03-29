@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TenantSetting extends Model
 {
-    protected $connection = 'mysql';
-
     protected $fillable = [
         'tenant_id',
         'timezone',

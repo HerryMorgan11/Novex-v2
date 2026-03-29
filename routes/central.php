@@ -129,6 +129,11 @@ Route::middleware(['auth', 'checkHasTenant'])->group(function () {
         return view('dashboard.features.control-panel.controlPanelApp');
     })->name('controlpanel.home');
 
+    // Módulo de Notas
+    Route::get('/dashboard/features/notes', function () {
+        return view('dashboard.features.notes.index');
+    })->name('dashboard.features.notes.index');
+
 });
 
 // Provisioning page shown after registration while tenant is being prepared

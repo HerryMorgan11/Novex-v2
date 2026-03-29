@@ -10,8 +10,6 @@ class TenantMembership extends Model
 {
     use SoftDeletes;
 
-    protected $connection = 'mysql';
-
     protected $fillable = [
         'user_id',
         'tenant_id',

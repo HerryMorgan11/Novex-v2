@@ -67,7 +67,7 @@
             </a>
             
             <!-- Notas -->
-            <a class="nav-item" href="#">
+            <a class="nav-item" href="{{ route('dashboard.features.notes.index') }}">
               <span class="nav-icon" aria-hidden="true">
                 <iconify-icon icon="lucide:shield-check" width="16"></iconify-icon>
               </span>
