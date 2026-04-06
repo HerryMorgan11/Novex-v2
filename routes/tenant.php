@@ -35,6 +35,10 @@ Route::middleware(['auth'])->group(function () {
             'database' => DB::connection()->getDatabaseName(),
         ];
     });
+
+    // ──────────────────────────────────────────────────────────────────────
+    // Other tenant routes can go here
+    // ──────────────────────────────────────────────────────────────────────
 });
 
 Route::get('/health', fn () => 'TENANT HEALTH OK');

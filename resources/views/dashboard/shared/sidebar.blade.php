@@ -85,12 +85,11 @@
             </a>
 
             <!-- Recordatorios -->
-            <a class="nav-item" href="#">
+            <a class="nav-item" href="{{ route('reminders.index') }}">
               <span class="nav-icon" aria-hidden="true">
-                <iconify-icon icon="lucide:bug" width="16"></iconify-icon>
+                <iconify-icon icon="lucide:bell" width="16"></iconify-icon>
               </span>
               <span class="nav-label">Recordatorios</span>
-              <iconify-icon icon="lucide:chevron-right" width="16" style="margin-left: auto; color: var(--muted);"></iconify-icon>
             </a>
 
             <!-- Calendario -->

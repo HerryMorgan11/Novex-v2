@@ -47,7 +47,7 @@ use App\Models\User;
                 </div>
 
                 <div x-show="section === 'users'">
-                    @include('dashboard.features.control-panel.ui.users')
+                    @include('dashboard.features.control-panel.ui.users', ['users' => $users])
                 </div>
 
                 <div x-show="section === 'company'">
