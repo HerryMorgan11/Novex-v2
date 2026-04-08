@@ -49,6 +49,10 @@ class ReminderController extends Controller
         $lists = ReminderList::forUser($user)->ordered()->withCount('reminders')->get();
         $tags = Tag::forUser($user)->ordered()->withCount('reminders')->get();
 
+        $currentList = $request->filled('list')
+            ? ReminderList::forUser($user)->find((int) $request->list)
+            : null;
+
         // Contadores para sidebar
         $todayCount = Reminder::forUser($user)->active()->dueToday()->count();
         $pendingCount = Reminder::forUser($user)->active()->pending()->count();
@@ -56,7 +60,7 @@ class ReminderController extends Controller
         $completedCount = Reminder::forUser($user)->completed()->count();
         $overdueCount = Reminder::forUser($user)->active()->overdue()->count();
 
-        return view('dashboard.features.reminders.reminders.index', compact('reminders', 'lists', 'tags', 'filter', 'todayCount', 'pendingCount', 'allCount', 'completedCount', 'overdueCount'));
+        return view('dashboard.features.reminders.reminders.index', compact('reminders', 'lists', 'tags', 'filter', 'todayCount', 'pendingCount', 'allCount', 'completedCount', 'overdueCount', 'currentList'));
     }
 
     public function create(Request $request): View

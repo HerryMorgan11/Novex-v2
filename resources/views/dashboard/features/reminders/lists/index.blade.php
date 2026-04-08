@@ -26,8 +26,8 @@
     }
     .btn-primary-lists {
         flex: 1;
-        background: #007aff;
-        color: #fff;
+        background: var(--accent, #007aff);
+        color: var(--accent-fg, #fff);
         padding: 12px;
         border-radius: 10px;
         border: none;
@@ -46,8 +46,72 @@
         font-weight: 600;
         cursor: pointer;
     }
+    /* Table */
+    .table-wrap {
+        border: 1px solid var(--border, #e5e5ea);
+        border-radius: 10px;
+        overflow: hidden;
+        background: var(--card, #fff);
+    }
+    .dark-theme .table-wrap {
+        background: var(--card);
+        border-color: var(--border);
+    }
+    .lists-table { width: 100%; border-collapse: collapse; }
+    .lists-table th {
+        text-align: left;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+        color: var(--muted, #8e8e93);
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--border, #e5e5ea);
+        white-space: nowrap;
+        background: var(--surface-2, #f5f5f7);
+    }
+    .dark-theme .lists-table th {
+        background: var(--surface-2);
+        border-color: var(--border);
+        color: var(--muted);
+    }
+    .lists-table td {
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--border, #e5e5ea);
+        font-size: 14px;
+        color: var(--fg, #1c1c1e);
+        vertical-align: middle;
+    }
+    .dark-theme .lists-table td {
+        border-color: var(--border);
+        color: var(--fg);
+    }
+    .lists-table tbody tr:last-child td { border-bottom: none; }
+    .lists-table tbody tr:hover td { background: var(--surface-2, #f9f9f9); }
+    .dark-theme .lists-table tbody tr:hover td { background: var(--surface-2); }
+    .tbl-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 2px 8px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+    .tbl-action {
+        display: inline-flex;
+        align-items: center;
+        padding: 5px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: opacity .15s;
+    }
+    .tbl-action:hover { opacity: .8; }
 </style>
-<div style="max-width:700px; margin:32px auto; padding:0 20px;">
+<div style="max-width:900px; margin:32px auto; padding:0 20px;">
 
     @if(session('success'))
         <div style="background:#d1fae5; border:1px solid #6ee7b7; color:#065f46; padding:12px 16px; border-radius:10px; margin-bottom:16px;">
@@ -62,8 +126,8 @@
 
     <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px;">
         <div style="display:flex; align-items:center; gap:12px;">
-            <a href="{{ route('reminders.index') }}" style="color:#007aff; font-size:14px; text-decoration:none;">← Recordatorios</a>
-            <h1 style="font-size:24px; font-weight:700; color:#1c1c1e; margin:0;">Mis listas</h1>
+            <a href="{{ route('reminders.index') }}" style="color:var(--accent,#007aff); font-size:14px; text-decoration:none;">← Recordatorios</a>
+            <h1 style="font-size:24px; font-weight:700; color:var(--fg,#1c1c1e); margin:0;">Mis listas</h1>
         </div>
         <button onclick="openNewListModal()"
                 style="background:#007aff; color:#fff; padding:10px 18px; border-radius:10px; border:none; cursor:pointer; font-size:14px; font-weight:600;">
@@ -72,50 +136,73 @@
     </div>
 
     @if($lists->isEmpty())
-        <div style="text-align:center; padding:60px 20px; color:#8e8e93;">
-            <p style="font-size:18px; font-weight:600; color:#1c1c1e; margin-bottom:8px;">Sin listas</p>
+        <div style="text-align:center; padding:60px 20px; color:var(--muted,#8e8e93);">
+            <p style="font-size:17px; font-weight:600; color:var(--fg,#1c1c1e); margin-bottom:8px;">Sin listas</p>
             <p style="font-size:14px; margin-bottom:20px;">Crea tu primera lista para organizar tus recordatorios.</p>
             <button onclick="openNewListModal()"
-                    style="background:#007aff; color:#fff; padding:10px 20px; border-radius:10px; border:none; cursor:pointer; font-size:14px; font-weight:600;">
+                    class="tbl-action"
+                    style="background:var(--accent,#007aff); color:var(--accent-fg,#fff); padding:10px 20px; font-size:14px;">
                 Crear lista
             </button>
         </div>
     @else
-        <div style="display:flex; flex-direction:column; gap:8px;">
-            @foreach($lists as $list)
-                <div style="background:#fff; border:1px solid #e5e5ea; border-radius:12px; padding:14px 18px; display:flex; align-items:center; gap:12px;">
-                    <span style="width:14px; height:14px; border-radius:50%; background:{{ $list->color ?? '#007aff' }}; flex-shrink:0;"></span>
-
-                    <div style="flex:1;">
-                        <div style="display:flex; align-items:center; gap:8px;">
-                            <span style="font-size:15px; font-weight:600; color:#1c1c1e;">{{ $list->name }}</span>
+    <div class="table-wrap">
+        <table class="lists-table">
+            <thead>
+                <tr>
+                    <th>Lista</th>
+                    <th>Pendientes</th>
+                    <th>Vencidas</th>
+                    <th>Completadas</th>
+                    <th>Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($lists as $list)
+                <tr>
+                    <td>
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <span style="width:10px; height:10px; border-radius:50%; background:{{ $list->color ?? '#007aff' }}; flex-shrink:0;"></span>
+                            <span style="font-weight:600;">{{ $list->name }}</span>
                             @if($list->is_default)
-                                <span style="background:#e5e5ea; color:#8e8e93; padding:2px 8px; border-radius:10px; font-size:11px;">Por defecto</span>
+                                <span class="tbl-badge" style="background:var(--surface-2); color:var(--muted); font-size:10px;">Por defecto</span>
                             @endif
                         </div>
-                        <div style="font-size:12px; color:#8e8e93; margin-top:2px;">
-                            {{ $list->pendingRemindersCount() }} pendiente(s) · {{ $list->completedRemindersCount() }} completado(s)
-                        </div>
-                    </div>
-
-                    <div style="display:flex; align-items:center; gap:8px;">
-                        <a href="{{ route('reminders.index', ['list' => $list->id]) }}"
-                           style="background:#007aff; color:#fff; padding:7px 14px; border-radius:8px; text-decoration:none; font-size:13px; font-weight:600;">Abrir</a>
-                        <a href="{{ route('reminders.lists.edit', $list) }}"
-                           style="background:#f2f2f7; color:#1c1c1e; padding:7px 12px; border-radius:8px; text-decoration:none; font-size:13px;">Editar</a>
-                        @can('delete', $list)
+                    </td>
+                    <td style="font-weight:600;">{{ $list->pendingRemindersCount() }}</td>
+                    <td>
+                        @php $ov = $list->overdueRemindersCount(); @endphp
+                        @if($ov > 0)
+                            <span class="tbl-badge" style="background:#fee2e2; color:#dc2626;">{{ $ov }}</span>
+                        @else
+                            <span style="color:var(--muted);">—</span>
+                        @endif
+                    </td>
+                    <td>{{ $list->completedRemindersCount() }}</td>
+                    <td style="color:var(--muted);">{{ $list->totalRemindersCount() }}</td>
+                    <td>
+                        <div style="display:flex; align-items:center; gap:6px;">
+                            <a href="{{ route('reminders.index', ['list' => $list->id, 'filter' => 'all']) }}"
+                               class="tbl-action" style="background:var(--accent,#007aff); color:var(--accent-fg,#fff);">Abrir</a>
+                            <a href="{{ route('reminders.lists.edit', $list) }}"
+                               class="tbl-action" style="background:var(--surface-2,#f2f2f7); color:var(--fg,#1c1c1e);">Editar</a>
+                            @can('delete', $list)
                             <form action="{{ route('reminders.lists.destroy', $list) }}" method="POST"
                                   onsubmit="return confirm('¿Eliminar esta lista? Los recordatorios se conservarán.')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit"
-                                        style="background:#fee2e2; color:#dc2626; padding:7px 12px; border-radius:8px; border:none; cursor:pointer; font-size:13px;">Eliminar</button>
+                                <button type="submit" class="tbl-action"
+                                        style="background:var(--surface-2,#f2f2f7); color:#dc2626;">Eliminar</button>
                             </form>
-                        @endcan
-                    </div>
-                </div>
-            @endforeach
-        </div>
+                            @endcan
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
     @endif
 </div>
 

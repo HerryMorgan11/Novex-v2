@@ -155,7 +155,7 @@
         </div>
         <div style="space-y: 4px;">
             @forelse($lists as $list)
-                <a href="{{ route('reminders.index', ['list' => $list->id]) }}" class="list-item">
+                <a href="{{ route('reminders.index', ['list' => $list->id, 'filter' => 'all']) }}" class="list-item">
                     <div style="display: flex; align-items: center; gap: 10px; flex: 1;">
                         <div class="list-color" style="background-color: {{ $list->color ?? '#007AFF' }}"></div>
                         <span>{{ $list->name }}</span>
@@ -165,6 +165,15 @@
             @empty
                 <p style="font-size: 12px; color: var(--text-muted, #999); padding: 8px;">Sin listas</p>
             @endforelse
+        </div>
+
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--border,#e0e0e0);">
+            <a href="{{ route('reminders.lists.index') }}"
+               style="display:flex; align-items:center; gap:6px; font-size:12px; color:var(--muted,#999); text-decoration:none; padding:6px 8px; border-radius:6px; transition:background .15s;"
+               onmouseover="this.style.background='var(--surface-2)'" onmouseout="this.style.background='transparent'">
+                <iconify-icon icon="lucide:settings-2" width="14"></iconify-icon>
+                Gestionar listas
+            </a>
         </div>
 
     </aside>
@@ -187,6 +196,7 @@
                 display: flex;
                 align-items: center;
                 gap: 16px;
+                flex-wrap: wrap;
             }
             .reminders-title {
                 font-size: 28px;
@@ -374,6 +384,37 @@
                         Pendientes
                 @endswitch
             </h1>
+            @if($currentList)
+            <div style="display:flex; align-items:center; gap:6px; font-size:13px; color:var(--muted,#999); width:100%; margin-top:2px;">
+                <span style="width:10px; height:10px; border-radius:50%; background:{{ $currentList->color ?? '#007aff' }}; flex-shrink:0;"></span>
+                <iconify-icon icon="lucide:list" width="13"></iconify-icon>
+                <span>{{ $currentList->name }}</span>
+                <span style="color:var(--border,#ddd);">·</span>
+                <a href="{{ route('reminders.index') }}" style="color:var(--muted,#999); text-decoration:none; font-size:12px;">Ver todas</a>
+            </div>
+            @endif
+            @if($currentList)
+            @php $listId = $currentList->id; $lf = request('filter', 'all'); @endphp
+            <div style="display:flex; gap:6px; flex-wrap:wrap; width:100%; padding-bottom:16px; border-bottom:1px solid var(--border,#e0e0e0); margin-bottom:8px;">
+                @foreach([
+                    ['all',       'Todas',       'lucide:layout-list'],
+                    ['pending',   'Pendientes',  'lucide:clock'],
+                    ['overdue',   'Vencidas',    'lucide:alert-circle'],
+                    ['completed', 'Completadas', 'lucide:check-circle-2'],
+                ] as [$val, $label, $icon])
+                <a href="{{ route('reminders.index', ['list' => $listId, 'filter' => $val]) }}"
+                   style="display:flex; align-items:center; gap:5px; padding:5px 12px; border-radius:6px; font-size:12px; font-weight:600; text-decoration:none;
+                          background:{{ $lf === $val ? 'var(--accent,#007aff)' : 'var(--surface-2,#f2f2f7)' }};
+                          color:{{ $lf === $val ? 'var(--accent-fg,#fff)' : 'var(--fg,#555)' }};">
+                    <iconify-icon icon="{{ $icon }}" width="13"></iconify-icon>
+                    {{ $label }}
+                    @if($val === 'overdue' && $currentList->overdueRemindersCount() > 0)
+                        <span style="background:#ff3b30; color:#fff; border-radius:8px; padding:1px 5px; font-size:10px; margin-left:2px;">{{ $currentList->overdueRemindersCount() }}</span>
+                    @endif
+                </a>
+                @endforeach
+            </div>
+            @endif
             <span class="reminders-subtitle">{{ now()->format('l, M d') }}</span>
             <button onclick="document.getElementById('modalNewReminder').style.display='flex'"
                     class="btn-primary"

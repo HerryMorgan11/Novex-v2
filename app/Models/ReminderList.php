@@ -66,6 +66,21 @@ class ReminderList extends Model
         return $this->reminders()->where('is_completed', true)->count();
     }
 
+    public function overdueRemindersCount(): int
+    {
+        return $this->reminders()
+            ->whereNotNull('due_at')
+            ->where('due_at', '<', now())
+            ->where('is_completed', false)
+            ->whereNull('deleted_at')
+            ->count();
+    }
+
+    public function totalRemindersCount(): int
+    {
+        return $this->reminders()->whereNull('deleted_at')->count();
+    }
+
     /**
      * Cuando se establece esta lista como por defecto, se quita el flag
      * de cualquier otra lista del mismo usuario.
