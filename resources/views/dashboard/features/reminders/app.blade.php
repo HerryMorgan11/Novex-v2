@@ -62,33 +62,7 @@
             </div>
         @endif
 
-        {{-- Etiquetas --}}
-        <div>
-            <div style="display:flex; align-items:center; justify-content:space-between; padding:0 8px; margin-bottom:8px;">
-                <p style="font-size:11px; font-weight:600; color:#8e8e93; text-transform:uppercase; letter-spacing:.05em; margin:0;">Etiquetas</p>
-                <a href="{{ route('reminders.tags.create') }}" style="color:#007aff; font-size:18px; line-height:1; text-decoration:none;">+</a>
-            </div>
-            @php
-                $sidebarTags = \App\Models\Tag::forUser(auth()->user())->ordered()->get();
-            @endphp
-            @foreach($sidebarTags as $sidebarTag)
-                <a href="{{ route('reminders.index', ['tag' => $sidebarTag->id]) }}"
-                   style="display:flex; align-items:center; gap:8px; padding:6px 10px; border-radius:8px; text-decoration:none; color:#1c1c1e; font-size:13px; {{ request('tag') == $sidebarTag->id ? 'background:#e5e5ea;' : '' }}">
-                    <span style="width:8px; height:8px; border-radius:50%; background:{{ $sidebarTag->color ?? '#8e8e93' }}; flex-shrink:0;"></span>
-                    {{ $sidebarTag->name }}
-                </a>
-            @endforeach
 
-            @if($sidebarTags->isEmpty())
-                <p style="font-size:12px; color:#8e8e93; padding:4px 10px;">Sin etiquetas</p>
-            @endif
-        </div>
-
-        {{-- Acciones de gestión --}}
-        <div style="margin-top:auto; padding-top:16px; border-top:1px solid #e5e5ea;">
-            <a href="{{ route('reminders.lists.index') }}" style="display:block; padding:6px 10px; font-size:13px; color:#007aff; text-decoration:none;">Gestionar listas</a>
-            <a href="{{ route('reminders.tags.index') }}" style="display:block; padding:6px 10px; font-size:13px; color:#007aff; text-decoration:none;">Gestionar etiquetas</a>
-        </div>
     </aside>
 
     {{-- Contenido Principal --}}

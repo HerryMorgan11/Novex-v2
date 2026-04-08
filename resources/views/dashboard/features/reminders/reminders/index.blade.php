@@ -3,26 +3,27 @@
 @section('content')
 <div class="reminders-container" style="display: flex; gap: 20px; padding: 20px;">
     <!-- Sidebar Reminders -->
-    <aside class="reminders-sidebar" style="width: 280px; flex-shrink: 0;">
+    <aside class="reminders-sidebar" style="flex-shrink: 0;">
         <style>
             .reminders-sidebar {
-                background: var(--sidebar-bg, #f5f5f5);
+                background: var(--surface-2, #f5f5f5);
                 border-radius: 8px;
                 padding: 16px;
-                border: 1px solid var(--border-color, #e0e0e0);
-                max-height: calc(100vh - 120px);
+                border: 1px solid var(--border, #e0e0e0);
+                height: calc(100vh - 160px);
                 overflow-y: auto;
+                width: 240px;
             }
-            .dark .reminders-sidebar {
-                background: var(--sidebar-bg, #1a1a1a);
-                border-color: var(--border-color, #333);
+            .dark-theme .reminders-sidebar {
+                background: var(--sidebar);
+                border-color: var(--border);
             }
             .reminders-sidebar h3 {
                 font-size: 12px;
                 font-weight: 700;
                 text-transform: uppercase;
                 letter-spacing: 0.5px;
-                color: var(--text-muted, #999);
+                color: var(--muted, #999);
                 margin-top: 16px;
                 margin-bottom: 8px;
                 padding: 0 8px;
@@ -36,25 +37,28 @@
             .filter-card {
                 padding: 12px;
                 border-radius: 6px;
-                background: var(--card-bg, #ffffff);
-                border: 1px solid var(--border-color, #e0e0e0);
+                background: var(--card, #ffffff);
+                border: 1px solid var(--border, #e0e0e0);
                 text-decoration: none;
                 cursor: pointer;
                 transition: all 0.2s;
-                text-align: center;
-                color: var(--text-primary, #333);
+                color: var(--fg, #333);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: 8px;
             }
-            .dark .filter-card {
-                background: var(--card-bg, #2a2a2a);
-                border-color: var(--border-color, #444);
-                color: var(--text-primary, #f0f0f0);
+            .dark-theme .filter-card {
+                background: var(--card);
+                border-color: var(--border);
+                color: var(--fg);
             }
             .filter-card:hover {
-                background: var(--card-hover-bg, #f0f0f0);
+                background: var(--surface-2, #f0f0f0);
                 transform: translateY(-2px);
             }
-            .dark .filter-card:hover {
-                background: var(--card-hover-bg, #333);
+            .dark-theme .filter-card:hover {
+                background: var(--surface-2);
             }
             .filter-card-icon {
                 font-size: 20px;
@@ -65,15 +69,15 @@
             .filter-card-label {
                 font-size: 11px;
                 font-weight: 600;
-                color: var(--text-primary, #333);
+                color: var(--muted, #555);
             }
-            .dark .filter-card-label {
-                color: var(--text-primary, #f0f0f0);
+            .dark-theme .filter-card-label {
+                color: var(--muted);
             }
             .filter-card-count {
                 font-size: 16px;
                 font-weight: 700;
-                color: var(--primary-color, #007AFF);
+                color: var(--accent, #007AFF);
                 margin-top: 4px;
             }
             .list-item {
@@ -82,20 +86,20 @@
                 justify-content: space-between;
                 padding: 10px 8px;
                 border-radius: 6px;
-                color: var(--text-primary, #333);
+                color: var(--fg, #333);
                 text-decoration: none;
                 transition: all 0.2s;
                 font-size: 14px;
                 margin-bottom: 4px;
             }
-            .dark .list-item {
-                color: var(--text-primary, #f0f0f0);
+            .dark-theme .list-item {
+                color: var(--fg);
             }
             .list-item:hover {
-                background: var(--hover-bg, #f0f0f0);
+                background: var(--surface-2, #f0f0f0);
             }
-            .dark .list-item:hover {
-                background: var(--hover-bg, #333);
+            .dark-theme .list-item:hover {
+                background: var(--surface-2);
             }
             .list-color {
                 width: 8px;
@@ -105,45 +109,50 @@
             }
             .list-count {
                 font-size: 12px;
-                color: var(--text-muted, #999);
+                color: var(--muted, #999);
                 font-weight: 600;
             }
         </style>
 
         <!-- Smart Lists -->
         <div class="reminder-filters">
-            <a href="{{ route('reminders.index', ['filter' => 'today']) }}" class="filter-card" title="Today">
-                <div class="filter-card-icon">
-                    <iconify-icon icon="lucide:calendar-today" width="20"></iconify-icon>
+            <a href="{{ route('reminders.index', ['filter' => 'all']) }}" class="filter-card" title="Todos">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <iconify-icon icon="lucide:layout-list" width="20"></iconify-icon>
+                    <div class="filter-card-count">{{ $allCount }}</div>
                 </div>
-                <div class="filter-card-count">{{ $todayCount }}</div>
-                <div class="filter-card-label">Today</div>
+                <div class="filter-card-label">Todos</div>
             </a>
-            <a href="{{ route('reminders.index', ['filter' => 'pending']) }}" class="filter-card" title="Pending">
-                <div class="filter-card-icon">
+            <a href="{{ route('reminders.index', ['filter' => 'pending']) }}" class="filter-card" title="Pendientes">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
                     <iconify-icon icon="lucide:clock" width="20"></iconify-icon>
+                    <div class="filter-card-count">{{ $pendingCount }}</div>
                 </div>
-                <div class="filter-card-count">{{ $pendingCount }}</div>
-                <div class="filter-card-label">Pending</div>
+                <div class="filter-card-label">Pendientes</div>
             </a>
-            <a href="{{ route('reminders.index', ['filter' => 'completed']) }}" class="filter-card" title="Completed">
-                <div class="filter-card-icon">
+            <a href="{{ route('reminders.index', ['filter' => 'completed']) }}" class="filter-card" title="Completados">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
                     <iconify-icon icon="lucide:check-circle-2" width="20"></iconify-icon>
+                    <div class="filter-card-count">{{ $completedCount }}</div>
                 </div>
-                <div class="filter-card-count">{{ $completedCount }}</div>
-                <div class="filter-card-label">Completed</div>
+                <div class="filter-card-label">Completados</div>
             </a>
-            <a href="{{ route('reminders.index', ['filter' => 'overdue']) }}" class="filter-card" title="Overdue">
-                <div class="filter-card-icon">
+            <a href="{{ route('reminders.index', ['filter' => 'overdue']) }}" class="filter-card" title="Vencidos">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
                     <iconify-icon icon="lucide:alert-circle" width="20"></iconify-icon>
+                    <div class="filter-card-count">{{ $overdueCount }}</div>
                 </div>
-                <div class="filter-card-count">{{ $overdueCount }}</div>
-                <div class="filter-card-label">Overdue</div>
+                <div class="filter-card-label">Vencidos</div>
             </a>
         </div>
 
         <!-- Custom Lists -->
-        <h3>My Lists</h3>
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:2px;">
+            <h3 style="margin:0;">Mis listas</h3>
+            <button onclick="openNewListModal()"
+                    style="background:none; border:none; cursor:pointer; color:var(--muted, #999); font-size:20px; font-weight:600; line-height:1; padding:4px 6px; border-radius:6px;"
+                    title="Nueva lista">+</button>
+        </div>
         <div style="space-y: 4px;">
             @forelse($lists as $list)
                 <a href="{{ route('reminders.index', ['list' => $list->id]) }}" class="list-item">
@@ -154,54 +163,40 @@
                     <span class="list-count">{{ $list->reminders_count }}</span>
                 </a>
             @empty
-                <p style="font-size: 12px; color: var(--text-muted, #999); padding: 8px;">No lists yet</p>
+                <p style="font-size: 12px; color: var(--text-muted, #999); padding: 8px;">Sin listas</p>
             @endforelse
         </div>
 
-        <h3 style="margin-top: 24px;">Tags</h3>
-        <div style="space-y: 4px;">
-            @forelse($tags as $tag)
-                <a href="{{ route('reminders.index', ['tag' => $tag->id]) }}" class="list-item">
-                    <span>#{{ $tag->name }}</span>
-                    <span class="list-count">{{ $tag->reminders_count }}</span>
-                </a>
-            @empty
-                <p style="font-size: 12px; color: var(--text-muted, #999); padding: 8px;">No tags yet</p>
-            @endforelse
-        </div>
     </aside>
 
     <!-- Main Content -->
     <main class="reminders-main" style="flex: 1; min-width: 0;">
         <style>
             .reminders-main {
-                background: var(--content-bg, #ffffff);
+                background: var(--card, #ffffff);
                 border-radius: 8px;
                 padding: 24px;
-                border: 1px solid var(--border-color, #e0e0e0);
+                border: 1px solid var(--border, #e0e0e0);
             }
-            .dark .reminders-main {
-                background: var(--content-bg, #1a1a1a);
-                border-color: var(--border-color, #333);
+            .dark-theme .reminders-main {
+                background: var(--card);
+                border-color: var(--border);
             }
             .reminders-header {
                 margin-bottom: 24px;
                 display: flex;
-                align-items: baseline;
+                align-items: center;
                 gap: 16px;
             }
             .reminders-title {
                 font-size: 28px;
                 font-weight: 700;
-                color: var(--text-primary, #333);
+                color: var(--fg, #333);
                 margin: 0;
-            }
-            .dark .reminders-title {
-                color: var(--text-primary, #f0f0f0);
             }
             .reminders-subtitle {
                 font-size: 14px;
-                color: var(--text-muted, #999);
+                color: var(--muted, #999);
             }
             .reminder-item {
                 display: flex;
@@ -209,41 +204,38 @@
                 gap: 12px;
                 padding: 16px;
                 margin-bottom: 12px;
-                background: var(--item-bg, #fafafa);
-                border: 1px solid var(--border-color, #e0e0e0);
+                background: var(--surface, #fafafa);
+                border: 1px solid var(--border, #e0e0e0);
                 border-radius: 8px;
                 transition: all 0.2s;
             }
-            .dark .reminder-item {
-                background: var(--item-bg, #2a2a2a);
-                border-color: var(--border-color, #444);
+            .dark-theme .reminder-item {
+                background: var(--surface);
+                border-color: var(--border);
             }
             .reminder-item:hover {
-                background: var(--item-hover-bg, #f5f5f5);
-                border-color: var(--primary-color, #007AFF);
+                background: var(--surface-2, #f5f5f5);
+                border-color: var(--accent, #007AFF);
             }
-            .dark .reminder-item:hover {
-                background: var(--item-hover-bg, #333);
-                border-color: var(--primary-color, #007AFF);
+            .dark-theme .reminder-item:hover {
+                background: var(--surface-2);
+                border-color: var(--accent);
             }
             .reminder-item.completed {
                 opacity: 0.6;
-                background: var(--completed-bg, #f0f0f0);
-            }
-            .dark .reminder-item.completed {
-                background: var(--completed-bg, #262626);
             }
             .reminder-checkbox {
                 width: 20px;
                 height: 20px;
                 border-radius: 50%;
-                border: 2px solid var(--border-color, #e0e0e0);
+                border: 2px solid var(--border, #e0e0e0);
                 cursor: pointer;
                 flex-shrink: 0;
                 margin-top: 2px;
+                background: transparent;
             }
-            .dark .reminder-checkbox {
-                border-color: var(--border-color, #444);
+            .dark-theme .reminder-checkbox {
+                border-color: var(--border);
             }
             .reminder-content {
                 flex: 1;
@@ -251,21 +243,18 @@
             .reminder-title {
                 font-size: 16px;
                 font-weight: 600;
-                color: var(--text-primary, #333);
+                color: var(--fg, #333);
                 margin: 0;
                 text-decoration: none;
                 cursor: pointer;
                 transition: color 0.2s;
             }
-            .dark .reminder-title {
-                color: var(--text-primary, #f0f0f0);
-            }
             .reminder-title:hover {
-                color: var(--primary-color, #007AFF);
+                color: var(--accent, #007AFF);
             }
             .reminder-item.completed .reminder-title {
                 text-decoration: line-through;
-                color: var(--text-muted, #999);
+                color: var(--muted, #999);
             }
             .reminder-meta {
                 display: flex;
@@ -273,7 +262,7 @@
                 gap: 12px;
                 margin-top: 8px;
                 font-size: 12px;
-                color: var(--text-muted, #999);
+                color: var(--muted, #999);
                 flex-wrap: wrap;
             }
             .reminder-meta-item {
@@ -283,70 +272,86 @@
             }
             .reminder-notes {
                 font-size: 13px;
-                color: var(--text-secondary, #666);
+                color: var(--muted-2, #666);
                 margin-top: 8px;
                 line-height: 1.4;
-            }
-            .dark .reminder-notes {
-                color: var(--text-secondary, #ccc);
             }
             .reminder-subtasks {
                 margin-top: 12px;
                 padding-top: 12px;
-                border-top: 1px solid var(--border-color, #e0e0e0);
-                space-y: 4px;
-            }
-            .dark .reminder-subtasks {
-                border-color: var(--border-color, #444);
+                border-top: 1px solid var(--border, #e0e0e0);
             }
             .subtask-item {
                 display: flex;
                 align-items: center;
                 gap: 8px;
                 font-size: 13px;
-                color: var(--text-secondary, #666);
+                color: var(--muted-2, #666);
                 margin-bottom: 4px;
-            }
-            .dark .subtask-item {
-                color: var(--text-secondary, #ccc);
             }
             .empty-state {
                 text-align: center;
                 padding: 40px 20px;
-                color: var(--text-muted, #999);
-            }
-            .empty-state-icon {
-                font-size: 48px;
-                margin-bottom: 12px;
+                color: var(--muted, #999);
             }
             .empty-state-title {
                 font-size: 16px;
                 font-weight: 600;
                 margin-bottom: 8px;
-                color: var(--text-primary, #333);
-            }
-            .dark .empty-state-title {
-                color: var(--text-primary, #f0f0f0);
+                color: var(--fg, #333);
             }
             .btn-primary {
                 display: inline-block;
-                background: var(--primary-color, #007AFF);
-                color: white;
+                background: var(--accent, #007AFF);
+                color: var(--accent-fg, #fff);
                 padding: 10px 20px;
                 border-radius: 6px;
                 text-decoration: none;
                 font-weight: 600;
                 font-size: 14px;
-                transition: all 0.2s;
+                transition: opacity 0.2s;
                 border: none;
                 cursor: pointer;
             }
-            .btn-primary:hover {
-                opacity: 0.9;
-                transform: translateY(-2px);
-            }
+            .btn-primary:hover { opacity: 0.85; }
             .priority-high { color: #FF3B30; font-weight: 700; }
             .priority-medium { color: #FF9500; font-weight: 700; }
+            /* Modal dark mode */
+            .modal-panel {
+                background: #fff;
+                border-radius: 16px;
+                padding: 28px;
+                width: 100%;
+                max-height: 90vh;
+                overflow-y: auto;
+                box-shadow: 0 20px 60px rgba(0,0,0,.2);
+            }
+            .dark-theme .modal-panel {
+                background: var(--card);
+                border: 1px solid var(--border);
+            }
+            .modal-panel h2 {
+                color: var(--fg, #1c1c1e);
+            }
+            .modal-close-btn {
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 22px;
+                color: var(--muted, #8e8e93);
+                line-height: 1;
+            }
+            .modal-cancel-btn {
+                flex: 1;
+                background: var(--surface-2, #f2f2f7);
+                color: var(--fg, #1c1c1e);
+                padding: 12px;
+                border-radius: 10px;
+                border: none;
+                font-size: 15px;
+                font-weight: 600;
+                cursor: pointer;
+            }
         </style>
 
         <!-- Header -->
@@ -370,6 +375,11 @@
                 @endswitch
             </h1>
             <span class="reminders-subtitle">{{ now()->format('l, M d') }}</span>
+            <button onclick="document.getElementById('modalNewReminder').style.display='flex'"
+                    class="btn-primary"
+                    style="margin-left:auto;">
+                + Agregar recordatorio
+            </button>
         </div>
 
         <!-- Reminders List -->
@@ -411,14 +421,6 @@
                                     <span>{{ $reminder->list->name }}</span>
                                 </div>
                             @endif
-                            @if($reminder->tags->count() > 0)
-                                <div class="reminder-meta-item">
-                                    <iconify-icon icon="lucide:tag" width="14"></iconify-icon>
-                                    @foreach($reminder->tags->take(2) as $tag)
-                                        <span>#{{ $tag->name }}</span>
-                                    @endforeach
-                                </div>
-                            @endif
                         </div>
 
                         @if($reminder->subtasks->count() > 0)
@@ -435,7 +437,7 @@
                                 @endforeach
                                 @if($reminder->subtasks->count() > 3)
                                     <div class="subtask-item">
-                                        <span>+{{ $reminder->subtasks->count() - 3 }} more</span>
+                                        <span>+{{ $reminder->subtasks->count() - 3 }} más</span>
                                     </div>
                                 @endif
                             </div>
@@ -466,4 +468,66 @@
         @endif
     </main>
 </div>
+
+{{-- Modal: Nuevo Recordatorio --}}
+<div id="modalNewReminder"
+     style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:1000; align-items:center; justify-content:center; padding:20px;"
+     onclick="if(event.target===this)this.style.display='none'">
+    <div class="modal-panel" style="max-width:600px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px;">
+            <h2 style="font-size:20px; font-weight:700; margin:0;">Nuevo recordatorio</h2>
+            <button onclick="document.getElementById('modalNewReminder').style.display='none'" class="modal-close-btn">&times;</button>
+        </div>
+        <form action="{{ route('reminders.store') }}" method="POST">
+            @csrf
+            @include('dashboard.features.reminders.reminders._form', ['selectedList' => null])
+            <div style="display:flex; gap:10px; margin-top:24px; padding-top:20px; border-top:1px solid var(--border, #e5e5ea);">
+                <button type="submit" class="btn-primary" style="flex:1; padding:12px; border-radius:10px; font-size:15px;">
+                    Crear recordatorio
+                </button>
+                <button type="button" class="modal-cancel-btn"
+                        onclick="document.getElementById('modalNewReminder').style.display='none'">
+                    Cancelar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{-- Modal: Nueva Lista --}}
+<div id="modalNewList"
+     style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:1000; align-items:center; justify-content:center; padding:20px;"
+     onclick="if(event.target===this)this.style.display='none'">
+    <div class="modal-panel" style="max-width:480px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px;">
+            <h2 style="font-size:20px; font-weight:700; margin:0;">Nueva lista</h2>
+            <button onclick="document.getElementById('modalNewList').style.display='none'" class="modal-close-btn">&times;</button>
+        </div>
+        <form action="{{ route('reminders.lists.store') }}" method="POST">
+            @csrf
+            @include('dashboard.features.reminders.lists._form')
+            <div style="display:flex; gap:10px; margin-top:24px; padding-top:20px; border-top:1px solid var(--border, #e5e5ea);">
+                <button type="submit" class="btn-primary" style="flex:1; padding:12px; border-radius:10px; font-size:15px;">
+                    Crear lista
+                </button>
+                <button type="button" class="modal-cancel-btn"
+                        onclick="document.getElementById('modalNewList').style.display='none'">
+                    Cancelar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+function openNewListModal() {
+    document.getElementById('modalNewList').style.display = 'flex';
+    var nameInput = document.getElementById('list-name-input');
+    if (nameInput) nameInput.value = '';
+    var defCheck = document.getElementById('is_default');
+    if (defCheck) defCheck.checked = false;
+    if (typeof selectListColor === 'function') selectListColor('#007aff');
+}
+</script>
+
 @endsection

@@ -86,23 +86,5 @@
         <label for="all_day" style="font-size:14px; color:#1c1c1e; cursor:pointer;">Todo el día (sin hora específica)</label>
     </div>
 
-    @if($tags->isNotEmpty())
-        <div>
-            <label style="display:block; font-size:13px; font-weight:600; color:#1c1c1e; margin-bottom:8px;">Etiquetas</label>
-            <div style="display:flex; flex-wrap:wrap; gap:8px;">
-                @php
-                    $selectedTagIds = old('tag_ids', isset($reminder) ? $reminder->tags->pluck('id')->toArray() : []);
-                @endphp
-                @foreach($tags as $tag)
-                    <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-                        <input type="checkbox" name="tag_ids[]" value="{{ $tag->id }}"
-                               {{ in_array($tag->id, $selectedTagIds) ? 'checked' : '' }}
-                               style="accent-color:{{ $tag->color ?? '#007aff' }}; width:15px; height:15px;">
-                        <span style="background:{{ $tag->color ?? '#e5e5ea' }}20; border:1px solid {{ $tag->color ?? '#e5e5ea' }}; color:{{ $tag->color ?? '#8e8e93' }}; padding:3px 10px; border-radius:10px; font-size:13px; font-weight:500;">{{ $tag->name }}</span>
-                    </label>
-                @endforeach
-            </div>
-        </div>
-    @endif
 
 </div>
