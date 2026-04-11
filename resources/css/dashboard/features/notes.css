@@ -193,9 +193,36 @@
     width: 100%;
 }
 
+@media (max-width: 1200px) {
+    .notes-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 920px) {
+    .notes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .notes-header h1 {
+        font-size: 1.5rem;
+    }
+}
+
 @media (max-width: 640px) {
+    .notes-grid {
+        grid-template-columns: 1fr;
+    }
     .note-card {
-        aspect-ratio: auto;
-        /* Desactivar cuadrado en móvil para mejor lectura */
+        aspect-ratio: auto; /* Desactivar cuadrado en móvil para mejor lectura */
+        min-height: 200px;
+    }
+    .notes-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .btn-create-note {
+        width: 100%;
+        justify-content: center;
     }
 }

@@ -26,7 +26,10 @@
 </head>
 
 <body>
-    <div class="app">
+    <div class="app" x-data="{ sidebarOpen: false }">
+        <!-- Overlay para móvil -->
+        <div class="sidebar-overlay" x-show="sidebarOpen" x-on:click="sidebarOpen = false" x-cloak></div>
+
         @include('dashboard.shared.sidebar')
 
         <main class="main-layout">

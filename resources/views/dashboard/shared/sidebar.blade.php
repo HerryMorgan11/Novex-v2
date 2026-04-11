@@ -1,4 +1,4 @@
-<aside class="sidebar" aria-label="Sidebar">
+<aside class="sidebar" :class="{ 'open': sidebarOpen }" aria-label="Sidebar">
         <!-- Top Section: Logo de marca -->
         <div class="sidebar-top">
           <img src="/assets/logo/logo-novex-color.png" alt="Novex Logo" class="sidebar-logo">
