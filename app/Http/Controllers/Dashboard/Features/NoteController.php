@@ -10,35 +10,74 @@ class NoteController extends Controller
 {
     public function index()
     {
-        return view('dashboard.features.notes.index');
+        $notes = Note::where('user_id', auth()->id())->latest()->get();
+
+        return view('dashboard.features.notes.index', compact('notes'));
     }
 
-    public function create(Request $request)
+    public function create()
     {
-        $note = Note::create([
+        return view('dashboard.features.notes.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+        ]);
+
+        Note::create([
             'title' => $request->title,
             'content' => $request->content,
             'user_id' => auth()->id(),
         ]);
 
-        return redirect()->route('dashboard.features.notes.index');
+        return redirect()->route('dashboard.features.notes.index')->with('success', 'Nota creada correctamente.');
     }
 
-    public function edit(Request $request)
+    public function edit($id)
     {
-        $note = Note::find($request->id);
-        $note->title = $request->title;
-        $note->content = $request->content;
-        $note->save();
+        $note = Note::findOrFail($id);
 
-        return redirect()->route('dashboard.features.notes.index');
+        if ($note->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        return view('dashboard.features.notes.edit', compact('note'));
     }
 
-    public function delete(Request $request)
+    public function update(Request $request, $id)
     {
-        $note = Note::find($request->id);
+        $note = Note::findOrFail($id);
+
+        if ($note->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+        ]);
+
+        $note->update([
+            'title' => $request->title,
+            'content' => $request->content,
+        ]);
+
+        return redirect()->route('dashboard.features.notes.index')->with('success', 'Nota actualizada.');
+    }
+
+    public function destroy($id)
+    {
+        $note = Note::findOrFail($id);
+
+        if ($note->user_id !== auth()->id()) {
+            abort(403);
+        }
+
         $note->delete();
 
-        return redirect()->route('dashboard.features.notes.index');
+        return redirect()->route('dashboard.features.notes.index')->with('success', 'Nota eliminada.');
     }
 }

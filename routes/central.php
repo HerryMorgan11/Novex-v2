@@ -66,8 +66,8 @@ Route::post('/forgot-password', function (Request $request) {
     );
 
     return $status === Password::RESET_LINK_SENT
-                ? back()->with('status', __($status))
-                : back()->withErrors(['email' => __($status)]);
+        ? back()->with('status', __($status))
+        : back()->withErrors(['email' => __($status)]);
 })->name('password.email');
 
 // Fortify registers routes via its service provider; no explicit call needed here.
@@ -130,10 +130,12 @@ Route::middleware(['auth', 'checkHasTenant'])->group(function () {
     })->name('controlpanel.home');
 
     // Módulo de Notas
-    Route::get('/dashboard/features/notes', function () {
-        return view('dashboard.features.notes.index');
-    })->name('dashboard.features.notes.index');
-
+    Route::get('/dashboard/features/notes', [App\Http\Controllers\Dashboard\Features\NoteController::class, 'index'])->name('dashboard.features.notes.index');
+    Route::get('/dashboard/features/notes/create', [App\Http\Controllers\Dashboard\Features\NoteController::class, 'create'])->name('dashboard.features.notes.create');
+    Route::post('/dashboard/features/notes', [App\Http\Controllers\Dashboard\Features\NoteController::class, 'store'])->name('dashboard.features.notes.store');
+    Route::get('/dashboard/features/notes/{id}/edit', [App\Http\Controllers\Dashboard\Features\NoteController::class, 'edit'])->name('dashboard.features.notes.edit');
+    Route::post('/dashboard/features/notes/{id}', [App\Http\Controllers\Dashboard\Features\NoteController::class, 'update'])->name('dashboard.features.notes.update');
+    Route::delete('/dashboard/features/notes/{note}', [App\Http\Controllers\Dashboard\Features\NoteController::class, 'destroy'])->name('dashboard.features.notes.destroy');
 });
 
 // Provisioning page shown after registration while tenant is being prepared

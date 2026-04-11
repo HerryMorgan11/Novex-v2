@@ -1,43 +1,53 @@
 @extends('dashboard.app.dashboard')
 
+@push('styles')
+    @vite(['resources/css/dashboard/features/notes.css'])
+@endpush
+
 @section('content')
-<div x-data="{ notas: [] }">
-
-    <!-- Ahora añadimos 'titulo' al objeto que creamos -->
-    <button @click="notas.push({ titulo: 'Nueva Nota', texto: '' })">
-        <iconify-icon icon="lucide:plus"></iconify-icon>
-        Crear nueva nota
-    </button>
-
-    <hr>
-
-    <template x-for="(nota, index) in notas" :key="index">
-        <div style="margin-bottom: 20px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
-
-            <!-- Campo para el Título Editable -->
-            <div style="margin-bottom: 10px;">
-                <input
-                    type="text"
-                    x-model="nota.titulo"
-                    style="font-size: 1.2rem; font-weight: bold; width: 100%; border: none; outline: none; background: transparent;"
-                    placeholder="Título de la nota...">
-            </div>
-
-            <!-- Campo para el Texto -->
-            <textarea
-                x-model="nota.texto"
-                style="width: 100%; min-height: 100px; display: block; margin-bottom: 10px;"
-                placeholder="Escribe tu nota aquí..."></textarea>
-
-            <button @click="notas.splice(index, 1)" style="color: red; cursor: pointer; border: none; background: none;">
-                Eliminar nota
-            </button>
-        </div>
-    </template>
-
-    <div x-show="notas.length === 0">
-        <p>No hay notas creadas.</p>
+<div class="notes-container">
+    <div class="notes-header">
+        <h1>Mis Notas</h1>
+        <a href="{{ route('dashboard.features.notes.create') }}" class="btn-create-note">
+            <iconify-icon icon="lucide:plus"></iconify-icon>
+            Nueva Nota
+        </a>
     </div>
 
+    @if($notes->isEmpty())
+        <div style="text-align: center; padding: 50px; color: var(--muted);">
+            <iconify-icon icon="lucide:notebook" style="font-size: 4rem; opacity: 0.2; margin-bottom: 20px;"></iconify-icon>
+            <p>Aún no tienes notas. ¡Crea tu primera nota ahora!</p>
+        </div>
+    @else
+        <div class="notes-grid">
+            @foreach($notes as $note)
+                <div class="note-card">
+                    <div class="note-header">
+                        <strong>{{ $note->title }}</strong>
+                    </div>
+                    <hr>
+                    <div class="note-body">
+                        <p>{{ Str::limit(strip_tags($note->content), 120) }}</p>
+                    </div>
+                    <hr>
+                    <div class="note-actions">
+                        <a href="{{ route('dashboard.features.notes.edit', $note->id) }}" class="btn-edit" title="Editar">
+                            <iconify-icon icon="lucide:edit"></iconify-icon>
+                            Editar
+                        </a>
+                        <form action="{{ route('dashboard.features.notes.destroy', $note->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar esta nota?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn-delete" title="Eliminar">
+                                <iconify-icon icon="lucide:trash-2"></iconify-icon>
+                                Eliminar
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @endif
 </div>
 @endsection

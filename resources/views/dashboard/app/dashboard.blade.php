@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
     @vite(['resources/css/dashboard/settings-profile.css'])
     @vite(['resources/css/dashboard/control-panel.css'])
 
+    @stack('styles')
     @livewireStyles
     <script>
         (function() {
@@ -22,6 +24,7 @@
         })();
     </script>
 </head>
+
 <body>
     <div class="app">
         @include('dashboard.shared.sidebar')
@@ -38,8 +41,10 @@
 
     <!-- Modal de creación de empresa (solo se muestra si usuario no tiene tenant) -->
     @livewire('create-company-modal')
-    
+
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    @stack('scripts')
     @livewireScripts
 </body>
+
 </html>
