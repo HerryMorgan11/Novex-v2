@@ -23,6 +23,8 @@ export default defineConfig({
                 'resources/css/dashboard/general-dashboard.css',
                 'resources/css/dashboard/settings-profile.css',
                 'resources/css/dashboard/control-panel.css',
+                'resources/css/dashboard/features/calendario.css',
+                'resources/js/dashboard/features/calendario.js',
             ],
             refresh: true,
         }),

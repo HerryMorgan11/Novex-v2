@@ -8,16 +8,13 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
+
 | Central Routes
-|--------------------------------------------------------------------------
-|
 | Rutas del dominio central (NO inicializan tenancy).
 | Incluye: landing público, autenticación, registro de empresas.
-|
 */
 
-// Landing público
+// Rutas de Interfaz de Presentación (Landing Pages)
 Route::get('/', function () {
     return view('landing.pages.home');
 })->name('home');
@@ -46,14 +43,14 @@ Route::get('/recursos-humanos', function () {
     return view('landing.pages.recursos-humanos');
 })->name('recursos-humanos');
 
-// Autenticación (pre-tenant)
+// Controladores de Autenticación Unificada (Identity Management / Pre-Tenant)
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate']);
 
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'store']);
 
-// Forgot password: show form and send reset link
+// Protocolos de Recuperación de Datos de Acceso (Vista form y envío de link de restablecimiento)
 Route::get('/forgot-password', function () {
     return view('auth.forgot-password');
 })->name('password.request');
@@ -70,11 +67,8 @@ Route::post('/forgot-password', function (Request $request) {
                 : back()->withErrors(['email' => __($status)]);
 })->name('password.email');
 
-// Fortify registers routes via its service provider; no explicit call needed here.
-
-// If you prefer custom views, FortifyServiceProvider already points
-// the views to the templates in resources/views/auth/*.blade.php
-// so keeping the GET view routes is optional. Fortify handles them.
+// La gestión integral de rutas avanzadas se delega estructuralmente al FortifyServiceProvider.
+// Toda asociación MVC de autenticación está mapeada implícitamente sin necesidad explícita en este index.
 
 Route::get('/verify-email', function () {
     return view('auth.verify-email');
@@ -129,9 +123,13 @@ Route::middleware(['auth', 'checkHasTenant'])->group(function () {
         return view('dashboard.features.control-panel.controlPanelApp');
     })->name('controlpanel.home');
 
+    Route::get('/calendario', function () {
+        return view('dashboard.features.calendario.calendario');
+    })->name('calendario');
+
 });
 
-// Provisioning page shown after registration while tenant is being prepared
+// Etapas transitorias post-registro para aprovisionamiento dinámico de base de datos multitenancy
 Route::middleware('auth')->group(function () {
     Route::get('/provisioning', [App\Http\Controllers\ProvisioningController::class, 'page'])
         ->name('provisioning.page');
@@ -139,7 +137,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/provisioning/status', [App\Http\Controllers\ProvisioningController::class, 'status'])
         ->name('provisioning.status');
 });
-// Health checks
+// Endpoints de comprobación de integridad y métricas del sistema (Health Checks API)
 Route::get('/health', fn () => 'CENTRAL HEALTH OK');
 
 Route::get('/auth/google/redirect', [GoogleController::class, 'redirect'])
