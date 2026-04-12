@@ -60,6 +60,21 @@ class User extends Authenticatable
         return $this->hasMany(TenantAuditLog::class);
     }
 
+    public function reminderLists(): HasMany
+    {
+        return $this->hasMany(ReminderList::class);
+    }
+
+    public function reminders(): HasMany
+    {
+        return $this->hasMany(Reminder::class);
+    }
+
+    public function tags(): HasMany
+    {
+        return $this->hasMany(Tag::class);
+    }
+
     public function sendPasswordResetNotification($token): void
     {
         $this->notify(new CustomResetPassword($token));

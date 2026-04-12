@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ReminderController;
+use App\Http\Controllers\ReminderListController;
+use App\Http\Controllers\SubtaskController;
+use App\Http\Controllers\TagController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Password;
@@ -123,6 +127,61 @@ Route::middleware(['auth', 'checkHasTenant'])->group(function () {
         return view('dashboard.features.control-panel.controlPanelApp');
     })->name('controlpanel.home');
 
+    // ──────────────────────────────────────────────────────────────────────
+    // Reminders Module
+    // ──────────────────────────────────────────────────────────────────────
+    Route::middleware('initializeTenancyFromUser')->prefix('reminders')->name('reminders.')->group(function () {
+
+        // ── Listas ──────────────────────────────────────────────────────
+        Route::prefix('lists')->name('lists.')->group(function () {
+            Route::get('/', [ReminderListController::class, 'index'])->name('index');
+            Route::get('/create', [ReminderListController::class, 'create'])->name('create');
+            Route::post('/', [ReminderListController::class, 'store'])->name('store');
+            Route::get('/{reminderList}/edit', [ReminderListController::class, 'edit'])->name('edit');
+            Route::put('/{reminderList}', [ReminderListController::class, 'update'])->name('update');
+            Route::delete('/{reminderList}', [ReminderListController::class, 'destroy'])->name('destroy');
+            Route::post('/reorder', [ReminderListController::class, 'reorder'])->name('reorder');
+        });
+
+        // ── Tags ────────────────────────────────────────────────────────
+        Route::prefix('tags')->name('tags.')->group(function () {
+            Route::get('/', [TagController::class, 'index'])->name('index');
+            Route::get('/create', [TagController::class, 'create'])->name('create');
+            Route::post('/', [TagController::class, 'store'])->name('store');
+            Route::get('/{tag}', [TagController::class, 'show'])->name('show');
+            Route::get('/{tag}/edit', [TagController::class, 'edit'])->name('edit');
+            Route::put('/{tag}', [TagController::class, 'update'])->name('update');
+            Route::delete('/{tag}', [TagController::class, 'destroy'])->name('destroy');
+        });
+
+        // ── Recordatorios ───────────────────────────────────────────────
+        Route::get('/', [ReminderController::class, 'index'])->name('index');
+        Route::get('/create', [ReminderController::class, 'create'])->name('create');
+        Route::post('/', [ReminderController::class, 'store'])->name('store');
+        Route::get('/{reminder}', [ReminderController::class, 'show'])->name('show');
+        Route::get('/{reminder}/edit', [ReminderController::class, 'edit'])->name('edit');
+        Route::put('/{reminder}', [ReminderController::class, 'update'])->name('update');
+        Route::delete('/{reminder}', [ReminderController::class, 'destroy'])->name('destroy');
+
+        // Acciones de estado
+        Route::patch('/{reminder}/complete', [ReminderController::class, 'complete'])->name('complete');
+        Route::patch('/{reminder}/uncomplete', [ReminderController::class, 'uncomplete'])->name('uncomplete');
+        Route::patch('/{reminder}/archive', [ReminderController::class, 'archive'])->name('archive');
+        Route::patch('/{reminder}/unarchive', [ReminderController::class, 'unarchive'])->name('unarchive');
+        Route::put('/{reminder}/move', [ReminderController::class, 'moveToList'])->name('move');
+        Route::post('/{id}/restore', [ReminderController::class, 'restore'])->name('restore');
+        Route::post('/reorder', [ReminderController::class, 'reorder'])->name('reorder');
+
+        // ── Subtareas (nested bajo recordatorio) ────────────────────────
+        Route::prefix('/{reminder}/subtasks')->name('subtasks.')->group(function () {
+            Route::post('/', [SubtaskController::class, 'store'])->name('store');
+            Route::put('/{subtask}', [SubtaskController::class, 'update'])->name('update');
+            Route::delete('/{subtask}', [SubtaskController::class, 'destroy'])->name('destroy');
+            Route::patch('/{subtask}/complete', [SubtaskController::class, 'complete'])->name('complete');
+            Route::patch('/{subtask}/uncomplete', [SubtaskController::class, 'uncomplete'])->name('uncomplete');
+            Route::post('/reorder', [SubtaskController::class, 'reorder'])->name('reorder');
+        });
+    });
     // Módulo de Notas
     Route::get('/dashboard/features/notes', [App\Http\Controllers\Dashboard\Features\NoteController::class, 'index'])->name('dashboard.features.notes.index');
     Route::get('/dashboard/features/notes/create', [App\Http\Controllers\Dashboard\Features\NoteController::class, 'create'])->name('dashboard.features.notes.create');

@@ -10,9 +10,13 @@ return new class extends Component
 
     public function mount()
     {
-        // Filtrar usuarios solo del tenant actual
-        $tenantId = tenant()->id;
-        $this->users = User::where('current_tenant_id', $tenantId)->get();
+        $currentTenant = tenant();
+        
+        if ($currentTenant) {
+            $this->users = User::whereHas('memberships', function ($query) use ($currentTenant) {
+                $query->where('tenant_id', $currentTenant->id);
+            })->get();
+        }
     }
 
     public function changeSection($section)
