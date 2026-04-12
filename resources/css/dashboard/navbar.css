@@ -595,9 +595,29 @@
     border-radius: 10px;
 }
 
+.mobile-toggle {
+    display: none;
+}
+
 /* responsive */
 @media (max-width: 920px) {
-    .nav-search input[type='search'] {
-        width: 110px;
+    .mobile-toggle {
+        display: flex;
+    }
+
+    .nav-search {
+        display: none; /* Ocultar búsqueda en móvil para ahorrar espacio */
+    }
+
+    .navbar-left nav[aria-label='breadcrumb'] {
+        display: none; /* Ocultar breadcrumbs en móvil si es necesario */
+    }
+}
+@media (max-width: 640px) {
+    .navbar-right {
+        gap: 2px;
+    }
+    .notif-wrapper {
+        margin-right: 0;
     }
 }

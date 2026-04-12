@@ -85,3 +85,11 @@ body {
     overflow-y: auto;
     color: var(--fg);
 }
+@media (max-width: 920px) {
+    .main-layout {
+        padding: 5px;
+    }
+    .main-panel {
+        padding: 5px 8px;
+    }
+}

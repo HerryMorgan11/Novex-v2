@@ -10,8 +10,6 @@ class TenantInvitation extends Model
 {
     use SoftDeletes;
 
-    protected $connection = 'mysql';
-
     protected $fillable = [
         'tenant_id',
         'email',

@@ -58,7 +58,7 @@ return [
     */
     'database' => [
         // ✅ Tu conexión central (la que has mostrado en config/database.php)
-        'central_connection' => env('DB_CONNECTION', 'mysql'),
+        'central_connection' => env('DB_CONNECTION', 'sqlite'),
 
         /*
          * Connection "template" para crear la conexión tenant dinámica.

@@ -17,6 +17,9 @@
     @endphp
 
     <div class="navbar-left">
+        <button class="mobile-toggle icon-btn" @click="sidebarOpen = !sidebarOpen" aria-label="Abrir menú">
+            <iconify-icon icon="lucide:menu" width="20"></iconify-icon>
+        </button>
         @if (isset($breadcrumbs[$routeName]))
             <nav aria-label="breadcrumb">
                 @foreach ($breadcrumbs[$routeName] as $item)

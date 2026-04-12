@@ -63,8 +63,8 @@ Route::post('/forgot-password', function (Request $request) {
     );
 
     return $status === Password::RESET_LINK_SENT
-                ? back()->with('status', __($status))
-                : back()->withErrors(['email' => __($status)]);
+        ? back()->with('status', __($status))
+        : back()->withErrors(['email' => __($status)]);
 })->name('password.email');
 
 // La gestión integral de rutas avanzadas se delega estructuralmente al FortifyServiceProvider.
@@ -123,6 +123,13 @@ Route::middleware(['auth', 'checkHasTenant'])->group(function () {
         return view('dashboard.features.control-panel.controlPanelApp');
     })->name('controlpanel.home');
 
+    // Módulo de Notas
+    Route::get('/dashboard/features/notes', [App\Http\Controllers\Dashboard\Features\NoteController::class, 'index'])->name('dashboard.features.notes.index');
+    Route::get('/dashboard/features/notes/create', [App\Http\Controllers\Dashboard\Features\NoteController::class, 'create'])->name('dashboard.features.notes.create');
+    Route::post('/dashboard/features/notes', [App\Http\Controllers\Dashboard\Features\NoteController::class, 'store'])->name('dashboard.features.notes.store');
+    Route::get('/dashboard/features/notes/{id}/edit', [App\Http\Controllers\Dashboard\Features\NoteController::class, 'edit'])->name('dashboard.features.notes.edit');
+    Route::post('/dashboard/features/notes/{id}', [App\Http\Controllers\Dashboard\Features\NoteController::class, 'update'])->name('dashboard.features.notes.update');
+    Route::post('/dashboard/features/notes/{note}/delete', [App\Http\Controllers\Dashboard\Features\NoteController::class, 'destroy'])->name('dashboard.features.notes.destroy');
     Route::get('/calendario', function () {
         return view('dashboard.features.calendario.calendario');
     })->name('calendario');

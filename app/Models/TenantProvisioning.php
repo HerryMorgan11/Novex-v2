@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TenantProvisioning extends Model
 {
-    protected $connection = 'mysql';
-
     protected $fillable = [
         'tenant_id',
         'status',
