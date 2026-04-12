@@ -57,31 +57,12 @@
           <div class="sidebar-section-title">Tools</div>
 
           <nav class="nav" aria-label="Navegación de herramientas">
-            <!-- Centro de trabajo general abarca todas herramientas de abajo en modelo de vista general -->
-            <a class="nav-item" href="#">
-              <span class="nav-icon" aria-hidden="true">
-                <iconify-icon icon="lucide:bug" width="16"></iconify-icon>
-              </span>
-              <span class="nav-label">WorkCenter</span>
-              <iconify-icon icon="lucide:chevron-right" width="16" style="margin-left: auto; color: var(--muted);"></iconify-icon>
-            </a>
-            
             <!-- Notas -->
             <a class="nav-item" href="{{ route('dashboard.features.notes.index') }}">
               <span class="nav-icon" aria-hidden="true">
                 <iconify-icon icon="lucide:shield-check" width="16"></iconify-icon>
               </span>
               <span class="nav-label">Notas</span>
-              <iconify-icon icon="lucide:chevron-right" width="16" style="margin-left: auto; color: var(--muted);"></iconify-icon>
-            </a>
-
-            <!-- Trello para organización de tareas -->
-            <a class="nav-item" href="#">
-              <span class="nav-icon" aria-hidden="true">
-                <iconify-icon icon="lucide:bug" width="16"></iconify-icon>
-              </span>
-              <span class="nav-label">Trello</span>
-              <iconify-icon icon="lucide:chevron-right" width="16" style="margin-left: auto; color: var(--muted);"></iconify-icon>
             </a>
 
             <!-- Recordatorios -->
@@ -98,7 +79,6 @@
                 <iconify-icon icon="lucide:calendar" width="16"></iconify-icon>
               </span>
               <span class="nav-label">Calendario</span>
-              <iconify-icon icon="lucide:chevron-right" width="16" style="margin-left: auto; color: var(--muted);"></iconify-icon>
             </a>
           </nav>
         </div>
