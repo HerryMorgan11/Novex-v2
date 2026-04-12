@@ -1,4 +1,4 @@
-<aside class="sidebar" aria-label="Sidebar">
+<aside class="sidebar" :class="{ 'open': sidebarOpen }" aria-label="Sidebar">
         <!-- Top Section: Logo de marca -->
         <div class="sidebar-top">
           <img src="/assets/logo/logo-novex-color.png" alt="Novex Logo" class="sidebar-logo">
@@ -67,7 +67,7 @@
             </a>
             
             <!-- Notas -->
-            <a class="nav-item" href="#">
+            <a class="nav-item" href="{{ route('dashboard.features.notes.index') }}">
               <span class="nav-icon" aria-hidden="true">
                 <iconify-icon icon="lucide:shield-check" width="16"></iconify-icon>
               </span>
@@ -93,9 +93,9 @@
             </a>
 
             <!-- Calendario -->
-            <a class="nav-item" href="#">
+            <a class="nav-item" href="{{ route('calendario') }}">
               <span class="nav-icon" aria-hidden="true">
-                <iconify-icon icon="lucide:bug" width="16"></iconify-icon>
+                <iconify-icon icon="lucide:calendar" width="16"></iconify-icon>
               </span>
               <span class="nav-label">Calendario</span>
               <iconify-icon icon="lucide:chevron-right" width="16" style="margin-left: auto; color: var(--muted);"></iconify-icon>

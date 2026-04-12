@@ -36,9 +36,6 @@ Route::middleware(['auth'])->group(function () {
         ];
     });
 
-    // ──────────────────────────────────────────────────────────────────────
-    // Other tenant routes can go here
-    // ──────────────────────────────────────────────────────────────────────
 });
 
 Route::get('/health', fn () => 'TENANT HEALTH OK');

@@ -16,8 +16,6 @@ class User extends Authenticatable
     use HasUlids, SoftDeletes;
     use Notifiable;
 
-    protected $connection = 'mysql';
-
     protected $fillable = [
         'name',
         'email',
