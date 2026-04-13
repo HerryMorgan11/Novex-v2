@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Novex</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @vite(['resources/css/dashboard/sidebar.css'])
     @vite(['resources/css/dashboard/general-dashboard.css'])
@@ -14,11 +14,10 @@
     @vite(['resources/css/dashboard/control-panel.css'])
 
     @stack('styles')
-    @livewireStyles
     <script>
+        // Aplicar tema guardado antes de que el DOM se pinte (evita flash)
         (function() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
+            if (localStorage.getItem('theme') === 'dark') {
                 document.documentElement.classList.add('dark-theme');
             }
         })();
@@ -26,9 +25,9 @@
 </head>
 
 <body>
-    <div class="app" x-data="{ sidebarOpen: false }">
-        <!-- Overlay para móvil -->
-        <div class="sidebar-overlay" x-show="sidebarOpen" x-on:click="sidebarOpen = false" x-cloak></div>
+    <div class="app" id="app-root">
+        {{-- Overlay para cerrar sidebar en móvil --}}
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
         @include('dashboard.shared.sidebar')
 
@@ -42,12 +41,17 @@
         </main>
     </div>
 
-    <!-- Modal de creación de empresa (solo se muestra si usuario no tiene tenant) -->
-    @livewire('create-company-modal')
+    {{-- Modal de creación de empresa (solo si usuario no tiene tenant) --}}
+    @if($showModal ?? false)
+        @include('dashboard.partials.create-company-modal')
+    @endif
 
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    @vite('resources/js/dashboard/sidebar.js')
     @stack('scripts')
-    @livewireScripts
+</body>
+
+</html>
+
 </body>
 
 </html>

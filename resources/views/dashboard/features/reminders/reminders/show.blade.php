@@ -79,20 +79,6 @@
         </div>
     @endif
 
-    @if($reminder->tags->isNotEmpty())
-        <div style="background:#fff; border:1px solid #e5e5ea; border-radius:14px; padding:18px; margin-bottom:18px;">
-            <p style="font-size:12px; font-weight:600; color:#8e8e93; text-transform:uppercase; letter-spacing:.05em; margin-bottom:10px;">Etiquetas</p>
-            <div style="display:flex; flex-wrap:wrap; gap:7px;">
-                @foreach($reminder->tags as $tag)
-                    <a href="{{ route('reminders.tags.show', $tag) }}"
-                       style="background:{{ $tag->color ?? '#e5e5ea' }}20; border:1px solid {{ $tag->color ?? '#e5e5ea' }}; color:{{ $tag->color ?? '#8e8e93' }}; padding:4px 12px; border-radius:10px; font-size:13px; font-weight:500; text-decoration:none;">
-                        {{ $tag->name }}
-                    </a>
-                @endforeach
-            </div>
-        </div>
-    @endif
-
     <div style="background:#fff; border:1px solid #e5e5ea; border-radius:14px; padding:18px; margin-bottom:18px;">
         <p style="font-size:12px; font-weight:600; color:#8e8e93; text-transform:uppercase; letter-spacing:.05em; margin-bottom:10px;">Mover a lista</p>
         <form action="{{ route('reminders.move', $reminder) }}" method="POST" style="display:flex; gap:10px;">
@@ -122,7 +108,9 @@
         </div>
 
         @forelse($reminder->subtasks as $subtask)
-            <div style="display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid #f2f2f7;" x-data="{ editing: false }">
+            {{-- data-subtask-id permite que subtask.js identifique cada fila para el edit inline --}}
+            <div data-subtask-id="{{ $subtask->id }}"
+                 style="display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid #f2f2f7;">
 
                 <form action="{{ $subtask->is_completed ? route('reminders.subtasks.uncomplete', [$reminder, $subtask]) : route('reminders.subtasks.complete', [$reminder, $subtask]) }}" method="POST">
                     @csrf
@@ -134,18 +122,24 @@
                     </button>
                 </form>
 
-                <div style="flex:1;" x-data="{}">
-                    <span @click="editing=true" x-show="!editing"
+                <div style="flex:1;">
+                    {{-- Texto visible: click abre el formulario de edición --}}
+                    <span class="subtask-title"
                           style="font-size:14px; color:{{ $subtask->is_completed ? '#8e8e93' : '#1c1c1e' }}; text-decoration:{{ $subtask->is_completed ? 'line-through' : 'none' }}; cursor:pointer; display:block;">
                         {{ $subtask->title }}
                     </span>
-                    <form x-show="editing" action="{{ route('reminders.subtasks.update', [$reminder, $subtask]) }}" method="POST" style="display:flex; gap:6px;">
+                    {{-- Formulario de edición inline (oculto por defecto) --}}
+                    <form class="subtask-edit-form"
+                          action="{{ route('reminders.subtasks.update', [$reminder, $subtask]) }}"
+                          method="POST"
+                          style="display:none; gap:6px;">
                         @csrf
                         @method('PUT')
-                        <input type="text" name="title" value="{{ $subtask->title }}" @keydown.escape="editing=false"
+                        <input type="text" name="title" value="{{ $subtask->title }}"
                                style="flex:1; padding:4px 8px; border:1.5px solid #007aff; border-radius:7px; font-size:14px; outline:none;">
                         <button type="submit" style="background:#007aff; color:#fff; padding:4px 10px; border-radius:7px; border:none; cursor:pointer; font-size:13px;">✓</button>
-                        <button type="button" @click="editing=false" style="background:#f2f2f7; color:#8e8e93; padding:4px 8px; border-radius:7px; border:none; cursor:pointer; font-size:13px;">✕</button>
+                        <button type="button" class="subtask-cancel"
+                                style="background:#f2f2f7; color:#8e8e93; padding:4px 8px; border-radius:7px; border:none; cursor:pointer; font-size:13px;">✕</button>
                     </form>
                 </div>
 
@@ -174,4 +168,8 @@
         @enderror
     </div>
 </div>
+
+@push('scripts')
+    @vite('resources/js/dashboard/subtasks.js')
+@endpush
 @endsection

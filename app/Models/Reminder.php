@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -69,11 +68,6 @@ class Reminder extends Model
     public function subtasks(): HasMany
     {
         return $this->hasMany(Subtask::class)->orderBy('position');
-    }
-
-    public function tags(): BelongsToMany
-    {
-        return $this->belongsToMany(Tag::class, 'reminder_tag');
     }
 
     // ───────────────────────────────── Scopes ─────────────────────────────────

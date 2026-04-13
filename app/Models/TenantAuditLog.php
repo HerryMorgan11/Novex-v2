@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Stancl\Tenancy\Database\Concerns\CentralConnection;
 
 class TenantAuditLog extends Model
 {
+    use CentralConnection;
+
     protected $fillable = [
         'tenant_id',
         'user_id',

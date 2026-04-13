@@ -2,38 +2,46 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreReminderListRequest;
-use App\Http\Requests\UpdateReminderListRequest;
 use App\Models\ReminderList;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ReminderListController extends Controller
 {
+    /**
+     * Lista todas las listas de recordatorios del usuario.
+     */
     public function index(): View
     {
         $lists = ReminderList::forUser(auth()->user())
             ->ordered()
-            ->get()
-            ->each(fn ($list) => $list->append([]));
+            ->get();
 
         return view('dashboard.features.reminders.lists.index', compact('lists'));
     }
 
+    /**
+     * Formulario de creación de lista.
+     */
     public function create(): View
     {
         return view('dashboard.features.reminders.lists.create');
     }
 
-    public function store(StoreReminderListRequest $request): RedirectResponse
+    /**
+     * Guarda una nueva lista de recordatorios.
+     */
+    public function store(Request $request): RedirectResponse
     {
-        $data = $request->validated();
+        $data = $request->validate($this->reminderListRules());
         $data['user_id'] = auth()->id();
         $data['position'] = ReminderList::nextPositionForUser(auth()->id());
 
         $list = ReminderList::create($data);
 
+        // Si se marca como predeterminada, actualizar el resto de listas
         if (! empty($data['is_default'])) {
             $list->makeDefault();
         }
@@ -42,6 +50,9 @@ class ReminderListController extends Controller
             ->with('success', 'Lista creada correctamente.');
     }
 
+    /**
+     * Formulario de edición de lista.
+     */
     public function edit(ReminderList $reminderList): View
     {
         $this->authorize('update', $reminderList);
@@ -49,11 +60,14 @@ class ReminderListController extends Controller
         return view('dashboard.features.reminders.lists.edit', ['list' => $reminderList]);
     }
 
-    public function update(UpdateReminderListRequest $request, ReminderList $reminderList): RedirectResponse
+    /**
+     * Actualiza una lista de recordatorios existente.
+     */
+    public function update(Request $request, ReminderList $reminderList): RedirectResponse
     {
         $this->authorize('update', $reminderList);
 
-        $reminderList->update($request->validated());
+        $reminderList->update($request->validate($this->reminderListRules()));
 
         if ($request->boolean('is_default')) {
             $reminderList->makeDefault();
@@ -63,18 +77,24 @@ class ReminderListController extends Controller
             ->with('success', 'Lista actualizada correctamente.');
     }
 
+    /**
+     * Elimina una lista (los recordatorios se conservan sin lista asignada).
+     */
     public function destroy(ReminderList $reminderList): RedirectResponse
     {
         $this->authorize('delete', $reminderList);
 
-        // Los recordatorios quedan con reminder_list_id = null (nullOnDelete)
+        // Los recordatorios quedan con reminder_list_id = null (nullOnDelete en migración)
         $reminderList->delete();
 
         return redirect()->route('reminders.lists.index')
             ->with('success', 'Lista eliminada. Sus recordatorios fueron conservados sin lista.');
     }
 
-    public function reorder(Request $request): \Illuminate\Http\JsonResponse
+    /**
+     * Actualiza el orden de las listas según un array de IDs.
+     */
+    public function reorder(Request $request): JsonResponse
     {
         $request->validate([
             'ids' => ['required', 'array'],
@@ -88,5 +108,19 @@ class ReminderListController extends Controller
         }
 
         return response()->json(['success' => true]);
+    }
+
+    /**
+     * Reglas de validación compartidas para crear y actualizar listas.
+     */
+    private function reminderListRules(): array
+    {
+        return [
+            'name' => ['required', 'string', 'max:255'],
+            'color' => ['nullable', 'string', 'regex:/^#[0-9A-Fa-f]{6}$/'],
+            'icon' => ['nullable', 'string', 'max:50'],
+            'is_default' => ['boolean'],
+            'position' => ['nullable', 'integer', 'min:0'],
+        ];
     }
 }

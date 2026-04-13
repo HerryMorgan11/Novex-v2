@@ -85,87 +85,60 @@
         
         </div>
         
-        <!-- Sidebar Bottom -->
-          <div class="sidebar-section">
-            <div
-              x-data="{
-                open: false,
-                toggle() {
-                  if (this.open) {
-                    return this.close()
-                  }
-                  this.$refs.button.focus()
-                  this.open = true
-                },
-                close(focusAfter) {
-                  if (!this.open) return
-                  this.open = false
-                  focusAfter && focusAfter.focus()
-                }
-              }"
-              x-on:keydown.escape.prevent.stop="close($refs.button)"
-              x-on:focusin.window="!$refs.panel.contains($event.target) && close()"
-              x-id="['user-dropdown']"
-              class="user-dropdown"
+        <!-- Sidebar Bottom: User Dropdown -->
+        <div class="sidebar-bottom">
+          <div class="user-dropdown" id="user-dropdown-container">
+            <!-- User Button -->
+            <button
+              id="user-dropdown-button"
+              type="button"
+              class="user"
             >
-              <!-- User Button -->
-              <button
-                x-ref="button"
-                x-on:click="toggle()"
-                :aria-expanded="open"
-                :aria-controls="$id('user-dropdown')"
-                type="button"
-                class="user"
-              >
-                <div class="avatar">DJ</div>
-                <div class="user-meta">
-                  <span class="user-name">David Jacobo</span>
-                  <span class="user-email">Admin</span>
-                </div>
-                <iconify-icon icon="lucide:chevron-right" width="16" class="user-icon"></iconify-icon>
-              </button>
-
-              <!-- Dropdown Panel -->
-              <div
-                x-ref="panel"
-                x-show="open"
-                x-transition.origin.bottom.left.duration.150ms
-                x-on:click.outside="close($refs.button)"
-                :id="$id('user-dropdown')"
-                x-cloak
-                class="dropdown-panel"
-              >
-                <!-- Profile Settings -->
-                <a 
-                  href="{{ route('settings.profile') }}"
-                  class="dropdown-item"
-                >
-                  <iconify-icon icon="lucide:user" width="16"></iconify-icon>
-                  <span>Profile Settings</span>
-                </a>
-
-                <!-- Control Panel -->
-                <a 
-                  href="{{ route('controlpanel.home') }}"
-                  class="dropdown-item"
-                >
-                  <iconify-icon icon="lucide:sliders" width="16"></iconify-icon>
-                  <span>Control Panel</span>
-                </a>
-
-                <!-- Logout -->
-                <form method="POST" action="{{ route('logout') }}" style="display: contents;">
-                  @csrf
-                  <button 
-                    type="submit"
-                    class="dropdown-item logout"
-                  >
-                    <iconify-icon icon="lucide:log-out" width="16"></iconify-icon>
-                    <span>Logout</span>
-                  </button>
-                </form>
+              <div class="avatar">DJ</div>
+              <div class="user-meta">
+                <span class="user-name">David Jacobo</span>
+                <span class="user-email">Admin</span>
               </div>
+              <iconify-icon icon="lucide:chevron-right" width="16" class="user-icon"></iconify-icon>
+            </button>
+
+            <!-- Dropdown Panel -->
+            <div
+              id="user-dropdown-panel"
+              class="dropdown-panel"
+              style="display: none;"
+            >
+              <!-- Profile Settings -->
+              <a 
+                href="{{ route('settings.profile') }}"
+                class="dropdown-item"
+              >
+                <iconify-icon icon="lucide:user" width="16"></iconify-icon>
+                <span>Profile Settings</span>
+              </a>
+
+              <!-- Control Panel -->
+              <a 
+                href="{{ route('controlpanel.home') }}"
+                class="dropdown-item"
+              >
+                <iconify-icon icon="lucide:sliders" width="16"></iconify-icon>
+                <span>Control Panel</span>
+              </a>
+
+              <!-- Logout -->
+              <form method="POST" action="{{ route('logout') }}" style="display: contents;">
+                @csrf
+                <button 
+                  type="submit"
+                  class="dropdown-item logout"
+                >
+                  <iconify-icon icon="lucide:log-out" width="16"></iconify-icon>
+                  <span>Logout</span>
+                </button>
+              </form>
             </div>
+          </div>
         </div>
       </aside>
 
@@ -188,4 +161,36 @@
       }
     }
   }
+
+  // User Dropdown functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const button = document.getElementById('user-dropdown-button');
+    const panel = document.getElementById('user-dropdown-panel');
+    const container = document.getElementById('user-dropdown-container');
+
+    if (!button || !panel) return;
+
+    // Toggle dropdown on button click
+    button.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const isOpen = panel.style.display !== 'none';
+      panel.style.display = isOpen ? 'none' : 'block';
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      const isClickInside = container.contains(e.target);
+      if (!isClickInside && panel.style.display !== 'none') {
+        panel.style.display = 'none';
+      }
+    });
+
+    // Close dropdown on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && panel.style.display !== 'none') {
+        panel.style.display = 'none';
+        button.focus();
+      }
+    });
+  });
 </script>

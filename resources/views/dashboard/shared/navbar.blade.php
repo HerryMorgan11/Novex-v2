@@ -17,7 +17,7 @@
     @endphp
 
     <div class="navbar-left">
-        <button class="mobile-toggle icon-btn" @click="sidebarOpen = !sidebarOpen" aria-label="Abrir menú">
+        <button class="mobile-toggle icon-btn" data-sidebar-toggle aria-label="Abrir menú">
             <iconify-icon icon="lucide:menu" width="20"></iconify-icon>
         </button>
         @if (isset($breadcrumbs[$routeName]))
@@ -186,15 +186,8 @@
         <div class="profile-menu">
             <button class="user-btn" aria-haspopup="true" aria-expanded="false">
                 <span class="avatar">JD</span>
-                <iconify-icon icon="lucide:chevron-down" width="14"></iconify-icon>
             </button>
-            <!-- dropdown básico (implementar JS si se quiere) -->
-            <div class="profile-dropdown" hidden>
-                <a href="#">Perfil</a>
-                <a href="#">Ajustes</a>
-                <form method="POST" action="{{ route('logout') }}">@csrf<button type="submit">Cerrar
-                        sesión</button></form>
-            </div>
+           
         </div>
     </div>
 </nav>

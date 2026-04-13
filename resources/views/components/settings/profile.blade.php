@@ -1,31 +1,17 @@
-<?php
+{{-- Settings Profile - Navegación por secciones de ajustes (Perfil / Seguridad).
+     La sección activa se controla mediante JS (resources/js/settings/settings.js). --}}
 
-use Livewire\Component;
-
-return new class extends Component
-{
-    
-};
-
-?>
-
-<div x-data="{ section: 'perfil' }" x-cloak class="settings-container">
+<div class="settings-container">
     <div class="settings-wrapper">
         <div class="settings-layout">
-            <!-- Sidebar -->
+            <!-- Sidebar de navegación -->
             <div class="settings-sidebar">
                 <nav class="settings-nav">
-                    <button
-                        @click="section = 'perfil'"
-                        :class="{ 'active': section === 'perfil' }"
-                    >
+                    <button data-settings-section="perfil" type="button">
                         <iconify-icon icon="gg:profile" width="16" height="16"></iconify-icon>
                         Perfil
                     </button>
-                    <button
-                        @click="section = 'seguridad'"
-                        :class="{ 'active': section === 'seguridad' }"
-                    >
+                    <button data-settings-section="seguridad" type="button">
                         <iconify-icon icon="gg:lock" width="16" height="16"></iconify-icon>
                         Seguridad
                     </button>
@@ -39,14 +25,19 @@ return new class extends Component
                     <p>Configura las opciones de tu perfil, seguridad y preferencias del sistema general.</p>
                 </div>
 
-                <div x-show="section === 'perfil'">
+                <div data-settings-content="perfil">
                     @include('dashboard.features.settings.ui.profile-content')
                 </div>
 
-                <div x-show="section === 'seguridad'">
+                <div data-settings-content="seguridad">
                     @include('dashboard.features.settings.ui.security')
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@push('scripts')
+    @vite('resources/js/settings/settings.js')
+@endpush
+

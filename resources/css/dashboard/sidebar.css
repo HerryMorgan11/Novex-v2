@@ -423,6 +423,19 @@
     transform-origin: bottom left;
     background-color: #ffffff;
     border: 1px solid #e5e7eb;
+    opacity: 1;
+    visibility: visible;
+    transition:
+        opacity 0.15s ease,
+        visibility 0.15s ease,
+        transform 0.15s ease;
+    transform: scale(1);
+}
+
+.dropdown-panel[style*='display: none'] {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.95);
 }
 
 /* Dropdown items */

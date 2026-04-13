@@ -51,14 +51,6 @@
                 </span>
             @endif
         </div>
-
-        @if($reminder->tags->isNotEmpty())
-            <div style="display:flex; gap:5px; margin-top:6px; flex-wrap:wrap;">
-                @foreach($reminder->tags as $tag)
-                    <span style="background:{{ $tag->color ?? '#e5e5ea' }}20; border:1px solid {{ $tag->color ?? '#e5e5ea' }}; color:{{ $tag->color ?? '#8e8e93' }}; padding:2px 8px; border-radius:8px; font-size:11px; font-weight:500;">{{ $tag->name }}</span>
-                @endforeach
-            </div>
-        @endif
     </div>
 
     <div style="display:flex; gap:6px; flex-shrink:0;">
