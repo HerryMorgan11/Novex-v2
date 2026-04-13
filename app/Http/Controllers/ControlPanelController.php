@@ -18,8 +18,8 @@ class ControlPanelController extends Controller
         if (function_exists('tenant') && tenant()) {
             $currentTenant = tenant();
             $users = User::whereHas('memberships', function ($query) use ($currentTenant) {
-                $query->where('tenant_id', $currentTenant->id);
-            })->get();
+                $query->where('tenant_id', $currentTenant->id)->where('status', 'active');
+            })->select('id', 'name', 'email', 'created_at')->get();
         }
 
         return view('dashboard.features.control-panel.controlPanelApp', compact('users'));

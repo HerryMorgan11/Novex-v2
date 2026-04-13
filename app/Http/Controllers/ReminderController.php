@@ -52,12 +52,27 @@ class ReminderController extends Controller
             ? ReminderList::forUser($user)->find((int) $request->list)
             : null;
 
-        // Contadores para el sidebar de filtros rápidos
-        $todayCount = Reminder::forUser($user)->active()->dueToday()->count();
-        $pendingCount = Reminder::forUser($user)->active()->pending()->count();
-        $allCount = Reminder::forUser($user)->active()->count();
-        $completedCount = Reminder::forUser($user)->completed()->count();
-        $overdueCount = Reminder::forUser($user)->active()->overdue()->count();
+        // Contadores para el sidebar de filtros rápidos - optimizados con una sola query
+        $counters = Reminder::forUser($user)
+            ->selectRaw('
+                COUNT(CASE WHEN status = ? THEN 1 END) as total_active,
+                COUNT(CASE WHEN DATE(due_at) = CURDATE() AND status = ? THEN 1 END) as today_count,
+                COUNT(CASE WHEN is_completed = 0 AND status = ? THEN 1 END) as pending_count,
+                COUNT(CASE WHEN is_completed = 1 THEN 1 END) as completed_count,
+                COUNT(CASE WHEN DATE(due_at) < CURDATE() AND is_completed = 0 AND status = ? THEN 1 END) as overdue_count
+            ', [
+                Reminder::STATUS_ACTIVE,
+                Reminder::STATUS_ACTIVE,
+                Reminder::STATUS_ACTIVE,
+                Reminder::STATUS_ACTIVE,
+            ])
+            ->first();
+
+        $todayCount = $counters->today_count ?? 0;
+        $pendingCount = $counters->pending_count ?? 0;
+        $allCount = $counters->total_active ?? 0;
+        $completedCount = $counters->completed_count ?? 0;
+        $overdueCount = $counters->overdue_count ?? 0;
 
         return view('dashboard.features.reminders.reminders.index', compact(
             'reminders', 'lists', 'filter',

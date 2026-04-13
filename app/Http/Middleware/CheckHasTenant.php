@@ -30,12 +30,14 @@ class CheckHasTenant
             $hasTenant = (bool) $tenant;
         }
 
-        // Si no está en current_tenant_id, buscar en memberships
+        // Si no está en current_tenant_id, buscar en memberships con eager loading
         if (! $hasTenant) {
-            $membership = $user->memberships()
-                ->where('status', 'active')
-                ->latest('id')
-                ->first();
+            // Cargar eager para evitar N+1
+            $user->load(['memberships' => function ($query) {
+                $query->where('status', 'active');
+            }, 'memberships.tenant']);
+
+            $membership = $user->memberships->sortByDesc('id')->first();
 
             if ($membership && $membership->tenant) {
                 $tenant = $membership->tenant;

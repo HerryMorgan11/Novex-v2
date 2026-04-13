@@ -13,11 +13,11 @@ class DashboardController extends Controller
      */
     public function index(): View
     {
-        $user = auth()->user();
+        $user = auth()->user()->load('memberships:id,user_id,tenant_id,status');
 
         // Mostrar modal si el usuario no tiene tenant ni membership activo
         $showModal = ! $user->current_tenant_id
-            && ! $user->memberships()->where('status', 'active')->exists();
+            && ! $user->memberships->where('status', 'active')->count();
 
         return view('dashboard.app.dashboard', [
             'currentConnection' => DB::connection()->getName(),
