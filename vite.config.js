@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/css/landing/shared/footer.css',
                 'resources/css/landing/sections/home/header.css',
                 'resources/css/landing/sections/home/modules-section.css',
+                'resources/css/landing/sections/home/scale-fast.css',
                 'resources/css/landing/sections/home/choose.css',
                 'resources/css/landing/sections/precios.css',
                 'resources/css/landing/sections/about.css',
