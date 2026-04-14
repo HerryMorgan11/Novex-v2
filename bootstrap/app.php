@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Middleware\CheckHasTenant;
-use App\Http\Middleware\InitializeTenant;
 use App\Http\Middleware\InitializeTenancyFromUser;
+use App\Http\Middleware\InitializeTenant;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;

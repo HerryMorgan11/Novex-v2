@@ -6,7 +6,9 @@ use App\Models\Reminder;
 use App\Models\ReminderList;
 use App\Models\Subtask;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Seeder de prueba para el módulo de recordatorios.
@@ -19,8 +21,8 @@ class ReminderSeeder extends Seeder
 {
     public function run(): void
     {
-        $userId = \Illuminate\Support\Facades\Auth::id()
-            ?? \App\Models\User::first()?->id;
+        $userId = Auth::id()
+            ?? User::first()?->id;
 
         if (! $userId) {
             $this->command->warn('No hay usuario disponible para el seeder.');
