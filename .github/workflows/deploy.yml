@@ -107,4 +107,8 @@ jobs:
               
               # 5. Permisos finales (para que Laravel pueda escribir logs/cache)
               sudo chown -R ec2-user:ec2-user storage bootstrap/cache
+<<<<<<< HEAD
               docker exec -u root erp-app chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+=======
+              docker exec -u root erp-app chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+>>>>>>> f103eb0 (deploy)
