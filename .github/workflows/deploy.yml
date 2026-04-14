@@ -77,7 +77,7 @@ jobs:
           username: ec2-user
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "public/build"
-          target: "/var/www/Novex-v2"
+          target: "/var/www/novex"
 
       # 2. Ejecutamos comandos ligeros por SSH
       - name: Execute Remote SSH Commands
@@ -87,32 +87,24 @@ jobs:
           username: ec2-user
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /var/www/Novex-v2
-            export DOCKER_BUILDKIT=0
-            export COMPOSE_DOCKER_CLI_BUILD=0
-            
-            git pull origin main
-            
-            # Limpiar conflictos de archivos
-            rm -f compose.yaml
-            
-            # Arreglar permisos de la carpeta build que acabamos de subir por SCP
-            sudo chown -R ec2-user:ec2-user public/build
-            
-            # 3. Build de la imagen de PHP (Ahora es rápido porque no hace npm install)
-            docker-compose build --build-arg FLUX_USER=${{ secrets.FLUX_USERNAME }} --build-arg FLUX_KEY=${{ secrets.FLUX_LICENSE_KEY }}
-            
-            # 4. Levantar servicios
-            docker-compose up -d
-            
-            # 5. Asegurar Vendor y permisos de Laravel
-            if [ ! -d "vendor" ]; then
-                docker run --rm -v $(pwd):/app -w /app composer install --ignore-platform-reqs --no-interaction --no-dev
-            fi
-            
-            sudo chown -R ec2-user:ec2-user storage bootstrap/cache
-            docker exec -u root erp-app chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
-            
-            # 6. Finalizar Laravel
-            docker exec erp-app php artisan migrate --force
-            docker exec erp-app php artisan optimize
+              cd /var/www/novex
+              
+              # 1. Forzar que el código local sea IDÉNTICO a GitHub main
+              git fetch origin main
+              git reset --hard origin/main
+              
+              # 2. Permisos correctos para los archivos que subimos por SCP
+              sudo chown -R ec2-user:ec2-user public/build
+              
+              # 3. Reinicio agresivo de Docker
+              docker-compose down
+              docker-compose up -d --build --force-recreate
+              
+              # 4. Limpieza profunda de Laravel
+              docker exec erp-app php artisan optimize:clear
+              docker exec erp-app php artisan migrate --force
+              docker exec erp-app php artisan optimize
+              
+              # 5. Permisos finales (para que Laravel pueda escribir logs/cache)
+              sudo chown -R ec2-user:ec2-user storage bootstrap/cache
+              docker exec -u root erp-app chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
