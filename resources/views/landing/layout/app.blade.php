@@ -7,11 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     @vite('resources/css/app.css')
+    @vite('resources/css/landing/general-style.css')
     @vite('resources/js/app.js')
     @vite('resources/css/landing/shared/navbar.css')
     @vite('resources/css/landing/sections/home/header.css')
     @vite('resources/css/landing/sections/home/modules-section.css')
+    @vite('resources/css/landing/sections/home/scale-fast.css')
     @vite('resources/css/landing/sections/home/choose.css')
+    @vite('resources/css/landing/sections/precios.css')
+    @vite('resources/css/landing/sections/about.css')
     @vite('resources/css/landing/shared/footer.css')
 
 </head>

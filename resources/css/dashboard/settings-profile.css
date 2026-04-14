@@ -1,0 +1,324 @@
+/* settings-profile.css */
+
+.settings-container {
+    color: var(--fg);
+    font-family: var(--font, inherit);
+    background-color: transparent;
+}
+
+.settings-wrapper {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* LAYOUT */
+.settings-layout {
+    display: flex;
+    border-radius: var(--radius, 12px);
+    background: var(--card);
+    overflow: hidden;
+    min-height: 80vh;
+}
+
+/* SIDEBAR STYLES */
+.settings-sidebar {
+    width: 18rem;
+    flex-shrink: 0;
+    padding: 2rem;
+}
+
+.settings-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-left: 1px solid var(--border);
+}
+
+.settings-nav button {
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: 1px solid transparent;
+    cursor: pointer;
+    background: transparent;
+    color: var(--muted);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-left: 10px;
+}
+
+.settings-nav button:hover {
+    color: var(--fg);
+    background-color: var(--surface-2);
+}
+
+.settings-nav button.active {
+    background-color: var(--surface-2);
+    color: var(--fg);
+    border-color: var(--border);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* CONTENT AREA */
+.settings-content {
+    width: 100%;
+    padding: 2.5rem 3.5rem;
+    overflow-y: auto;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.settings-header {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1.5rem;
+}
+
+.settings-header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--fg);
+    margin: 0 0 0.5rem 0;
+}
+
+.settings-header p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin: 0;
+}
+
+.settings-section {
+    margin-bottom: 3.5rem;
+}
+
+.settings-section h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--fg);
+    margin: 0 0 1.5rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--surface-2);
+}
+
+.settings-section-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* FIELD STYLES */
+.settings-field {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px dashed var(--border);
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-field:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.settings-field label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--fg);
+    margin-bottom: 0.5rem;
+}
+
+.settings-field p {
+    font-size: 1rem;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* INPUT COMPATIBILITY STYLES */
+.settings-field input[type='text'],
+.settings-field input[type='email'],
+.settings-field input[type='password'] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background-color: var(--input);
+    color: var(--fg);
+    font-size: 0.95rem;
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.settings-field input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--ring);
+}
+
+/* BUTTON STYLES */
+.settings-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    gap: 0.5rem;
+}
+
+.settings-btn-primary {
+    background-color: var(--accent);
+    color: var(--accent-fg);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.settings-btn-primary:hover {
+    background-color: var(--fg);
+    color: var(--bg);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.settings-btn-secondary {
+    background-color: var(--surface);
+    color: var(--fg);
+    border-color: var(--border);
+}
+
+.settings-btn-secondary:hover {
+    background-color: var(--surface-2);
+    border-color: var(--muted-2);
+}
+
+/* SECURITY SECTION */
+.settings-security-item {
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius, 12px);
+    background-color: var(--surface);
+    margin-bottom: 1rem;
+    transition: all 0.2s ease;
+}
+
+.settings-security-item:hover {
+    box-shadow: var(--shadow, 0 10px 15px -3px rgba(0, 0, 0, 0.1));
+    transform: translateY(-1px);
+}
+
+.settings-security-item h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--fg);
+    margin: 0 0 0.5rem 0;
+}
+
+.settings-security-item p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin: 0 0 1.25rem 0;
+    line-height: 1.5;
+}
+
+/* NOTIFICATION STYLES */
+.settings-notification-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius, 12px);
+    background-color: var(--surface);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    margin-bottom: 1rem;
+}
+
+.settings-notification-item:hover {
+    box-shadow: var(--shadow, 0 10px 15px -3px rgba(0, 0, 0, 0.1));
+    transform: translateY(-1px);
+}
+
+.settings-notification-item-text {
+    flex: 1;
+    padding-right: 1.5rem;
+}
+
+.settings-notification-item h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--fg);
+    margin: 0 0 0.25rem 0;
+}
+
+.settings-notification-item p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.settings-notification-item input[type='checkbox'] {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+    accent-color: var(--accent);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .settings-wrapper {
+        padding: 1rem;
+    }
+
+    .settings-layout {
+        flex-direction: column;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    .settings-sidebar {
+        width: 100%;
+        padding: 1rem 0;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        background: transparent;
+    }
+
+    .settings-nav {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+    }
+
+    .settings-nav button {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+
+    .settings-content {
+        padding: 2rem 0;
+        background: transparent;
+    }
+
+    .settings-notification-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}

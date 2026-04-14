@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Stancl\Tenancy\Database\Concerns\CentralConnection;
 
 class TenantSetting extends Model
 {
-    protected $connection = 'mysql';
+    use CentralConnection;
 
     protected $fillable = [
         'tenant_id',

@@ -2,6 +2,6 @@
 
 @section('content')
 <main>
-    <h1>Pricing Page</h1>
+    @include('landing.sections.precios.precios')
 </main>
 @endsection

@@ -1,0 +1,95 @@
+/* ===== shadcn-like tokens (CSS variables) - Light Theme ===== */
+:root {
+    --bg: #f8fafc;
+    --fg: #0f172a; /* slate-900 */
+    --muted: #64748b; /* slate-500 */
+    --muted-2: #94a3b8; /* slate-400 */
+
+    --card: #ffffff;
+    --sidebar: #f8fafc;
+
+    --border: #e2e8f0; /* slate-200 */
+    --input: #f8fafc; /* slate-50 */
+
+    --accent: #0f172a;
+    --accent-fg: #ffffff;
+
+    --ring: rgba(15, 23, 42, 0.18);
+
+    --surface: #f8fafc; /* slate-50 */
+    --surface-2: #f1f5f9; /* slate-100 */
+
+    --radius: 12px;
+    --shadow: 0 1px 2px rgba(2, 6, 23, 0.06), 0 8px 24px rgba(2, 6, 23, 0.08);
+
+    --font:
+        ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+        'Apple Color Emoji', 'Segoe UI Emoji';
+}
+
+/* ===== Dark Theme ===== */
+.dark-theme {
+    /* Fondo principal y textos */
+    --bg: #1c1417; /* Un tono súper oscuro del burdeos */
+    --fg: #fce7f3; /* pink-100 para textos principales */
+    --muted: #a1a1aa; /* zinc-400 para textos secundarios */
+    --muted-2: #71717a; /* zinc-500 para detalles */
+
+    /* Componentes principales */
+    --card: #3b1821; /* Un rojo/burdeos profundo pero elevado para la card */
+    --sidebar: #281217; /* Un tono un poco más oscuro que la card pero más claro que el fondo para el sidebar */
+
+    /* Bordes y estados */
+    --border: #562731; /* Borde sutil del mismo espectro de color */
+    --input: #4a202a; /* Fondo para inputs */
+
+    --accent: #f43f5e; /* rose-500 para acentos */
+    --accent-fg: #ffffff;
+
+    --ring: rgba(244, 63, 94, 0.25); /* Anillo de focus en rose */
+
+    /* Superficies generales */
+    --surface: #281217; /* Tono base usado en layout y sidebar */
+    --surface-2: #4a202a; /* Hover states (nav items) */
+}
+
+* {
+    box-sizing: border-box;
+}
+html,
+body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    font-family: var(--font);
+    color: var(--fg);
+    background: var(--surface);
+}
+
+.main-layout {
+    height: 100vh;
+    width: 100%;
+    padding: 10px;
+    overflow: hidden;
+    display: flex;
+    background: var(--surface);
+}
+
+.main-panel {
+    width: 100%;
+    height: 100%;
+    background: var(--card);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 5px 12px;
+    overflow-y: auto;
+    color: var(--fg);
+}
+@media (max-width: 920px) {
+    .main-layout {
+        padding: 5px;
+    }
+    .main-panel {
+        padding: 5px 8px;
+    }
+}

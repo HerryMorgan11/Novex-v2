@@ -10,13 +10,13 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Stancl\Tenancy\Database\Concerns\CentralConnection;
 
 class User extends Authenticatable
 {
+    use CentralConnection;
     use HasUlids, SoftDeletes;
     use Notifiable;
-
-    protected $connection = 'mysql';
 
     protected $fillable = [
         'name',
@@ -60,6 +60,21 @@ class User extends Authenticatable
     public function auditLogs(): HasMany
     {
         return $this->hasMany(TenantAuditLog::class);
+    }
+
+    public function reminderLists(): HasMany
+    {
+        return $this->hasMany(ReminderList::class);
+    }
+
+    public function reminders(): HasMany
+    {
+        return $this->hasMany(Reminder::class);
+    }
+
+    public function tags(): HasMany
+    {
+        return $this->hasMany(Tag::class);
     }
 
     public function sendPasswordResetNotification($token): void

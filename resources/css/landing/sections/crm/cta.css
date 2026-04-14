@@ -1,0 +1,112 @@
+/* === CRM CTA Section === */
+.crm-cta-section {
+    padding: 120px 48px;
+    background: var(--bg, #f5f5f5);
+    text-align: center;
+}
+
+.dark-theme .crm-cta-section {
+    background: var(--bg, #0f1724);
+}
+
+.crm-cta-inner {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.crm-cta-pretitle {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ff6b35;
+    margin-bottom: 20px;
+}
+
+.crm-cta-title {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text, #1a1a24);
+    line-height: 1.15;
+    margin: 0 0 20px;
+}
+
+.dark-theme .crm-cta-title {
+    color: #e6eef8;
+}
+
+.crm-cta-title span {
+    background: linear-gradient(135deg, #ff6b35 0%, #ff4081 50%, #9c27b0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.crm-cta-desc {
+    font-size: 1.05rem;
+    color: #6b6b7b;
+    line-height: 1.7;
+    margin: 0 0 40px;
+}
+
+.dark-theme .crm-cta-desc {
+    color: #9aa6bd;
+}
+
+.crm-cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.crm-cta-btn-primary {
+    background: linear-gradient(135deg, #ff6b35 0%, #ff4081 50%, #9c27b0 100%);
+    color: #fff;
+    border: none;
+    padding: 16px 36px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        transform 200ms,
+        box-shadow 200ms;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.crm-cta-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+}
+
+.crm-cta-btn-secondary {
+    background: transparent;
+    color: var(--text, #1a1a24);
+    border: 1.5px solid rgba(0, 0, 0, 0.15);
+    padding: 16px 36px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 200ms;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.dark-theme .crm-cta-btn-secondary {
+    color: #e6eef8;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.crm-cta-btn-secondary:hover {
+    border-color: #ff6b35;
+}
+
+.crm-cta-note {
+    margin-top: 20px;
+    font-size: 0.82rem;
+    color: #9ca3af;
+}

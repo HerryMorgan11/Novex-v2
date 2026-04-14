@@ -1,130 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Novex</title>
+    <title>Crear cuenta - Novex</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    @vite(['resources/css/auth/auth.css', 'resources/js/app.js'])
+    @vite(['resources/css/auth/register.css', 'resources/js/app.js'])
 </head>
 
 <body>
-    <div class="login-wrapper" style="--bg-image: url('{{ asset('assets/background/fondo-forms.jpg') }}')">
-        <div class="bg-shape shape-1"></div>
-        <div class="bg-shape shape-2"></div>
+    <div class="auth-container">
+        <!-- Left Column - Form Section -->
+        <section class="auth-form-section">
+            <div class="form-wrapper">
+                <!-- Logo -->
+                <div class="form-header">
+                    <img src="{{ asset('assets/logo/logo-novex-color.png') }}" alt="Novex Logo" class="header-logo">
+                </div>
 
-        <div class="login-container">
-            <img src="{{ asset('assets/logo/logo-novex-color.png') }}" alt="Novex Logo" class="logo">
-            <div class="login-header">
-                <h1>Create Account</h1>
+                <!-- Heading -->
+                <div class="auth-heading">
+                    <h1>Crear cuenta</h1>
+                    <p>Únete a Novex y comienza a colaborar con tu equipo</p>
+                </div>
+
+                <!-- Registration Form -->
+                <form action="{{ route('register') }}" method="POST" class="auth-form" id="registerForm">
+                    @csrf
+
+                    <!-- Full Name Field -->
+                    <div class="form-group">
+                        <label for="name">Nombre completo</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">
+                                <iconify-icon icon="iconoir:user"></iconify-icon>
+                            </span>
+                            <input type="text" id="name" name="name" placeholder="Juan Pérez" required
+                                autofocus value="{{ old('name') }}">
+                        </div>
+                        @error('name')
+                            <span class="error-message">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">
+                                <iconify-icon icon="uil:envelope"></iconify-icon>
+                            </span>
+                            <input type="email" id="email" name="email" placeholder="tu@example.com" required
+                                value="{{ old('email') }}">
+                        </div>
+                        @error('email')
+                            <span class="error-message">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">
+                                <iconify-icon icon="iconoir:lock"></iconify-icon>
+                            </span>
+                            <input type="password" id="password" name="password" placeholder="Mínimo 8 caracteres"
+                                required>
+                            <button type="button" class="toggle-password" onclick="togglePassword('password')">
+                                <iconify-icon id="icon-eye-password" icon="iconoir:eye"></iconify-icon>
+                            </button>
+                        </div>
+                        @error('password')
+                            <span class="error-message">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <!-- Confirm Password Field -->
+                    <div class="form-group">
+                        <label for="password_confirmation">Confirmar contraseña</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">
+                                <iconify-icon icon="iconoir:lock"></iconify-icon>
+                            </span>
+                            <input type="password" id="password_confirmation" name="password_confirmation"
+                                placeholder="Repite tu contraseña" required>
+                            <button type="button" class="toggle-password"
+                                onclick="togglePassword('password_confirmation')">
+                                <iconify-icon id="icon-eye-password-confirm" icon="iconoir:eye"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Terms and Conditions -->
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" name="terms" required>
+                            <span>Acepto los <a href="{{ asset('assets/pdf/TermsAndCoinditions.pdf') }}"
+                                    class="link-inline" target="_blank">términos y condiciones</a></span>
+                        </label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn-primary">Crear cuenta</button>
+
+                    <!-- Divider -->
+                    <div class="divider">
+                        <span>O</span>
+                    </div>
+
+                    <!-- Google Sign Up Button -->
+                    <a href="{{ route('google.redirect') }}" class="btn-google">
+                        <iconify-icon icon="material-icon-theme:google"></iconify-icon>
+                        Registrarse con Google
+                    </a>
+
+                    <!-- Sign In Link -->
+                    <div class="auth-footer">
+                        ¿Ya tienes cuenta? <a href="{{ route('login') }}" class="link-primary">Inicia sesión</a>
+                    </div>
+                </form>
+
+                <!-- Back to Home Button -->
+                <div class="back-home">
+                    <a href="/">
+                        &lt; Back to Home
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Column - Branding Section -->
+        <section class="auth-branding-section">
+            <div class="branding-content">
+                <!-- Logo for branding section -->
+                <div class="branding-logo">
+                    <img src="{{ asset('assets/logo/logo-novex-color.png') }}" alt="Novex Logo" class="header-logo">
+                </div>
+                <!-- Tagline -->
+                <p class="branding-tagline">El espacio de trabajo moderno para que equipos de alto rendimiento colaboren
+                    y entreguen resultados.</p>
+
+                <!-- Stats -->
+                <div class="branding-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">10k+</span>
+                        <span class="stat-label">Equipos</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">99.9%</span>
+                        <span class="stat-label">Disponibilidad</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Soporte</span>
+                    </div>
+                </div>
             </div>
 
-            <form action="{{ route('register') }}" method="POST" class="login-form">
-                @csrf
-
-                <!-- Name -->
-                <div class="form-group">
-                    <label for="name">FULL NAME</label>
-                    <div class="input-wrapper">
-                        <span class="input-icon">
-                            <iconify-icon icon="lucide:user"></iconify-icon>
-                        </span>
-                        <input type="text" id="name" name="name" placeholder="John Doe" required autofocus>
-                    </div>
-                </div>
-
-                <!-- Email -->
-                <div class="form-group">
-                    <label for="email">EMAIL</label>
-                    <div class="input-wrapper">
-                        <span class="input-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                            </svg>
-                        </span>
-                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
-                    </div>
-                </div>
-
-                <!-- Password -->
-                <div class="form-group">
-                    <label for="password">PASSWORD</label>
-                    <div class="input-wrapper">
-                        <span class="input-icon">
-                            <iconify-icon icon="iconoir:lock"></iconify-icon>
-                        </span>
-                        <input type="password" id="password" name="password" placeholder="Create a password" required>
-                        <button type="button" class="toggle-password" onclick="togglePassword()">
-                            <iconify-icon id="icon-eye-password" icon="iconoir:eye"></iconify-icon>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Confirm Password -->
-                <div class="form-group">
-                    <label for="password_confirmation">CONFIRM PASSWORD</label>
-                    <div class="input-wrapper">
-                        <span class="input-icon">
-                            <iconify-icon icon="iconoir:lock"></iconify-icon>
-                        </span>
-                        <input type="password" id="password_confirmation" name="password_confirmation"
-                            placeholder="Confirm your password" required>
-                        <button type="button" class="toggle-password" onclick="togglePasswordConfirmation()">
-                            <iconify-icon id="icon-eye-password-confirmation" icon="iconoir:eye"></iconify-icon>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="form-options">
-                    <label class="checkbox-container">
-                        <input type="checkbox" name="terms" required>
-                        <span class="checkmark"></span>
-                        I agree to the <a href="{{ asset('assets/pdf/TermsAndCoinditions.pdf') }}" class="forgot-password" style="margin-left: 4px;">Terms &
-                            Conditions</a>
-                    </label>
-                </div>
-
-                <button type="submit" class="btn-primary">Register</button>
-
-                <div class="divider">
-                    <span>OR</span>
-                </div>
-
-                <div class="alt-action">
-                    Already have an account? <a href="{{ route('login') }}">Sign In</a>
-                </div>
-            </form>
-
-            <div class="back-home">
-                <a href="/">
-                    &lt; Back to Home
-                </a>
-            </div>
-        </div>
+            <!-- Decorative Elements -->
+            <div class="branding-decoration decoration-1"></div>
+            <div class="branding-decoration decoration-2"></div>
+        </section>
     </div>
 
-      <script>
-        function togglePassword() {
-            const passwordInput = document.getElementById('password');
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
+    <script>
+        function togglePassword(fieldId) {
+            const passwordInput = document.getElementById(fieldId);
+            const iconElement = passwordInput.parentElement.querySelector('button').querySelector('iconify-icon');
+            const isPassword = passwordInput.getAttribute('type') === 'password';
 
-            document.getElementById('icon-eye-password').setAttribute('icon', type === 'password' ? 'iconoir:eye' : 'codicon:eye-closed');
+            passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+            iconElement.setAttribute('icon', isPassword ? 'iconoir:eye-off' : 'iconoir:eye');
         }
 
-        function togglePasswordConfirmation() {
-            const passwordConfirmationInput = document.getElementById('password_confirmation');
-            const type = passwordConfirmationInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordConfirmationInput.setAttribute('type', type);
+        // Form validation
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('password_confirmation').value;
 
-            document.getElementById('icon-eye-password-confirmation').setAttribute('icon', type === 'password' ? 'iconoir:eye' : 'codicon:eye-closed');
-        }
+            if (password !== confirmPassword) {
+                e.preventDefault();
+                alert('Las contraseñas no coinciden');
+            }
+        });
     </script>
-
 </body>
+
 </html>

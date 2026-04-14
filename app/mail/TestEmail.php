@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -44,7 +45,7 @@ class TestEmail extends Mailable
                     ]),
                 ],
                 precedenceBulkHeader: true,
-                sendAt: new \Carbon\Carbon('2022-01-28 11:53:20'),
+                sendAt: new Carbon('2022-01-28 11:53:20'),
             );
     }
 }

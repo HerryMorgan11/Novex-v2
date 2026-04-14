@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Stancl\Tenancy\Database\Concerns\CentralConnection;
 
 class TenantInvitation extends Model
 {
+    use CentralConnection;
     use SoftDeletes;
-
-    protected $connection = 'mysql';
 
     protected $fillable = [
         'tenant_id',

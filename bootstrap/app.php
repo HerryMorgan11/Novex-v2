@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\CheckHasTenant;
+use App\Http\Middleware\InitializeTenancyFromUser;
 use App\Http\Middleware\InitializeTenant;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -14,6 +16,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
             'initializeTenant' => InitializeTenant::class,
+            'checkHasTenant' => CheckHasTenant::class,
+            'initializeTenancyFromUser' => InitializeTenancyFromUser::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

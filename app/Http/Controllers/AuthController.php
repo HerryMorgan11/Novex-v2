@@ -11,16 +11,26 @@ use Laravel\Fortify\Contracts\CreatesNewUsers;
 
 class AuthController extends Controller
 {
+    /**
+     * Muestra el formulario de login.
+     */
     public function login()
     {
         return view('auth.login');
     }
 
+    /**
+     * Muestra el formulario de registro.
+     */
     public function register()
     {
         return view('auth.register');
     }
 
+    /**
+     * Autentica al usuario con email y contraseña.
+     * Usa session regeneration para prevenir session fixation.
+     */
     public function authenticate(Request $request): RedirectResponse
     {
         $credentials = $request->validate([
@@ -41,6 +51,10 @@ class AuthController extends Controller
         return redirect()->intended(route('dashboard'));
     }
 
+    /**
+     * Crea un nuevo usuario y lo autentica.
+     * La lógica de creación se delega al CreatesNewUsers de Fortify.
+     */
     public function store(Request $request, CreatesNewUsers $creator): RedirectResponse
     {
         $request->validate([
@@ -54,10 +68,13 @@ class AuthController extends Controller
         Auth::login($user);
         $request->session()->regenerate();
 
-        // After registration, show provisioning page while tenant is being prepared
-        return redirect()->route('provisioning.page');
+        // Redirigir a /app donde el modal de crear empresa aparecerá si no tiene tenant
+        return redirect('/app');
     }
 
+    /**
+     * Cierra la sesión del usuario y limpia los tokens de sesión.
+     */
     public function logout(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();

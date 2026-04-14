@@ -54,9 +54,24 @@
     <div class="footer-info">
         <p class="info-footer">© 2024 Novex. Todos los derechos reservados.</p>
         <div class="footer-legal">
+            <button onclick="themeToggle()" class="theme-toggle"><iconify-icon icon="mynaui:sun"></iconify-icon></button>
             <a href="#" class="legal-link">Política de Privacidad</a>
             <a href="#" class="legal-link">Términos de Servicio</a>
         </div>
         
     </div>
 </div>
+
+<script>
+    function themeToggle() {
+        const body = document.body;
+        body.classList.toggle('dark-theme');
+
+        // Cambia el icono del botón
+        const isDark = body.classList.contains('dark-theme');
+        const icons = document.querySelectorAll('.theme-toggle iconify-icon');
+        icons.forEach(icon => {
+            if (icon && icon.setAttribute) icon.setAttribute('icon', isDark ? 'mynaui:moon' : 'mynaui:sun');
+        });
+    }
+</script>

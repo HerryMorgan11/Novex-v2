@@ -9,6 +9,9 @@ use Stancl\Tenancy\Bootstrappers\FilesystemTenancyBootstrapper;
 use Stancl\Tenancy\Bootstrappers\QueueTenancyBootstrapper;
 use Stancl\Tenancy\Database\Models\Domain;
 use Stancl\Tenancy\TenantDatabaseManagers\MySQLDatabaseManager;
+use Stancl\Tenancy\TenantDatabaseManagers\PostgreSQLDatabaseManager;
+use Stancl\Tenancy\TenantDatabaseManagers\SQLiteDatabaseManager;
+use Stancl\Tenancy\UUIDGenerator;
 
 return [
 
@@ -21,7 +24,7 @@ return [
 
     // ✅ Si tu tenants.id lo genera el paquete, deja UUIDGenerator.
     // ✅ Si tú asignas id manual (recomendado: usar el id del paquete), también sirve.
-    'id_generator' => Stancl\Tenancy\UUIDGenerator::class,
+    'id_generator' => UUIDGenerator::class,
 
     'domain_model' => Domain::class,
 
@@ -58,7 +61,7 @@ return [
     */
     'database' => [
         // ✅ Tu conexión central (la que has mostrado en config/database.php)
-        'central_connection' => env('DB_CONNECTION', 'mysql'),
+        'central_connection' => env('DB_CONNECTION', 'sqlite'),
 
         /*
          * Connection "template" para crear la conexión tenant dinámica.
@@ -82,8 +85,8 @@ return [
          */
         'managers' => [
             'mysql' => MySQLDatabaseManager::class,
-            'sqlite' => Stancl\Tenancy\TenantDatabaseManagers\SQLiteDatabaseManager::class,
-            'pgsql' => Stancl\Tenancy\TenantDatabaseManagers\PostgreSQLDatabaseManager::class,
+            'sqlite' => SQLiteDatabaseManager::class,
+            'pgsql' => PostgreSQLDatabaseManager::class,
             // 'pgsql' => Stancl\Tenancy\TenantDatabaseManagers\PostgreSQLSchemaManager::class,
         ],
     ],
