@@ -18,6 +18,7 @@ export default defineConfig({
                 'resources/css/landing/sections/rh.css',
                 'resources/js/app.js',
                 'resources/css/auth/auth.css',
+                'resources/css/auth/register.css',
                 'resources/css/landing/general-style.css',
                 // Dashboard CSS
                 'resources/css/dashboard/sidebar.css',
