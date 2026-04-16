@@ -25,7 +25,7 @@
 
           <nav class="nav" aria-label="Navegación de módulos">
             <!-- Inventario -->
-            <a class="nav-item" href="#" x-show="modules.inventory">
+            <a class="nav-item" href="{{ route('inventario.index') }}" x-show="modules.inventory">
               <span class="nav-icon" aria-hidden="true">
                 <iconify-icon icon="streamline-ultimate:warehouse-cart-packages-2-bold"></iconify-icon>
               </span>
