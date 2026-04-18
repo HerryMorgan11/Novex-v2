@@ -8,5 +8,4 @@ return [
     AppServiceProvider::class,
     FortifyServiceProvider::class,
     TenancyServiceProvider::class,
-    \App\Providers\ModuloInventarioServiceProvider::class,
 ];

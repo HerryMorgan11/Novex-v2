@@ -4,6 +4,13 @@ use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ControlPanelController;
+use App\Http\Controllers\Dashboard\Features\Inventario\AlmacenController;
+use App\Http\Controllers\Dashboard\Features\Inventario\DashboardInventarioController;
+use App\Http\Controllers\Dashboard\Features\Inventario\ExpedicionController;
+use App\Http\Controllers\Dashboard\Features\Inventario\ProduccionController;
+use App\Http\Controllers\Dashboard\Features\Inventario\StockController;
+use App\Http\Controllers\Dashboard\Features\Inventario\TransporteController;
+use App\Http\Controllers\Dashboard\Features\Inventario\TrazabilidadController;
 use App\Http\Controllers\Dashboard\Features\NoteController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProvisioningController;
@@ -104,6 +111,58 @@ Route::middleware(['auth', 'checkHasTenant'])->group(function () {
         Route::post('/{id}', [NoteController::class, 'update'])->name('update');
         Route::post('/{note}/delete', [NoteController::class, 'destroy'])->name('destroy');
     });
+
+    // ── Módulo de Inventario ─────────────────────────────────────────────────
+    Route::middleware('initializeTenancyFromUser')
+        ->prefix('dashboard/features/inventario')
+        ->name('inventario.')
+        ->group(function () {
+
+            // Dashboard
+            Route::get('/', [DashboardInventarioController::class, 'index'])->name('index');
+
+            // Transportes de entrada
+            Route::prefix('transportes')->name('transportes.')->group(function () {
+                Route::get('/', [TransporteController::class, 'index'])->name('index');
+                Route::get('/{transporte}', [TransporteController::class, 'show'])->name('show');
+                Route::post('/{transporte}/lineas/{lineaId}/recibir', [TransporteController::class, 'recibirLinea'])->name('lineas.recibir');
+            });
+
+            // Stock / Inventario
+            Route::prefix('stock')->name('stock.')->group(function () {
+                Route::get('/', [StockController::class, 'index'])->name('index');
+                Route::get('/lote/{lote}', [StockController::class, 'show'])->name('show');
+                Route::get('/productos/{producto}/validar', [StockController::class, 'validarProducto'])->name('producto.validar');
+                Route::post('/productos/{producto}/validar', [StockController::class, 'guardarValidacion'])->name('producto.guardar-validacion');
+            });
+
+            // Producción
+            Route::prefix('produccion')->name('produccion.')->group(function () {
+                Route::get('/', [ProduccionController::class, 'index'])->name('index');
+                Route::post('/lotes/{lote}/mover', [ProduccionController::class, 'mover'])->name('mover');
+            });
+
+            // Expediciones / Reparto
+            Route::prefix('expediciones')->name('expediciones.')->group(function () {
+                Route::get('/', [ExpedicionController::class, 'index'])->name('index');
+                Route::get('/crear', [ExpedicionController::class, 'create'])->name('create');
+                Route::post('/', [ExpedicionController::class, 'store'])->name('store');
+                Route::get('/{expedicion}', [ExpedicionController::class, 'show'])->name('show');
+            });
+
+            // Trazabilidad
+            Route::get('/trazabilidad/lotes/{lote}', [TrazabilidadController::class, 'historial'])->name('trazabilidad.historial');
+
+            // Almacenes y estructura física
+            Route::prefix('almacenes')->name('almacenes.')->group(function () {
+                Route::get('/', [AlmacenController::class, 'index'])->name('index');
+                Route::get('/crear', [AlmacenController::class, 'create'])->name('create');
+                Route::post('/', [AlmacenController::class, 'store'])->name('store');
+                Route::post('/{almacen}/zonas', [AlmacenController::class, 'storeZona'])->name('zonas.store');
+                Route::post('/{almacen}/estanterias', [AlmacenController::class, 'storeEstanteria'])->name('estanterias.store');
+                Route::post('/{almacen}/ubicaciones', [AlmacenController::class, 'storeUbicacion'])->name('ubicaciones.store');
+            });
+        });
 
     // ── Módulo de Recordatorios ──────────────────────────────────────────────
     // El middleware initializeTenancyFromUser conecta al tenant del usuario autenticado.
