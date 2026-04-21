@@ -86,6 +86,7 @@ Route::middleware(['auth', 'checkHasTenant'])->group(function () {
 
     // Dashboard principal
     Route::get('/app', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/app/chart-data', [DashboardController::class, 'chartData'])->name('dashboard.chart-data');
 
     // Ajustes del perfil
     Route::get('/settings/profile', fn () => view('dashboard.features.settings.settingsApp'))

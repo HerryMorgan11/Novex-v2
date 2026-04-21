@@ -28,11 +28,13 @@ export default defineConfig({
                 'resources/css/dashboard/control-panel.css',
                 'resources/css/dashboard/features/calendario.css',
                 'resources/css/dashboard/features/notes.css',
+                'resources/css/dashboard/features/dashboard.css',
                 // Dashboard JS
                 'resources/js/dashboard/sidebar.js',
                 'resources/js/dashboard/subtasks.js',
                 'resources/js/dashboard/createCompanyModal.js',
                 'resources/js/dashboard/features/calendario.js',
+                'resources/js/dashboard/features/dashboard.js',
                 // Settings & Control Panel JS
                 'resources/js/settings/settings.js',
                 'resources/js/controlPanel/navigation.js',
