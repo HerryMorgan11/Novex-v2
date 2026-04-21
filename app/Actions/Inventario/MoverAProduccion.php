@@ -6,7 +6,7 @@ use App\Enums\Inventario\LoteEstado;
 use App\Enums\Inventario\MovimientoTipo;
 use App\Models\Inventario\DetalleMovimiento;
 use App\Models\Inventario\Lote;
-use App\Models\Inventario\MovimientoInventario;
+use App\Models\Inventario\Movimiento;
 use App\Models\Inventario\Stock;
 use App\Models\Inventario\TrazabilidadEvento;
 use Illuminate\Support\Facades\DB;
@@ -17,9 +17,12 @@ use Illuminate\Support\Facades\DB;
  */
 class MoverAProduccion
 {
-    public function ejecutar(Lote $lote, int $usuarioId, ?string $observaciones = null): Lote
+    public function ejecutar(Lote $lote, int|string|null $usuarioId, ?string $observaciones = null): Lote
     {
         return DB::transaction(function () use ($lote, $usuarioId, $observaciones) {
+            $usuarioIdNumerico = is_numeric($usuarioId) ? (int) $usuarioId : null;
+            $usuarioReferencia = $usuarioId !== null ? (string) $usuarioId : null;
+
             throw_unless(
                 $lote->estado === LoteEstado::Stored,
                 \RuntimeException::class,
@@ -36,14 +39,14 @@ class MoverAProduccion
             $lote->update(['estado' => LoteEstado::InProduction]);
 
             // Movimiento
-            $movimiento = MovimientoInventario::create([
+            $movimiento = Movimiento::create([
                 'fecha' => now(),
                 'tipo' => MovimientoTipo::Produccion,
                 'referencia' => "PROD-{$lote->numero_lote}",
                 'observacion' => $observaciones,
                 'id_lote' => $lote->id_lote,
-                'id_usuario' => $usuarioId,
-                'usuario' => $usuarioId,
+                'id_usuario' => $usuarioIdNumerico,
+                'usuario' => $usuarioReferencia,
             ]);
 
             DetalleMovimiento::create([
@@ -63,7 +66,7 @@ class MoverAProduccion
                 'estado_anterior' => $estadoAnterior->value,
                 'estado_nuevo' => LoteEstado::InProduction->value,
                 'origen_evento' => 'manual',
-                'id_usuario' => $usuarioId,
+                'id_usuario' => $usuarioIdNumerico,
                 'observaciones' => $observaciones,
                 'fecha_evento' => now(),
             ]);

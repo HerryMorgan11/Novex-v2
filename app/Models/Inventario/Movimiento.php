@@ -6,7 +6,7 @@ use App\Enums\Inventario\MovimientoTipo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class MovimientoInventario extends Model
+class Movimiento extends Model
 {
     protected $table = 'movimientos_inventario';
 

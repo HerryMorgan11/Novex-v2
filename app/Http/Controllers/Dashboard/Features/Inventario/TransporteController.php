@@ -22,23 +22,33 @@ class TransporteController extends Controller
         return view('dashboard.features.inventario.transportes.index', compact('transportes'));
     }
 
-    public function show(Transporte $transporte): View
+    public function show(int $transporte): View
     {
+        $transporte = Transporte::whereKey($transporte)->firstOrFail();
         $transporte->load(['lineas.producto', 'lineas.lote.ubicacion', 'proveedor']);
 
         $ubicaciones = Ubicacion::with(['estanteria.zona.almacen'])
-            ->where('activa', true)
+            ->where(function ($query) {
+                $query->where('activa', true)
+                    ->orWhereNull('activa');
+            })
             ->get()
-            ->map(fn ($u) => [
+            ->sortBy(fn ($u) => $u->codigoCompleto())
+            ->groupBy(fn ($u) => $u->estanteria?->almacen?->nombre ?? 'Sin almacén')
+            ->map(fn ($grupo) => $grupo->map(fn ($u) => [
                 'id' => $u->id_ubicacion,
                 'codigo' => $u->codigoCompleto(),
-            ]);
+                'zona' => $u->estanteria?->zona?->nombre,
+                'estanteria' => $u->estanteria?->codigo,
+            ]));
 
         return view('dashboard.features.inventario.transportes.show', compact('transporte', 'ubicaciones'));
     }
 
-    public function recibirLinea(Request $request, Transporte $transporte, int $lineaId): RedirectResponse
+    public function recibirLinea(Request $request, int $transporte, int $lineaId): RedirectResponse
     {
+        $transporte = Transporte::whereKey($transporte)->firstOrFail();
+
         $request->validate([
             'id_ubicacion' => ['required', 'integer', 'exists:ubicaciones,id_ubicacion'],
             'observaciones' => ['nullable', 'string', 'max:500'],

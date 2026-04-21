@@ -56,7 +56,7 @@ class Producto extends Model
 
     public function movimientos(): HasMany
     {
-        return $this->hasMany(MovimientoInventario::class, 'id_producto', 'id_producto')
+        return $this->hasMany(Movimiento::class, 'id_producto', 'id_producto')
             ->orderByDesc('fecha');
     }
 

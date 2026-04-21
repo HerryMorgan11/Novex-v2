@@ -61,8 +61,9 @@ class ExpedicionController extends Controller
             ->with('success', "Expedición {$expedicion->referencia_expedicion} creada correctamente.");
     }
 
-    public function show(Expedicion $expedicion): View
+    public function show(int $expedicion): View
     {
+        $expedicion = Expedicion::whereKey($expedicion)->firstOrFail();
         $expedicion->load(['lineas.lote.producto', 'lineas.lote.ubicacion']);
 
         return view('dashboard.features.inventario.expediciones.show', compact('expedicion'));

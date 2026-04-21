@@ -137,11 +137,64 @@
                             @if($linea->estado_linea === 'ubicada')
                             <span style="font-size:0.8rem; color:var(--muted);">Completado</span>
                             @else
-                            <button onclick="abrirModalUbicacion({{ $linea->id }}, '{{ $linea->nombreProducto() }}')"
+                            <button
+                                type="button"
+                                onclick="abrirModalUbicacion({{ $linea->id }})"
                                 class="inv-btn inv-btn-outline" style="font-size:0.78rem; padding:5px 12px;">
                                 <iconify-icon icon="lucide:map-pin" width="13"></iconify-icon>
                                 Ubicar
                             </button>
+
+                            <div id="modal-ubicacion-{{ $linea->id }}" class="modal-ubicacion-linea" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:1000; align-items:center; justify-content:center;" hidden>
+                                <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:28px; width:600px; max-width:95vw;">
+                                    <h3 style="font-size:1rem; font-weight:600; margin-bottom:4px;">Asignar ubicación</h3>
+                                    <p style="font-size:0.85rem; color:var(--muted); margin-bottom:20px;">{{ $linea->nombreProducto() }}</p>
+
+                                    <form method="POST" action="{{ route('inventario.transportes.lineas.recibir', [$transporte->id_recepcion, $linea->id]) }}">
+                                        @csrf
+                                        <div class="inv-form-group" style="margin-bottom:16px;">
+                                            <label>Ubicación en almacén</label>
+                                            <select name="id_ubicacion" class="inv-select" style="width:100%;" required>
+                                                <option value="">Seleccionar ubicación...</option>
+                                                @foreach($ubicaciones as $almacen => $grupo)
+                                                <optgroup label="{{ $almacen }}">
+                                                    @foreach($grupo as $ub)
+                                                    <option value="{{ $ub['id'] }}">
+                                                        {{ $ub['codigo'] }}
+                                                        @if($ub['zona'] || $ub['estanteria'])
+                                                            ({{ $ub['zona'] ?? 'Sin zona' }} · Estantería {{ $ub['estanteria'] ?? '—' }})
+                                                        @endif
+                                                    </option>
+                                                    @endforeach
+                                                </optgroup>
+                                                @endforeach
+                                            </select>
+                                            @if($ubicaciones->isEmpty())
+                                            <p style="font-size:0.8rem; color:var(--muted); margin-top:8px;">
+                                                No hay ubicaciones creadas. Crea un almacén, una zona, una estantería y una ubicación para poder confirmar la recepción.
+                                            </p>
+                                            @endif
+                                        </div>
+
+                                        <div class="inv-form-group" style="margin-bottom:20px;">
+                                            <label>Observaciones (opcional)</label>
+                                            <textarea name="observaciones" rows="2" style="resize:vertical;"></textarea>
+                                        </div>
+
+                                        <div style="display:flex; gap:10px; justify-content:flex-end;">
+                                            <a href="{{ route('inventario.almacenes.create') }}" class="inv-btn inv-btn-outline">
+                                                <iconify-icon icon="lucide:warehouse"></iconify-icon>
+                                                Crear almacén
+                                            </a>
+                                            <button type="button" onclick="cerrarModalUbicacion({{ $linea->id }})" class="inv-btn inv-btn-outline">Cancelar</button>
+                                            <button type="submit" class="inv-btn inv-btn-primary">
+                                                <iconify-icon icon="lucide:check"></iconify-icon>
+                                                Confirmar recepción
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                             @endif
                         </td>
                     </tr>
@@ -154,54 +207,16 @@
 
 </div>
 
-{{-- Modal de asignación de ubicación --}}
-<div id="modal-ubicacion" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:1000; display:flex; align-items:center; justify-content:center;" hidden>
-    <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:28px; width:440px; max-width:95vw;">
-        <h3 style="font-size:1rem; font-weight:600; margin-bottom:4px;">Asignar ubicación</h3>
-        <p id="modal-producto-nombre" style="font-size:0.85rem; color:var(--muted); margin-bottom:20px;"></p>
-
-        <form id="form-ubicacion" method="POST" action="">
-            @csrf
-            <div class="inv-form-group" style="margin-bottom:16px;">
-                <label>Ubicación en almacén</label>
-                <select name="id_ubicacion" class="inv-select" style="width:100%;" required>
-                    <option value="">Seleccionar ubicación...</option>
-                    @foreach($ubicaciones as $ub)
-                    <option value="{{ $ub['id'] }}">{{ $ub['codigo'] }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="inv-form-group" style="margin-bottom:20px;">
-                <label>Observaciones (opcional)</label>
-                <textarea name="observaciones" rows="2" style="resize:vertical;"></textarea>
-            </div>
-
-            <div style="display:flex; gap:10px; justify-content:flex-end;">
-                <button type="button" onclick="cerrarModal()" class="inv-btn inv-btn-outline">Cancelar</button>
-                <button type="submit" class="inv-btn inv-btn-primary">
-                    <iconify-icon icon="lucide:check"></iconify-icon>
-                    Confirmar recepción
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
-
 @push('scripts')
 <script>
-const baseUrl = "{{ route('inventario.transportes.show', $transporte->id_recepcion) }}";
-
-function abrirModalUbicacion(lineaId, productoNombre) {
-    document.getElementById('modal-producto-nombre').textContent = productoNombre;
-    document.getElementById('form-ubicacion').action = baseUrl + '/lineas/' + lineaId + '/recibir';
-    const modal = document.getElementById('modal-ubicacion');
+function abrirModalUbicacion(lineaId) {
+    const modal = document.getElementById('modal-ubicacion-' + lineaId);
     modal.removeAttribute('hidden');
     modal.style.display = 'flex';
 }
 
-function cerrarModal() {
-    const modal = document.getElementById('modal-ubicacion');
+function cerrarModalUbicacion(lineaId) {
+    const modal = document.getElementById('modal-ubicacion-' + lineaId);
     modal.setAttribute('hidden', '');
     modal.style.display = 'none';
 }

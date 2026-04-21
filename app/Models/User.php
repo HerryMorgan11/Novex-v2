@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Notifications\CustomResetPassword;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -15,7 +16,7 @@ use Stancl\Tenancy\Database\Concerns\CentralConnection;
 class User extends Authenticatable
 {
     use CentralConnection;
-    use HasUlids, SoftDeletes;
+    use HasFactory, HasUlids, SoftDeletes;
     use Notifiable;
 
     protected $fillable = [

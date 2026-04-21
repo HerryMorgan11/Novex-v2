@@ -43,11 +43,19 @@ class LineaTransporte extends Model
 
     public function nombreProducto(): string
     {
+        if ($this->producto?->esBorrador() && $this->producto_nombre_ref) {
+            return $this->producto_nombre_ref;
+        }
+
         return $this->producto?->nombre ?? $this->producto_nombre_ref ?? 'Producto desconocido';
     }
 
     public function codigoProducto(): string
     {
+        if ($this->producto?->esBorrador() && $this->producto_codigo_ref) {
+            return $this->producto_codigo_ref;
+        }
+
         return $this->producto?->sku ?? $this->producto_codigo_ref ?? '-';
     }
 }

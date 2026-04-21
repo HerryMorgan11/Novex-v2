@@ -63,6 +63,13 @@ class RegistrarTransporteDesdeApi
                 'notas_internas' => 'Creado automáticamente desde API el '.now()->toDateTimeString(),
             ]);
             $esBorrador = true;
+        } elseif ($producto->esBorrador() && ! empty($linea['nombre']) && $producto->nombre !== $linea['nombre']) {
+            $producto->update([
+                'nombre' => $linea['nombre'],
+                'notas_internas' => trim(($producto->notas_internas ? $producto->notas_internas."\n" : '')
+                    .'Actualizado automáticamente desde API el '.now()->toDateTimeString()),
+            ]);
+            $esBorrador = true;
         }
 
         // Crear lote para esta línea del transporte

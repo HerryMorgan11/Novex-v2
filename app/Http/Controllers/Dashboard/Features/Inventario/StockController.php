@@ -44,8 +44,10 @@ class StockController extends Controller
         return view('dashboard.features.inventario.stock.index', compact('lotes', 'estados', 'categorias'));
     }
 
-    public function show(Lote $lote): View
+    public function show(int $lote): View
     {
+        $lote = Lote::whereKey($lote)->firstOrFail();
+
         $lote->load([
             'producto.categoria',
             'producto.unidadMedida',
@@ -58,16 +60,20 @@ class StockController extends Controller
     }
 
     /** Formulario para validar un producto borrador */
-    public function validarProducto(Producto $producto): View
+    public function validarProducto(int $producto): View
     {
+        $producto = Producto::whereKey($producto)->firstOrFail();
+
         $categorias = CategoriaProducto::orderBy('nombre')->get();
         $unidades = UnidadMedida::orderBy('nombre')->get();
 
         return view('dashboard.features.inventario.stock.validar-producto', compact('producto', 'categorias', 'unidades'));
     }
 
-    public function guardarValidacion(Request $request, Producto $producto): RedirectResponse
+    public function guardarValidacion(Request $request, int $producto): RedirectResponse
     {
+        $producto = Producto::whereKey($producto)->firstOrFail();
+
         $data = $request->validate([
             'nombre' => ['required', 'string', 'max:255'],
             'sku' => ['nullable', 'string', 'max:100'],

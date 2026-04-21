@@ -8,7 +8,7 @@ use App\Enums\Inventario\TransporteEstado;
 use App\Models\Inventario\DetalleMovimiento;
 use App\Models\Inventario\LineaTransporte;
 use App\Models\Inventario\Lote;
-use App\Models\Inventario\MovimientoInventario;
+use App\Models\Inventario\Movimiento;
 use App\Models\Inventario\Stock;
 use App\Models\Inventario\Transporte;
 use App\Models\Inventario\TrazabilidadEvento;
@@ -27,10 +27,12 @@ class RecibirLote
     public function ejecutar(
         LineaTransporte $linea,
         Ubicacion $ubicacion,
-        int $usuarioId,
+        int|string|null $usuarioId,
         ?string $observaciones = null
     ): Lote {
         return DB::transaction(function () use ($linea, $ubicacion, $usuarioId, $observaciones) {
+            $usuarioIdNumerico = is_numeric($usuarioId) ? (int) $usuarioId : null;
+            $usuarioReferencia = $usuarioId !== null ? (string) $usuarioId : null;
             $lote = $linea->lote;
 
             // Validar que el lote está en estado correcto para ser recibido
@@ -75,14 +77,14 @@ class RecibirLote
             ]);
 
             // Registrar movimiento de inventario
-            $movimiento = MovimientoInventario::create([
+            $movimiento = Movimiento::create([
                 'fecha' => now(),
                 'tipo' => MovimientoTipo::Recepcion,
                 'referencia' => $linea->transporte->codigo_recepcion ?? null,
                 'observacion' => $observaciones,
                 'id_lote' => $lote->id_lote,
-                'id_usuario' => $usuarioId,
-                'usuario' => $usuarioId,
+                'id_usuario' => $usuarioIdNumerico,
+                'usuario' => $usuarioReferencia,
             ]);
 
             DetalleMovimiento::create([
@@ -102,7 +104,7 @@ class RecibirLote
                 'estado_anterior' => $estadoAnterior->value,
                 'estado_nuevo' => LoteEstado::Stored->value,
                 'origen_evento' => 'manual',
-                'id_usuario' => $usuarioId,
+                'id_usuario' => $usuarioIdNumerico,
                 'id_recepcion' => $linea->id_recepcion,
                 'observaciones' => "Recibido y ubicado en: {$ubicacion->codigoCompleto()}. {$observaciones}",
                 'fecha_evento' => now(),

@@ -30,8 +30,10 @@ class ProduccionController extends Controller
         ));
     }
 
-    public function mover(Request $request, Lote $lote): RedirectResponse
+    public function mover(Request $request, int $lote): RedirectResponse
     {
+        $lote = Lote::whereKey($lote)->firstOrFail();
+
         $request->validate([
             'observaciones' => ['nullable', 'string', 'max:500'],
         ]);

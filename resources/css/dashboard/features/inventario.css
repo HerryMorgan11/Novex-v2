@@ -301,7 +301,7 @@
 .timeline::before {
     content: '';
     position: absolute;
-    left: 10px;
+    left: 15px;
     top: 8px;
     bottom: 8px;
     width: 2px;
@@ -610,10 +610,10 @@
 
 /* Lote selector en expedición */
 .lote-selector-grid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 8px;
-    max-height: 400px;
+    max-height: 520px;
     overflow-y: auto;
     padding-right: 4px;
 }

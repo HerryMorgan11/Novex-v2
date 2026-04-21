@@ -5,7 +5,7 @@
 @endpush
 
 @section('content')
-<div style="padding: 20px 0; max-width:900px;">
+<div style="padding: 20px 0; width:100%;">
 
     <div class="inv-page-header">
         <div>
@@ -41,7 +41,7 @@
             <h3 style="font-size:0.8rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid var(--border);">
                 Datos de la expedición
             </h3>
-            <div class="inv-form-grid">
+            <div class="inv-form-grid" style="grid-template-columns:repeat(4, minmax(0, 1fr));">
                 <div class="inv-form-group">
                     <label>Tipo <span style="color:#b91c1c">*</span></label>
                     <select name="tipo" required>
@@ -49,7 +49,7 @@
                         <option value="produccion" {{ old('tipo') === 'produccion' ? 'selected' : '' }}>Producción</option>
                     </select>
                 </div>
-                <div class="inv-form-group">
+                <div class="inv-form-group" style="grid-column:span 2;">
                     <label>Destino <span style="color:#b91c1c">*</span></label>
                     <input type="text" name="destino" value="{{ old('destino') }}" required placeholder="Ej: Almacén cliente S.A.">
                 </div>

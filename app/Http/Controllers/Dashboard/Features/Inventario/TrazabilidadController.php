@@ -9,8 +9,10 @@ use Illuminate\View\View;
 
 class TrazabilidadController extends Controller
 {
-    public function historial(Lote $lote): View
+    public function historial(int $lote): View
     {
+        $lote = Lote::whereKey($lote)->firstOrFail();
+
         $lote->load(['producto.categoria', 'ubicacion.estanteria.zona.almacen']);
 
         $eventos = TrazabilidadEvento::with(['recepcion', 'expedicion'])

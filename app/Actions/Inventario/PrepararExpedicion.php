@@ -9,7 +9,7 @@ use App\Models\Inventario\DetalleMovimiento;
 use App\Models\Inventario\Expedicion;
 use App\Models\Inventario\LineaExpedicion;
 use App\Models\Inventario\Lote;
-use App\Models\Inventario\MovimientoInventario;
+use App\Models\Inventario\Movimiento;
 use App\Models\Inventario\Stock;
 use App\Models\Inventario\TrazabilidadEvento;
 use Illuminate\Support\Facades\DB;
@@ -27,9 +27,12 @@ use Illuminate\Support\Str;
  */
 class PrepararExpedicion
 {
-    public function ejecutar(array $datos, array $lineas, int $usuarioId): Expedicion
+    public function ejecutar(array $datos, array $lineas, int|string|null $usuarioId): Expedicion
     {
         return DB::transaction(function () use ($datos, $lineas, $usuarioId) {
+            $usuarioIdNumerico = is_numeric($usuarioId) ? (int) $usuarioId : null;
+            $usuarioReferencia = $usuarioId !== null ? (string) $usuarioId : null;
+
             // Validar disponibilidad de todos los lotes antes de crear
             foreach ($lineas as $linea) {
                 $lote = Lote::findOrFail($linea['id_lote']);
@@ -58,7 +61,7 @@ class PrepararExpedicion
                 'fecha_salida' => $datos['fecha_salida'] ?? now(),
                 'estado' => ExpedicionEstado::Expedida,
                 'observaciones' => $datos['observaciones'] ?? null,
-                'id_usuario' => $usuarioId,
+                'id_usuario' => $usuarioIdNumerico,
                 'token_confirmacion' => Str::random(32),
             ]);
 
@@ -83,14 +86,14 @@ class PrepararExpedicion
                 $lote->update(['estado' => LoteEstado::Dispatched]);
 
                 // Movimiento de inventario
-                $movimiento = MovimientoInventario::create([
+                $movimiento = Movimiento::create([
                     'fecha' => now(),
                     'tipo' => MovimientoTipo::Reparto,
                     'referencia' => $expedicion->referencia_expedicion,
                     'observacion' => "Expedido a: {$expedicion->destino}",
                     'id_lote' => $lote->id_lote,
-                    'id_usuario' => $usuarioId,
-                    'usuario' => $usuarioId,
+                    'id_usuario' => $usuarioIdNumerico,
+                    'usuario' => $usuarioReferencia,
                 ]);
 
                 DetalleMovimiento::create([
@@ -110,7 +113,7 @@ class PrepararExpedicion
                     'estado_anterior' => $estadoAnterior->value,
                     'estado_nuevo' => LoteEstado::Dispatched->value,
                     'origen_evento' => 'manual',
-                    'id_usuario' => $usuarioId,
+                    'id_usuario' => $usuarioIdNumerico,
                     'id_expedicion' => $expedicion->id_expedicion,
                     'observaciones' => "Expedición {$expedicion->referencia_expedicion} creada. Destino: {$expedicion->destino}",
                     'fecha_evento' => now(),

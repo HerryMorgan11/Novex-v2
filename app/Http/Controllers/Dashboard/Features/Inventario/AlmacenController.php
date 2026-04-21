@@ -40,8 +40,10 @@ class AlmacenController extends Controller
             ->with('success', "Almacén '{$data['nombre']}' creado correctamente.");
     }
 
-    public function storeZona(Request $request, Almacen $almacen): RedirectResponse
+    public function storeZona(Request $request, int $almacen): RedirectResponse
     {
+        $almacen = Almacen::whereKey($almacen)->firstOrFail();
+
         $data = $request->validate([
             'nombre' => ['required', 'string', 'max:255'],
         ]);
@@ -51,10 +53,12 @@ class AlmacenController extends Controller
         return back()->with('success', "Zona '{$data['nombre']}' añadida al almacén.");
     }
 
-    public function storeEstanteria(Request $request, Almacen $almacen): RedirectResponse
+    public function storeEstanteria(Request $request, int $almacen): RedirectResponse
     {
+        $almacen = Almacen::whereKey($almacen)->firstOrFail();
+
         $data = $request->validate([
-            'id_zona' => ['required', 'integer', 'exists:zonas,id_zona'],
+            'id_zona' => ['required', 'integer', 'exists:zonas,id_zona,id_almacen,'.$almacen->id_almacen],
             'codigo' => ['required', 'string', 'max:50'],
         ]);
 
@@ -63,8 +67,10 @@ class AlmacenController extends Controller
         return back()->with('success', "Estantería '{$data['codigo']}' creada.");
     }
 
-    public function storeUbicacion(Request $request, Almacen $almacen): RedirectResponse
+    public function storeUbicacion(Request $request, int $almacen): RedirectResponse
     {
+        $almacen = Almacen::whereKey($almacen)->firstOrFail();
+
         $data = $request->validate([
             'id_estanteria' => ['required', 'integer', 'exists:estanterias,id_estanteria'],
             'pasillo' => ['nullable', 'string', 'max:20'],
@@ -73,6 +79,11 @@ class AlmacenController extends Controller
             'capacidad' => ['nullable', 'integer', 'min:1'],
         ]);
 
+        $estanteria = Estanteria::where('id_almacen', $almacen->id_almacen)
+            ->whereKey($data['id_estanteria'])
+            ->firstOrFail();
+
+        $data['id_estanteria'] = $estanteria->id_estanteria;
         $ubicacion = Ubicacion::create($data);
 
         // Generar código de ubicación automático
