@@ -1,0 +1,12 @@
+/* ================================================
+   Inventario - Trazabilidad
+   resources/css/dashboard/features/inventario/trazabilidad.css
+   ================================================ */
+
+/* No additional section-specific styles required;
+   all classes are provided by the shared inventario.css utilities. */
+
+/* Previous state label */
+.inv-tl-estado-anterior {
+    color: var(--muted-2);
+}

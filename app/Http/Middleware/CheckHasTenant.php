@@ -2,67 +2,68 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Tenant;
+use App\Models\User;
 use Closure;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Resuelve el tenant del usuario autenticado e inicializa tenancy durante el request.
+ *
+ * Si el usuario no tiene tenant asociado, deja pasar el request marcándolo para
+ * que la capa de UI muestre el modal de creación de empresa.
+ */
 class CheckHasTenant
 {
-    /**
-     * Middleware que verifica si el usuario autenticado tiene un tenant.
-     * Si NO tiene, marca la request para mostrar el modal de creación de empresa.
-     *
-     * Si SÍ tiene, inicializa tenancy y continúa normalmente.
-     */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
-        // Si no está autenticado, dejar pasar (login/register)
         if (! Auth::check()) {
             return $next($request);
         }
 
+        /** @var User $user */
         $user = Auth::user();
-        $hasTenant = false;
-        $tenant = null;
+        $tenant = $this->resolveTenant($user);
 
-        // Buscar tenant: primero intentar current_tenant_id
-        if ($user->current_tenant_id) {
-            $tenant = $user->currentTenant;
-            $hasTenant = (bool) $tenant;
+        if ($tenant === null) {
+            // Sin tenant: el dashboard renderiza el modal de onboarding.
+            $request->attributes->set('show_company_modal', true);
+            $request->attributes->set('user_id', $user->id);
+
+            return $next($request);
         }
 
-        // Si no está en current_tenant_id, buscar en memberships con eager loading
-        if (! $hasTenant) {
-            // Cargar eager para evitar N+1
-            $user->load(['memberships' => function ($query) {
-                $query->where('status', 'active');
-            }, 'memberships.tenant']);
+        tenancy()->initialize($tenant);
 
-            $membership = $user->memberships->sortByDesc('id')->first();
+        try {
+            return $next($request);
+        } finally {
+            tenancy()->end();
+        }
+    }
 
-            if ($membership && $membership->tenant) {
-                $tenant = $membership->tenant;
-                $hasTenant = true;
-                // Actualizar current_tenant_id para la próxima vez
-                $user->update(['current_tenant_id' => $tenant->id]);
-            }
+    /**
+     * Devuelve el tenant activo del usuario (por current_tenant_id o primera membership activa).
+     * Actualiza current_tenant_id si hace falta para evitar futuras búsquedas.
+     */
+    private function resolveTenant(User $user): ?Tenant
+    {
+        if ($user->current_tenant_id && $user->currentTenant) {
+            return $user->currentTenant;
         }
 
-        // Si tiene tenant, inicializar tenancy
-        if ($hasTenant && $tenant && function_exists('tenancy')) {
-            tenancy()->initialize($tenant);
+        $user->load(['memberships' => fn ($q) => $q->where('status', 'active'), 'memberships.tenant']);
 
-            try {
-                return $next($request);
-            } finally {
-                tenancy()->end();
-            }
+        $membership = $user->memberships->sortByDesc('id')->first();
+
+        if (! $membership?->tenant) {
+            return null;
         }
 
-        // Si NO tiene tenant, marcar en la request pero permitir que continúe
-        // El layout del dashboard mostrará el modal
-        $request->attributes->set('show_company_modal', true);
-        $request->attributes->set('user_id', $user->id);
+        $user->update(['current_tenant_id' => $membership->tenant->id]);
 
-        return $next($request);
+        return $membership->tenant;
     }
 }

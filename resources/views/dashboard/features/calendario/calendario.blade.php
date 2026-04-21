@@ -31,14 +31,14 @@
                     @include('dashboard.shared.navbar')
                 </nav>
 
-                <div class="calendar-wrapper" style="height: calc(100vh - 100px); padding-top: 20px;">
+                <div class="calendar-wrapper">
                     <div id="calendar"></div>
 
                     <dialog id="eventModal" class="event-modal">
                         <h3 id="modalTitle">Nuevo Evento</h3>
                         <input type="text" id="eventTitleInput" placeholder="Título del evento..." class="modal-input" autocomplete="off" />
                         <div class="modal-actions">
-                            <button id="btnDelete" class="modal-btn btn-delete" style="display: none;">Eliminar</button>
+                            <button id="btnDelete" class="modal-btn btn-delete hidden">Eliminar</button>
                             <button id="btnCancel" class="modal-btn btn-cancel">Cancelar</button>
                             <button id="btnSave" class="modal-btn btn-save">Guardar</button>
                         </div>

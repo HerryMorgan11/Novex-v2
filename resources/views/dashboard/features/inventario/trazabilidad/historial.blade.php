@@ -1,36 +1,38 @@
 @extends('dashboard.app.dashboard')
 
 @push('styles')
-@vite(['resources/css/dashboard/features/inventario.css'])
+@vite(['resources/css/dashboard/features/inventario.css', 'resources/css/dashboard/features/inventario/trazabilidad.css'])
 @endpush
 
 @section('content')
-<div style="padding: 20px 0;">
+<div class="inv-page-wrapper">
+
+    @include('dashboard.features.inventario.partials.top-nav')
 
     <div class="inv-page-header">
         <div>
             <h1>Trazabilidad — {{ $lote->numero_lote }}</h1>
             <div class="inv-breadcrumb">
-                <a href="{{ route('inventario.index') }}" style="color:var(--muted); text-decoration:none;">Inventario</a>
+                <a href="{{ route('inventario.index') }}" class="inv-breadcrumb-link">Inventario</a>
                 &rsaquo;
-                <a href="{{ route('inventario.stock.index') }}" style="color:var(--muted); text-decoration:none;">Stock</a>
+                <a href="{{ route('inventario.stock.index') }}" class="inv-breadcrumb-link">Stock</a>
                 &rsaquo;
-                <a href="{{ route('inventario.stock.show', $lote->id_lote) }}" style="color:var(--muted); text-decoration:none;">{{ $lote->numero_lote }}</a>
+                <a href="{{ route('inventario.stock.show', $lote->id_lote) }}" class="inv-breadcrumb-link">{{ $lote->numero_lote }}</a>
                 &rsaquo; Trazabilidad
             </div>
         </div>
         @php $color = $lote->estado?->color() ?? 'secondary' @endphp
-        <span class="badge badge-{{ $color }}" style="font-size:0.8rem; padding:6px 14px;">
+        <span class="badge badge-{{ $color }} inv-badge-lg">
             Estado actual: {{ $lote->estado?->label() ?? $lote->estado }}
         </span>
     </div>
 
     {{-- Resumen del lote --}}
-    <div class="inv-detail-card" style="margin-bottom:24px;">
+    <div class="inv-detail-card inv-mb-24">
         <div class="inv-detail-grid">
             <div class="inv-detail-item">
                 <label>Lote</label>
-                <span style="font-family:monospace;">{{ $lote->numero_lote }}</span>
+                <span class="inv-mono">{{ $lote->numero_lote }}</span>
             </div>
             <div class="inv-detail-item">
                 <label>Producto</label>
@@ -38,7 +40,7 @@
             </div>
             <div class="inv-detail-item">
                 <label>SKU</label>
-                <span style="font-family:monospace;">{{ $lote->producto?->sku ?? '—' }}</span>
+                <span class="inv-mono">{{ $lote->producto?->sku ?? '—' }}</span>
             </div>
             <div class="inv-detail-item">
                 <label>Ubicación actual</label>
@@ -54,7 +56,7 @@
         <p>No hay eventos de trazabilidad registrados para este lote.</p>
     </div>
     @else
-    <div style="max-width:680px;">
+    <div class="inv-timeline-wrapper">
         <div class="timeline">
             @foreach($eventos as $evento)
             @php
@@ -78,23 +80,23 @@
                     </div>
                     <div class="tl-body">
                         @if($evento->estado_anterior)
-                        <span style="color:var(--muted-2);">{{ $evento->estado_anterior }}</span>
-                        <iconify-icon icon="lucide:arrow-right" width="11" style="margin:0 4px;"></iconify-icon>
+                        <span class="inv-tl-estado-anterior">{{ $evento->estado_anterior }}</span>
+                        <iconify-icon icon="lucide:arrow-right" width="11" class="inv-tl-arrow"></iconify-icon>
                         @endif
-                        <span class="badge badge-{{ match($evento->estado_nuevo) {
+                        <span class="badge inv-badge-xs badge-{{ match($evento->estado_nuevo) {
                             'stored','delivered' => 'success',
                             'pending_inbound','received' => 'warning',
                             'dispatched' => 'primary',
                             'in_production' => 'purple',
                             'blocked','incident' => 'danger',
                             default => 'secondary'
-                        } }}" style="font-size:0.65rem;">{{ $evento->estado_nuevo }}</span>
+                        } }}">{{ $evento->estado_nuevo }}</span>
 
                         @if($evento->observaciones)
-                        <div style="margin-top:6px;">{{ $evento->observaciones }}</div>
+                        <div class="inv-tl-obs">{{ $evento->observaciones }}</div>
                         @endif
 
-                        <div style="display:flex; gap:12px; margin-top:6px; font-size:0.72rem; color:var(--muted-2);">
+                        <div class="inv-tl-meta">
                             <span>
                                 <iconify-icon icon="{{ $evento->origen_evento === 'api' ? 'lucide:globe' : 'lucide:user' }}" width="11"></iconify-icon>
                                 {{ $evento->origen_evento }}

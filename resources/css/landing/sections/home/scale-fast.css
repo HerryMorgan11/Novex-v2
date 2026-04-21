@@ -153,3 +153,10 @@
     margin-bottom: 24px;
     /* Más espacio entre el icono y el título de la tarjeta */
 }
+
+/* ── Extracted icon styles from home/scaleFast.blade.php ── */
+.icon-container iconify-icon {
+    font-size: 30px;
+    color: #fca311;
+    margin-bottom: 10px;
+}

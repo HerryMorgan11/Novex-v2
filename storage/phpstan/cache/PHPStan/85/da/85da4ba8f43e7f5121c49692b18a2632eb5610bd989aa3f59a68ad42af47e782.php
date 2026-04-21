@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Foundation/Application.php-PHPStan\BetterReflection\Reflection\ReflectionClass-Illuminate\Foundation\Application
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-455f2e5afaaf90e0184d27a241d01636bca3acfcb72b9c832446ef5f18c87bb4-8.4.1-6.65.0.9',
+   'variableKey' => 'v2-56107861bac06f54d2e5851b47b5f514a24de10eb053ad1a512b2343bc41c7fc-8.4.1-6.70.0.0',
    'data' => 
   array (
     'locatedSource' => 
@@ -53,7 +53,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         'type' => NULL,
         'value' => 
         array (
-          'code' => '\'12.50.0\'',
+          'code' => '\'12.56.0\'',
           'attributes' => 
           array (
             'startLine' => 48,
@@ -2793,7 +2793,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         array (
         ),
         'docComment' => '/**
- * Get the fully qualified path to the environment file.
+ * Get the fully-qualified path to the environment file.
  *
  * @return string
  */',

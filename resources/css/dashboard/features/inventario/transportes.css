@@ -1,0 +1,11 @@
+/* ================================================
+   Inventario - Transportes
+   resources/css/dashboard/features/inventario/transportes.css
+   ================================================ */
+
+/* Transport card body text (name/carrier) */
+.inv-transport-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--fg);
+}

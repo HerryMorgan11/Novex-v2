@@ -1,6 +1,6 @@
-<style>
-    {!! file_get_contents(resource_path('css/landing/sections/contabilidad/cta.css')) !!}
-</style>
+@push('styles')
+@vite(['resources/css/landing/sections/contabilidad/cta.css'])
+@endpush
 
 <section class="conta2-cta-section">
     <div class="conta2-cta-inner">

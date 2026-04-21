@@ -1,6 +1,6 @@
-<style>
-    {!! file_get_contents(resource_path('css/landing/sections/contabilidad.css')) !!}
-</style>
+@push('styles')
+@vite(['resources/css/landing/sections/contabilidad.css'])
+@endpush
 
 <div class="contabilidad-wrapper">
     <!-- Hero Section -->
@@ -27,7 +27,7 @@
             <!-- Card 1 -->
             <div class="conta-card">
                 <div class="conta-icon-wrapper">
-                    <iconify-icon icon="fluent:flowchart-20-regular" style="font-size: 24px;"></iconify-icon>
+                    <iconify-icon icon="fluent:flowchart-20-regular" class="conta-icon-size"></iconify-icon>
                 </div>
                 <h3>Catálogo de Cuentas Maestro</h3>
                 <p>Estructura jerárquica intuitiva que se adapta al ADN de tu empresa, no al revés.</p>
@@ -46,7 +46,7 @@
             <!-- Card 2 -->
             <div class="conta-card orange">
                 <div class="conta-icon-wrapper">
-                    <iconify-icon icon="clarity:receipt-line" style="font-size: 24px;"></iconify-icon>
+                    <iconify-icon icon="clarity:receipt-line" class="conta-icon-size"></iconify-icon>
                 </div>
                 <h3>Gestión de Facturas Inteligente</h3>
                 <p>Monitoreo en tiempo real con estados visuales claros. Adiós a los procesos manuales.</p>
@@ -66,8 +66,8 @@
                 <div class="full-width-content">
                     <!-- Text Side -->
                     <div class="full-width-text">
-                        <div class="conta-icon-wrapper" style="background: #fff0f3; color: #d1225b;">
-                            <iconify-icon icon="fluent:data-trending-24-regular" style="font-size: 24px;"></iconify-icon>
+                        <div class="conta-icon-wrapper conta-icon-wrapper-red">
+                            <iconify-icon icon="fluent:data-trending-24-regular" class="conta-icon-size"></iconify-icon>
                         </div>
                         <h3>Reportes P&L de Alto Nivel</h3>
                         <p>Narrativas visuales que explican el "por qué" detrás de los números. Presentaciones listas para el Board en un clic.</p>
@@ -76,8 +76,8 @@
                                 <h4>+24%</h4>
                                 <p>Margen Operativo</p>
                             </div>
-                            <div class="stat-item" style="border-left: 2px solid #eee; padding-left: 20px;">
-                                <h4 style="color: #df5a3c;">-$12k</h4>
+                            <div class="stat-item stat-item-divider">
+                                <h4 class="stat-value-accent">-$12k</h4>
                                 <p>Optimización Fiscal</p>
                             </div>
                         </div>
@@ -88,15 +88,15 @@
                             <div class="dashboard-inner">
                                 <div class="dash-header"></div>
                                 <div class="dash-body">
-                                    <div class="dash-bar" style="height: 30%;"></div>
-                                    <div class="dash-bar" style="height: 45%;"></div>
-                                    <div class="dash-bar" style="height: 60%;"></div>
-                                    <div class="dash-bar" style="height: 35%;"></div>
-                                    <div class="dash-bar" style="height: 80%;"></div>
-                                    <div class="dash-bar active" style="height: 100%;"></div>
-                                    <div class="dash-bar" style="height: 50%;"></div>
+                                    <div class="dash-bar"></div>
+                                    <div class="dash-bar"></div>
+                                    <div class="dash-bar"></div>
+                                    <div class="dash-bar"></div>
+                                    <div class="dash-bar"></div>
+                                    <div class="dash-bar active"></div>
+                                    <div class="dash-bar"></div>
                                 </div>
-                                <div class="dash-header" style="width: 100%;"></div>
+                                <div class="dash-header dash-full-width"></div>
                             </div>
                         </div>
                     </div>

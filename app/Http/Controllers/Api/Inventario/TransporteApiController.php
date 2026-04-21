@@ -7,6 +7,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+/**
+ * Endpoint externo para registrar transportes (recepciones) desde sistemas externos.
+ *
+ * Protegido por AutenticarApiInventario (Bearer token) + InitializeTenancyFromApi (X-Tenant-Id).
+ * Productos desconocidos se crean como borrador y requieren validación manual posterior.
+ */
 class TransporteApiController extends Controller
 {
     /**

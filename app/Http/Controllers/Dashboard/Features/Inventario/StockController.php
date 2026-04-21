@@ -12,9 +12,15 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
+/**
+ * Consulta de stock general (lotes) y validación de productos "borrador".
+ *
+ * Los lotes entregados (Delivered) se ocultan de la vista por defecto al ser
+ * histórico no operativo.
+ */
 class StockController extends Controller
 {
-    /** Tabla de inventario (stock general) */
+    /** Listado de lotes en stock con filtros por estado, categoría y búsqueda libre. */
     public function index(Request $request): View
     {
         $query = Lote::with(['producto.categoria', 'producto.unidadMedida', 'ubicacion.estanteria.zona.almacen'])

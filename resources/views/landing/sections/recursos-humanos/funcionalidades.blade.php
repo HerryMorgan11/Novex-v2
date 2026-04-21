@@ -1,6 +1,6 @@
-<style>
-    {!! file_get_contents(resource_path('css/landing/sections/recursos-humanos/funcionalidades.css')) !!}
-</style>
+@push('styles')
+@vite(['resources/css/landing/sections/recursos-humanos/funcionalidades.css'])
+@endpush
 
 <section class="rh-func-section">
     <div class="rh-func-inner">

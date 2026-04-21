@@ -361,3 +361,14 @@
     font-size: 0.7rem;
     color: #9ca3af;
 }
+
+/* ── Extracted progress fill widths from recursos-humanos/hero.blade.php ── */
+.rh-progress-section > .rh-progress-track:nth-child(2) .rh-progress-fill {
+    width: 98%;
+}
+.rh-progress-section > .rh-progress-track:nth-child(4) .rh-progress-fill {
+    width: 75%;
+}
+.rh-progress-section > .rh-progress-track:nth-child(6) .rh-progress-fill {
+    width: 82%;
+}

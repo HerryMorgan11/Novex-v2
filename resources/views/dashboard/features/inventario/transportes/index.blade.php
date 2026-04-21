@@ -1,17 +1,19 @@
 @extends('dashboard.app.dashboard')
 
 @push('styles')
-@vite(['resources/css/dashboard/features/inventario.css'])
+@vite(['resources/css/dashboard/features/inventario.css', 'resources/css/dashboard/features/inventario/transportes.css'])
 @endpush
 
 @section('content')
-<div style="padding: 20px 0;">
+<div class="inv-page-wrapper">
+
+    @include('dashboard.features.inventario.partials.top-nav')
 
     <div class="inv-page-header">
         <div>
             <h1>Transportes</h1>
             <div class="inv-breadcrumb">
-                <a href="{{ route('inventario.index') }}" style="color:var(--muted); text-decoration:none;">Inventario</a>
+                <a href="{{ route('inventario.index') }}" class="inv-breadcrumb-link">Inventario</a>
                 &rsaquo; Transportes
             </div>
         </div>
@@ -28,7 +30,7 @@
     <div class="inv-empty">
         <iconify-icon icon="lucide:truck"></iconify-icon>
         <p>No hay transportes registrados aún.</p>
-        <p style="font-size:0.8rem;">Los transportes se crean automáticamente cuando un sistema externo envía un aviso por API.</p>
+        <p class="inv-hint-text">Los transportes se crean automáticamente cuando un sistema externo envía un aviso por API.</p>
     </div>
     @else
     <div class="transport-grid">
@@ -40,7 +42,7 @@
                 <span class="badge badge-{{ $color }}">{{ $transporte->estado?->label() ?? $transporte->estado }}</span>
             </div>
 
-            <div style="font-weight: 600; font-size: 0.95rem; color: var(--fg);">
+            <div class="inv-transport-name">
                 {{ $transporte->transportista ?? $transporte->proveedor?->nombre ?? 'Sin transportista' }}
             </div>
 
@@ -76,7 +78,7 @@
         @endforeach
     </div>
 
-    <div style="margin-top:20px;">
+    <div class="inv-pagination">
         {{ $transportes->links() }}
     </div>
     @endif

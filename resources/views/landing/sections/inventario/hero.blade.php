@@ -1,6 +1,6 @@
-<style>
-    {!! file_get_contents(resource_path('css/landing/sections/inventario/hero.css')) !!}
-</style>
+@push('styles')
+@vite(['resources/css/landing/sections/inventario/hero.css'])
+@endpush
 
 <section class="inv-hero-section">
     <div class="inv-hero-inner">
@@ -45,7 +45,7 @@
                         <div class="inv-stock-info">
                             <div class="inv-stock-name">Producto A-201</div>
                             <div class="inv-stock-bar-track">
-                                <div class="inv-stock-bar-fill" style="width: 85%;"></div>
+                                <div class="inv-stock-bar-fill"></div>
                             </div>
                         </div>
                         <span class="inv-stock-qty">850 u.</span>
@@ -55,7 +55,7 @@
                         <div class="inv-stock-info">
                             <div class="inv-stock-name">Componente B-047</div>
                             <div class="inv-stock-bar-track">
-                                <div class="inv-stock-bar-fill" style="width: 42%;"></div>
+                                <div class="inv-stock-bar-fill"></div>
                             </div>
                         </div>
                         <span class="inv-stock-qty">210 u.</span>
@@ -65,7 +65,7 @@
                         <div class="inv-stock-info">
                             <div class="inv-stock-name">SKU-C-933</div>
                             <div class="inv-stock-bar-track">
-                                <div class="inv-stock-bar-fill" style="width: 95%;"></div>
+                                <div class="inv-stock-bar-fill"></div>
                             </div>
                         </div>
                         <span class="inv-stock-qty">1,240 u.</span>
@@ -75,7 +75,7 @@
                         <div class="inv-stock-info">
                             <div class="inv-stock-name">Lote D-Serie 5</div>
                             <div class="inv-stock-bar-track">
-                                <div class="inv-stock-bar-fill" style="width: 18%;"></div>
+                                <div class="inv-stock-bar-fill"></div>
                             </div>
                         </div>
                         <span class="inv-stock-qty">45 u.</span>

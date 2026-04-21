@@ -3007,6 +3007,45 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
          'typeAliasClassName' => NULL,
          'traitData' => NULL,
       )),
+      '36e5c2d8c9596786cc95195f124dd45b' => 
+      \PHPStan\Analyser\IntermediaryNameScope::__set_state(array(
+         'namespace' => 'Illuminate\\Support',
+         'uses' => 
+        array (
+          'closure' => 'Closure',
+          'macroable' => 'Illuminate\\Support\\Traits\\Macroable',
+          'environment' => 'League\\CommonMark\\Environment\\Environment',
+          'githubflavoredmarkdownextension' => 'League\\CommonMark\\Extension\\GithubFlavoredMarkdownExtension',
+          'inlinesonlyextension' => 'League\\CommonMark\\Extension\\InlinesOnly\\InlinesOnlyExtension',
+          'githubflavoredmarkdownconverter' => 'League\\CommonMark\\GithubFlavoredMarkdownConverter',
+          'markdownconverter' => 'League\\CommonMark\\MarkdownConverter',
+          'timestampfirstcombcodec' => 'Ramsey\\Uuid\\Codec\\TimestampFirstCombCodec',
+          'invaliduuidstringexception' => 'Ramsey\\Uuid\\Exception\\InvalidUuidStringException',
+          'combgenerator' => 'Ramsey\\Uuid\\Generator\\CombGenerator',
+          'fieldsinterface' => 'Ramsey\\Uuid\\Rfc4122\\FieldsInterface',
+          'uuid' => 'Ramsey\\Uuid\\Uuid',
+          'uuidfactory' => 'Ramsey\\Uuid\\UuidFactory',
+          'ulid' => 'Symfony\\Component\\Uid\\Ulid',
+          'throwable' => 'Throwable',
+          'traversable' => 'Traversable',
+          'ascii' => 'voku\\helper\\ASCII',
+        ),
+         'className' => 'Illuminate\\Support\\Str',
+         'functionName' => 'initials',
+         'templatePhpDocNodes' => 
+        array (
+        ),
+         'parent' => NULL,
+         'typeAliasesMap' => 
+        array (
+        ),
+         'bypassTypeAliases' => false,
+         'constUses' => 
+        array (
+        ),
+         'typeAliasClassName' => NULL,
+         'traitData' => NULL,
+      )),
       '998a5605e9cf45076198c3662d88c20a' => 
       \PHPStan\Analyser\IntermediaryNameScope::__set_state(array(
          'namespace' => 'Illuminate\\Support',
@@ -4492,7 +4531,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     1 => 
     array (
-      '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/laravel/framework/src/Illuminate/Support/Str.php' => 'dcac6960757138b74f74658432e0840f0149339ce0db064a4b7c9b23dddb00ac',
+      '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/laravel/framework/src/Illuminate/Support/Str.php' => '1c7ac525adfe4b4e43f0daf332598f9542a6401a4100d67885bdfb2678f34701',
       '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Macroable/Traits/Macroable.php' => '50fa4e0aa4e5c0b0e7fb6566fb3fc991808681fba5c81db09e0f8641c7e9d524',
     ),
   ),

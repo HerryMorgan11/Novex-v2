@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasGlobalScopes.php-PHPStan\BetterReflection\Reflection\ReflectionClass-Illuminate\Database\Eloquent\Concerns\HasGlobalScopes
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-f10aae6c87cdd84a16f1daa92c99f74abc5bdd25f6b3f2c3cc099f742b7acf77-8.4.1-6.65.0.9',
+   'variableKey' => 'v2-f10aae6c87cdd84a16f1daa92c99f74abc5bdd25f6b3f2c3cc099f742b7acf77-8.4.1-6.70.0.0',
    'data' => 
   array (
     'locatedSource' => 

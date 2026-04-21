@@ -1,0 +1,21 @@
+/* ================================================
+   Inventario - Expediciones
+   resources/css/dashboard/features/inventario/expediciones.css
+   ================================================ */
+
+/* Lote selector inner elements */
+.inv-lote-name {
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+.inv-lote-meta {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 2px;
+}
+.inv-lote-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}

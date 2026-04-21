@@ -16,6 +16,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProvisioningController;
 use App\Http\Controllers\ReminderController;
 use App\Http\Controllers\ReminderListController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SubtaskController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
@@ -88,9 +89,10 @@ Route::middleware(['auth', 'checkHasTenant'])->group(function () {
     Route::get('/app', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/app/chart-data', [DashboardController::class, 'chartData'])->name('dashboard.chart-data');
 
-    // Ajustes del perfil
-    Route::get('/settings/profile', fn () => view('dashboard.features.settings.settingsApp'))
-        ->name('settings.profile');
+    // Ajustes del perfil (vista + acciones: perfil y seguridad)
+    Route::get('/settings/profile', [SettingsController::class, 'show'])->name('settings.profile');
+    Route::put('/settings/profile', [SettingsController::class, 'updateProfile'])->name('settings.profile.update');
+    Route::put('/settings/password', [SettingsController::class, 'updatePassword'])->name('settings.password.update');
 
     // Panel de control (carga usuarios del tenant para la vista)
     Route::get('/controlpanel/home', [ControlPanelController::class, 'index'])

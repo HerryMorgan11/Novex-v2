@@ -1,34 +1,60 @@
+@push('styles')
+@vite(['resources/css/dashboard/features/settings/settings.css'])
+@endpush
 <div class="settings-section">
-    <h2>Protección y Acceso</h2>
-    <p style="color: var(--muted); padding-bottom: 1.5rem; font-size: 0.95rem;">
+    <p class="sett-section-intro">
         Revisa los aspectos cruciales para mantener tus sesiones de forma privada y tu cuenta robusta ante amenazas.
     </p>
+
+    @if (session('success'))
+        <div class="settings-alert settings-alert-success" role="status">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if ($errors->updatePassword->any())
+        <div class="settings-alert settings-alert-error" role="alert">
+            <ul class="sett-error-list">
+                @foreach ($errors->updatePassword->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <div class="settings-section-content">
         <div class="settings-security-item">
             <h3>Cambiar Contraseña</h3>
             <p>Es una buena práctica actualizar periódicamente la clave para una óptima protección de la plataforma.</p>
-            
-            <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem; max-width: 400px;">
-                <input type="password" placeholder="Contraseña actual" class="settings-input">
-                <input type="password" placeholder="Nueva contraseña" class="settings-input">
-                <input type="password" placeholder="Confirmar contraseña" class="settings-input">
-            </div>
 
-            <div style="margin-top: 1.5rem;">
-                <button class="settings-btn settings-btn-primary">
-                    <iconify-icon icon="lucide:key"></iconify-icon>
-                    Actualizar Contraseña
-                </button>
-            </div>
+            <form method="POST" action="{{ route('settings.password.update') }}"
+                  class="sett-password-form">
+                @csrf
+                @method('PUT')
+
+                <input type="password" name="current_password" placeholder="Contraseña actual"
+                       class="settings-input" required autocomplete="current-password">
+                <input type="password" name="password" placeholder="Nueva contraseña"
+                       class="settings-input" required autocomplete="new-password">
+                <input type="password" name="password_confirmation" placeholder="Confirmar contraseña"
+                       class="settings-input" required autocomplete="new-password">
+
+                <div class="sett-form-actions">
+                    <button type="submit" class="settings-btn settings-btn-primary">
+                        <iconify-icon icon="lucide:key"></iconify-icon>
+                        Actualizar Contraseña
+                    </button>
+                </div>
+            </form>
         </div>
 
         <div class="settings-security-item">
-            <h3 style="color: var(--accent);">Delegar cuenta al Administrador Supremo</h3>
+            <h3 class="sett-danger-heading">Delegar cuenta al Administrador Supremo</h3>
             <p>Si envías esta solicitud el super administrador de tu sistema o de Novex podrá configurar los elementos base, revisar tu registro de actividades y corregir errores por ti de manera temporal si así lo solicitaste. Cuidado con quien cedes este permiso.</p>
-            
-            <div style="margin-top: 1.5rem;">
-                <button class="settings-btn settings-btn-secondary">
+
+            <div class="sett-danger-actions">
+                <button type="button" class="settings-btn settings-btn-secondary" disabled
+                        title="Funcionalidad pendiente de implementar">
                     <iconify-icon icon="lucide:shield-alert"></iconify-icon>
                     Solicitar Intervención Activa
                 </button>

@@ -13,16 +13,16 @@
 
 <body>
     <div class="login-wrapper" style="--bg-image: url('{{ asset('assets/background/fondo-forms.jpg') }}')">
-        <div class="login-container" style="max-width:540px; text-align:center">
-            <img src="{{ asset('assets/logo/logo-novex-color.png') }}" alt="Novex Logo" class="logo" style="height:64px; margin-bottom:18px">
+        <div class="login-container auth-provisioning-container">
+            <img src="{{ asset('assets/logo/logo-novex-color.png') }}" alt="Novex Logo" class="logo auth-provisioning-logo">
 
             <h1>Provisioning your workspace</h1>
             <p id="message">We're preparing your tenant. This may take a minute.</p>
 
-            <div id="status" style="margin-top:16px; font-weight:600">Status: provisioning</div>
-            <div id="db" style="margin-top:8px; color: #6b7280"></div>
+            <div id="status" class="auth-provisioning-status">Status: provisioning</div>
+            <div id="db" class="auth-provisioning-db"></div>
 
-            <div style="margin-top:20px">
+            <div class="auth-provisioning-back">
                 <a href="/" class="btn-secondary">&lt; Back to Home</a>
             </div>
         </div>

@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Contracts/Foundation/CachesConfiguration.php-PHPStan\BetterReflection\Reflection\ReflectionClass-Illuminate\Contracts\Foundation\CachesConfiguration
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-305b3d0d91dd8540fcbdb191cb017b8b5fdec066822371f8a7dedae7d7502875-8.4.1-6.65.0.9',
+   'variableKey' => 'v2-305b3d0d91dd8540fcbdb191cb017b8b5fdec066822371f8a7dedae7d7502875-8.4.1-6.70.0.0',
    'data' => 
   array (
     'locatedSource' => 

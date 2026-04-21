@@ -6149,6 +6149,76 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
           4 => NULL,
         ),
       )),
+      'f8c7d6f1a8bbec65560646d6058e4b22' => 
+      \PHPStan\Analyser\IntermediaryNameScope::__set_state(array(
+         'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
+         'uses' => 
+        array (
+          'backedenum' => 'BackedEnum',
+          'bigdecimal' => 'Brick\\Math\\BigDecimal',
+          'brickmathexception' => 'Brick\\Math\\Exception\\MathException',
+          'roundingmode' => 'Brick\\Math\\RoundingMode',
+          'carbonimmutable' => 'Carbon\\CarbonImmutable',
+          'carboninterface' => 'Carbon\\CarbonInterface',
+          'datetimeimmutable' => 'DateTimeImmutable',
+          'datetimeinterface' => 'DateTimeInterface',
+          'castable' => 'Illuminate\\Contracts\\Database\\Eloquent\\Castable',
+          'castsinboundattributes' => 'Illuminate\\Contracts\\Database\\Eloquent\\CastsInboundAttributes',
+          'arrayable' => 'Illuminate\\Contracts\\Support\\Arrayable',
+          'asarrayobject' => 'Illuminate\\Database\\Eloquent\\Casts\\AsArrayObject',
+          'ascollection' => 'Illuminate\\Database\\Eloquent\\Casts\\AsCollection',
+          'asencryptedarrayobject' => 'Illuminate\\Database\\Eloquent\\Casts\\AsEncryptedArrayObject',
+          'asencryptedcollection' => 'Illuminate\\Database\\Eloquent\\Casts\\AsEncryptedCollection',
+          'asenumarrayobject' => 'Illuminate\\Database\\Eloquent\\Casts\\AsEnumArrayObject',
+          'asenumcollection' => 'Illuminate\\Database\\Eloquent\\Casts\\AsEnumCollection',
+          'attribute' => 'Illuminate\\Database\\Eloquent\\Casts\\Attribute',
+          'json' => 'Illuminate\\Database\\Eloquent\\Casts\\Json',
+          'invalidcastexception' => 'Illuminate\\Database\\Eloquent\\InvalidCastException',
+          'jsonencodingexception' => 'Illuminate\\Database\\Eloquent\\JsonEncodingException',
+          'missingattributeexception' => 'Illuminate\\Database\\Eloquent\\MissingAttributeException',
+          'relation' => 'Illuminate\\Database\\Eloquent\\Relations\\Relation',
+          'lazyloadingviolationexception' => 'Illuminate\\Database\\LazyLoadingViolationException',
+          'arr' => 'Illuminate\\Support\\Arr',
+          'carbon' => 'Illuminate\\Support\\Carbon',
+          'collection' => 'Illuminate\\Support\\Collection',
+          'basecollection' => 'Illuminate\\Support\\Collection',
+          'mathexception' => 'Illuminate\\Support\\Exceptions\\MathException',
+          'crypt' => 'Illuminate\\Support\\Facades\\Crypt',
+          'date' => 'Illuminate\\Support\\Facades\\Date',
+          'hash' => 'Illuminate\\Support\\Facades\\Hash',
+          'str' => 'Illuminate\\Support\\Str',
+          'invalidargumentexception' => 'InvalidArgumentException',
+          'logicexception' => 'LogicException',
+          'reflectionclass' => 'ReflectionClass',
+          'reflectionmethod' => 'ReflectionMethod',
+          'reflectionnamedtype' => 'ReflectionNamedType',
+          'runtimeexception' => 'RuntimeException',
+          'stringable' => 'Stringable',
+          'valueerror' => 'ValueError',
+        ),
+         'className' => 'Illuminate\\Database\\Eloquent\\Model',
+         'functionName' => 'mergeAttributeFromCachedCasts',
+         'templatePhpDocNodes' => 
+        array (
+        ),
+         'parent' => NULL,
+         'typeAliasesMap' => 
+        array (
+        ),
+         'bypassTypeAliases' => false,
+         'constUses' => 
+        array (
+        ),
+         'typeAliasClassName' => 'Illuminate\\Database\\Eloquent\\Concerns\\HasAttributes',
+         'traitData' => 
+        array (
+          0 => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php',
+          1 => 'Illuminate\\Database\\Eloquent\\Model',
+          2 => 'Illuminate\\Database\\Eloquent\\Concerns\\HasAttributes',
+          3 => NULL,
+          4 => NULL,
+        ),
+      )),
       '7f3ea93ec03fa89556fa988ea5e53807' => 
       \PHPStan\Analyser\IntermediaryNameScope::__set_state(array(
          'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
@@ -6219,6 +6289,76 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
           4 => NULL,
         ),
       )),
+      'daf4c33ab5eb55a8b4d4453a6d98748e' => 
+      \PHPStan\Analyser\IntermediaryNameScope::__set_state(array(
+         'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
+         'uses' => 
+        array (
+          'backedenum' => 'BackedEnum',
+          'bigdecimal' => 'Brick\\Math\\BigDecimal',
+          'brickmathexception' => 'Brick\\Math\\Exception\\MathException',
+          'roundingmode' => 'Brick\\Math\\RoundingMode',
+          'carbonimmutable' => 'Carbon\\CarbonImmutable',
+          'carboninterface' => 'Carbon\\CarbonInterface',
+          'datetimeimmutable' => 'DateTimeImmutable',
+          'datetimeinterface' => 'DateTimeInterface',
+          'castable' => 'Illuminate\\Contracts\\Database\\Eloquent\\Castable',
+          'castsinboundattributes' => 'Illuminate\\Contracts\\Database\\Eloquent\\CastsInboundAttributes',
+          'arrayable' => 'Illuminate\\Contracts\\Support\\Arrayable',
+          'asarrayobject' => 'Illuminate\\Database\\Eloquent\\Casts\\AsArrayObject',
+          'ascollection' => 'Illuminate\\Database\\Eloquent\\Casts\\AsCollection',
+          'asencryptedarrayobject' => 'Illuminate\\Database\\Eloquent\\Casts\\AsEncryptedArrayObject',
+          'asencryptedcollection' => 'Illuminate\\Database\\Eloquent\\Casts\\AsEncryptedCollection',
+          'asenumarrayobject' => 'Illuminate\\Database\\Eloquent\\Casts\\AsEnumArrayObject',
+          'asenumcollection' => 'Illuminate\\Database\\Eloquent\\Casts\\AsEnumCollection',
+          'attribute' => 'Illuminate\\Database\\Eloquent\\Casts\\Attribute',
+          'json' => 'Illuminate\\Database\\Eloquent\\Casts\\Json',
+          'invalidcastexception' => 'Illuminate\\Database\\Eloquent\\InvalidCastException',
+          'jsonencodingexception' => 'Illuminate\\Database\\Eloquent\\JsonEncodingException',
+          'missingattributeexception' => 'Illuminate\\Database\\Eloquent\\MissingAttributeException',
+          'relation' => 'Illuminate\\Database\\Eloquent\\Relations\\Relation',
+          'lazyloadingviolationexception' => 'Illuminate\\Database\\LazyLoadingViolationException',
+          'arr' => 'Illuminate\\Support\\Arr',
+          'carbon' => 'Illuminate\\Support\\Carbon',
+          'collection' => 'Illuminate\\Support\\Collection',
+          'basecollection' => 'Illuminate\\Support\\Collection',
+          'mathexception' => 'Illuminate\\Support\\Exceptions\\MathException',
+          'crypt' => 'Illuminate\\Support\\Facades\\Crypt',
+          'date' => 'Illuminate\\Support\\Facades\\Date',
+          'hash' => 'Illuminate\\Support\\Facades\\Hash',
+          'str' => 'Illuminate\\Support\\Str',
+          'invalidargumentexception' => 'InvalidArgumentException',
+          'logicexception' => 'LogicException',
+          'reflectionclass' => 'ReflectionClass',
+          'reflectionmethod' => 'ReflectionMethod',
+          'reflectionnamedtype' => 'ReflectionNamedType',
+          'runtimeexception' => 'RuntimeException',
+          'stringable' => 'Stringable',
+          'valueerror' => 'ValueError',
+        ),
+         'className' => 'Illuminate\\Database\\Eloquent\\Model',
+         'functionName' => 'mergeAttributeFromClassCasts',
+         'templatePhpDocNodes' => 
+        array (
+        ),
+         'parent' => NULL,
+         'typeAliasesMap' => 
+        array (
+        ),
+         'bypassTypeAliases' => false,
+         'constUses' => 
+        array (
+        ),
+         'typeAliasClassName' => 'Illuminate\\Database\\Eloquent\\Concerns\\HasAttributes',
+         'traitData' => 
+        array (
+          0 => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php',
+          1 => 'Illuminate\\Database\\Eloquent\\Model',
+          2 => 'Illuminate\\Database\\Eloquent\\Concerns\\HasAttributes',
+          3 => NULL,
+          4 => NULL,
+        ),
+      )),
       '265ea11816dd986b2e87e0551e64e674' => 
       \PHPStan\Analyser\IntermediaryNameScope::__set_state(array(
          'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
@@ -6268,6 +6408,76 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         ),
          'className' => 'Illuminate\\Database\\Eloquent\\Model',
          'functionName' => 'mergeAttributesFromAttributeCasts',
+         'templatePhpDocNodes' => 
+        array (
+        ),
+         'parent' => NULL,
+         'typeAliasesMap' => 
+        array (
+        ),
+         'bypassTypeAliases' => false,
+         'constUses' => 
+        array (
+        ),
+         'typeAliasClassName' => 'Illuminate\\Database\\Eloquent\\Concerns\\HasAttributes',
+         'traitData' => 
+        array (
+          0 => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php',
+          1 => 'Illuminate\\Database\\Eloquent\\Model',
+          2 => 'Illuminate\\Database\\Eloquent\\Concerns\\HasAttributes',
+          3 => NULL,
+          4 => NULL,
+        ),
+      )),
+      '543069ae006dced318ceda18aaf4edcb' => 
+      \PHPStan\Analyser\IntermediaryNameScope::__set_state(array(
+         'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
+         'uses' => 
+        array (
+          'backedenum' => 'BackedEnum',
+          'bigdecimal' => 'Brick\\Math\\BigDecimal',
+          'brickmathexception' => 'Brick\\Math\\Exception\\MathException',
+          'roundingmode' => 'Brick\\Math\\RoundingMode',
+          'carbonimmutable' => 'Carbon\\CarbonImmutable',
+          'carboninterface' => 'Carbon\\CarbonInterface',
+          'datetimeimmutable' => 'DateTimeImmutable',
+          'datetimeinterface' => 'DateTimeInterface',
+          'castable' => 'Illuminate\\Contracts\\Database\\Eloquent\\Castable',
+          'castsinboundattributes' => 'Illuminate\\Contracts\\Database\\Eloquent\\CastsInboundAttributes',
+          'arrayable' => 'Illuminate\\Contracts\\Support\\Arrayable',
+          'asarrayobject' => 'Illuminate\\Database\\Eloquent\\Casts\\AsArrayObject',
+          'ascollection' => 'Illuminate\\Database\\Eloquent\\Casts\\AsCollection',
+          'asencryptedarrayobject' => 'Illuminate\\Database\\Eloquent\\Casts\\AsEncryptedArrayObject',
+          'asencryptedcollection' => 'Illuminate\\Database\\Eloquent\\Casts\\AsEncryptedCollection',
+          'asenumarrayobject' => 'Illuminate\\Database\\Eloquent\\Casts\\AsEnumArrayObject',
+          'asenumcollection' => 'Illuminate\\Database\\Eloquent\\Casts\\AsEnumCollection',
+          'attribute' => 'Illuminate\\Database\\Eloquent\\Casts\\Attribute',
+          'json' => 'Illuminate\\Database\\Eloquent\\Casts\\Json',
+          'invalidcastexception' => 'Illuminate\\Database\\Eloquent\\InvalidCastException',
+          'jsonencodingexception' => 'Illuminate\\Database\\Eloquent\\JsonEncodingException',
+          'missingattributeexception' => 'Illuminate\\Database\\Eloquent\\MissingAttributeException',
+          'relation' => 'Illuminate\\Database\\Eloquent\\Relations\\Relation',
+          'lazyloadingviolationexception' => 'Illuminate\\Database\\LazyLoadingViolationException',
+          'arr' => 'Illuminate\\Support\\Arr',
+          'carbon' => 'Illuminate\\Support\\Carbon',
+          'collection' => 'Illuminate\\Support\\Collection',
+          'basecollection' => 'Illuminate\\Support\\Collection',
+          'mathexception' => 'Illuminate\\Support\\Exceptions\\MathException',
+          'crypt' => 'Illuminate\\Support\\Facades\\Crypt',
+          'date' => 'Illuminate\\Support\\Facades\\Date',
+          'hash' => 'Illuminate\\Support\\Facades\\Hash',
+          'str' => 'Illuminate\\Support\\Str',
+          'invalidargumentexception' => 'InvalidArgumentException',
+          'logicexception' => 'LogicException',
+          'reflectionclass' => 'ReflectionClass',
+          'reflectionmethod' => 'ReflectionMethod',
+          'reflectionnamedtype' => 'ReflectionNamedType',
+          'runtimeexception' => 'RuntimeException',
+          'stringable' => 'Stringable',
+          'valueerror' => 'ValueError',
+        ),
+         'className' => 'Illuminate\\Database\\Eloquent\\Model',
+         'functionName' => 'mergeAttributeFromAttributeCasts',
          'templatePhpDocNodes' => 
         array (
         ),
@@ -13598,6 +13808,55 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
           4 => NULL,
         ),
       )),
+      '658d650a7ee26035bb80bb94ad73662e' => 
+      \PHPStan\Analyser\IntermediaryNameScope::__set_state(array(
+         'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
+         'uses' => 
+        array (
+          'closure' => 'Closure',
+          'classmorphviolationexception' => 'Illuminate\\Database\\ClassMorphViolationException',
+          'builder' => 'Illuminate\\Database\\Eloquent\\Builder',
+          'eloquentcollection' => 'Illuminate\\Database\\Eloquent\\Collection',
+          'model' => 'Illuminate\\Database\\Eloquent\\Model',
+          'pendinghasthroughrelationship' => 'Illuminate\\Database\\Eloquent\\PendingHasThroughRelationship',
+          'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+          'belongstomany' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany',
+          'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+          'hasmanythrough' => 'Illuminate\\Database\\Eloquent\\Relations\\HasManyThrough',
+          'hasone' => 'Illuminate\\Database\\Eloquent\\Relations\\HasOne',
+          'hasonethrough' => 'Illuminate\\Database\\Eloquent\\Relations\\HasOneThrough',
+          'morphmany' => 'Illuminate\\Database\\Eloquent\\Relations\\MorphMany',
+          'morphone' => 'Illuminate\\Database\\Eloquent\\Relations\\MorphOne',
+          'morphto' => 'Illuminate\\Database\\Eloquent\\Relations\\MorphTo',
+          'morphtomany' => 'Illuminate\\Database\\Eloquent\\Relations\\MorphToMany',
+          'pivot' => 'Illuminate\\Database\\Eloquent\\Relations\\Pivot',
+          'relation' => 'Illuminate\\Database\\Eloquent\\Relations\\Relation',
+          'arr' => 'Illuminate\\Support\\Arr',
+          'str' => 'Illuminate\\Support\\Str',
+        ),
+         'className' => 'Illuminate\\Database\\Eloquent\\Model',
+         'functionName' => 'withoutRelation',
+         'templatePhpDocNodes' => 
+        array (
+        ),
+         'parent' => NULL,
+         'typeAliasesMap' => 
+        array (
+        ),
+         'bypassTypeAliases' => false,
+         'constUses' => 
+        array (
+        ),
+         'typeAliasClassName' => 'Illuminate\\Database\\Eloquent\\Concerns\\HasRelationships',
+         'traitData' => 
+        array (
+          0 => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php',
+          1 => 'Illuminate\\Database\\Eloquent\\Model',
+          2 => 'Illuminate\\Database\\Eloquent\\Concerns\\HasRelationships',
+          3 => NULL,
+          4 => NULL,
+        ),
+      )),
       'e35c72252222fcb1ec7849f4bc59c041' => 
       \PHPStan\Analyser\IntermediaryNameScope::__set_state(array(
          'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
@@ -13750,6 +14009,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
          'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
          'uses' => 
         array (
+          'arr' => 'Illuminate\\Support\\Arr',
           'date' => 'Illuminate\\Support\\Facades\\Date',
         ),
          'className' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -13780,6 +14040,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
          'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
          'uses' => 
         array (
+          'arr' => 'Illuminate\\Support\\Arr',
           'date' => 'Illuminate\\Support\\Facades\\Date',
         ),
          'className' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -13810,6 +14071,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
          'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
          'uses' => 
         array (
+          'arr' => 'Illuminate\\Support\\Arr',
           'date' => 'Illuminate\\Support\\Facades\\Date',
         ),
          'className' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -13840,6 +14102,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
          'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
          'uses' => 
         array (
+          'arr' => 'Illuminate\\Support\\Arr',
           'date' => 'Illuminate\\Support\\Facades\\Date',
         ),
          'className' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -13870,6 +14133,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
          'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
          'uses' => 
         array (
+          'arr' => 'Illuminate\\Support\\Arr',
           'date' => 'Illuminate\\Support\\Facades\\Date',
         ),
          'className' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -13900,6 +14164,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
          'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
          'uses' => 
         array (
+          'arr' => 'Illuminate\\Support\\Arr',
           'date' => 'Illuminate\\Support\\Facades\\Date',
         ),
          'className' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -13930,6 +14195,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
          'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
          'uses' => 
         array (
+          'arr' => 'Illuminate\\Support\\Arr',
           'date' => 'Illuminate\\Support\\Facades\\Date',
         ),
          'className' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -13960,6 +14226,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
          'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
          'uses' => 
         array (
+          'arr' => 'Illuminate\\Support\\Arr',
           'date' => 'Illuminate\\Support\\Facades\\Date',
         ),
          'className' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -13990,6 +14257,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
          'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
          'uses' => 
         array (
+          'arr' => 'Illuminate\\Support\\Arr',
           'date' => 'Illuminate\\Support\\Facades\\Date',
         ),
          'className' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -14020,6 +14288,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
          'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
          'uses' => 
         array (
+          'arr' => 'Illuminate\\Support\\Arr',
           'date' => 'Illuminate\\Support\\Facades\\Date',
         ),
          'className' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -14050,6 +14319,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
          'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
          'uses' => 
         array (
+          'arr' => 'Illuminate\\Support\\Arr',
           'date' => 'Illuminate\\Support\\Facades\\Date',
         ),
          'className' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -14080,6 +14350,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
          'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
          'uses' => 
         array (
+          'arr' => 'Illuminate\\Support\\Arr',
           'date' => 'Illuminate\\Support\\Facades\\Date',
         ),
          'className' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -14110,6 +14381,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
          'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
          'uses' => 
         array (
+          'arr' => 'Illuminate\\Support\\Arr',
           'date' => 'Illuminate\\Support\\Facades\\Date',
         ),
          'className' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -14140,6 +14412,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
          'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
          'uses' => 
         array (
+          'arr' => 'Illuminate\\Support\\Arr',
           'date' => 'Illuminate\\Support\\Facades\\Date',
         ),
          'className' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -14170,6 +14443,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
          'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
          'uses' => 
         array (
+          'arr' => 'Illuminate\\Support\\Arr',
           'date' => 'Illuminate\\Support\\Facades\\Date',
         ),
          'className' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -14200,6 +14474,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
          'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
          'uses' => 
         array (
+          'arr' => 'Illuminate\\Support\\Arr',
           'date' => 'Illuminate\\Support\\Facades\\Date',
         ),
          'className' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -23934,11 +24209,11 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     1 => 
     array (
       '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php' => '19680451c06eeae0182a0a7eec60ddca810c3f91e23ec7dd795d048cc73cd22f',
-      '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasAttributes.php' => '021fe1c8d5172d67812ac1c5239c965132b6d0d49b9003b7ebd2947460376aa5',
+      '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasAttributes.php' => '2c9a5f7be68fa42b10e149f7b9aa2b318eab421c46d23ee36ad23b0c5db42c0d',
       '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasEvents.php' => '71152dc3e696b917c3e46dcf598285a882caa9f8bda386126e5f271a1cbd087d',
       '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasGlobalScopes.php' => 'f10aae6c87cdd84a16f1daa92c99f74abc5bdd25f6b3f2c3cc099f742b7acf77',
-      '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasRelationships.php' => 'd21ba2943b252636fa6004c33f9c63fa738acd79d0d1350eb3ee33cd2b5b7aa1',
-      '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasTimestamps.php' => 'b950964e413791a5eb23d8680f11fb44c8413d8f9f19ad755eacb9ce0bfda33f',
+      '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasRelationships.php' => '733f895df31b006008f771925a1356d495c053ea73ba17f9a085729c679388a2',
+      '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasTimestamps.php' => '3ec48c148381fbb4c2c2be7a4a50a05a0a80732a521f4c2937f78dc613544873',
       '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasUniqueIds.php' => 'c66f346a6b8d205758773d0283bbd33ad5a465d06af8a23f7f05cfd1f6565b66',
       '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HidesAttributes.php' => '257321651af79f730446cdc3c3ab07520d08c2381c1a40209940d66753a660f5',
       '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Database/Eloquent/Concerns/GuardsAttributes.php' => '0ffecda662a87c4f7f925fff5f788542be48c5fb0ec3f16828e507f865719010',

@@ -5966,7 +5966,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     1 => 
     array (
-      'phar:///Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/phpstan/phpstan/phpstan.phar/vendor/jetbrains/phpstorm-stubs/date/date_c.stub' => '875ec65dbbff23edf0c093acd56a245e7a802d1fe15aed8d757d9374140615db',
+      'phar:///Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/phpstan/phpstan/phpstan.phar/vendor/jetbrains/phpstorm-stubs/date/date_c.stub' => '024c85e1f31609e1d929467dd2f70e492a21e7ed3b895de257adec1dc0b9d4c6',
     ),
   ),
 ));

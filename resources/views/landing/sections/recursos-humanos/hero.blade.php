@@ -1,6 +1,6 @@
-<style>
-    {!! file_get_contents(resource_path('css/landing/sections/recursos-humanos/hero.css')) !!}
-</style>
+@push('styles')
+@vite(['resources/css/landing/sections/recursos-humanos/hero.css'])
+@endpush
 
 <section class="rh-hero-section">
     <div class="rh-hero-inner">
@@ -64,7 +64,7 @@
                         <span>98%</span>
                     </div>
                     <div class="rh-progress-track">
-                        <div class="rh-progress-fill" style="width: 98%;"></div>
+                        <div class="rh-progress-fill"></div>
                     </div>
 
                     <div class="rh-progress-label">
@@ -72,7 +72,7 @@
                         <span>75%</span>
                     </div>
                     <div class="rh-progress-track">
-                        <div class="rh-progress-fill" style="width: 75%;"></div>
+                        <div class="rh-progress-fill"></div>
                     </div>
 
                     <div class="rh-progress-label">
@@ -80,7 +80,7 @@
                         <span>82%</span>
                     </div>
                     <div class="rh-progress-track">
-                        <div class="rh-progress-fill" style="width: 82%;"></div>
+                        <div class="rh-progress-fill"></div>
                     </div>
                 </div>
             </div>

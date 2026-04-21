@@ -8,7 +8,7 @@
         <div class="scale-fast-cards">
             <div class="scale-fast-card">
                 <div class="icon-container">
-                    <iconify-icon icon="mdi:cloud-check-variant" style="font-size: 30px; color: #fca311; margin-bottom: 10px;" class="cloud-icon"></iconify-icon>
+                    <iconify-icon icon="mdi:cloud-check-variant" class="cloud-icon"></iconify-icon>
                 </div>
                 <div class="scale-fast-card-header">
                     <h3 class="scale-fast-card-title">Cloud Infrastructure</h3>
@@ -18,7 +18,7 @@
 
             <div class="scale-fast-card">
                 <div class="icon-container">
-                    <iconify-icon icon="carbon:analytics" style="font-size: 30px; color: #fca311; margin-bottom: 10px;" class="analytics-icon"></iconify-icon>
+                    <iconify-icon icon="carbon:analytics" class="analytics-icon"></iconify-icon>
                 </div>
                 <div class="scale-fast-card-header">
                     <h3 class="scale-fast-card-title">Data Analytics </h3>
@@ -28,7 +28,7 @@
 
             <div class="scale-fast-card">
                 <div class="icon-container">
-                    <iconify-icon icon="fa-solid:robot" style="font-size: 30px; color: #fca311; margin-bottom: 10px;" class="robot-icon"></iconify-icon>
+                    <iconify-icon icon="fa-solid:robot" class="robot-icon"></iconify-icon>
                 </div>
                 <div class="scale-fast-card-header">
                     <h3 class="scale-fast-card-title">AI Integration</h3>

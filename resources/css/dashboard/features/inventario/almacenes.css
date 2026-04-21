@@ -1,0 +1,76 @@
+/* ================================================
+   Inventario - Almacenes
+   resources/css/dashboard/features/inventario/almacenes.css
+   ================================================ */
+
+/* Almacén header name */
+.inv-almacen-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+.inv-almacen-address {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 3px;
+}
+
+/* Zones container */
+.inv-zones-wrapper {
+    margin-top: 12px;
+}
+.inv-zone-item {
+    margin-bottom: 16px;
+}
+
+.inv-zone-header {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+/* Estanterías list */
+.inv-estanterias-list {
+    padding-left: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.inv-estanteria-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    min-width: 140px;
+}
+
+.inv-estanteria-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+/* Ubicaciones within an estantería */
+.inv-ubicacion-item {
+    font-size: 0.72rem;
+    font-family: monospace;
+    color: var(--muted);
+    padding: 2px 0;
+}
+
+.inv-ubicacion-empty {
+    font-size: 0.72rem;
+    color: var(--muted);
+    padding: 2px 0;
+}
+
+/* Empty-state messages inside zone/estantería */
+.inv-zone-no-shelves {
+    font-size: 0.78rem;
+    color: var(--muted-2);
+    padding-left: 16px;
+}

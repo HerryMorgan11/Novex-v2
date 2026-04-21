@@ -15,8 +15,8 @@
     </div>
 
     @if($notes->isEmpty())
-    <div style="text-align: center; padding: 50px; color: var(--muted);">
-        <iconify-icon icon="lucide:notebook" style="font-size: 4rem; opacity: 0.2; margin-bottom: 20px;"></iconify-icon>
+    <div class="notes-empty-state">
+        <iconify-icon icon="lucide:notebook" class="notes-empty-icon"></iconify-icon>
         <p>Aún no tienes notas. ¡Crea tu primera nota ahora!</p>
     </div>
     @else

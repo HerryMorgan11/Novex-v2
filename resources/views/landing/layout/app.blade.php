@@ -17,7 +17,7 @@
     @vite('resources/css/landing/sections/precios.css')
     @vite('resources/css/landing/sections/about.css')
     @vite('resources/css/landing/shared/footer.css')
-
+    @stack('styles')
 </head>
 
 <body>

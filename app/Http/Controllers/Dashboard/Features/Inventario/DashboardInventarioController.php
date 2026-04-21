@@ -11,6 +11,12 @@ use App\Models\Inventario\Producto;
 use App\Models\Inventario\Transporte;
 use Illuminate\View\View;
 
+/**
+ * Dashboard principal del módulo de inventario.
+ *
+ * Agrega KPIs, transportes y expediciones recientes, y lotes con incidencia
+ * para dar una visión rápida del estado operativo.
+ */
 class DashboardInventarioController extends Controller
 {
     public function index(): View

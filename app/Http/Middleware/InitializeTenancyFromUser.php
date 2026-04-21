@@ -13,10 +13,16 @@ class InitializeTenancyFromUser
     {
         $user = auth()->user();
 
-        if ($user && $user->current_tenant_id) {
-            Tenancy::initialize($user->current_tenant_id);
+        if (! $user || ! $user->current_tenant_id) {
+            return $next($request);
         }
 
-        return $next($request);
+        Tenancy::initialize($user->current_tenant_id);
+
+        try {
+            return $next($request);
+        } finally {
+            tenancy()->end();
+        }
     }
 }

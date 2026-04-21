@@ -4,39 +4,38 @@ namespace App\Http\Middleware;
 
 use App\Models\Tenant;
 use Closure;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Variante estricta de CheckHasTenant: aborta 403 si el usuario no tiene tenant.
+ *
+ * Útil para zonas que exigen tenancy obligatorio (API interna, acciones que no
+ * deben caer nunca sin contexto de tenant). No muestra modal; simplemente falla.
+ */
 class InitializeTenant
 {
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
         if (! Auth::check()) {
             return $next($request);
         }
 
         $user = Auth::user();
-        $tenant = null;
-
-        if ($user->current_tenant_id) {
-            $tenant = Tenant::query()->find($user->current_tenant_id);
-        }
+        $tenant = $user->current_tenant_id
+            ? Tenant::query()->find($user->current_tenant_id)
+            : null;
 
         if (! $tenant) {
-            $membership = $user->memberships()
+            $tenant = $user->memberships()
                 ->where('status', 'active')
                 ->latest('id')
-                ->first();
-
-            $tenant = $membership?->tenant;
+                ->first()
+                ?->tenant;
         }
 
-        if (! $tenant) {
-            abort(403, 'Tenant not found');
-        }
-
-        if (! function_exists('tenancy')) {
-            abort(500, 'Stancl tenancy helper not available');
-        }
+        abort_if(! $tenant, 403, 'Tenant not found');
 
         tenancy()->initialize($tenant);
 

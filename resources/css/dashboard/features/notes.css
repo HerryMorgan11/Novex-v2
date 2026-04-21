@@ -49,10 +49,8 @@
 
 /* Square Card Style */
 .note-card {
-    background: #f8f9fa;
-    /* Fondo un poco más oscuro que el blanco */
-    border: 1px solid #d1d5db;
-    /* Bordes grises */
+    background: var(--card);
+    border: 1px solid var(--border);
     border-radius: 8px;
     /* Bordes un poco menos redondeados para el look cuadrado */
     padding: 24px;
@@ -121,7 +119,8 @@
 
 .btn-edit {
     color: var(--accent);
-    background: rgba(var(--accent-rgb), 0.1);
+    background: var(--surface-2);
+    border-color: var(--border);
 }
 
 .btn-edit:hover {
@@ -145,7 +144,7 @@
 .tiptap-editor {
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    background: var(--input);
+    background: var(--card);
     min-height: 300px;
     padding: 15px;
 }
@@ -153,6 +152,11 @@
 .ProseMirror {
     outline: none;
     min-height: 300px;
+    color: var(--fg);
+}
+
+.ProseMirror p {
+    color: var(--fg);
 }
 
 .editor-toolbar {
@@ -161,6 +165,31 @@
     padding: 10px;
     border-bottom: 1px solid var(--border);
     margin-bottom: 15px;
+    background: var(--surface);
+    border-radius: calc(var(--radius) - 4px);
+}
+
+.toolbar-btn {
+    display: inline-grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card);
+    color: var(--muted);
+    cursor: pointer;
+    transition:
+        background 0.15s ease,
+        color 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.toolbar-btn:hover,
+.toolbar-btn:focus-visible {
+    background: var(--surface-2);
+    color: var(--fg);
+    outline: none;
 }
 
 .form-group {
@@ -176,10 +205,14 @@
 .form-control {
     width: 100%;
     padding: 12px;
-    background: var(--input);
+    background: var(--card);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     color: var(--fg);
+}
+
+.form-control::placeholder {
+    color: var(--muted);
 }
 
 .btn-save {
@@ -225,4 +258,48 @@
         width: 100%;
         justify-content: center;
     }
+}
+
+/* ================================================
+   Notes – extracted inline styles
+   ================================================ */
+
+.notes-container--narrow {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.notes-back-link {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.notes-form-actions {
+    margin-top: 30px;
+}
+
+.notes-empty-state {
+    text-align: center;
+    padding: 50px;
+    color: var(--muted);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.notes-empty-icon {
+    font-size: 4rem;
+    opacity: 0.2;
+    margin-bottom: 20px;
+}
+
+.dark-theme .note-card:hover {
+    box-shadow:
+        0 20px 30px rgba(0, 0, 0, 0.3),
+        0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dark-theme .btn-delete:hover {
+    color: #fff;
 }

@@ -34,7 +34,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Collections/helpers.php' => 
     array (
-      0 => 'b6d96d6646d9de5e87fc883a50232b98127368a8f498a25d676b130abfbbd3b8',
+      0 => '0ab3c32b59702c826377fa2af8246cc11c803f7f69f86c41bfe84ab8fb86a8df',
       1 => 
       array (
       ),
@@ -85,7 +85,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Foundation/helpers.php' => 
     array (
-      0 => '2d9187bdad3b402f1f4b5303e340e54159c650e23089ccd7154ff6251180fddc',
+      0 => '3fe9475e8c073a9c58af7e9cb8c74416031941413358f6082d558134d416ba86',
       1 => 
       array (
       ),
@@ -219,7 +219,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Support/helpers.php' => 
     array (
-      0 => '03e08f2db7a9486e64b7887f9a1c50b544b68fe8794284259fa985a40534a5b8',
+      0 => '60a6387a3241a9d7780bf04bf2d928ce75e6a37c78cca9d9e3a8ee7599e3f613',
       1 => 
       array (
       ),
@@ -257,77 +257,42 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/prompts/src/helpers.php' => 
     array (
-      0 => '8b692f6e6b44e58e9b4f0407539b68c406b2195006388858d7f9289f7745aa50',
+      0 => 'd422f0db8728add94e49c2df4fb824eec6bee0fdde3b713d92e908a503723206',
       1 => 
       array (
       ),
       2 => 
       array (
         0 => 'laravel\\prompts\\text',
-        1 => 'laravel\\prompts\\number',
-        2 => 'laravel\\prompts\\textarea',
-        3 => 'laravel\\prompts\\password',
-        4 => 'laravel\\prompts\\select',
-        5 => 'laravel\\prompts\\multiselect',
-        6 => 'laravel\\prompts\\confirm',
-        7 => 'laravel\\prompts\\pause',
-        8 => 'laravel\\prompts\\clear',
-        9 => 'laravel\\prompts\\suggest',
-        10 => 'laravel\\prompts\\search',
-        11 => 'laravel\\prompts\\multisearch',
-        12 => 'laravel\\prompts\\spin',
-        13 => 'laravel\\prompts\\note',
-        14 => 'laravel\\prompts\\error',
-        15 => 'laravel\\prompts\\warning',
-        16 => 'laravel\\prompts\\alert',
-        17 => 'laravel\\prompts\\info',
-        18 => 'laravel\\prompts\\intro',
-        19 => 'laravel\\prompts\\outro',
-        20 => 'laravel\\prompts\\table',
-        21 => 'laravel\\prompts\\grid',
-        22 => 'laravel\\prompts\\progress',
-        23 => 'laravel\\prompts\\form',
-      ),
-      3 => 
-      array (
-      ),
-    ),
-    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../livewire/livewire/src/helpers.php' => 
-    array (
-      0 => 'b0ff11be1de271da279355962e6f89339dec0d29ad7b70e20a43ad54cd38044c',
-      1 => 
-      array (
-      ),
-      2 => 
-      array (
-        0 => 'livewire\\str',
-        1 => 'livewire\\__call',
-        2 => 'livewire\\invade',
-        3 => 'livewire\\__construct',
-        4 => 'livewire\\__get',
-        5 => 'livewire\\__set',
-        6 => 'livewire\\__call',
-        7 => 'livewire\\once',
-        8 => 'livewire\\of',
-        9 => 'livewire\\revert',
-        10 => 'livewire\\wrap',
-        11 => 'livewire\\pipe',
-        12 => 'livewire\\trigger',
-        13 => 'livewire\\on',
-        14 => 'livewire\\after',
-        15 => 'livewire\\before',
-        16 => 'livewire\\off',
-        17 => 'livewire\\memoize',
-        18 => 'livewire\\__construct',
-        19 => 'livewire\\__call',
-        20 => 'livewire\\store',
-        21 => 'livewire\\__construct',
-        22 => 'livewire\\get',
-        23 => 'livewire\\set',
-        24 => 'livewire\\push',
-        25 => 'livewire\\find',
-        26 => 'livewire\\has',
-        27 => 'livewire\\unset',
+        1 => 'laravel\\prompts\\autocomplete',
+        2 => 'laravel\\prompts\\number',
+        3 => 'laravel\\prompts\\textarea',
+        4 => 'laravel\\prompts\\password',
+        5 => 'laravel\\prompts\\select',
+        6 => 'laravel\\prompts\\multiselect',
+        7 => 'laravel\\prompts\\confirm',
+        8 => 'laravel\\prompts\\pause',
+        9 => 'laravel\\prompts\\clear',
+        10 => 'laravel\\prompts\\suggest',
+        11 => 'laravel\\prompts\\search',
+        12 => 'laravel\\prompts\\multisearch',
+        13 => 'laravel\\prompts\\spin',
+        14 => 'laravel\\prompts\\note',
+        15 => 'laravel\\prompts\\error',
+        16 => 'laravel\\prompts\\warning',
+        17 => 'laravel\\prompts\\alert',
+        18 => 'laravel\\prompts\\info',
+        19 => 'laravel\\prompts\\intro',
+        20 => 'laravel\\prompts\\outro',
+        21 => 'laravel\\prompts\\notify',
+        22 => 'laravel\\prompts\\table',
+        23 => 'laravel\\prompts\\grid',
+        24 => 'laravel\\prompts\\progress',
+        25 => 'laravel\\prompts\\form',
+        26 => 'laravel\\prompts\\title',
+        27 => 'laravel\\prompts\\stream',
+        28 => 'laravel\\prompts\\task',
+        29 => 'laravel\\prompts\\datatable',
       ),
       3 => 
       array (
@@ -468,7 +433,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../phpstan/phpstan/bootstrap.php' => 
     array (
-      0 => '9052eea7cd83da915bcae5993c602ca3762b099702d618bf6e836cfa2a4ee06b',
+      0 => 'd900a37a9d92bf5715f9377fca6056d7248b636d5657d69fb4ea6f54734a3fff',
       1 => 
       array (
         0 => 'phpstan\\pharautoloader',
@@ -738,7 +703,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../psy/psysh/src/functions.php' => 
     array (
-      0 => 'd9fc2916cce68d766c061c8aa45258c3e3e6538b8f94741511636e731615aaa0',
+      0 => '832ef9e9db50daea72597825b6b59327dd72b63da6e0146a2346a48915dbdab6',
       1 => 
       array (
       ),
@@ -842,7 +807,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/polyfill-intl-grapheme/bootstrap.php' => 
     array (
-      0 => 'eb4e2a6955bbd4d26d0f43b6a4adeaba0b41a9347c58607c39962bba7199412a',
+      0 => '88db8bb014128576f3e97182a24f9d273bc749d452f4cecf9f5d398a4ec3966f',
       1 => 
       array (
       ),
@@ -858,6 +823,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         7 => 'grapheme_strstr',
         8 => 'grapheme_substr',
         9 => 'grapheme_str_split',
+        10 => 'grapheme_levenshtein',
       ),
       3 => 
       array (
@@ -936,7 +902,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/polyfill-mbstring/bootstrap.php' => 
     array (
-      0 => '8ed6c4de6d1427bbc30b4ef11ebf0e274b9791e07f45420280e3064567e599ac',
+      0 => '1974122417f4adff96688b221facce3859b370ce435a9c334b542e58e5acebc8',
       1 => 
       array (
       ),
@@ -1017,17 +983,17 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/polyfill-php83/bootstrap.php' => 
     array (
-      0 => '4094bea8f7ea8beed0d488b1e38edc8de90925295231b4dca494ee87195b0b1d',
+      0 => 'f0affd7130c3c64b2d4f9ad23f929a976283d7a68eae4c11f6846801572d159e',
       1 => 
       array (
       ),
       2 => 
       array (
         0 => 'json_validate',
-        1 => 'mb_str_pad',
-        2 => 'stream_context_set_options',
-        3 => 'str_increment',
-        4 => 'str_decrement',
+        1 => 'stream_context_set_options',
+        2 => 'str_increment',
+        3 => 'str_decrement',
+        4 => 'mb_str_pad',
         5 => 'ldap_exop_sync',
         6 => 'ldap_connect_wallet',
       ),
@@ -1037,7 +1003,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/polyfill-php84/bootstrap.php' => 
     array (
-      0 => '191ed13c5c9c70344a6660c7c011a5211569b5a591a8af074be2699b919544b4',
+      0 => '9a5cdce5e5e209f3c661cf7541e702b85f1f01d6eb4991de137c21f76378bfc6',
       1 => 
       array (
       ),
@@ -1053,8 +1019,11 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         7 => 'mb_trim',
         8 => 'mb_ltrim',
         9 => 'mb_rtrim',
-        10 => 'bcdivmod',
-        11 => 'grapheme_str_split',
+        10 => 'bcceil',
+        11 => 'bcdivmod',
+        12 => 'bcfloor',
+        13 => 'bcround',
+        14 => 'grapheme_str_split',
       ),
       3 => 
       array (
@@ -1064,7 +1033,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/polyfill-php85/bootstrap.php' => 
     array (
-      0 => '0aed1a21a7eb020c07236ecf49c04c49025b6ffcf9686120ca0e96607fd7084d',
+      0 => '140f00a81891a9a659cb00d27482d7f25e011e2e562bc08666e80a513638dfce',
       1 => 
       array (
       ),
@@ -1074,6 +1043,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         1 => 'get_exception_handler',
         2 => 'array_first',
         3 => 'array_last',
+        4 => 'locale_is_right_to_left',
+        5 => 'grapheme_levenshtein',
       ),
       3 => 
       array (
@@ -1157,6 +1128,81 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
       array (
         0 => 'dump',
         1 => 'dd',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../beberlei/assert/lib/Assert/functions.php' => 
+    array (
+      0 => '82b32d64c9be757ad5be4cb1e46af833d2c25b463a6878415072fbf0b06b50bc',
+      1 => 
+      array (
+      ),
+      2 => 
+      array (
+        0 => 'assert\\that',
+        1 => 'assert\\thatall',
+        2 => 'assert\\thatnullor',
+        3 => 'assert\\lazy',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../clue/stream-filter/src/functions_include.php' => 
+    array (
+      0 => '07c5587a4c7fb03dbab8bfac1c3e0802a25f1a48db537cdc8b99907a33b719c1',
+      1 => 
+      array (
+      ),
+      2 => 
+      array (
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../php-http/message/src/filters.php' => 
+    array (
+      0 => '5b0e0928344a22e7f0235a46bb2e4acee096c473df9637d4d73bb0001ce07710',
+      1 => 
+      array (
+      ),
+      2 => 
+      array (
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../phpseclib/phpseclib/phpseclib/bootstrap.php' => 
+    array (
+      0 => '1675799e193c5c71d2f0215098993a228a20ef5a2a8ac0192f7dfd0f21c85060',
+      1 => 
+      array (
+      ),
+      2 => 
+      array (
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../stancl/tenancy/src/helpers.php' => 
+    array (
+      0 => '79688a267a72150bb327ca34adbadba314d145d3a2928c5f8b7f9ffd337414c6',
+      1 => 
+      array (
+      ),
+      2 => 
+      array (
+        0 => 'tenancy',
+        1 => 'tenant',
+        2 => 'tenant_asset',
+        3 => 'global_asset',
+        4 => 'global_cache',
+        5 => 'tenant_route',
       ),
       3 => 
       array (

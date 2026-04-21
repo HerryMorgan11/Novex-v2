@@ -1,19 +1,21 @@
 @extends('dashboard.app.dashboard')
 
 @push('styles')
-@vite(['resources/css/dashboard/features/inventario.css'])
+@vite(['resources/css/dashboard/features/inventario.css', 'resources/css/dashboard/features/inventario/expediciones.css'])
 @endpush
 
 @section('content')
-<div style="padding: 20px 0; width:100%;">
+<div class="inv-page-wrapper">
+
+    @include('dashboard.features.inventario.partials.top-nav')
 
     <div class="inv-page-header">
         <div>
             <h1>Nueva Expedición</h1>
             <div class="inv-breadcrumb">
-                <a href="{{ route('inventario.index') }}" style="color:var(--muted); text-decoration:none;">Inventario</a>
+                <a href="{{ route('inventario.index') }}" class="inv-breadcrumb-link">Inventario</a>
                 &rsaquo;
-                <a href="{{ route('inventario.expediciones.index') }}" style="color:var(--muted); text-decoration:none;">Expediciones</a>
+                <a href="{{ route('inventario.expediciones.index') }}" class="inv-breadcrumb-link">Expediciones</a>
                 &rsaquo; Nueva
             </div>
         </div>
@@ -37,20 +39,18 @@
         @csrf
 
         {{-- Datos generales --}}
-        <div class="inv-form-card" style="margin-bottom:20px;">
-            <h3 style="font-size:0.8rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid var(--border);">
-                Datos de la expedición
-            </h3>
-            <div class="inv-form-grid" style="grid-template-columns:repeat(4, minmax(0, 1fr));">
+        <div class="inv-form-card inv-mb-20">
+            <h3 class="inv-section-title">Datos de la expedición</h3>
+            <div class="inv-form-grid inv-form-grid-4">
                 <div class="inv-form-group">
-                    <label>Tipo <span style="color:#b91c1c">*</span></label>
+                    <label>Tipo <span class="inv-required">*</span></label>
                     <select name="tipo" required>
                         <option value="reparto" {{ old('tipo') !== 'produccion' ? 'selected' : '' }}>Reparto</option>
                         <option value="produccion" {{ old('tipo') === 'produccion' ? 'selected' : '' }}>Producción</option>
                     </select>
                 </div>
-                <div class="inv-form-group" style="grid-column:span 2;">
-                    <label>Destino <span style="color:#b91c1c">*</span></label>
+                <div class="inv-form-group inv-form-span-2">
+                    <label>Destino <span class="inv-required">*</span></label>
                     <input type="text" name="destino" value="{{ old('destino') }}" required placeholder="Ej: Almacén cliente S.A.">
                 </div>
                 <div class="inv-form-group">
@@ -65,7 +65,7 @@
                     <label>Fecha de salida</label>
                     <input type="datetime-local" name="fecha_salida" value="{{ old('fecha_salida', now()->format('Y-m-d\TH:i')) }}">
                 </div>
-                <div class="inv-form-group" style="grid-column:1/-1;">
+                <div class="inv-form-group inv-form-full-width">
                     <label>Observaciones</label>
                     <textarea name="observaciones" rows="2">{{ old('observaciones') }}</textarea>
                 </div>
@@ -73,10 +73,8 @@
         </div>
 
         {{-- Selección de lotes --}}
-        <div class="inv-form-card" style="margin-bottom:20px;">
-            <h3 style="font-size:0.8rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid var(--border);">
-                Seleccionar lotes a enviar
-            </h3>
+        <div class="inv-form-card inv-mb-20">
+            <h3 class="inv-section-title">Seleccionar lotes a enviar</h3>
 
             @if($lotesDisponibles->isEmpty())
             <div class="inv-alert inv-alert-warning">
@@ -84,7 +82,7 @@
                 No hay lotes en estado almacenado disponibles para expedición.
             </div>
             @else
-            <div class="inv-search" style="max-width:100%; margin-bottom:14px;">
+            <div class="inv-search inv-search-full">
                 <iconify-icon icon="lucide:search"></iconify-icon>
                 <input type="text" id="lote-search" placeholder="Buscar lote o producto..." oninput="filtrarLotes(this.value)">
             </div>
@@ -96,9 +94,9 @@
                         onchange="toggleCantidad(this)"
                         {{ collect(old('lineas', []))->where('id_lote', $lote->id_lote)->count() ? 'checked' : '' }}>
                     <div class="lote-info">
-                        <div style="font-weight:500; font-size:0.875rem;">{{ $lote->producto?->nombre ?? '—' }}</div>
+                        <div class="inv-lote-name">{{ $lote->producto?->nombre ?? '—' }}</div>
                         <div class="lote-ref">{{ $lote->numero_lote }}</div>
-                        <div style="font-size:0.75rem; color:var(--muted); margin-top:2px;">
+                        <div class="inv-lote-meta">
                             Disponible: <strong>{{ number_format($lote->cantidadDisponible(), 0) }}</strong>
                             {{ $lote->producto?->unidadMedida?->abreviatura ?? '' }}
                             @if($lote->ubicacion)
@@ -106,14 +104,14 @@
                             @endif
                         </div>
                     </div>
-                    <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
+                    <div class="inv-lote-actions">
                         <input type="number" name="lineas[{{ $loop->index }}][cantidad]"
                             class="lote-qty-input"
                             min="0.001"
                             max="{{ $lote->cantidadDisponible() }}"
                             step="0.001"
                             placeholder="Cant."
-                            style="display:none;"
+                            class="hidden"
                             {{ collect(old('lineas', []))->where('id_lote', $lote->id_lote)->count() ? '' : 'disabled' }}>
                         <input type="hidden" name="lineas[{{ $loop->index }}][unidad]"
                             value="{{ $lote->producto?->unidadMedida?->abreviatura ?? '' }}">
@@ -124,7 +122,7 @@
             @endif
         </div>
 
-        <div style="display:flex; gap:12px; justify-content:flex-end;">
+        <div class="inv-form-footer">
             <a href="{{ route('inventario.expediciones.index') }}" class="inv-btn inv-btn-outline">Cancelar</a>
             <button type="submit" class="inv-btn inv-btn-primary">
                 <iconify-icon icon="lucide:send"></iconify-icon>

@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Support/Traits/ForwardsCalls.php-PHPStan\BetterReflection\Reflection\ReflectionClass-Illuminate\Support\Traits\ForwardsCalls
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-b90103bc7248a11bd7629c525e064a45a50dd93ae0d836bcb79937e63f0b3568-8.4.1-6.65.0.9',
+   'variableKey' => 'v2-b90103bc7248a11bd7629c525e064a45a50dd93ae0d836bcb79937e63f0b3568-8.4.1-6.70.0.0',
    'data' => 
   array (
     'locatedSource' => 

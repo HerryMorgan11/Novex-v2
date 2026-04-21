@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Notifications/HasDatabaseNotifications.php-PHPStan\BetterReflection\Reflection\ReflectionClass-Illuminate\Notifications\HasDatabaseNotifications
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-a7a163aa1f98a0ae4cd2135905b6852e29a850beb4296aa72c44c37d22832135-8.4.1-6.65.0.9',
+   'variableKey' => 'v2-a7a163aa1f98a0ae4cd2135905b6852e29a850beb4296aa72c44c37d22832135-8.4.1-6.70.0.0',
    'data' => 
   array (
     'locatedSource' => 

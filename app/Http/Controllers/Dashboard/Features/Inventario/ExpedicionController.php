@@ -11,6 +11,12 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
+/**
+ * Gestión de expediciones (salidas de mercancía).
+ *
+ * La creación de una expedición delega en PrepararExpedicion (Action) para
+ * mantener transaccionalidad: cambio de estado de lotes + registro de trazabilidad.
+ */
 class ExpedicionController extends Controller
 {
     public function index(): View

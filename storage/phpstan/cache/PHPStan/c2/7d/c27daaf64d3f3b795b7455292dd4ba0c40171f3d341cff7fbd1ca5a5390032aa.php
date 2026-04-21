@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasRelationships.php-PHPStan\BetterReflection\Reflection\ReflectionClass-Illuminate\Database\Eloquent\Concerns\HasRelationships
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-d21ba2943b252636fa6004c33f9c63fa738acd79d0d1350eb3ee33cd2b5b7aa1-8.4.1-6.65.0.9',
+   'variableKey' => 'v2-733f895df31b006008f771925a1356d495c053ea73ba17f9a085729c679388a2-8.4.1-6.70.0.0',
    'data' => 
   array (
     'locatedSource' => 
@@ -27,7 +27,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     array (
     ),
     'startLine' => 26,
-    'endLine' => 1187,
+    'endLine' => 1204,
     'startColumn' => 1,
     'endColumn' => 1,
     'parentClassName' => NULL,
@@ -4917,10 +4917,10 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
               array (
                 'startLine' => 925,
                 'endLine' => 925,
-                'startTokenPos' => 3442,
-                'startFilePos' => 32924,
-                'endTokenPos' => 3442,
-                'endFilePos' => 32927,
+                'startTokenPos' => 3433,
+                'startFilePos' => 32904,
+                'endTokenPos' => 3433,
+                'endFilePos' => 32907,
               ),
             ),
             'type' => NULL,
@@ -5670,6 +5670,56 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         'currentClassName' => 'Illuminate\\Database\\Eloquent\\Concerns\\HasRelationships',
         'aliasName' => NULL,
       ),
+      'withoutRelation' => 
+      array (
+        'name' => 'withoutRelation',
+        'parameters' => 
+        array (
+          'relations' => 
+          array (
+            'name' => 'relations',
+            'default' => NULL,
+            'type' => NULL,
+            'isVariadic' => false,
+            'byRef' => false,
+            'isPromoted' => false,
+            'attributes' => 
+            array (
+            ),
+            'startLine' => 1159,
+            'endLine' => 1159,
+            'startColumn' => 37,
+            'endColumn' => 46,
+            'parameterIndex' => 0,
+            'isOptional' => false,
+          ),
+        ),
+        'returnsReference' => false,
+        'returnType' => NULL,
+        'attributes' => 
+        array (
+        ),
+        'docComment' => '/**
+ * Duplicate the instance and unset the given loaded relations.
+ *
+ * @param  array|string  $relations
+ * @return $this
+ */',
+        'startLine' => 1159,
+        'endLine' => 1168,
+        'startColumn' => 5,
+        'endColumn' => 5,
+        'couldThrow' => false,
+        'isClosure' => false,
+        'isGenerator' => false,
+        'isVariadic' => false,
+        'modifiers' => 1,
+        'namespace' => 'Illuminate\\Database\\Eloquent\\Concerns',
+        'declaringClassName' => 'Illuminate\\Database\\Eloquent\\Concerns\\HasRelationships',
+        'implementingClassName' => 'Illuminate\\Database\\Eloquent\\Concerns\\HasRelationships',
+        'currentClassName' => 'Illuminate\\Database\\Eloquent\\Concerns\\HasRelationships',
+        'aliasName' => NULL,
+      ),
       'unsetRelations' => 
       array (
         'name' => 'unsetRelations',
@@ -5686,8 +5736,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
  *
  * @return $this
  */',
-        'startLine' => 1158,
-        'endLine' => 1163,
+        'startLine' => 1175,
+        'endLine' => 1180,
         'startColumn' => 5,
         'endColumn' => 5,
         'couldThrow' => false,
@@ -5717,8 +5767,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
  *
  * @return array
  */',
-        'startLine' => 1170,
-        'endLine' => 1173,
+        'startLine' => 1187,
+        'endLine' => 1190,
         'startColumn' => 5,
         'endColumn' => 5,
         'couldThrow' => false,
@@ -5756,8 +5806,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
             'attributes' => 
             array (
             ),
-            'startLine' => 1181,
-            'endLine' => 1181,
+            'startLine' => 1198,
+            'endLine' => 1198,
             'startColumn' => 41,
             'endColumn' => 54,
             'parameterIndex' => 0,
@@ -5775,8 +5825,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
  * @param  array  $touches
  * @return $this
  */',
-        'startLine' => 1181,
-        'endLine' => 1186,
+        'startLine' => 1198,
+        'endLine' => 1203,
         'startColumn' => 5,
         'endColumn' => 5,
         'couldThrow' => false,

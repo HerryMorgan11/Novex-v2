@@ -26,7 +26,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="5" style="text-align: center;">No se encontraron usuarios.</td>
+                        <td colspan="5" class="cp-users-empty-cell">No se encontraron usuarios.</td>
                     </tr>
                 @endforelse
                 

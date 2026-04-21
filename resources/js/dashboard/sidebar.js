@@ -30,19 +30,28 @@ document.addEventListener('keydown', e => {
 
 const userBtn = document.getElementById('user-dropdown-btn');
 const dropdownPanel = document.getElementById('user-dropdown-panel');
+const userIcon = userBtn?.querySelector('.user-icon');
 
 function openDropdown() {
+    if (!dropdownPanel || !userBtn) return;
+
     dropdownPanel.style.display = '';
     userBtn.setAttribute('aria-expanded', 'true');
+    userIcon?.classList.add('rotate-90');
 }
 
 function closeDropdown() {
+    if (!dropdownPanel || !userBtn) return;
+
     dropdownPanel.style.display = 'none';
     userBtn.setAttribute('aria-expanded', 'false');
+    userIcon?.classList.remove('rotate-90');
 }
 
 userBtn?.addEventListener('click', e => {
     e.stopPropagation();
+    if (!dropdownPanel) return;
+
     const isOpen = dropdownPanel.style.display !== 'none';
     isOpen ? closeDropdown() : openDropdown();
 });
@@ -69,11 +78,11 @@ function loadSidebarModules() {
 
     document.querySelectorAll('[data-module]').forEach(el => {
         const key = el.dataset.module;
-        if (key && !modules[key]) {
-            el.classList.add('opacity-50');
-        } else {
-            el.classList.remove('opacity-50');
-        }
+        const enabled = key ? modules[key] !== false : true;
+
+        el.hidden = !enabled;
+        el.classList.toggle('is-hidden', !enabled);
+        el.setAttribute('aria-hidden', String(!enabled));
     });
 }
 

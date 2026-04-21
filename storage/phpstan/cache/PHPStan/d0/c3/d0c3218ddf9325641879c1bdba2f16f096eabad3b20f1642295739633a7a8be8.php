@@ -7,7 +7,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
   array (
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/symfony/polyfill-php84/Resources/stubs/ReflectionConstant.php' => 
     array (
-      0 => 'e208443716002e3b0a4ffc340a00dcdcc1a4edf7d024a76be06359a0c9543820',
+      0 => '447f6ecd308ba90a789faadad63723aa2c6a375c3b4abb4a6878df2aefcdae19',
       1 => 
       array (
         0 => 'reflectionconstant',
@@ -30,7 +30,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/symfony/polyfill-php84/Resources/stubs/Deprecated.php' => 
     array (
-      0 => '5b039a85d17aff09e861a2331067b5d324c21343973182e332fb58052ab73e3a',
+      0 => '587416401de3fe7a69ffc433978de9f2accc2c6713f394f8bc1e0e663b136604',
       1 => 
       array (
         0 => 'deprecated',
@@ -38,6 +38,133 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
       2 => 
       array (
         0 => '__construct',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/symfony/polyfill-php84/Resources/stubs/Pdo/Dblib.php' => 
+    array (
+      0 => '91f17a381b58d24355f4345cb6744304f5859e05995076810b78b0831cb65b1b',
+      1 => 
+      array (
+        0 => 'pdo\\dblib',
+      ),
+      2 => 
+      array (
+        0 => 'pdo\\__construct',
+        1 => 'pdo\\connect',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/symfony/polyfill-php84/Resources/stubs/Pdo/Firebird.php' => 
+    array (
+      0 => 'db2e2ac02fbfb842944dd161be641f75bb4fba8dd121c40c8b43b236bc3e2d60',
+      1 => 
+      array (
+        0 => 'pdo\\firebird',
+      ),
+      2 => 
+      array (
+        0 => 'pdo\\__construct',
+        1 => 'pdo\\connect',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/symfony/polyfill-php84/Resources/stubs/Pdo/Mysql.php' => 
+    array (
+      0 => 'a273b92c5390048fef1ba07caf5dac272c2b595df1e7385f2092199c070339ab',
+      1 => 
+      array (
+        0 => 'pdo\\mysql',
+        1 => 'pdo\\mysql',
+      ),
+      2 => 
+      array (
+        0 => 'pdo\\__construct',
+        1 => 'pdo\\connect',
+        2 => 'pdo\\__construct',
+        3 => 'pdo\\connect',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/symfony/polyfill-php84/Resources/stubs/Pdo/Odbc.php' => 
+    array (
+      0 => '8bb85a862cee3887ea00d9a1af48a7c839b1308b6f95d305a6a3fc01192edd0f',
+      1 => 
+      array (
+        0 => 'pdo\\odbc',
+      ),
+      2 => 
+      array (
+        0 => 'pdo\\__construct',
+        1 => 'pdo\\connect',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/symfony/polyfill-php84/Resources/stubs/Pdo/Pgsql.php' => 
+    array (
+      0 => '4f6cc16d5b3c69f997c5a8af5487c8c3d402dda60490ef8712f6948d2906330c',
+      1 => 
+      array (
+        0 => 'pdo\\pgsql',
+      ),
+      2 => 
+      array (
+        0 => 'pdo\\__construct',
+        1 => 'pdo\\connect',
+        2 => 'pdo\\copyfromarray',
+        3 => 'pdo\\copyfromfile',
+        4 => 'pdo\\copytoarray',
+        5 => 'pdo\\copytofile',
+        6 => 'pdo\\getnotify',
+        7 => 'pdo\\getpid',
+        8 => 'pdo\\lobcreate',
+        9 => 'pdo\\lobopen',
+        10 => 'pdo\\lobunlink',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/symfony/polyfill-php84/Resources/stubs/Pdo/Sqlite.php' => 
+    array (
+      0 => 'abe9b43b18d3de78bebb4267de537c1b57f544bb7c195150565ba87d51dc63e3',
+      1 => 
+      array (
+        0 => 'pdo\\sqlite',
+      ),
+      2 => 
+      array (
+        0 => 'pdo\\__construct',
+        1 => 'pdo\\connect',
+        2 => 'pdo\\createaggregate',
+        3 => 'pdo\\createcollation',
+        4 => 'pdo\\createfunction',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/symfony/polyfill-php84/Resources/stubs/RoundingMode.php' => 
+    array (
+      0 => '9313c0b4390b2e30d0f7874a985f32159c0ca9ec7bf05c3d99172f62cbd4965d',
+      1 => 
+      array (
+        0 => 'roundingmode',
+      ),
+      2 => 
+      array (
+        0 => '__construct',
+        1 => 'cases',
       ),
       3 => 
       array (

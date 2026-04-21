@@ -1,24 +1,26 @@
 @extends('dashboard.app.dashboard')
 
 @push('styles')
-@vite(['resources/css/dashboard/features/inventario.css'])
+@vite(['resources/css/dashboard/features/inventario.css', 'resources/css/dashboard/features/inventario/expediciones.css'])
 @endpush
 
 @section('content')
-<div style="padding: 20px 0;">
+<div class="inv-page-wrapper">
+
+    @include('dashboard.features.inventario.partials.top-nav')
 
     <div class="inv-page-header">
         <div>
             <h1>{{ $expedicion->referencia_expedicion }}</h1>
             <div class="inv-breadcrumb">
-                <a href="{{ route('inventario.index') }}" style="color:var(--muted); text-decoration:none;">Inventario</a>
+                <a href="{{ route('inventario.index') }}" class="inv-breadcrumb-link">Inventario</a>
                 &rsaquo;
-                <a href="{{ route('inventario.expediciones.index') }}" style="color:var(--muted); text-decoration:none;">Expediciones</a>
+                <a href="{{ route('inventario.expediciones.index') }}" class="inv-breadcrumb-link">Expediciones</a>
                 &rsaquo; {{ $expedicion->referencia_expedicion }}
             </div>
         </div>
         @php $color = $expedicion->estado?->color() ?? 'secondary' @endphp
-        <span class="badge badge-{{ $color }}" style="font-size:0.8rem; padding:6px 14px;">
+        <span class="badge badge-{{ $color }} inv-badge-lg">
             {{ $expedicion->estado?->label() ?? $expedicion->estado }}
         </span>
     </div>
@@ -27,7 +29,7 @@
     <div class="inv-alert inv-alert-success"><iconify-icon icon="lucide:check-circle"></iconify-icon> {{ session('success') }}</div>
     @endif
 
-    <div style="display:grid; grid-template-columns:2fr 1fr; gap:20px; align-items:start;">
+    <div class="inv-detail-layout">
 
         {{-- Detalle --}}
         <div>
@@ -36,7 +38,7 @@
                 <div class="inv-detail-grid">
                     <div class="inv-detail-item">
                         <label>Referencia</label>
-                        <span style="font-family:monospace;">{{ $expedicion->referencia_expedicion }}</span>
+                        <span class="inv-mono">{{ $expedicion->referencia_expedicion }}</span>
                     </div>
                     <div class="inv-detail-item">
                         <label>Tipo</label>
@@ -48,7 +50,7 @@
                     </div>
                     <div class="inv-detail-item">
                         <label>Vehículo</label>
-                        <span style="font-family:monospace;">{{ $expedicion->vehiculo ?? '—' }}</span>
+                        <span class="inv-mono">{{ $expedicion->vehiculo ?? '—' }}</span>
                     </div>
                     <div class="inv-detail-item">
                         <label>Conductor</label>
@@ -63,7 +65,7 @@
                         <span>{{ $expedicion->fecha_confirmacion_entrega?->format('d/m/Y H:i') ?? '—' }}</span>
                     </div>
                     @if($expedicion->observaciones)
-                    <div class="inv-detail-item" style="grid-column:1/-1;">
+                    <div class="inv-detail-item inv-detail-item-full">
                         <label>Observaciones</label>
                         <span>{{ $expedicion->observaciones }}</span>
                     </div>
@@ -91,9 +93,9 @@
                             <tr>
                                 <td class="mono">{{ $linea->lote?->numero_lote ?? '—' }}</td>
                                 <td>{{ $linea->producto?->nombre ?? $linea->lote?->producto?->nombre ?? '—' }}</td>
-                                <td style="font-weight:600;">{{ number_format($linea->cantidad, 0) }}</td>
-                                <td style="color:var(--muted);">{{ $linea->unidad ?? '—' }}</td>
-                                <td style="font-size:0.8rem; color:var(--muted);">
+                                <td class="inv-td-bold">{{ number_format($linea->cantidad, 0) }}</td>
+                                <td class="inv-td-muted">{{ $linea->unidad ?? '—' }}</td>
+                                <td class="inv-td-muted">
                                     {{ $linea->lote?->ubicacion?->codigoCompleto() ?? '—' }}
                                 </td>
                                 <td>
@@ -112,18 +114,18 @@
         <div>
             <div class="inv-detail-card">
                 <h3>Confirmación externa</h3>
-                <p style="font-size:0.82rem; color:var(--muted); margin-bottom:12px;">
+                <p class="inv-modal-desc">
                     Endpoint para que el destinatario confirme la recepción de la mercancía:
                 </p>
-                <div style="background:var(--surface-2); border:1px solid var(--border); border-radius:8px; padding:12px; font-family:monospace; font-size:0.75rem; word-break:break-all; color:var(--fg); margin-bottom:12px;">
+                <div class="inv-code-block">
                     POST /api/inventario/expediciones/{{ $expedicion->referencia_expedicion }}/confirmar-entrega
                 </div>
                 @if($expedicion->estado?->value !== 'entregada')
-                <p style="font-size:0.75rem; color:var(--muted);">
+                <p class="inv-confirm-status">
                     Estado actual: <span class="badge badge-{{ $color }}">{{ $expedicion->estado?->label() }}</span>
                 </p>
                 @else
-                <p style="font-size:0.82rem; color:#15803d; font-weight:500;">
+                <p class="inv-confirm-ok">
                     <iconify-icon icon="lucide:check-circle"></iconify-icon>
                     Entrega confirmada el {{ $expedicion->fecha_confirmacion_entrega?->format('d/m/Y H:i') }}
                 </p>

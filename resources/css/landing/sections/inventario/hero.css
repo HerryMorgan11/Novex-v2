@@ -302,3 +302,17 @@
     background: #ff6b35;
     flex-shrink: 0;
 }
+
+/* ── Extracted stock bar fill widths from inventario/hero.blade.php ── */
+.inv-stock-item:nth-child(1) .inv-stock-bar-fill {
+    width: 85%;
+}
+.inv-stock-item:nth-child(2) .inv-stock-bar-fill {
+    width: 42%;
+}
+.inv-stock-item:nth-child(3) .inv-stock-bar-fill {
+    width: 95%;
+}
+.inv-stock-item:nth-child(4) .inv-stock-bar-fill {
+    width: 18%;
+}

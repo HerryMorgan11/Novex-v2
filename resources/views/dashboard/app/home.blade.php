@@ -13,7 +13,7 @@
 </script>
 @endif
 
-<div style="padding: 0 4px 32px;">
+<div class="dash-app-content-wrapper">
 
     {{-- ── Header ─────────────────────────────────────────────────────────── --}}
     <div class="db-header">
@@ -37,12 +37,11 @@
 
     {{-- ── Sin tenant: modal placeholder ─────────────────────────────────── --}}
     @if($showModal ?? false)
-    <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;
-                gap:16px; padding:80px 0; text-align:center; color:var(--muted);">
-        <iconify-icon icon="lucide:building-2" style="font-size:3rem; opacity:0.4;"></iconify-icon>
+    <div class="dash-app-no-tenant">
+        <iconify-icon icon="lucide:building-2" class="dash-app-no-tenant-icon"></iconify-icon>
         <div>
-            <p style="font-size:1rem; font-weight:600; color:var(--fg);">No tienes una empresa configurada</p>
-            <p style="font-size:0.85rem; margin-top:4px;">Crea tu empresa para comenzar a usar Novex ERP</p>
+            <p class="dash-app-no-tenant-title">No tienes una empresa configurada</p>
+            <p class="dash-app-no-tenant-subtitle">Crea tu empresa para comenzar a usar Novex ERP</p>
         </div>
     </div>
     @else

@@ -1,6 +1,6 @@
-<style>
-    {!! file_get_contents(resource_path('css/landing/sections/crm/hero.css')) !!}
-</style>
+@push('styles')
+@vite(['resources/css/landing/sections/crm/hero.css'])
+@endpush
 
 <section class="crm-hero-section">
     <div class="crm-hero-inner">
@@ -43,35 +43,35 @@
                     <div class="crm-pipeline-stage">
                         <span class="crm-stage-label">Contacto</span>
                         <div class="crm-stage-bar-track">
-                            <div class="crm-stage-bar-fill" style="width: 100%;"></div>
+                        <div class="crm-stage-bar-fill"></div>
                         </div>
                         <span class="crm-stage-count">24</span>
                     </div>
                     <div class="crm-pipeline-stage">
                         <span class="crm-stage-label">Calificado</span>
                         <div class="crm-stage-bar-track">
-                            <div class="crm-stage-bar-fill" style="width: 75%;"></div>
+                        <div class="crm-stage-bar-fill"></div>
                         </div>
                         <span class="crm-stage-count">18</span>
                     </div>
                     <div class="crm-pipeline-stage">
                         <span class="crm-stage-label">Propuesta</span>
                         <div class="crm-stage-bar-track">
-                            <div class="crm-stage-bar-fill" style="width: 50%;"></div>
+                        <div class="crm-stage-bar-fill"></div>
                         </div>
                         <span class="crm-stage-count">12</span>
                     </div>
                     <div class="crm-pipeline-stage">
                         <span class="crm-stage-label">Negociación</span>
                         <div class="crm-stage-bar-track">
-                            <div class="crm-stage-bar-fill" style="width: 33%;"></div>
+                        <div class="crm-stage-bar-fill"></div>
                         </div>
                         <span class="crm-stage-count">8</span>
                     </div>
                     <div class="crm-pipeline-stage">
                         <span class="crm-stage-label">Cierre</span>
                         <div class="crm-stage-bar-track">
-                            <div class="crm-stage-bar-fill" style="width: 20%;"></div>
+                        <div class="crm-stage-bar-fill"></div>
                         </div>
                         <span class="crm-stage-count">5</span>
                     </div>

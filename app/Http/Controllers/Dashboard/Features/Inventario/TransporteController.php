@@ -7,10 +7,17 @@ use App\Http\Controllers\Controller;
 use App\Models\Inventario\LineaTransporte;
 use App\Models\Inventario\Transporte;
 use App\Models\Inventario\Ubicacion;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
+/**
+ * Gestión de transportes de entrada (recepciones).
+ *
+ * Cada línea de transporte se recibe individualmente asignándole una ubicación.
+ * La transición (creación de lote + trazabilidad) se delega en RecibirLote (Action).
+ */
 class TransporteController extends Controller
 {
     public function index(): View
@@ -63,12 +70,14 @@ class TransporteController extends Controller
         }
 
         $ubicacion = Ubicacion::findOrFail($request->id_ubicacion);
+        /** @var User|null $user */
+        $user = $request->user();
 
         try {
             (new RecibirLote)->ejecutar(
                 $linea,
                 $ubicacion,
-                auth()->id(),
+                $user?->getAuthIdentifier(),
                 $request->observaciones
             );
         } catch (\RuntimeException $e) {

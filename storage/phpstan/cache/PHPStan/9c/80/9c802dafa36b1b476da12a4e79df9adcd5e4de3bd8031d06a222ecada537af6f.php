@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Contracts/Support/Jsonable.php-PHPStan\BetterReflection\Reflection\ReflectionClass-Illuminate\Contracts\Support\Jsonable
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-472aa9df71c593a21d5382d4ed9fe05997543d622da5f833ac443b0bf9f719fd-8.4.1-6.65.0.9',
+   'variableKey' => 'v2-472aa9df71c593a21d5382d4ed9fe05997543d622da5f833ac443b0bf9f719fd-8.4.1-6.70.0.0',
    'data' => 
   array (
     'locatedSource' => 

@@ -1,0 +1,55 @@
+/* ================================================
+   Settings
+   resources/css/dashboard/features/settings/settings.css
+   ================================================ */
+
+/* ================================================
+   Shared – section intro / error list
+   ================================================ */
+
+.sett-section-intro {
+    color: var(--muted);
+    padding-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.sett-error-list {
+    margin: 0;
+    padding-left: 1rem;
+}
+
+/* ================================================
+   Security – extracted inline styles
+   ================================================ */
+
+.sett-password-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    max-width: 400px;
+}
+
+.sett-form-actions {
+    margin-top: 1rem;
+}
+
+.sett-danger-heading {
+    color: var(--accent);
+}
+
+.sett-danger-actions {
+    margin-top: 1.5rem;
+}
+
+/* ================================================
+   Profile Content – extracted inline styles
+   ================================================ */
+
+.sett-submit-wrap {
+    padding-top: 0.5rem;
+}
+
+.sett-section-no-margin {
+    margin-bottom: 0;
+}

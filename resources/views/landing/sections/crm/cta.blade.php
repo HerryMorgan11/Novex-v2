@@ -1,6 +1,6 @@
-<style>
-    {!! file_get_contents(resource_path('css/landing/sections/crm/cta.css')) !!}
-</style>
+@push('styles')
+@vite(['resources/css/landing/sections/crm/cta.css'])
+@endpush
 
 <section class="crm-cta-section">
     <div class="crm-cta-inner">

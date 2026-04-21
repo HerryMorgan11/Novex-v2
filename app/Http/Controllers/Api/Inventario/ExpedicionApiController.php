@@ -8,6 +8,11 @@ use App\Models\Inventario\Expedicion;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+/**
+ * Endpoint externo para cerrar el ciclo logístico al confirmar la entrega de una expedición.
+ *
+ * Protegido por AutenticarApiInventario (Bearer token) + InitializeTenancyFromApi (X-Tenant-Id).
+ */
 class ExpedicionApiController extends Controller
 {
     /**

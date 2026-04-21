@@ -1,17 +1,19 @@
 @extends('dashboard.app.dashboard')
 
 @push('styles')
-@vite(['resources/css/dashboard/features/inventario.css'])
+@vite(['resources/css/dashboard/features/inventario.css', 'resources/css/dashboard/features/inventario/produccion.css'])
 @endpush
 
 @section('content')
-<div style="padding: 20px 0;">
+<div class="inv-page-wrapper">
+
+    @include('dashboard.features.inventario.partials.top-nav')
 
     <div class="inv-page-header">
         <div>
             <h1>Producción</h1>
             <div class="inv-breadcrumb">
-                <a href="{{ route('inventario.index') }}" style="color:var(--muted); text-decoration:none;">Inventario</a>
+                <a href="{{ route('inventario.index') }}" class="inv-breadcrumb-link">Inventario</a>
                 &rsaquo; Producción
             </div>
         </div>
@@ -25,11 +27,11 @@
     @endif
 
     {{-- Lotes disponibles para pasar a producción --}}
-    <div class="inv-detail-card" style="margin-bottom:24px;">
+    <div class="inv-detail-card inv-mb-24">
         <h3>Lotes almacenados — Disponibles para producción ({{ $lotesDisponibles->total() }})</h3>
 
         @if($lotesDisponibles->isEmpty())
-        <p style="color:var(--muted); font-size:0.85rem; text-align:center; padding:20px 0;">
+        <p class="inv-list-empty">
             No hay lotes almacenados disponibles para mover a producción.
         </p>
         @else
@@ -50,18 +52,18 @@
                     <tr>
                         <td class="mono">{{ $lote->numero_lote }}</td>
                         <td>
-                            <div style="font-weight:500;">{{ $lote->producto?->nombre ?? '—' }}</div>
-                            <div style="font-size:0.75rem; color:var(--muted);">{{ $lote->producto?->sku ?? '' }}</div>
+                            <div class="inv-text-bold">{{ $lote->producto?->nombre ?? '—' }}</div>
+                            <div class="inv-text-sm-muted">{{ $lote->producto?->sku ?? '' }}</div>
                         </td>
-                        <td style="font-size:0.82rem; color:var(--muted);">{{ $lote->producto?->categoria?->nombre ?? '—' }}</td>
-                        <td style="font-size:0.82rem;">{{ $lote->ubicacion?->codigoCompleto() ?? '—' }}</td>
-                        <td style="font-weight:600;">
+                        <td class="inv-td-muted">{{ $lote->producto?->categoria?->nombre ?? '—' }}</td>
+                        <td class="inv-td-sm">{{ $lote->ubicacion?->codigoCompleto() ?? '—' }}</td>
+                        <td class="inv-td-bold">
                             {{ number_format($lote->cantidadDisponible(), 0) }}
-                            <span style="font-size:0.75rem; color:var(--muted);">{{ $lote->producto?->unidadMedida?->abreviatura ?? '' }}</span>
+                            <span class="inv-text-unit">{{ $lote->producto?->unidadMedida?->abreviatura ?? '' }}</span>
                         </td>
                         <td>
                             <button onclick="abrirModalProduccion({{ $lote->id_lote }}, '{{ $lote->numero_lote }}', '{{ $lote->producto?->nombre }}')"
-                                class="inv-btn inv-btn-outline" style="font-size:0.78rem; padding:5px 12px;">
+                                class="inv-btn inv-btn-outline inv-btn-icon">
                                 <iconify-icon icon="lucide:factory" width="13"></iconify-icon>
                                 Mover a producción
                             </button>
@@ -71,7 +73,7 @@
                 </tbody>
             </table>
         </div>
-        <div style="margin-top:12px;">{{ $lotesDisponibles->links() }}</div>
+        <div class="inv-pagination inv-mt-12">{{ $lotesDisponibles->links() }}</div>
         @endif
     </div>
 
@@ -80,7 +82,7 @@
         <h3>En producción ({{ $lotesEnProduccion->total() }})</h3>
 
         @if($lotesEnProduccion->isEmpty())
-        <p style="color:var(--muted); font-size:0.85rem; text-align:center; padding:16px 0;">
+        <p class="inv-list-empty">
             No hay lotes en producción actualmente.
         </p>
         @else
@@ -99,12 +101,12 @@
                     <tr>
                         <td class="mono">{{ $lote->numero_lote }}</td>
                         <td>
-                            <div style="font-weight:500;">{{ $lote->producto?->nombre ?? '—' }}</div>
+                            <div class="inv-text-bold">{{ $lote->producto?->nombre ?? '—' }}</div>
                             <span class="badge badge-purple">en producción</span>
                         </td>
-                        <td style="font-size:0.82rem; color:var(--muted);">{{ $lote->updated_at->format('d/m/Y H:i') }}</td>
+                        <td class="inv-td-muted">{{ $lote->updated_at->format('d/m/Y H:i') }}</td>
                         <td>
-                            <a href="{{ route('inventario.trazabilidad.historial', $lote->id_lote) }}" class="inv-btn inv-btn-ghost" style="padding:5px 10px; font-size:0.78rem;">
+                            <a href="{{ route('inventario.trazabilidad.historial', $lote->id_lote) }}" class="inv-btn inv-btn-ghost inv-btn-icon">
                                 <iconify-icon icon="lucide:list-tree" width="13"></iconify-icon>
                             </a>
                         </td>
@@ -113,28 +115,28 @@
                 </tbody>
             </table>
         </div>
-        <div style="margin-top:12px;">{{ $lotesEnProduccion->links() }}</div>
+        <div class="inv-pagination inv-mt-12">{{ $lotesEnProduccion->links() }}</div>
         @endif
     </div>
 
 </div>
 
 {{-- Modal confirmación producción --}}
-<div id="modal-produccion" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:1000; align-items:center; justify-content:center;" hidden>
-    <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:28px; width:440px; max-width:95vw;">
-        <h3 style="font-size:1rem; font-weight:600; margin-bottom:4px;">Mover a producción</h3>
-        <p id="modal-prod-nombre" style="font-size:0.85rem; color:var(--muted); margin-bottom:4px;"></p>
-        <div class="inv-alert inv-alert-warning" style="margin-bottom:16px;">
+<div id="modal-produccion" hidden class="inv-modal-overlay">
+    <div class="inv-modal-dialog-md">
+        <h3 class="inv-modal-title-sm">Mover a producción</h3>
+        <p id="modal-prod-nombre" class="inv-modal-desc"></p>
+        <div class="inv-alert inv-alert-warning inv-modal-alert-mb">
             <iconify-icon icon="lucide:alert-triangle"></iconify-icon>
             El lote saldrá completamente del inventario de almacén.
         </div>
         <form id="form-produccion" method="POST" action="">
             @csrf
-            <div class="inv-form-group" style="margin-bottom:20px;">
+            <div class="inv-form-group inv-form-mb">
                 <label>Observaciones (opcional)</label>
                 <textarea name="observaciones" rows="2"></textarea>
             </div>
-            <div style="display:flex; gap:10px; justify-content:flex-end;">
+            <div class="inv-modal-footer">
                 <button type="button" onclick="cerrarModalProd()" class="inv-btn inv-btn-outline">Cancelar</button>
                 <button type="submit" class="inv-btn inv-btn-primary">
                     <iconify-icon icon="lucide:factory"></iconify-icon>

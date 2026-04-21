@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Reflection/Traits/ReflectsClosures.php-PHPStan\BetterReflection\Reflection\ReflectionClass-Illuminate\Support\Traits\ReflectsClosures
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-4d423d1cc3170c4f64eb58a49f80bc7d841684c63ad46c9a97ffab5d82c9e365-8.4.1-6.65.0.9',
+   'variableKey' => 'v2-4d423d1cc3170c4f64eb58a49f80bc7d841684c63ad46c9a97ffab5d82c9e365-8.4.1-6.70.0.0',
    'data' => 
   array (
     'locatedSource' => 

@@ -500,3 +500,49 @@ input:disabled + .slider:before {
         grid-template-columns: 1fr;
     }
 }
+
+/* ── Company info ─────────────────────────────────────────── */
+.cp-company-tenant-id {
+    font-family: var(--font);
+    color: var(--accent);
+}
+
+.cp-company-monospace {
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.cp-company-status-text {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #10b981;
+}
+
+.cp-company-status-dot {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    flex-shrink: 0;
+}
+
+/* ── Control Panel home KPIs ──────────────────────────────── */
+.cp-home-kpi-positive {
+    color: #10b981;
+}
+
+.cp-home-kpi-capitalize {
+    text-transform: capitalize;
+}
+
+.cp-home-kpi-accent {
+    color: var(--accent);
+}
+
+/* ── Users table ──────────────────────────────────────────── */
+.cp-users-empty-cell {
+    text-align: center;
+}

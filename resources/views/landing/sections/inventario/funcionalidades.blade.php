@@ -1,6 +1,6 @@
-<style>
-    {!! file_get_contents(resource_path('css/landing/sections/inventario/funcionalidades.css')) !!}
-</style>
+@push('styles')
+@vite(['resources/css/landing/sections/inventario/funcionalidades.css'])
+@endpush
 
 <section class="inv-func-section">
     <div class="inv-func-inner">

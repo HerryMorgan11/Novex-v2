@@ -1,17 +1,19 @@
 @extends('dashboard.app.dashboard')
 
 @push('styles')
-@vite(['resources/css/dashboard/features/inventario.css'])
+@vite(['resources/css/dashboard/features/inventario.css', 'resources/css/dashboard/features/inventario/expediciones.css'])
 @endpush
 
 @section('content')
-<div style="padding: 20px 0;">
+<div class="inv-page-wrapper">
+
+    @include('dashboard.features.inventario.partials.top-nav')
 
     <div class="inv-page-header">
         <div>
             <h1>Expediciones</h1>
             <div class="inv-breadcrumb">
-                <a href="{{ route('inventario.index') }}" style="color:var(--muted); text-decoration:none;">Inventario</a>
+                <a href="{{ route('inventario.index') }}" class="inv-breadcrumb-link">Inventario</a>
                 &rsaquo; Expediciones
             </div>
         </div>
@@ -56,8 +58,8 @@
                         </span>
                     </td>
                     <td>{{ $exp->destino ?? '—' }}</td>
-                    <td class="mono" style="font-size:0.8rem;">{{ $exp->vehiculo ?? '—' }}</td>
-                    <td style="font-size:0.82rem; color:var(--muted);">
+                    <td class="mono">{{ $exp->vehiculo ?? '—' }}</td>
+                    <td class="inv-td-muted">
                         {{ $exp->fecha_salida?->format('d/m/Y H:i') ?? '—' }}
                     </td>
                     <td>{{ $exp->lineas->count() }}</td>
@@ -66,7 +68,7 @@
                         <span class="badge badge-{{ $color }}">{{ $exp->estado?->label() ?? $exp->estado }}</span>
                     </td>
                     <td>
-                        <a href="{{ route('inventario.expediciones.show', $exp->id_expedicion) }}" class="inv-btn inv-btn-ghost" style="padding:5px 10px;">
+                        <a href="{{ route('inventario.expediciones.show', $exp->id_expedicion) }}" class="inv-btn inv-btn-ghost inv-btn-icon">
                             <iconify-icon icon="lucide:eye" width="14"></iconify-icon>
                         </a>
                     </td>
@@ -75,7 +77,7 @@
             </tbody>
         </table>
     </div>
-    <div style="margin-top:16px;">{{ $expediciones->links() }}</div>
+    <div class="inv-pagination">{{ $expediciones->links() }}</div>
     @endif
 
 </div>

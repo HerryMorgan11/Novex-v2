@@ -5,10 +5,10 @@
 @endpush
 
 @section('content')
-<div class="notes-container" style="max-width: 800px; margin: 0 auto;">
+<div class="notes-container notes-container--narrow">
     <div class="notes-header">
         <h1>Editar Nota</h1>
-        <a href="{{ route('dashboard.features.notes.index') }}" style="color: var(--muted); text-decoration: none; font-weight: 500;">
+        <a href="{{ route('dashboard.features.notes.index') }}" class="notes-back-link">
             <iconify-icon icon="lucide:arrow-left"></iconify-icon>
             Volver
         </a>

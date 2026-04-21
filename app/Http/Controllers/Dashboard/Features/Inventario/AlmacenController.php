@@ -10,6 +10,12 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
+/**
+ * Gestión de la estructura física del inventario: almacén → zona → estantería → ubicación.
+ *
+ * Todos los endpoints storeX operan sobre el mismo almacén de la ruta padre y
+ * preservan la jerarquía (una estantería solo puede asociarse a zonas del mismo almacén).
+ */
 class AlmacenController extends Controller
 {
     public function index(): View

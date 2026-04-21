@@ -1,6 +1,6 @@
-<style>
-    {!! file_get_contents(resource_path('css/landing/sections/crm/funcionalidades.css')) !!}
-</style>
+@push('styles')
+@vite(['resources/css/landing/sections/crm/funcionalidades.css'])
+@endpush
 
 <section class="crm-func-section">
     <div class="crm-func-inner">

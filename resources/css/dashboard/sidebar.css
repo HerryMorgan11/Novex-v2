@@ -8,16 +8,23 @@
 .sidebar {
     position: sticky;
     top: 0;
+    width: 240px;
+    min-width: 240px;
+    max-width: 240px;
     height: 100vh;
     background: transparent;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    overflow: hidden;
 }
 
 .sidebar-body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    min-width: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .content-inner {
@@ -202,9 +209,10 @@
 
 .nav-item {
     display: grid;
-    grid-template-columns: 20px 1fr auto;
+    grid-template-columns: 20px minmax(0, 1fr) auto;
     align-items: center;
     gap: 12px;
+    min-width: 0;
     padding: 8px 12px;
     border-radius: 6px;
     text-decoration: none;
@@ -244,6 +252,11 @@
     opacity: 0.5;
 }
 
+.nav-item.is-hidden,
+.nav-item[hidden] {
+    display: none !important;
+}
+
 .nav-icon {
     color: var(--muted);
     display: grid;
@@ -253,6 +266,10 @@
 .nav-label {
     font-size: 14px;
     line-height: 1.2;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .nav-badge {
@@ -340,12 +357,16 @@
 .sidebar-bottom {
     padding: 12px 16px 16px;
     background: var(--sidebar);
+    position: relative;
+    min-width: 0;
+    overflow: visible;
 }
 
 .user {
     display: flex;
     align-items: center;
     gap: 12px;
+    min-width: 0;
     padding: 8px 12px;
     border-radius: 6px;
     border: none;
@@ -377,6 +398,7 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+    min-width: 0;
 }
 
 .user-name {
@@ -384,11 +406,17 @@
     font-size: 14px;
     line-height: 1.2;
     color: var(--fg);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .user-email {
     font-size: 12px;
     color: var(--muted);
     line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .user-icon {
@@ -413,16 +441,17 @@
 /* Dropdown panel */
 .dropdown-panel {
     position: absolute;
-    bottom: 5px;
-    left: 13em;
+    bottom: 100%;
+    left: 16px;
+    right: 16px;
     margin-bottom: 8px;
-    min-width: 192px;
+    min-width: 0;
     border-radius: 8px;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    z-index: 50;
+    z-index: 120;
     transform-origin: bottom left;
-    background-color: #ffffff;
-    border: 1px solid #e5e7eb;
+    background-color: var(--card);
+    border: 1px solid var(--border);
     opacity: 1;
     visibility: visible;
     transition:
@@ -448,7 +477,7 @@
     text-align: left;
     background-color: transparent;
     border: none;
-    color: #1f2937;
+    color: var(--fg);
     cursor: pointer;
     transition:
         background-color 0.2s ease,
@@ -458,12 +487,12 @@
 }
 
 .dropdown-item:hover {
-    background-color: #f9fafb;
-    color: #1f2937;
+    background-color: var(--surface-2);
+    color: var(--fg);
 }
 
 .dropdown-item:focus-visible {
-    background-color: #f9fafb;
+    background-color: var(--surface-2);
     outline: none;
 }
 
@@ -494,6 +523,20 @@
     color: #dc2626;
 }
 
+.dark-theme .dropdown-panel {
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.35);
+}
+
+.dark-theme .dropdown-item.logout {
+    color: #fca5a5;
+}
+
+.dark-theme .dropdown-item.logout:hover,
+.dark-theme .dropdown-item.logout:focus-visible {
+    background-color: rgba(185, 28, 28, 0.18);
+    color: #fecaca;
+}
+
 /* ===== overlay ===== */
 .sidebar-overlay {
     position: fixed;
@@ -516,6 +559,8 @@
         z-index: 100;
         background: var(--sidebar); /* Asegurar color en móvil */
         width: 260px;
+        min-width: 260px;
+        max-width: 260px;
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
     }
@@ -529,7 +574,13 @@
     }
 
     .dropdown-panel {
-        left: 20px;
-        bottom: 80px;
+        left: 16px;
+        right: 16px;
+        bottom: 100%;
     }
+}
+
+/* ── Sidebar logout form ──────────────────────────────────── */
+.dash-sidebar-logout-form {
+    display: contents;
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Reminders\StoreReminderRequest;
+use App\Http\Requests\Reminders\UpdateReminderRequest;
 use App\Models\Reminder;
 use App\Models\ReminderList;
 use Illuminate\Http\JsonResponse;
@@ -98,9 +100,9 @@ class ReminderController extends Controller
     /**
      * Guarda un nuevo recordatorio en la base de datos.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(StoreReminderRequest $request): RedirectResponse
     {
-        $data = $request->validate($this->reminderRules());
+        $data = $request->validated();
         $data['user_id'] = auth()->id();
         $data['position'] = Reminder::nextPositionForUser(
             auth()->id(),
@@ -144,11 +146,11 @@ class ReminderController extends Controller
     /**
      * Actualiza un recordatorio existente.
      */
-    public function update(Request $request, Reminder $reminder): RedirectResponse
+    public function update(UpdateReminderRequest $request, Reminder $reminder): RedirectResponse
     {
         $this->authorize('update', $reminder);
 
-        $reminder->update($request->validate($this->reminderRules()));
+        $reminder->update($request->validated());
 
         return redirect()->route('reminders.show', $reminder)
             ->with('success', 'Recordatorio actualizado correctamente.');
@@ -264,27 +266,5 @@ class ReminderController extends Controller
         }
 
         return response()->json(['success' => true]);
-    }
-
-    /**
-     * Reglas de validación compartidas para crear y actualizar recordatorios.
-     */
-    private function reminderRules(): array
-    {
-        return [
-            'title' => ['required', 'string', 'max:255'],
-            'reminder_list_id' => [
-                'nullable',
-                'integer',
-                Rule::exists('reminder_lists', 'id')->where('user_id', auth()->id()),
-            ],
-            'notes' => ['nullable', 'string'],
-            'priority' => ['nullable', 'integer', Rule::in([0, 1, 2, 3])],
-            'starts_at' => ['nullable', 'date'],
-            'due_at' => ['nullable', 'date', 'after_or_equal:starts_at'],
-            'remind_at' => ['nullable', 'date'],
-            'all_day' => ['boolean'],
-            'status' => ['nullable', Rule::in([Reminder::STATUS_ACTIVE, Reminder::STATUS_ARCHIVED])],
-        ];
     }
 }

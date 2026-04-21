@@ -11,7 +11,7 @@
 
     <div class="info-card">
         <h3>Identificador del Tenant</h3>
-        <p style="font-family: var(--font); color: var(--accent);">{{ optional(tenant())->id ?? 'N/A' }}</p>
+        <p class="cp-company-tenant-id">{{ optional(tenant())->id ?? 'N/A' }}</p>
     </div>
 
     <div class="info-card">
@@ -21,18 +21,18 @@
 
     <div class="info-card">
         <h3>Base de Datos</h3>
-        <p style="font-family: monospace; font-size: 0.9rem; color: var(--muted);">{{ optional(tenant())->db_name ?? 'N/A' }}</p>
+        <p class="cp-company-monospace">{{ optional(tenant())->db_name ?? 'N/A' }}</p>
     </div>
 
     <div class="info-card">
         <h3>Dominio de Acceso</h3>
-        <p style="font-family: monospace; font-size: 0.9rem; color: var(--muted);">{{ request()->getHost() }}</p>
+        <p class="cp-company-monospace">{{ request()->getHost() }}</p>
     </div>
 
     <div class="info-card">
         <h3>Estado Organizacional</h3>
-        <p style="display: flex; align-items: center; gap: 0.5rem; color: #10b981;">
-            <span style="display: block; width: 8px; height: 8px; border-radius: 50%; background: #10b981;"></span>
+        <p class="cp-company-status-text">
+            <span class="cp-company-status-dot"></span>
             {{ optional(tenant())->status ?? 'Activo' }}
         </p>
     </div>

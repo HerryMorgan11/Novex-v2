@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Contracts/Queue/QueueableEntity.php-PHPStan\BetterReflection\Reflection\ReflectionClass-Illuminate\Contracts\Queue\QueueableEntity
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-c081e746d19db452e6ba546cb2a9e1efb838fc81f6deeb9cd4d7d892d64a26fb-8.4.1-6.65.0.9',
+   'variableKey' => 'v2-c081e746d19db452e6ba546cb2a9e1efb838fc81f6deeb9cd4d7d892d64a26fb-8.4.1-6.70.0.0',
    'data' => 
   array (
     'locatedSource' => 

@@ -469,3 +469,48 @@
         padding: 60px 20px;
     }
 }
+
+/* ── Extracted inline styles from contabilidad.blade.php ── */
+.conta-icon-size {
+    font-size: 24px;
+}
+
+.conta-icon-wrapper-red {
+    background: #fff0f3;
+    color: #d1225b;
+}
+
+.stat-item-divider {
+    border-left: 2px solid #eee;
+    padding-left: 20px;
+}
+
+.stat-value-accent {
+    color: #df5a3c;
+}
+
+.dash-full-width {
+    width: 100%;
+}
+
+.dash-body .dash-bar:nth-child(1) {
+    height: 30%;
+}
+.dash-body .dash-bar:nth-child(2) {
+    height: 45%;
+}
+.dash-body .dash-bar:nth-child(3) {
+    height: 60%;
+}
+.dash-body .dash-bar:nth-child(4) {
+    height: 35%;
+}
+.dash-body .dash-bar:nth-child(5) {
+    height: 80%;
+}
+.dash-body .dash-bar:nth-child(6) {
+    height: 100%;
+}
+.dash-body .dash-bar:nth-child(7) {
+    height: 50%;
+}

@@ -2,18 +2,13 @@
 
 @push('styles')
 @vite(['resources/css/dashboard/features/notes.css'])
-<style>
-    .tiptap-editor {
-        margin-top: 10px;
-    }
-</style>
 @endpush
 
 @section('content')
-<div class="notes-container" style="max-width: 800px; margin: 0 auto;">
+<div class="notes-container notes-container--narrow">
     <div class="notes-header">
         <h1>Nueva Nota</h1>
-        <a href="{{ route('dashboard.features.notes.index') }}" style="color: var(--muted); text-decoration: none; font-weight: 500;">
+        <a href="{{ route('dashboard.features.notes.index') }}" class="notes-back-link">
             <iconify-icon icon="lucide:arrow-left"></iconify-icon>
             Volver
         </a>
@@ -60,7 +55,7 @@
             <input type="hidden" name="content" id="content-input">
         </div>
 
-        <div style="margin-top: 30px;">
+        <div class="notes-form-actions">
             <button type="submit" class="btn-save">
                 Crear Nota
             </button>

@@ -25,21 +25,15 @@ class GoogleController extends Controller
             return redirect()->route('login')->withErrors(['msg' => 'Error attempting to login with Google.']);
         }
 
-        // 1️⃣ Buscar si ya existe esa cuenta social
+        // 1️⃣ Si ya existe la cuenta social, login y redirect a /app
+        //    El middleware checkHasTenant mostrará el modal si aún no tiene tenant.
         $socialAccount = SocialAccount::where('provider', 'google')
             ->where('provider_user_id', $googleUser->getId())
             ->first();
 
         if ($socialAccount) {
-            $user = $socialAccount->user;
-            Auth::login($user);
+            Auth::login($socialAccount->user);
 
-            // Si el usuario ya tiene un tenant, redirigir a /app
-            if ($user->current_tenant_id) {
-                return redirect()->intended('/app');
-            }
-
-            // Si no tiene tenant, redirigir a /app para que vea el modal
             return redirect()->intended('/app');
         }
 

@@ -21993,7 +21993,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     1 => 
     array (
-      '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/laravel/framework/src/Illuminate/Collections/Collection.php' => 'd6a50a977c0352f7025c280286c9f416aa42ab0aa825c63da4d0566f86d1ad25',
+      '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/laravel/framework/src/Illuminate/Collections/Collection.php' => 'adcc6e766e1db8ef7dfbf30df442ef2eef01bb60b3fe88aeb2a3f30a33904a60',
       '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php' => '594ad51a08959a8a5fa8276ed0daed2acc3e24fc8ba7365fc0a53a1c7e4e6c31',
       '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Conditionable/Traits/Conditionable.php' => '5697fdba0acb78ca0b4e122e5c459cd5d97d000ed9b14fed31271cb7ffd44225',
       '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Macroable/Traits/Macroable.php' => '50fa4e0aa4e5c0b0e7fb6566fb3fc991808681fba5c81db09e0f8641c7e9d524',

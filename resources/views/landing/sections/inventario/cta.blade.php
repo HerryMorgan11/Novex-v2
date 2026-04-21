@@ -1,6 +1,6 @@
-<style>
-    {!! file_get_contents(resource_path('css/landing/sections/inventario/cta.css')) !!}
-</style>
+@push('styles')
+@vite(['resources/css/landing/sections/inventario/cta.css'])
+@endpush
 
 <section class="inv-cta-section">
     <div class="inv-cta-inner">

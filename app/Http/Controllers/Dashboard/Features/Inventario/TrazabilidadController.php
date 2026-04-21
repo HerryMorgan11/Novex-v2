@@ -7,6 +7,10 @@ use App\Models\Inventario\Lote;
 use App\Models\Inventario\TrazabilidadEvento;
 use Illuminate\View\View;
 
+/**
+ * Muestra el historial completo de eventos de un lote (recepciones, movimientos,
+ * producción, expediciones). Es la vista "línea de vida" del lote.
+ */
 class TrazabilidadController extends Controller
 {
     public function historial(int $lote): View

@@ -13,8 +13,9 @@
 
 /* Contenedor principal para la correcta delegación del espacio Flexbox */
 .calendar-wrapper {
-    height: 100%;
+    height: calc(100vh - 100px);
     width: 100%;
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
 }
@@ -286,4 +287,9 @@
 }
 .btn-delete:hover {
     background: rgba(239, 68, 68, 0.1);
+}
+
+/* ── Extracted from calendario.blade.php ── */
+.hidden {
+    display: none;
 }

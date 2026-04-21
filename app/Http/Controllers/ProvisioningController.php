@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tenant;
 use App\Tenancy\Jobs\FinalizeProvisioning;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,9 +12,16 @@ use Illuminate\Support\Facades\DB;
 use Stancl\Tenancy\Jobs\CreateDatabase;
 use Stancl\Tenancy\Jobs\MigrateDatabase;
 
+/**
+ * Pantalla de espera durante el provisioning del tenant + endpoint de polling.
+ *
+ * El front consulta `status()` periódicamente hasta recibir status = 'active'.
+ * Si detectamos que el pipeline quedó a medias (status = provisioning sin jobs
+ * en cola), relanzamos síncronamente para evitar quedar bloqueados.
+ */
 class ProvisioningController extends Controller
 {
-    public function page()
+    public function page(): View
     {
         return view('auth.provisioning');
     }
@@ -25,21 +34,14 @@ class ProvisioningController extends Controller
             return response()->json(['status' => 'guest'], 401);
         }
 
-        $tenant = $user->currentTenant ?? ($user->membership?->tenant ?? null);
+        $tenant = $user->currentTenant ?? $user->membership?->tenant;
 
         if (! $tenant) {
             return response()->json(['status' => 'no-tenant']);
         }
 
-        // If still provisioning and no jobs queued, re-dispatch the provisioning pipeline
-        if ($tenant->status === 'provisioning' && DB::table('jobs')->count() === 0) {
-            try {
-                app()->call([new CreateDatabase($tenant), 'handle']);
-            } catch (\Exception) {
-                // DB may already exist — that's fine
-            }
-            app()->call([new MigrateDatabase($tenant), 'handle']);
-            app()->call([new FinalizeProvisioning($tenant), 'handle']);
+        if ($this->pipelineStalled($tenant)) {
+            $this->runPipelineSynchronously($tenant);
             $tenant->refresh();
         }
 
@@ -47,5 +49,29 @@ class ProvisioningController extends Controller
             'status' => $tenant->status,
             'db_name' => $tenant->db_name ?? $tenant->tenancy_db_name ?? null,
         ]);
+    }
+
+    /**
+     * Un pipeline se considera atascado si sigue en 'provisioning' y no hay jobs pendientes.
+     */
+    private function pipelineStalled(Tenant $tenant): bool
+    {
+        return $tenant->status === 'provisioning' && DB::table('jobs')->count() === 0;
+    }
+
+    /**
+     * Último recurso: ejecuta los jobs síncronamente para desatascar un provisioning.
+     * CreateDatabase puede fallar si la BD ya existe; lo consideramos no-op.
+     */
+    private function runPipelineSynchronously(Tenant $tenant): void
+    {
+        try {
+            (new CreateDatabase($tenant))->handle();
+        } catch (\Throwable) {
+            // La BD ya existe — continuamos con la migración.
+        }
+
+        (new MigrateDatabase($tenant))->handle();
+        (new FinalizeProvisioning($tenant))->handle();
     }
 }

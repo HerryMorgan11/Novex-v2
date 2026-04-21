@@ -1,17 +1,19 @@
 @extends('dashboard.app.dashboard')
 
 @push('styles')
-@vite(['resources/css/dashboard/features/inventario.css'])
+@vite(['resources/css/dashboard/features/inventario.css', 'resources/css/dashboard/features/inventario/stock.css'])
 @endpush
 
 @section('content')
-<div style="padding: 20px 0;">
+<div class="inv-page-wrapper">
+
+    @include('dashboard.features.inventario.partials.top-nav')
 
     <div class="inv-page-header">
         <div>
             <h1>Stock / Inventario</h1>
             <div class="inv-breadcrumb">
-                <a href="{{ route('inventario.index') }}" style="color:var(--muted); text-decoration:none;">Inventario</a>
+                <a href="{{ route('inventario.index') }}" class="inv-breadcrumb-link">Inventario</a>
                 &rsaquo; Stock
             </div>
         </div>
@@ -83,20 +85,20 @@
                 <tr>
                     <td class="mono">{{ $lote->numero_lote }}</td>
                     <td>
-                        <div style="font-weight:500;">{{ $lote->producto?->nombre ?? '—' }}</div>
-                        <div style="font-size:0.75rem; color:var(--muted);">{{ $lote->producto?->sku ?? '' }}</div>
+                        <div class="inv-text-bold">{{ $lote->producto?->nombre ?? '—' }}</div>
+                        <div class="inv-text-sm-muted">{{ $lote->producto?->sku ?? '' }}</div>
                     </td>
-                    <td style="font-size:0.82rem; color:var(--muted);">
+                    <td class="inv-td-muted">
                         {{ $lote->producto?->categoria?->nombre ?? '—' }}
                     </td>
-                    <td style="font-size:0.82rem;">
+                    <td class="inv-td-sm">
                         @if($lote->ubicacion)
-                        <span style="display:flex; align-items:center; gap:4px;">
+                        <span class="inv-location-row">
                             <iconify-icon icon="lucide:map-pin" width="12"></iconify-icon>
                             {{ $lote->ubicacion->codigoCompleto() }}
                         </span>
                         @else
-                        <span style="color:var(--muted);">—</span>
+                        <span class="inv-location-muted">—</span>
                         @endif
                     </td>
                     <td>
@@ -105,24 +107,24 @@
                             $disp   = $lote->cantidadDisponible();
                             $unidad = $lote->producto?->unidadMedida?->abreviatura ?? '';
                         @endphp
-                        <div style="font-weight:600; font-size:0.9rem;">{{ number_format($disp, 0) }} <span style="font-size:0.75rem; color:var(--muted);">{{ $unidad }}</span></div>
+                        <div class="inv-stock-main">{{ number_format($disp, 0) }} <span class="inv-stock-unit">{{ $unidad }}</span></div>
                         @if($fisico !== $disp)
-                        <div style="font-size:0.72rem; color:var(--muted);">Físico: {{ number_format($fisico, 0) }}</div>
+                        <div class="inv-stock-sub">Físico: {{ number_format($fisico, 0) }}</div>
                         @endif
                     </td>
                     <td>
                         @php $color = $lote->estado?->color() ?? 'secondary' @endphp
                         <span class="badge badge-{{ $color }}">{{ $lote->estado?->label() ?? $lote->estado }}</span>
                     </td>
-                    <td style="font-size:0.78rem; color:var(--muted);">
+                    <td class="inv-td-muted">
                         {{ $lote->created_at->format('d/m/Y') }}
                     </td>
                     <td>
-                        <div style="display:flex; gap:6px;">
-                            <a href="{{ route('inventario.stock.show', $lote->id_lote) }}" class="inv-btn inv-btn-ghost" style="padding:5px 10px; font-size:0.78rem;">
+                        <div class="inv-inline-actions">
+                            <a href="{{ route('inventario.stock.show', $lote->id_lote) }}" class="inv-btn inv-btn-ghost inv-btn-icon">
                                 <iconify-icon icon="lucide:eye" width="13"></iconify-icon>
                             </a>
-                            <a href="{{ route('inventario.trazabilidad.historial', $lote->id_lote) }}" class="inv-btn inv-btn-ghost" style="padding:5px 10px; font-size:0.78rem;" title="Trazabilidad">
+                            <a href="{{ route('inventario.trazabilidad.historial', $lote->id_lote) }}" class="inv-btn inv-btn-ghost inv-btn-icon" title="Trazabilidad">
                                 <iconify-icon icon="lucide:list-tree" width="13"></iconify-icon>
                             </a>
                         </div>
@@ -133,7 +135,7 @@
         </table>
     </div>
 
-    <div style="margin-top:16px;">
+    <div class="inv-pagination">
         {{ $lotes->links() }}
     </div>
     @endif

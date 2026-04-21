@@ -13,11 +13,14 @@ use App\Models\Inventario\Stock;
 use App\Models\Inventario\Transporte;
 use App\Models\Note;
 use App\Models\Reminder;
+use Illuminate\Contracts\Auth\Factory as AuthFactory;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class DashboardService
 {
+    public function __construct(private AuthFactory $auth) {}
+
     /**
      * KPIs principales para las cards de métricas.
      */
@@ -37,9 +40,11 @@ class DashboardService
                 ExpedicionEstado::EnTransito->value,
             ])->count(),
             'lotes_almacenados' => Lote::where('estado', LoteEstado::Stored->value)->count(),
-            'recordatorios_activos' => Reminder::where('user_id', auth()->id())
-                ->active()->pending()->count(),
-            'notas_total' => Note::where('user_id', auth()->id())->count(),
+            'recordatorios_activos' => Reminder::where('user_id', $this->authenticatedUserId())
+                ->where('status', Reminder::STATUS_ACTIVE)
+                ->where('is_completed', false)
+                ->count(),
+            'notas_total' => Note::where('user_id', $this->authenticatedUserId())->count(),
         ];
     }
 
@@ -165,7 +170,7 @@ class DashboardService
      */
     public function getRecentNotes(int $limit = 5): Collection
     {
-        return Note::where('user_id', auth()->id())
+        return Note::where('user_id', $this->authenticatedUserId())
             ->latest()
             ->limit($limit)
             ->get();
@@ -176,9 +181,9 @@ class DashboardService
      */
     public function getActiveReminders(int $limit = 5): Collection
     {
-        return Reminder::where('user_id', auth()->id())
-            ->active()
-            ->pending()
+        return Reminder::where('user_id', $this->authenticatedUserId())
+            ->where('status', Reminder::STATUS_ACTIVE)
+            ->where('is_completed', false)
             ->orderBy('due_at')
             ->limit($limit)
             ->get();
@@ -189,14 +194,19 @@ class DashboardService
      */
     public function getUpcomingEvents(int $days = 7): Collection
     {
-        return Reminder::where('user_id', auth()->id())
-            ->active()
-            ->pending()
+        return Reminder::where('user_id', $this->authenticatedUserId())
+            ->where('status', Reminder::STATUS_ACTIVE)
+            ->where('is_completed', false)
             ->whereNotNull('due_at')
             ->where('due_at', '>=', now())
             ->where('due_at', '<=', now()->addDays($days))
             ->orderBy('due_at')
             ->limit(8)
             ->get();
+    }
+
+    private function authenticatedUserId(): int|string|null
+    {
+        return $this->auth->guard()->id();
     }
 }

@@ -10,6 +10,12 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
+/**
+ * Mueve lotes entre los estados Stored ↔ InProduction.
+ *
+ * La transición delega en MoverAProduccion (Action) para mantener la lógica
+ * de cambio de estado + trazabilidad en un único punto.
+ */
 class ProduccionController extends Controller
 {
     public function index(): View

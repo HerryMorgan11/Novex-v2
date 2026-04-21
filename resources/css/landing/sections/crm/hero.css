@@ -284,3 +284,20 @@
     background: #10b981;
     flex-shrink: 0;
 }
+
+/* ── Extracted pipeline fill widths from crm/hero.blade.php ── */
+.crm-pipeline-stage:nth-child(1) .crm-stage-bar-fill {
+    width: 100%;
+}
+.crm-pipeline-stage:nth-child(2) .crm-stage-bar-fill {
+    width: 75%;
+}
+.crm-pipeline-stage:nth-child(3) .crm-stage-bar-fill {
+    width: 50%;
+}
+.crm-pipeline-stage:nth-child(4) .crm-stage-bar-fill {
+    width: 33%;
+}
+.crm-pipeline-stage:nth-child(5) .crm-stage-bar-fill {
+    width: 20%;
+}

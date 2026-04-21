@@ -1,25 +1,27 @@
 @extends('dashboard.app.dashboard')
 
-@section('content')
-<div style="max-width:500px; margin:0 auto; padding:20px;">
+@push('styles')
+@vite(['resources/css/dashboard/features/reminders/reminders.css'])
+@endpush
 
-    <div style="display:flex; align-items:center; gap:12px; margin-bottom:28px;">
-        <a href="{{ route('reminders.lists.index') }}" style="color:#007aff; font-size:14px; text-decoration:none;">← Volver</a>
-        <h1 style="font-size:24px; font-weight:700; color:#1c1c1e; margin:0;">Nueva Lista</h1>
+@section('content')
+<div class="reminder-form-page-sm">
+
+    <div class="reminder-form-breadcrumb">
+        <a href="{{ route('reminders.lists.index') }}" class="reminder-form-back-link">← Volver</a>
+        <h1 class="reminder-form-page-title">Nueva Lista</h1>
     </div>
 
-    <div style="background:#fff; border:1px solid #e5e5ea; border-radius:16px; padding:24px;">
+    <div class="reminder-form-card-sm">
         <form action="{{ route('reminders.lists.store') }}" method="POST">
             @csrf
             @include('dashboard.features.reminders.lists._form')
 
-            <div style="display:flex; gap:10px; margin-top:24px; padding-top:20px; border-top:1px solid #e5e5ea;">
-                <button type="submit"
-                        style="flex:1; background:#007aff; color:#fff; padding:12px; border-radius:10px; border:none; font-size:15px; font-weight:600; cursor:pointer;">
+            <div class="reminder-form-actions">
+                <button type="submit" class="reminder-form-submit">
                     Crear lista
                 </button>
-                <a href="{{ route('reminders.lists.index') }}"
-                   style="flex:1; text-align:center; background:#f2f2f7; color:#1c1c1e; padding:12px; border-radius:10px; text-decoration:none; font-size:15px; font-weight:600;">
+                <a href="{{ route('reminders.lists.index') }}" class="reminder-form-cancel">
                     Cancelar
                 </a>
             </div>

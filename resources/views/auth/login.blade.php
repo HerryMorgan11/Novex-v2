@@ -70,7 +70,7 @@
                     Sign in with Google
                 </a>
 
-                <div style="margin-top: 24px;" class="alt-action">
+                <div class="alt-action">
 
                     Don't have an account? <a href="{{ route('register') }}">Create one</a>
                 </div>

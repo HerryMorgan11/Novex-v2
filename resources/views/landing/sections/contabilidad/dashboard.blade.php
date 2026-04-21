@@ -1,6 +1,6 @@
-<style>
-    {!! file_get_contents(resource_path('css/landing/sections/contabilidad/dashboard.css')) !!}
-</style>
+@push('styles')
+@vite(['resources/css/landing/sections/contabilidad/dashboard.css'])
+@endpush
 
 <section class="conta2-dash-section">
     <div class="conta2-dash-inner">
@@ -67,18 +67,18 @@
 
             <!-- Bar Chart -->
             <div class="conta2-chart-area">
-                <div class="conta2-bar" style="height: 30%;"></div>
-                <div class="conta2-bar" style="height: 55%;"></div>
-                <div class="conta2-bar" style="height: 42%;"></div>
-                <div class="conta2-bar" style="height: 70%;"></div>
-                <div class="conta2-bar" style="height: 38%;"></div>
-                <div class="conta2-bar accent" style="height: 95%;"></div>
-                <div class="conta2-bar" style="height: 60%;"></div>
-                <div class="conta2-bar" style="height: 48%;"></div>
-                <div class="conta2-bar" style="height: 75%;"></div>
-                <div class="conta2-bar" style="height: 50%;"></div>
-                <div class="conta2-bar" style="height: 85%;"></div>
-                <div class="conta2-bar" style="height: 65%;"></div>
+                <div class="conta2-bar"></div>
+                <div class="conta2-bar"></div>
+                <div class="conta2-bar"></div>
+                <div class="conta2-bar"></div>
+                <div class="conta2-bar"></div>
+                <div class="conta2-bar accent"></div>
+                <div class="conta2-bar"></div>
+                <div class="conta2-bar"></div>
+                <div class="conta2-bar"></div>
+                <div class="conta2-bar"></div>
+                <div class="conta2-bar"></div>
+                <div class="conta2-bar"></div>
             </div>
 
             <!-- Recent transactions -->

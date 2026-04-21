@@ -1,6 +1,6 @@
-<style>
-    {!! file_get_contents(resource_path('css/landing/sections/contabilidad/hero.css')) !!}
-</style>
+@push('styles')
+@vite(['resources/css/landing/sections/contabilidad/hero.css'])
+@endpush
 
 <section class="conta2-hero-section">
     <div class="conta2-hero-inner">

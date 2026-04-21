@@ -1,24 +1,26 @@
 @extends('dashboard.app.dashboard')
 
 @push('styles')
-@vite(['resources/css/dashboard/features/inventario.css'])
+@vite(['resources/css/dashboard/features/inventario.css', 'resources/css/dashboard/features/inventario/transportes.css'])
 @endpush
 
 @section('content')
-<div style="padding: 20px 0;">
+<div class="inv-page-wrapper">
+
+    @include('dashboard.features.inventario.partials.top-nav')
 
     <div class="inv-page-header">
         <div>
             <h1>{{ $transporte->codigo_recepcion }}</h1>
             <div class="inv-breadcrumb">
-                <a href="{{ route('inventario.index') }}" style="color:var(--muted); text-decoration:none;">Inventario</a>
+                <a href="{{ route('inventario.index') }}" class="inv-breadcrumb-link">Inventario</a>
                 &rsaquo;
-                <a href="{{ route('inventario.transportes.index') }}" style="color:var(--muted); text-decoration:none;">Transportes</a>
+                <a href="{{ route('inventario.transportes.index') }}" class="inv-breadcrumb-link">Transportes</a>
                 &rsaquo; {{ $transporte->codigo_recepcion }}
             </div>
         </div>
         @php $color = $transporte->estado?->color() ?? 'secondary' @endphp
-        <span class="badge badge-{{ $color }}" style="font-size:0.8rem; padding:6px 14px;">
+        <span class="badge badge-{{ $color }} inv-badge-lg">
             {{ $transporte->estado?->label() ?? $transporte->estado }}
         </span>
     </div>
@@ -36,7 +38,7 @@
         <div class="inv-detail-grid">
             <div class="inv-detail-item">
                 <label>Referencia</label>
-                <span style="font-family:monospace;">{{ $transporte->codigo_recepcion }}</span>
+                <span class="inv-mono">{{ $transporte->codigo_recepcion }}</span>
             </div>
             <div class="inv-detail-item">
                 <label>Origen evento</label>
@@ -65,7 +67,7 @@
             @if($transporte->patente)
             <div class="inv-detail-item">
                 <label>Matrícula</label>
-                <span style="font-family:monospace;">{{ $transporte->patente }}</span>
+                <span class="inv-mono">{{ $transporte->patente }}</span>
             </div>
             @endif
             <div class="inv-detail-item">
@@ -77,7 +79,7 @@
                 <span>{{ $transporte->fecha_recepcion?->format('d/m/Y H:i') ?? '—' }}</span>
             </div>
             @if($transporte->observaciones)
-            <div class="inv-detail-item" style="grid-column: 1 / -1;">
+            <div class="inv-detail-item inv-detail-item-full">
                 <label>Observaciones</label>
                 <span>{{ $transporte->observaciones }}</span>
             </div>
@@ -90,7 +92,7 @@
         <h3>Líneas del transporte ({{ $transporte->lineas->count() }})</h3>
 
         @if($transporte->lineas->isEmpty())
-        <p style="font-size:0.85rem; color:var(--muted);">Sin líneas registradas.</p>
+        <p class="inv-card-muted-text">Sin líneas registradas.</p>
         @else
         <div class="inv-table-wrapper">
             <table class="inv-table">
@@ -111,14 +113,14 @@
                     <tr>
                         <td class="mono">{{ $linea->codigoProducto() }}</td>
                         <td>
-                            <div style="font-weight:500;">{{ $linea->nombreProducto() }}</div>
+                            <div class="inv-text-bold">{{ $linea->nombreProducto() }}</div>
                             @if($linea->producto?->esBorrador())
-                            <span class="badge badge-warning" style="font-size:0.65rem; margin-top:3px;">borrador</span>
+                            <span class="badge badge-warning inv-badge-xs inv-badge-mt">borrador</span>
                             @endif
                         </td>
                         <td class="mono">{{ $linea->lote?->numero_lote ?? '—' }}</td>
-                        <td style="font-weight:500;">{{ number_format($linea->cantidad_esperada, 0) }}</td>
-                        <td style="color:var(--muted);">{{ $linea->unidad ?? '—' }}</td>
+                        <td class="inv-td-bold">{{ number_format($linea->cantidad_esperada, 0) }}</td>
+                        <td class="inv-td-muted">{{ $linea->unidad ?? '—' }}</td>
                         <td>
                             @php
                                 $estadoColor = match($linea->estado_linea) {
@@ -130,31 +132,31 @@
                             @endphp
                             <span class="badge badge-{{ $estadoColor }}">{{ $linea->estado_linea }}</span>
                         </td>
-                        <td style="font-size:0.8rem; color:var(--muted);">
+                        <td class="inv-td-muted">
                             {{ $linea->lote?->ubicacion?->codigoCompleto() ?? '—' }}
                         </td>
                         <td>
                             @if($linea->estado_linea === 'ubicada')
-                            <span style="font-size:0.8rem; color:var(--muted);">Completado</span>
+                            <span class="inv-td-muted">Completado</span>
                             @else
                             <button
                                 type="button"
                                 onclick="abrirModalUbicacion({{ $linea->id }})"
-                                class="inv-btn inv-btn-outline" style="font-size:0.78rem; padding:5px 12px;">
+                                class="inv-btn inv-btn-outline inv-btn-icon">
                                 <iconify-icon icon="lucide:map-pin" width="13"></iconify-icon>
                                 Ubicar
                             </button>
 
-                            <div id="modal-ubicacion-{{ $linea->id }}" class="modal-ubicacion-linea" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:1000; align-items:center; justify-content:center;" hidden>
-                                <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:28px; width:600px; max-width:95vw;">
-                                    <h3 style="font-size:1rem; font-weight:600; margin-bottom:4px;">Asignar ubicación</h3>
-                                    <p style="font-size:0.85rem; color:var(--muted); margin-bottom:20px;">{{ $linea->nombreProducto() }}</p>
+                            <div id="modal-ubicacion-{{ $linea->id }}" class="modal-ubicacion-linea inv-modal-overlay" hidden>
+                                <div class="inv-modal-dialog-lg">
+                                    <h3 class="inv-modal-title-sm">Asignar ubicación</h3>
+                                    <p class="inv-modal-desc-lg">{{ $linea->nombreProducto() }}</p>
 
                                     <form method="POST" action="{{ route('inventario.transportes.lineas.recibir', [$transporte->id_recepcion, $linea->id]) }}">
                                         @csrf
-                                        <div class="inv-form-group" style="margin-bottom:16px;">
+                                        <div class="inv-form-group inv-form-mb">
                                             <label>Ubicación en almacén</label>
-                                            <select name="id_ubicacion" class="inv-select" style="width:100%;" required>
+                                            <select name="id_ubicacion" class="inv-select inv-full-width" required>
                                                 <option value="">Seleccionar ubicación...</option>
                                                 @foreach($ubicaciones as $almacen => $grupo)
                                                 <optgroup label="{{ $almacen }}">
@@ -170,18 +172,18 @@
                                                 @endforeach
                                             </select>
                                             @if($ubicaciones->isEmpty())
-                                            <p style="font-size:0.8rem; color:var(--muted); margin-top:8px;">
+                                            <p class="inv-hint-text">
                                                 No hay ubicaciones creadas. Crea un almacén, una zona, una estantería y una ubicación para poder confirmar la recepción.
                                             </p>
                                             @endif
                                         </div>
 
-                                        <div class="inv-form-group" style="margin-bottom:20px;">
+                                        <div class="inv-form-group inv-mb-20">
                                             <label>Observaciones (opcional)</label>
-                                            <textarea name="observaciones" rows="2" style="resize:vertical;"></textarea>
+                                            <textarea name="observaciones" rows="2" class="inv-textarea-resizable"></textarea>
                                         </div>
 
-                                        <div style="display:flex; gap:10px; justify-content:flex-end;">
+                                        <div class="inv-modal-footer">
                                             <a href="{{ route('inventario.almacenes.create') }}" class="inv-btn inv-btn-outline">
                                                 <iconify-icon icon="lucide:warehouse"></iconify-icon>
                                                 Crear almacén

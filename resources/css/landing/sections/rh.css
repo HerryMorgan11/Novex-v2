@@ -484,3 +484,8 @@
 .btn-cta-sec:hover {
     background: rgba(255, 255, 255, 0.1);
 }
+
+/* ── Extracted from recursos-humanos/rh.blade.php ── */
+.hidden {
+    display: none;
+}

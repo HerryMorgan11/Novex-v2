@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Conditionable/Traits/Conditionable.php-PHPStan\BetterReflection\Reflection\ReflectionClass-Illuminate\Support\Traits\Conditionable
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-5697fdba0acb78ca0b4e122e5c459cd5d97d000ed9b14fed31271cb7ffd44225-8.4.1-6.65.0.9',
+   'variableKey' => 'v2-5697fdba0acb78ca0b4e122e5c459cd5d97d000ed9b14fed31271cb7ffd44225-8.4.1-6.70.0.0',
    'data' => 
   array (
     'locatedSource' => 

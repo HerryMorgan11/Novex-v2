@@ -3,19 +3,24 @@
 namespace App\Http\Controllers\Dashboard\Features;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Notes\StoreNoteRequest;
+use App\Http\Requests\Notes\UpdateNoteRequest;
 use App\Models\Note;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
+/**
+ * CRUD de notas personales del usuario autenticado.
+ *
+ * Todas las consultas están scopeadas por `user_id` para garantizar aislamiento
+ * entre usuarios dentro del mismo tenant.
+ */
 class NoteController extends Controller
 {
-    /**
-     * Lista las notas del usuario autenticado.
-     */
     public function index(): View
     {
-        $notes = Note::where('user_id', auth()->id())
+        $notes = Note::query()
+            ->where('user_id', auth()->id())
             ->select('id', 'user_id', 'title', 'content', 'created_at', 'updated_at')
             ->latest()
             ->get();
@@ -23,65 +28,47 @@ class NoteController extends Controller
         return view('dashboard.features.notes.index', compact('notes'));
     }
 
-    /**
-     * Formulario de creación de nota.
-     */
     public function create(): View
     {
         return view('dashboard.features.notes.create');
     }
 
-    /**
-     * Guarda una nueva nota.
-     */
-    public function store(Request $request): RedirectResponse
+    public function store(StoreNoteRequest $request): RedirectResponse
     {
-        $data = $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'content' => ['required', 'string'],
-        ]);
+        Note::create([...$request->validated(), 'user_id' => auth()->id()]);
 
-        Note::create([...$data, 'user_id' => auth()->id()]);
-
-        return redirect()->route('dashboard.features.notes.index')
-            ->with('success', 'Nota creada correctamente.');
+        return $this->backToIndex('Nota creada correctamente.');
     }
 
-    /**
-     * Formulario de edición de nota.
-     */
     public function edit(int $id): View
     {
-        // Busca la nota garantizando que pertenece al usuario autenticado
-        $note = Note::where('user_id', auth()->id())->findOrFail($id);
-
-        return view('dashboard.features.notes.edit', compact('note'));
+        return view('dashboard.features.notes.edit', ['note' => $this->findOwned($id)]);
     }
 
-    /**
-     * Actualiza una nota existente.
-     */
-    public function update(Request $request, int $id): RedirectResponse
+    public function update(UpdateNoteRequest $request, int $id): RedirectResponse
     {
-        $note = Note::where('user_id', auth()->id())->findOrFail($id);
+        $this->findOwned($id)->update($request->validated());
 
-        $note->update($request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'content' => ['required', 'string'],
-        ]));
-
-        return redirect()->route('dashboard.features.notes.index')
-            ->with('success', 'Nota actualizada.');
+        return $this->backToIndex('Nota actualizada.');
     }
 
-    /**
-     * Elimina una nota.
-     */
     public function destroy(int $id): RedirectResponse
     {
-        Note::where('user_id', auth()->id())->findOrFail($id)->delete();
+        $this->findOwned($id)->delete();
 
-        return redirect()->route('dashboard.features.notes.index')
-            ->with('success', 'Nota eliminada.');
+        return $this->backToIndex('Nota eliminada.');
+    }
+
+    /**
+     * Recupera una nota garantizando que pertenece al usuario autenticado.
+     */
+    private function findOwned(int $id): Note
+    {
+        return Note::where('user_id', auth()->id())->findOrFail($id);
+    }
+
+    private function backToIndex(string $message): RedirectResponse
+    {
+        return redirect()->route('dashboard.features.notes.index')->with('success', $message);
     }
 }

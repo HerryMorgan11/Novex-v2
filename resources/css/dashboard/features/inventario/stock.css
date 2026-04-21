@@ -1,0 +1,13 @@
+/* ================================================
+   Inventario - Stock
+   resources/css/dashboard/features/inventario/stock.css
+   ================================================ */
+
+/* No additional section-specific styles required;
+   all classes are provided by the shared inventario.css utilities. */
+
+/* Ubicación code display */
+.inv-ub-code {
+    font-size: 1rem;
+    font-weight: 700;
+}
