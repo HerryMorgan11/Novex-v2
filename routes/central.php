@@ -11,7 +11,7 @@ use App\Http\Controllers\Dashboard\Features\Inventario\ProduccionController;
 use App\Http\Controllers\Dashboard\Features\Inventario\StockController;
 use App\Http\Controllers\Dashboard\Features\Inventario\TransporteController;
 use App\Http\Controllers\Dashboard\Features\Inventario\TrazabilidadController;
-use App\Http\Controllers\Dashboard\Features\NoteController;
+use App\Http\Controllers\Dashboard\Features\Notes\NoteController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProvisioningController;
 use App\Http\Controllers\ReminderController;

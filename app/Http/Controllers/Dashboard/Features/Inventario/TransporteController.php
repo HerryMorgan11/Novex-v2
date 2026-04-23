@@ -35,19 +35,27 @@ class TransporteController extends Controller
         $transporte->load(['lineas.producto', 'lineas.lote.ubicacion', 'proveedor']);
 
         $ubicaciones = Ubicacion::with(['estanteria.zona.almacen'])
-            ->where(function ($query) {
-                $query->where('activa', true)
+            ->where(function ($consultaUbicaciones) {
+                $consultaUbicaciones->where('activa', true)
                     ->orWhereNull('activa');
             })
             ->get()
-            ->sortBy(fn ($u) => $u->codigoCompleto())
-            ->groupBy(fn ($u) => $u->estanteria?->almacen?->nombre ?? 'Sin almacén')
-            ->map(fn ($grupo) => $grupo->map(fn ($u) => [
-                'id' => $u->id_ubicacion,
-                'codigo' => $u->codigoCompleto(),
-                'zona' => $u->estanteria?->zona?->nombre,
-                'estanteria' => $u->estanteria?->codigo,
-            ]));
+            ->sortBy(function ($ubicacion) {
+                return $ubicacion->codigoCompleto();
+            })
+            ->groupBy(function ($ubicacion) {
+                return $ubicacion->estanteria?->almacen?->nombre ?? 'Sin almacén';
+            })
+            ->map(function ($ubicacionesPorAlmacen) {
+                return $ubicacionesPorAlmacen->map(function ($ubicacion) {
+                    return [
+                        'id' => $ubicacion->id_ubicacion,
+                        'codigo' => $ubicacion->codigoCompleto(),
+                        'zona' => $ubicacion->estanteria?->zona?->nombre,
+                        'estanteria' => $ubicacion->estanteria?->codigo,
+                    ];
+                });
+            });
 
         return view('dashboard.features.inventario.transportes.show', compact('transporte', 'ubicaciones'));
     }
@@ -61,29 +69,29 @@ class TransporteController extends Controller
             'observaciones' => ['nullable', 'string', 'max:500'],
         ]);
 
-        $linea = LineaTransporte::where('id_recepcion', $transporte->id_recepcion)
+        $lineaTransporte = LineaTransporte::where('id_recepcion', $transporte->id_recepcion)
             ->where('id', $lineaId)
             ->firstOrFail();
 
-        if ($linea->estado_linea === 'ubicada') {
+        if ($lineaTransporte->estado_linea === 'ubicada') {
             return back()->with('error', 'Esta línea ya ha sido recibida.');
         }
 
-        $ubicacion = Ubicacion::findOrFail($request->id_ubicacion);
+        $ubicacionDestino = Ubicacion::findOrFail($request->id_ubicacion);
         /** @var User|null $user */
-        $user = $request->user();
+        $usuarioAutenticado = $request->user();
 
         try {
             (new RecibirLote)->ejecutar(
-                $linea,
-                $ubicacion,
-                $user?->getAuthIdentifier(),
+                $lineaTransporte,
+                $ubicacionDestino,
+                $usuarioAutenticado?->getAuthIdentifier(),
                 $request->observaciones
             );
         } catch (\RuntimeException $e) {
             return back()->with('error', $e->getMessage());
         }
 
-        return back()->with('success', "Línea recibida y ubicada correctamente en {$ubicacion->codigoCompleto()}.");
+        return back()->with('success', "Línea recibida y ubicada correctamente en {$ubicacionDestino->codigoCompleto()}.");
     }
 }

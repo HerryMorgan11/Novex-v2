@@ -53,18 +53,19 @@ class ExpedicionController extends Controller
             'lineas.*.unidad' => ['nullable', 'string', 'max:50'],
         ]);
 
+        $usuarioId = $request->user()?->getAuthIdentifier();
+
         try {
             $expedicion = (new PrepararExpedicion)->ejecutar(
                 $data,
                 $data['lineas'],
-                auth()->id()
+                $usuarioId
             );
         } catch (\RuntimeException $e) {
             return back()->withInput()->with('error', $e->getMessage());
         }
 
-        return redirect()->route('inventario.expediciones.show', $expedicion->id_expedicion)
-            ->with('success', "Expedición {$expedicion->referencia_expedicion} creada correctamente.");
+        return redirect()->route('inventario.expediciones.show', $expedicion->id_expedicion);
     }
 
     public function show(int $expedicion): View

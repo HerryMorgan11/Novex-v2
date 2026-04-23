@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Features;
+namespace App\Http\Controllers\Dashboard\Features\Notes;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Notes\StoreNoteRequest;
@@ -19,8 +19,10 @@ class NoteController extends Controller
 {
     public function index(): View
     {
+        $usuarioId = request()->user()?->getAuthIdentifier();
+
         $notes = Note::query()
-            ->where('user_id', auth()->id())
+            ->where('user_id', $usuarioId)
             ->select('id', 'user_id', 'title', 'content', 'created_at', 'updated_at')
             ->latest()
             ->get();
@@ -35,7 +37,12 @@ class NoteController extends Controller
 
     public function store(StoreNoteRequest $request): RedirectResponse
     {
-        Note::create([...$request->validated(), 'user_id' => auth()->id()]);
+        $usuarioId = $request->user()?->getAuthIdentifier();
+        $datosValidados = $request->validated();
+
+        $datosValidados['user_id'] = $usuarioId;
+
+        Note::create($datosValidados);
 
         return $this->backToIndex('Nota creada correctamente.');
     }
@@ -64,7 +71,9 @@ class NoteController extends Controller
      */
     private function findOwned(int $id): Note
     {
-        return Note::where('user_id', auth()->id())->findOrFail($id);
+        $usuarioId = request()->user()?->getAuthIdentifier();
+
+        return Note::where('user_id', $usuarioId)->findOrFail($id);
     }
 
     private function backToIndex(string $message): RedirectResponse

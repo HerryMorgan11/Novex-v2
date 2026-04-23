@@ -66,7 +66,7 @@ class ProvisioningController extends Controller
     private function runPipelineSynchronously(Tenant $tenant): void
     {
         try {
-            (new CreateDatabase($tenant))->handle();
+            app()->call([new CreateDatabase($tenant), 'handle']);
         } catch (\Throwable) {
             // La BD ya existe — continuamos con la migración.
         }

@@ -23,26 +23,31 @@ class StockController extends Controller
     /** Listado de lotes en stock con filtros por estado, categoría y búsqueda libre. */
     public function index(Request $request): View
     {
-        $query = Lote::with(['producto.categoria', 'producto.unidadMedida', 'ubicacion.estanteria.zona.almacen'])
+        $lotesQuery = Lote::with(['producto.categoria', 'producto.unidadMedida', 'ubicacion.estanteria.zona.almacen'])
             ->whereNotIn('estado', [LoteEstado::Delivered->value]);
 
         // Filtros
         if ($request->filled('estado')) {
-            $query->where('estado', $request->estado);
+            $lotesQuery->where('estado', $request->estado);
         }
         if ($request->filled('search')) {
-            $q = $request->search;
-            $query->where(function ($inner) use ($q) {
-                $inner->where('numero_lote', 'like', "%{$q}%")
-                    ->orWhereHas('producto', fn ($p) => $p->where('nombre', 'like', "%{$q}%")
-                        ->orWhere('sku', 'like', "%{$q}%"));
+            $terminoBusqueda = $request->search;
+
+            $lotesQuery->where(function ($consultaBusqueda) use ($terminoBusqueda) {
+                $consultaBusqueda->where('numero_lote', 'like', "%{$terminoBusqueda}%")
+                    ->orWhereHas('producto', function ($consultaProducto) use ($terminoBusqueda) {
+                        $consultaProducto->where('nombre', 'like', "%{$terminoBusqueda}%")
+                            ->orWhere('sku', 'like', "%{$terminoBusqueda}%");
+                    });
             });
         }
         if ($request->filled('categoria')) {
-            $query->whereHas('producto', fn ($p) => $p->where('id_categoria', $request->categoria));
+            $lotesQuery->whereHas('producto', function ($consultaProducto) use ($request) {
+                $consultaProducto->where('id_categoria', $request->categoria);
+            });
         }
 
-        $lotes = $query->orderByDesc('created_at')->paginate(20)->withQueryString();
+        $lotes = $lotesQuery->orderByDesc('created_at')->paginate(20)->withQueryString();
 
         $estados = LoteEstado::cases();
         $categorias = CategoriaProducto::orderBy('nombre')->get();
