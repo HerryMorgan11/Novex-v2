@@ -5,10 +5,12 @@ namespace App\Providers;
 use App\Models\Reminder;
 use App\Models\ReminderList;
 use App\Models\Subtask;
+use App\Models\User;
 use App\Policies\ReminderListPolicy;
 use App\Policies\ReminderPolicy;
 use App\Policies\SubtaskPolicy;
 use Carbon\CarbonImmutable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
@@ -44,25 +46,19 @@ class AppServiceProvider extends ServiceProvider
     protected function registerModelBindings(): void
     {
         Route::bind('reminder', function ($id) {
-            if (auth()->check() && auth()->user()->current_tenant_id) {
-                Tenancy::initialize(auth()->user()->current_tenant_id);
-            }
+            $this->initializeTenancyForAuthenticatedUser();
 
             return Reminder::findOrFail($id);
         });
 
         Route::bind('reminderList', function ($id) {
-            if (auth()->check() && auth()->user()->current_tenant_id) {
-                Tenancy::initialize(auth()->user()->current_tenant_id);
-            }
+            $this->initializeTenancyForAuthenticatedUser();
 
             return ReminderList::findOrFail($id);
         });
 
         Route::bind('subtask', function ($id) {
-            if (auth()->check() && auth()->user()->current_tenant_id) {
-                Tenancy::initialize(auth()->user()->current_tenant_id);
-            }
+            $this->initializeTenancyForAuthenticatedUser();
 
             return Subtask::findOrFail($id);
         });
@@ -98,5 +94,20 @@ class AppServiceProvider extends ServiceProvider
                 ->uncompromised()
             : null
         );
+    }
+
+    /**
+     * Inicializa tenancy usando el tenant actual del usuario autenticado, si existe.
+     */
+    private function initializeTenancyForAuthenticatedUser(): void
+    {
+        /** @var User|null $authenticatedUser */
+        $authenticatedUser = Auth::user();
+
+        if (! $authenticatedUser?->current_tenant_id) {
+            return;
+        }
+
+        Tenancy::initialize($authenticatedUser->current_tenant_id);
     }
 }
