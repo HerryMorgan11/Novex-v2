@@ -21,13 +21,14 @@ export default defineConfig({
                 'resources/css/auth/register.css',
                 'resources/css/landing/general-style.css',
                 // Dashboard CSS
-                'resources/css/dashboard/sidebar.css',
-                'resources/css/dashboard/general-dashboard.css',
-                'resources/css/dashboard/navbar.css',
-                'resources/css/dashboard/settings-profile.css',
-                'resources/css/dashboard/control-panel.css',
-                'resources/css/dashboard/features/calendario.css',
-                'resources/css/dashboard/features/notes.css',
+                'resources/css/dashboard/shared/sidebar.css',
+                'resources/css/dashboard/features/dashboard-main/general-dashboard.css',
+                'resources/css/dashboard/shared/navbar.css',
+                'resources/css/dashboard/features/settings-profile/settings-profile.css',
+                'resources/css/dashboard/features/control-panel/control-panel.css',
+                'resources/css/dashboard/features/control-panel/create-company-modal.css',
+                'resources/css/dashboard/features/calendario/calendario.css',
+                'resources/css/dashboard/features/notes/notes.css',
                 'resources/css/dashboard/features/dashboard.css',
                 // Dashboard JS
                 'resources/js/dashboard/sidebar.js',
@@ -60,6 +61,7 @@ export default defineConfig({
                 // Reminders CSS
                 'resources/css/dashboard/features/reminders/reminders.css',
                 // Inventario CSS
+                'resources/css/dashboard/features/inventario/general-inventario.css',
                 'resources/css/dashboard/features/inventario/inventario.css',
                 'resources/css/dashboard/features/inventario/almacenes.css',
                 'resources/css/dashboard/features/inventario/expediciones.css',

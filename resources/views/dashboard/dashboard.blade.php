@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @vite(['resources/css/dashboard/sidebar.css'])
-    @vite(['resources/css/dashboard/general-dashboard.css'])
+    @vite(['resources/css/dashboard/shared/sidebar.css'])
+    @vite(['resources/css/dashboard/features/dashboard-main/general-dashboard.css'])
 </head>
 <body>
     @include('dashboard.shared.sidebar')

@@ -1,7 +1,7 @@
 @extends('dashboard.app.dashboard')
 
 @push('styles')
-@vite(['resources/css/dashboard/features/inventario.css', 'resources/css/dashboard/features/inventario/almacenes.css'])
+@vite(['resources/css/dashboard/features/inventario/general-inventario.css', 'resources/css/dashboard/features/inventario/almacenes.css'])
 @endpush
 
 @section('content')

@@ -1,5 +1,5 @@
 {{-- Modal de creación de empresa. Solo se muestra si $showModal es true (usuario sin tenant). --}}
-@vite(['resources/css/dashboard/create-company-modal.css'])
+@vite(['resources/css/dashboard/features/control-panel/create-company-modal.css'])
 
 <div id="create-company-modal">
     <div class="create-company-modal__overlay"></div>

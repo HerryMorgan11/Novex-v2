@@ -1,7 +1,7 @@
 @extends('dashboard.app.dashboard')
 
 @push('styles')
-@vite(['resources/css/dashboard/features/notes.css'])
+@vite(['resources/css/dashboard/features/notes/notes.css'])
 @endpush
 
 @section('content')

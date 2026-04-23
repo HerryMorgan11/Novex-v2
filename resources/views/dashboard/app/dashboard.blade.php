@@ -7,11 +7,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Novex</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @vite(['resources/css/dashboard/sidebar.css'])
-    @vite(['resources/css/dashboard/general-dashboard.css'])
-    @vite(['resources/css/dashboard/navbar.css'])
-    @vite(['resources/css/dashboard/settings-profile.css'])
-    @vite(['resources/css/dashboard/control-panel.css'])
+    @vite(['resources/css/dashboard/shared/sidebar.css'])
+    @vite(['resources/css/dashboard/features/dashboard-main/general-dashboard.css'])
+    @vite(['resources/css/dashboard/shared/navbar.css'])
+    @vite(['resources/css/dashboard/features/settings-profile/settings-profile.css'])
+    @vite(['resources/css/dashboard/features/control-panel/control-panel.css'])
 
     @stack('styles')
     <script>
