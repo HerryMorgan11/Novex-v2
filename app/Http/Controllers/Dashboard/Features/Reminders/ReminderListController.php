@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard\Features\Reminders;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ReminderLists\StoreReminderListRequest;
 use App\Http\Requests\ReminderLists\UpdateReminderListRequest;
 use App\Models\ReminderList;

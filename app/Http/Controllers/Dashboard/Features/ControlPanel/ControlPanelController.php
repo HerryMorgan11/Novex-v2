@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard\Features\ControlPanel;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\View\View;
 
