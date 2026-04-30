@@ -8,7 +8,7 @@
         <input type="text" name="title" value="{{ old('title', $reminder->title ?? '') }}"
                placeholder="¿Qué necesitas recordar?"
                autofocus
-               style="width:100%; padding:11px 14px; border:1.5px solid {{ $errors->has('title') ? '#ff3b30' : '#e5e5ea' }}; border-radius:10px; font-size:15px; outline:none; box-sizing:border-box;">
+               class="reminder-input {{ $errors->has('title') ? 'reminder-input-error' : '' }}">
         @error('title')
             <p class="reminder-error-msg">{{ $message }}</p>
         @enderror
@@ -39,10 +39,10 @@
         <div class="reminder-field-flex-1">
             <label class="reminder-field-label">Prioridad</label>
             <select name="priority" class="reminder-select">
-                <option value="0" {{ old('priority', $reminder->priority ?? 0) == 0 ? 'selected' : '' }}>⚪ Ninguna</option>
-                <option value="1" {{ old('priority', $reminder->priority ?? 0) == 1 ? 'selected' : '' }}>🔵 Baja</option>
-                <option value="2" {{ old('priority', $reminder->priority ?? 0) == 2 ? 'selected' : '' }}>🟡 Media</option>
-                <option value="3" {{ old('priority', $reminder->priority ?? 0) == 3 ? 'selected' : '' }}>🔴 Alta</option>
+                <option value="0" {{ old('priority', $reminder->priority ?? 0) == 0 ? 'selected' : '' }}>Ninguna</option>
+                <option value="1" {{ old('priority', $reminder->priority ?? 0) == 1 ? 'selected' : '' }}>Baja</option>
+                <option value="2" {{ old('priority', $reminder->priority ?? 0) == 2 ? 'selected' : '' }}>Media</option>
+                <option value="3" {{ old('priority', $reminder->priority ?? 0) == 3 ? 'selected' : '' }}>Alta</option>
             </select>
         </div>
     </div>
@@ -52,7 +52,7 @@
             <label class="reminder-field-label">Fecha de inicio</label>
             <input type="datetime-local" name="starts_at"
                    value="{{ old('starts_at', isset($reminder) && $reminder->starts_at ? $reminder->starts_at->format('Y-m-d\TH:i') : '') }}"
-                   style="width:100%; padding:10px 14px; border:1.5px solid {{ $errors->has('starts_at') ? '#ff3b30' : '#e5e5ea' }}; border-radius:10px; font-size:14px; outline:none; box-sizing:border-box;">
+                   class="reminder-input-sm {{ $errors->has('starts_at') ? 'reminder-input-error' : '' }}">
             @error('starts_at')
                 <p class="reminder-error-msg">{{ $message }}</p>
             @enderror
@@ -62,7 +62,7 @@
             <label class="reminder-field-label">Fecha de vencimiento</label>
             <input type="datetime-local" name="due_at"
                    value="{{ old('due_at', isset($reminder) && $reminder->due_at ? $reminder->due_at->format('Y-m-d\TH:i') : '') }}"
-                   style="width:100%; padding:10px 14px; border:1.5px solid {{ $errors->has('due_at') ? '#ff3b30' : '#e5e5ea' }}; border-radius:10px; font-size:14px; outline:none; box-sizing:border-box;">
+                   class="reminder-input-sm {{ $errors->has('due_at') ? 'reminder-input-error' : '' }}">
             @error('due_at')
                 <p class="reminder-error-msg">{{ $message }}</p>
             @enderror

@@ -80,12 +80,11 @@
                             <a href="{{ route('reminders.lists.edit', $list) }}"
                                class="tbl-action rem-lists-action-secondary">Editar</a>
                             @can('delete', $list)
-                            <form action="{{ route('reminders.lists.destroy', $list) }}" method="POST"
-                                  onsubmit="return confirm('¿Eliminar esta lista? Los recordatorios se conservarán.')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="tbl-action rem-lists-action-danger">Eliminar</button>
-                            </form>
+                            <button type="button"
+                                    class="tbl-action rem-lists-action-danger"
+                                    onclick="openDeleteDialog('{{ addslashes($list->name) }}', '{{ route('reminders.lists.destroy', $list) }}')">
+                                Eliminar
+                            </button>
                             @endcan
                         </div>
                     </td>
@@ -118,6 +117,27 @@
     </div>
 </div>
 
+{{-- Dialog: Confirmar Eliminar Lista --}}
+<div id="dialogDeleteList" class="confirm-dialog-overlay" onclick="if(event.target===this)closeDeleteDialog()">
+    <div class="confirm-dialog">
+        <div class="confirm-dialog-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 4v4m0 4h.01" stroke="#ff3b30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <h3 class="confirm-dialog-title">Eliminar lista</h3>
+        <p class="confirm-dialog-desc">¿Deseas eliminar <strong id="dialogListName"></strong>? Los recordatorios se conservarán sin lista asignada.</p>
+        <div class="confirm-dialog-footer">
+            <button type="button" class="confirm-dialog-cancel" onclick="closeDeleteDialog()">Cancelar</button>
+            <form id="deleteListForm" method="POST" style="flex:1;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="confirm-dialog-confirm" style="width:100%;">Eliminar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script>
 function openNewListModal() {
     document.getElementById('modalNewList').style.display = 'flex';
@@ -126,6 +146,16 @@ function openNewListModal() {
     var defCheck = document.getElementById('is_default');
     if (defCheck) defCheck.checked = false;
     if (typeof selectListColor === 'function') selectListColor('#007aff');
+}
+
+function openDeleteDialog(name, action) {
+    document.getElementById('dialogListName').textContent = '"' + name + '"';
+    document.getElementById('deleteListForm').action = action;
+    document.getElementById('dialogDeleteList').classList.add('open');
+}
+
+function closeDeleteDialog() {
+    document.getElementById('dialogDeleteList').classList.remove('open');
 }
 </script>
 

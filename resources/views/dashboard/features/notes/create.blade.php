@@ -18,7 +18,7 @@
         @csrf
         <div class="form-group">
             <label for="title">Título</label>
-            <input type="text" name="title" id="title" class="form-control" placeholder="Escribe un título para tu nota" required autofocus>
+            <input type="text" name="title" id="title" class="form-control" placeholder="Escribe un título para tu nota" value="{{ old('title') }}" required autofocus>
         </div>
 
         <div class="form-group">
@@ -37,7 +37,7 @@
                     <button type="button" class="toolbar-btn" data-action="heading" data-level="2" title="Título 2">
                         <iconify-icon icon="lucide:heading-2"></iconify-icon>
                     </button>
-                    <button type="button" class="toolbar-btn" data-action="bulletList" title="Lista">
+                    <button type="button" class="toolbar-btn" data-action="bulletList" title="Lista con viñetas">
                         <iconify-icon icon="lucide:list"></iconify-icon>
                     </button>
                     <button type="button" class="toolbar-btn" data-action="orderedList" title="Lista ordenada">
@@ -52,7 +52,7 @@
                 </div>
                 <div id="editor"></div>
             </div>
-            <input type="hidden" name="content" id="content-input">
+            <input type="hidden" name="content" id="content-input" value="{{ old('content') }}">
         </div>
 
         <div class="notes-form-actions">
@@ -63,27 +63,47 @@
     </form>
 </div>
 
+@push('scripts')
 <script type="module">
-    import {
-        Editor
-    } from 'https://esm.sh/@tiptap/core'
+    import { Editor } from 'https://esm.sh/@tiptap/core'
     import StarterKit from 'https://esm.sh/@tiptap/starter-kit'
 
+    const editorElement = document.querySelector('#editor')
+    const contentInput = document.querySelector('#content-input')
+    const toolbarButtons = document.querySelectorAll('.toolbar-btn')
+
     const editor = new Editor({
-        element: document.querySelector('#editor'),
-        extensions: [
-            StarterKit,
-        ],
-        content: '',
-        onUpdate({
-            editor
-        }) {
-            document.querySelector('#content-input').value = editor.getHTML()
+        element: editorElement,
+        extensions: [StarterKit],
+        content: @js(old('content', '')),
+        onCreate({ editor }) {
+            contentInput.value = editor.getHTML()
+            updateToolbarState()
         },
+        onUpdate({ editor }) {
+            contentInput.value = editor.getHTML()
+            updateToolbarState()
+        },
+        onSelectionUpdate: updateToolbarState,
     })
 
-    // Toolbar actions
-    document.querySelectorAll('.toolbar-btn').forEach(btn => {
+    function updateToolbarState() {
+        toolbarButtons.forEach((btn) => {
+            const action = btn.getAttribute('data-action')
+            const level = Number.parseInt(btn.getAttribute('data-level') ?? '', 10)
+            let isActive = false
+
+            if (action === 'bold') isActive = editor.isActive('bold')
+            if (action === 'italic') isActive = editor.isActive('italic')
+            if (action === 'heading') isActive = editor.isActive('heading', { level })
+            if (action === 'bulletList') isActive = editor.isActive('bulletList')
+            if (action === 'orderedList') isActive = editor.isActive('orderedList')
+
+            btn.classList.toggle('is-active', isActive)
+        })
+    }
+
+    toolbarButtons.forEach((btn) => {
         btn.addEventListener('click', () => {
             const action = btn.getAttribute('data-action')
             const level = btn.getAttribute('data-level')
@@ -91,18 +111,20 @@
             if (action === 'bold') editor.chain().focus().toggleBold().run()
             if (action === 'italic') editor.chain().focus().toggleItalic().run()
             if (action === 'heading') editor.chain().focus().toggleHeading({
-                level: parseInt(level)
+                level: Number.parseInt(level, 10)
             }).run()
             if (action === 'bulletList') editor.chain().focus().toggleBulletList().run()
             if (action === 'orderedList') editor.chain().focus().toggleOrderedList().run()
             if (action === 'undo') editor.chain().focus().undo().run()
             if (action === 'redo') editor.chain().focus().redo().run()
+
+            updateToolbarState()
         })
     })
 
-    // Sync content on form submit
     document.querySelector('#note-form').addEventListener('submit', () => {
-        document.querySelector('#content-input').value = editor.getHTML()
+        contentInput.value = editor.getHTML()
     })
 </script>
+@endpush
 @endsection

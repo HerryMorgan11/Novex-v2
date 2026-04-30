@@ -435,11 +435,12 @@
     align-items: flex-start;
     gap: 12px;
     padding: 16px;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
     background: var(--surface, #fafafa);
     border: 1px solid var(--border, #e0e0e0);
     border-radius: 8px;
     transition: all 0.2s;
+    cursor: pointer;
 }
 
 .dark-theme .reminder-item {
@@ -478,6 +479,46 @@
 
 .dark-theme .reminder-checkbox {
     border-color: var(--border);
+}
+
+/* New circular checkbox button style */
+.reminder-checkbox-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--border, #e0e0e0);
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 2px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    color: #fff;
+}
+
+.reminder-checkbox-circle:hover:not(.is-checked) {
+    border-color: var(--accent, #007aff);
+}
+
+.reminder-checkbox-circle.is-checked {
+    background: #34c759;
+    border-color: #34c759;
+    color: #fff;
+}
+
+.reminder-checkbox-circle.is-checked:hover {
+    opacity: 0.85;
+}
+
+.dark-theme .reminder-checkbox-circle {
+    border-color: var(--border);
+}
+
+.dark-theme .reminder-checkbox-circle:hover:not(.is-checked) {
+    border-color: var(--accent);
 }
 
 .reminder-content {
@@ -900,20 +941,20 @@
 .reminder-form-page-title {
     font-size: 24px;
     font-weight: 700;
-    color: #1c1c1e;
+    color: var(--fg, #1c1c1e);
     margin: 0;
 }
 
 .reminder-form-card {
-    background: #fff;
-    border: 1px solid #e5e5ea;
+    background: var(--card, #fff);
+    border: 1px solid var(--border, #e5e5ea);
     border-radius: 16px;
     padding: 28px;
 }
 
 .reminder-form-card-sm {
-    background: #fff;
-    border: 1px solid #e5e5ea;
+    background: var(--card, #fff);
+    border: 1px solid var(--border, #e5e5ea);
     border-radius: 16px;
     padding: 24px;
 }
@@ -923,7 +964,7 @@
     gap: 10px;
     margin-top: 24px;
     padding-top: 20px;
-    border-top: 1px solid #e5e5ea;
+    border-top: 1px solid var(--border, #e5e5ea);
 }
 
 .reminder-form-submit {
@@ -941,8 +982,8 @@
 .reminder-form-cancel {
     flex: 1;
     text-align: center;
-    background: #f2f2f7;
-    color: #1c1c1e;
+    background: var(--surface-2, #f2f2f7);
+    color: var(--fg, #1c1c1e);
     padding: 12px;
     border-radius: 10px;
     text-decoration: none;
@@ -1014,7 +1055,7 @@
     display: block;
     font-size: 13px;
     font-weight: 600;
-    color: #1c1c1e;
+    color: var(--fg, #1c1c1e);
     margin-bottom: 6px;
 }
 
@@ -1025,41 +1066,48 @@
 .reminder-input {
     width: 100%;
     padding: 11px 14px;
-    border: 1.5px solid #e5e5ea;
+    border: 1.5px solid var(--border, #e5e5ea);
     border-radius: 10px;
     font-size: 15px;
     outline: none;
     box-sizing: border-box;
+    background: var(--input, #fff);
+    color: var(--fg, #1c1c1e);
 }
 
 .reminder-input-sm {
     width: 100%;
     padding: 10px 14px;
-    border: 1.5px solid #e5e5ea;
+    border: 1.5px solid var(--border, #e5e5ea);
     border-radius: 10px;
     font-size: 14px;
     outline: none;
     box-sizing: border-box;
+    background: var(--input, #fff);
+    color: var(--fg, #1c1c1e);
 }
 
 .reminder-textarea {
     width: 100%;
     padding: 11px 14px;
-    border: 1.5px solid #e5e5ea;
+    border: 1.5px solid var(--border, #e5e5ea);
     border-radius: 10px;
     font-size: 14px;
     outline: none;
     resize: vertical;
     box-sizing: border-box;
+    background: var(--input, #fff);
+    color: var(--fg, #1c1c1e);
 }
 
 .reminder-select {
     width: 100%;
     padding: 10px 14px;
-    border: 1.5px solid #e5e5ea;
+    border: 1.5px solid var(--border, #e5e5ea);
     border-radius: 10px;
     font-size: 14px;
-    background: #fff;
+    background: var(--input, #fff);
+    color: var(--fg, #1c1c1e);
     outline: none;
 }
 
@@ -1067,6 +1115,10 @@
     color: #ff3b30;
     font-size: 12px;
     margin-top: 4px;
+}
+
+.reminder-input-error {
+    border-color: #ff3b30 !important;
 }
 
 .reminder-fields-row {
@@ -1102,7 +1154,7 @@
 
 .reminder-checkbox-label {
     font-size: 14px;
-    color: #1c1c1e;
+    color: var(--fg, #1c1c1e);
     cursor: pointer;
 }
 
@@ -1243,12 +1295,48 @@
     align-items: center;
     justify-content: center;
     padding: 0;
+    border: 2.5px solid var(--border, #c7c7cc);
+    background: transparent;
+    transition:
+        border-color 0.2s,
+        background 0.2s;
 }
 
-.reminder-show-title-wrap h1 {
-    font-size: 26px;
-    font-weight: 700;
-    margin: 0;
+.reminder-show-complete-btn.is-completed {
+    border-color: #34c759;
+    background: #34c759;
+}
+
+.show-title-completed {
+    text-decoration: line-through;
+    color: var(--muted, #8e8e93) !important;
+}
+
+.subtask-completed {
+    text-decoration: line-through;
+    color: var(--muted, #8e8e93) !important;
+}
+
+.subtask-toggle-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+    border: 2px solid var(--border, #c7c7cc);
+    background: transparent;
+    transition:
+        border-color 0.2s,
+        background 0.2s;
+}
+
+.subtask-toggle-btn.is-completed {
+    border-color: #34c759;
+    background: #34c759;
 }
 
 .reminder-show-meta {
@@ -1270,7 +1358,7 @@
     align-items: center;
     gap: 5px;
     font-size: 13px;
-    color: #8e8e93;
+    color: var(--muted, #8e8e93);
 }
 
 .badge-archived {
@@ -1300,8 +1388,8 @@
 }
 
 .reminder-detail-card {
-    background: #fff;
-    border: 1px solid #e5e5ea;
+    background: var(--card, #fff);
+    border: 1px solid var(--border, #e5e5ea);
     border-radius: 14px;
     padding: 18px;
     margin-bottom: 18px;
@@ -1318,15 +1406,15 @@
 
 .reminder-detail-text {
     font-size: 15px;
-    color: #1c1c1e;
+    color: var(--fg, #1c1c1e);
     margin: 0;
     white-space: pre-wrap;
     line-height: 1.6;
 }
 
 .reminder-dates-card {
-    background: #fff;
-    border: 1px solid #e5e5ea;
+    background: var(--card, #fff);
+    border: 1px solid var(--border, #e5e5ea);
     border-radius: 14px;
     padding: 18px;
     margin-bottom: 18px;
@@ -1338,7 +1426,7 @@
 .reminder-date-field-label {
     font-size: 11px;
     font-weight: 600;
-    color: #8e8e93;
+    color: var(--muted, #8e8e93);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 4px;
@@ -1346,8 +1434,11 @@
 
 .reminder-date-field-value {
     font-size: 14px;
-    color: #1c1c1e;
+    color: var(--fg, #1c1c1e);
     margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .reminder-move-card {
@@ -1385,8 +1476,8 @@
 }
 
 .reminder-subtasks-card {
-    background: #fff;
-    border: 1px solid #e5e5ea;
+    background: var(--card, #fff);
+    border: 1px solid var(--border, #e5e5ea);
     border-radius: 14px;
     padding: 20px;
 }
@@ -1401,7 +1492,7 @@
 .reminder-subtasks-title {
     font-size: 15px;
     font-weight: 700;
-    color: #1c1c1e;
+    color: var(--fg, #1c1c1e);
     margin: 0;
 }
 
@@ -1417,19 +1508,7 @@
     align-items: center;
     gap: 10px;
     padding: 8px 0;
-    border-bottom: 1px solid #f2f2f7;
-}
-
-.subtask-toggle-btn {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    flex-shrink: 0;
+    border-bottom: 1px solid var(--border, #f2f2f7);
 }
 
 .subtask-body {
@@ -1450,10 +1529,12 @@
 .subtask-edit-input {
     flex: 1;
     padding: 4px 8px;
-    border: 1.5px solid #007aff;
+    border: 1.5px solid var(--accent, #007aff);
     border-radius: 7px;
     font-size: 14px;
     outline: none;
+    background: var(--input, #fff);
+    color: var(--fg, #1c1c1e);
 }
 
 .subtask-edit-save {
@@ -1505,10 +1586,12 @@
 .subtask-add-input {
     flex: 1;
     padding: 10px 14px;
-    border: 1.5px solid #e5e5ea;
+    border: 1.5px solid var(--border, #e5e5ea);
     border-radius: 10px;
     font-size: 14px;
     outline: none;
+    background: var(--input, #fff);
+    color: var(--fg, #1c1c1e);
 }
 
 .subtask-add-btn {
@@ -1628,4 +1711,356 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+}
+
+/* ================================================
+   Dark Mode – Show Page Cards
+   ================================================ */
+
+.dark-theme .reminder-show-page h1 {
+    color: var(--fg) !important;
+}
+
+.dark-theme .reminder-show-complete-btn {
+    border-color: var(--border) !important;
+}
+
+.dark-theme .reminder-show-meta-item,
+.dark-theme .reminder-show-meta span {
+    color: var(--muted) !important;
+}
+
+.dark-theme .reminder-detail-card {
+    background: var(--card);
+    border-color: var(--border);
+}
+
+.dark-theme .reminder-detail-section-label {
+    color: var(--muted);
+}
+
+.dark-theme .reminder-detail-text {
+    color: var(--fg);
+}
+
+.dark-theme .reminder-dates-card {
+    background: var(--card);
+    border-color: var(--border);
+}
+
+.dark-theme .reminder-date-field-label {
+    color: var(--muted);
+}
+
+.dark-theme .reminder-date-field-value {
+    color: var(--fg);
+}
+
+.dark-theme .reminder-subtasks-card {
+    background: var(--card);
+    border-color: var(--border);
+}
+
+.dark-theme .reminder-subtasks-title {
+    color: var(--fg);
+}
+
+.dark-theme .subtask-row {
+    border-color: var(--border);
+}
+
+.dark-theme .subtask-title-span {
+    color: var(--fg) !important;
+}
+
+.dark-theme .subtask-empty-msg {
+    color: var(--muted);
+}
+
+.dark-theme .subtask-add-input {
+    background: var(--input);
+    border-color: var(--border);
+    color: var(--fg);
+}
+
+.dark-theme .subtask-edit-input {
+    background: var(--input);
+    border-color: var(--accent);
+    color: var(--fg);
+}
+
+.dark-theme .subtask-edit-cancel {
+    background: var(--surface-2);
+    color: var(--muted);
+}
+
+/* ================================================
+   Dark Mode – Form Fields (create/edit/modal)
+   ================================================ */
+
+.dark-theme .reminder-field-label {
+    color: var(--fg);
+}
+
+.dark-theme .reminder-checkbox-label {
+    color: var(--fg);
+}
+
+.dark-theme .reminder-input,
+.dark-theme .reminder-input-sm,
+.dark-theme .reminder-textarea,
+.dark-theme .reminder-select {
+    background: var(--input);
+    border-color: var(--border);
+    color: var(--fg);
+}
+
+.dark-theme .reminder-input::placeholder,
+.dark-theme .reminder-input-sm::placeholder,
+.dark-theme .reminder-textarea::placeholder {
+    color: var(--muted-2);
+}
+
+/* datetime-local inputs inside modals and form pages */
+.dark-theme .reminder-fields input[type='datetime-local'],
+.dark-theme .reminder-fields input[type='text'],
+.dark-theme .reminder-fields textarea,
+.dark-theme .reminder-fields select {
+    background: var(--input) !important;
+    border-color: var(--border) !important;
+    color: var(--fg) !important;
+}
+
+/* ================================================
+   Dark Mode – Form Page Cards (create/edit pages)
+   ================================================ */
+
+.dark-theme .reminder-form-card,
+.dark-theme .reminder-form-card-sm {
+    background: var(--card);
+    border-color: var(--border);
+}
+
+.dark-theme .reminder-form-page-title {
+    color: var(--fg);
+}
+
+.dark-theme .reminder-form-actions {
+    border-color: var(--border);
+}
+
+.dark-theme .reminder-form-submit {
+    background: var(--accent);
+    color: var(--accent-fg);
+}
+
+.dark-theme .reminder-form-cancel {
+    background: var(--surface-2);
+    color: var(--fg);
+}
+
+/* ================================================
+   Dark Mode – Modals (new reminder / new list)
+   ================================================ */
+
+.dark-theme .modal-footer {
+    border-color: var(--border);
+}
+
+.dark-theme .modal-title {
+    color: var(--fg);
+}
+
+.dark-theme .modal-cancel-btn {
+    background: var(--surface-2);
+    color: var(--fg);
+}
+
+.dark-theme .btn-primary-lists {
+    background: var(--accent);
+    color: var(--accent-fg);
+}
+
+/* ================================================
+   Dark Mode – Lists form (_form.blade.php)
+   ================================================ */
+
+.dark-theme #list-name-input {
+    background: var(--input) !important;
+    border-color: var(--border) !important;
+    color: var(--fg) !important;
+}
+
+/* ================================================
+   Dark Mode – Show page back link
+   ================================================ */
+
+.reminder-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent, #007aff);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    margin-bottom: 20px;
+    padding: 6px 0;
+    transition: opacity 0.15s;
+}
+
+.reminder-back-link:hover {
+    opacity: 0.75;
+}
+
+/* ================================================
+   Dark Mode – Priority badges (show page)
+   ================================================ */
+
+.priority-badge {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+.priority-badge-low {
+    color: var(--accent, #007aff);
+    background: rgba(0, 122, 255, 0.1);
+}
+
+.priority-badge-medium {
+    color: #ff9500;
+    background: rgba(255, 149, 0, 0.1);
+}
+
+.priority-badge-high {
+    color: #ff3b30;
+    background: rgba(255, 59, 48, 0.1);
+}
+
+.dark-theme .priority-badge-low {
+    color: var(--accent);
+    background: rgba(244, 63, 94, 0.15);
+}
+
+.dark-theme .priority-badge-medium {
+    color: #ff9500;
+    background: rgba(255, 149, 0, 0.15);
+}
+
+.dark-theme .priority-badge-high {
+    color: #ff3b30;
+    background: rgba(255, 59, 48, 0.15);
+}
+
+/* due date in show page */
+.reminder-show-due {
+    font-size: 13px;
+    color: var(--muted, #8e8e93);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.reminder-show-due.overdue {
+    color: #ff3b30;
+    font-weight: 600;
+}
+
+/* ================================================
+   Dark Mode – Delete Confirm Dialog (lists/index)
+   ================================================ */
+
+.confirm-dialog-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.confirm-dialog-overlay.open {
+    display: flex;
+}
+
+.confirm-dialog {
+    background: var(--card, #fff);
+    border: 1px solid var(--border, #e2e8f0);
+    border-radius: 16px;
+    padding: 28px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.confirm-dialog-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 59, 48, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.confirm-dialog-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--fg, #1c1c1e);
+    margin: 0 0 8px 0;
+}
+
+.confirm-dialog-desc {
+    font-size: 14px;
+    color: var(--muted, #8e8e93);
+    margin: 0 0 24px 0;
+    line-height: 1.5;
+}
+
+.confirm-dialog-desc strong {
+    color: var(--fg, #1c1c1e);
+    font-weight: 600;
+}
+
+.confirm-dialog-footer {
+    display: flex;
+    gap: 10px;
+}
+
+.confirm-dialog-cancel {
+    flex: 1;
+    background: var(--surface-2, #f2f2f7);
+    color: var(--fg, #1c1c1e);
+    padding: 11px;
+    border-radius: 10px;
+    border: 1px solid var(--border, #e2e8f0);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.confirm-dialog-cancel:hover {
+    opacity: 0.8;
+}
+
+.confirm-dialog-confirm {
+    flex: 1;
+    background: #ff3b30;
+    color: #fff;
+    padding: 11px;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.confirm-dialog-confirm:hover {
+    opacity: 0.85;
 }

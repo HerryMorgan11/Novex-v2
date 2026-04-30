@@ -136,13 +136,17 @@
             <form action="{{ route('reminders.complete', $reminder) }}" method="POST" class="reminder-form-inline">
                 @csrf
                 @method('PATCH')
-                <div class="reminder-item {{ $reminder->is_completed ? 'completed' : '' }}">
-                    <input
-                        type="checkbox"
-                        class="reminder-checkbox"
-                        {{ $reminder->is_completed ? 'checked' : '' }}
-                        onchange="this.form.submit()"
-                    />
+                <div class="reminder-item {{ $reminder->is_completed ? 'completed' : '' }}" data-href="{{ route('reminders.show', $reminder) }}">
+                    <button 
+                        type="button"
+                        class="reminder-checkbox-circle {{ $reminder->is_completed ? 'is-checked' : '' }}"
+                        onclick="this.closest('form').submit()"
+                        title="{{ $reminder->is_completed ? 'Marcar como pendiente' : 'Marcar como completado' }}"
+                    >
+                        @if($reminder->is_completed)
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 6l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        @endif
+                    </button>
                     <div class="reminder-content">
                         <a href="{{ route('reminders.show', $reminder) }}" class="reminder-title">
                             {{ $reminder->title }}
@@ -192,10 +196,6 @@
                             </div>
                         @endif
                     </div>
-
-                    <a href="{{ route('reminders.show', $reminder) }}" class="btn-primary btn-primary-sm">
-                        Ver
-                    </a>
                 </div>
             </form>
         @empty
@@ -277,6 +277,18 @@ function openNewListModal() {
     if (defCheck) defCheck.checked = false;
     if (typeof selectListColor === 'function') selectListColor('#007aff');
 }
+
+// Make reminder item cards clickable (navigate to detail view)
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.reminder-item[data-href]').forEach(function (item) {
+        item.addEventListener('click', function (e) {
+            // Don't navigate if clicking the checkbox or its form wrapper
+            if (e.target.closest('.reminder-form-inline') && e.target.tagName !== 'DIV') return;
+            if (e.target.classList.contains('reminder-checkbox') || e.target.closest('input[type="checkbox"]')) return;
+            window.location.href = item.dataset.href;
+        });
+    });
+});
 </script>
 
 @endsection

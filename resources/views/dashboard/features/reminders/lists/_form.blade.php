@@ -14,7 +14,7 @@
                value="{{ old('name', $list->name ?? '') }}"
                placeholder="Nombre de la lista"
                autocomplete="off"
-               style="width:100%; padding:10px 14px; border:1.5px solid {{ $errors->has('name') ? '#ff3b30' : '#e5e5ea' }}; border-radius:10px; font-size:15px; outline:none; box-sizing:border-box;">
+               class="reminder-input {{ $errors->has('name') ? 'reminder-input-error' : '' }}">
         @error('name')
             <p class="reminder-error-msg">{{ $message }}</p>
         @enderror
@@ -53,9 +53,10 @@
 <script>
 function selectListColor(color) {
     document.getElementById('list-color-input').value = color;
+    var fgColor = getComputedStyle(document.documentElement).getPropertyValue('--fg').trim() || '#1c1c1e';
     document.querySelectorAll('.list-color-swatch').forEach(function(btn) {
         if (btn.getAttribute('data-color') === color) {
-            btn.style.border = '3px solid #1c1c1e';
+            btn.style.border = '3px solid ' + fgColor;
             btn.style.outline = '3px solid ' + color;
         } else {
             btn.style.border = '3px solid transparent';
