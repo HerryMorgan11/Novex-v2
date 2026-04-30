@@ -36,9 +36,9 @@
                     <iconify-icon icon="lucide:edit"></iconify-icon>
                     Editar
                 </a>
-                <form action="{{ route('dashboard.features.notes.destroy', $note->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar esta nota?')">
+                <form action="{{ route('dashboard.features.notes.destroy', $note->id) }}" method="POST" class="note-delete-form">
                     @csrf
-                    <button type="submit" class="btn-delete" title="Eliminar">
+                    <button type="button" class="btn-delete btn-delete-trigger" title="Eliminar">
                         <iconify-icon icon="lucide:trash-2"></iconify-icon>
                         Eliminar
                     </button>
@@ -49,4 +49,52 @@
     </div>
     @endif
 </div>
+
+<!-- Modal de confirmación para eliminar nota -->
+<div id="delete-note-modal" class="note-modal-overlay" style="display:none;" aria-modal="true" role="dialog" aria-labelledby="delete-modal-title">
+    <div class="note-modal">
+        <div class="note-modal-icon">
+            <iconify-icon icon="lucide:trash-2"></iconify-icon>
+        </div>
+        <h2 id="delete-modal-title" class="note-modal-title">¿Deseas eliminar la nota?</h2>
+        <p class="note-modal-desc">Esta acción no se puede deshacer.</p>
+        <div class="note-modal-actions">
+            <button id="delete-modal-cancel" class="note-modal-btn note-modal-btn--cancel">Cancelar</button>
+            <button id="delete-modal-confirm" class="note-modal-btn note-modal-btn--delete">Eliminar</button>
+        </div>
+    </div>
+</div>
+
+@push('scripts')
+<script>
+(function () {
+    let pendingForm = null;
+
+    document.querySelectorAll('.btn-delete-trigger').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            pendingForm = btn.closest('.note-delete-form');
+            document.getElementById('delete-note-modal').style.display = 'flex';
+        });
+    });
+
+    document.getElementById('delete-modal-cancel').addEventListener('click', function () {
+        document.getElementById('delete-note-modal').style.display = 'none';
+        pendingForm = null;
+    });
+
+    document.getElementById('delete-modal-confirm').addEventListener('click', function () {
+        if (pendingForm) {
+            pendingForm.submit();
+        }
+    });
+
+    document.getElementById('delete-note-modal').addEventListener('click', function (e) {
+        if (e.target === this) {
+            this.style.display = 'none';
+            pendingForm = null;
+        }
+    });
+})();
+</script>
+@endpush
 @endsection

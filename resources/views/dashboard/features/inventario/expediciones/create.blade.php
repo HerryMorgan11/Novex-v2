@@ -111,10 +111,12 @@
                             max="{{ $lote->cantidadDisponible() }}"
                             step="0.001"
                             placeholder="Cant."
-                            class="hidden"
+                            style="{{ collect(old('lineas', []))->where('id_lote', $lote->id_lote)->count() ? 'display: block;' : 'display: none;' }}"
                             {{ collect(old('lineas', []))->where('id_lote', $lote->id_lote)->count() ? '' : 'disabled' }}>
                         <input type="hidden" name="lineas[{{ $loop->index }}][unidad]"
-                            value="{{ $lote->producto?->unidadMedida?->abreviatura ?? '' }}">
+                            class="lote-unit-input"
+                            value="{{ $lote->producto?->unidadMedida?->abreviatura ?? '' }}"
+                            {{ collect(old('lineas', []))->where('id_lote', $lote->id_lote)->count() ? '' : 'disabled' }}>
                     </div>
                 </label>
                 @endforeach
@@ -138,15 +140,18 @@
 function toggleCantidad(checkbox) {
     const row = checkbox.closest('.lote-selector-item');
     const input = row.querySelector('.lote-qty-input');
+    const unidad = row.querySelector('.lote-unit-input');
     if (checkbox.checked) {
         input.style.display = 'block';
         input.disabled = false;
         input.required = true;
+        unidad.disabled = false;
     } else {
         input.style.display = 'none';
         input.disabled = true;
         input.required = false;
         input.value = '';
+        unidad.disabled = true;
     }
 }
 
