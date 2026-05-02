@@ -78,6 +78,39 @@ class User extends Authenticatable
         return $this->hasMany(Tag::class);
     }
 
+    /**
+     * Indica si el usuario debe cambiar su contraseña antes de acceder al dashboard.
+     * Se activa cuando tiene una membresía con status 'pending'.
+     */
+    public function requiresPasswordChange(): bool
+    {
+        return $this->memberships()
+            ->whereIn('status', ['pending', 'invited'])
+            ->exists();
+    }
+
+    /**
+     * Devuelve el rol del usuario en su tenant actual.
+     */
+    public function roleInCurrentTenant(): ?string
+    {
+        if (! $this->current_tenant_id) {
+            return null;
+        }
+
+        return $this->memberships()
+            ->where('tenant_id', $this->current_tenant_id)
+            ->value('role');
+    }
+
+    /**
+     * Comprueba si el usuario es admin en su tenant actual.
+     */
+    public function isAdminInCurrentTenant(): bool
+    {
+        return $this->roleInCurrentTenant() === 'admin';
+    }
+
     public function sendPasswordResetNotification($token): void
     {
         $this->notify(new CustomResetPassword($token));

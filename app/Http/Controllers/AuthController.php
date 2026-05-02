@@ -54,6 +54,11 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
+        // Si el usuario tiene contraseña provisional, redirigir a cambio obligatorio
+        if (Auth::user()->requiresPasswordChange()) {
+            return redirect()->route('password.change-first-time');
+        }
+
         return redirect()->intended(route('dashboard'));
     }
 

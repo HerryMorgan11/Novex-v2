@@ -4,7 +4,9 @@ use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\Features\ControlPanel\ChangePasswordFirstTimeController;
 use App\Http\Controllers\Dashboard\Features\ControlPanel\ControlPanelController;
+use App\Http\Controllers\Dashboard\Features\ControlPanel\UserManagementController;
 use App\Http\Controllers\Dashboard\Features\Inventario\AlmacenController;
 use App\Http\Controllers\Dashboard\Features\Inventario\DashboardInventarioController;
 use App\Http\Controllers\Dashboard\Features\Inventario\ExpedicionController;
@@ -97,6 +99,19 @@ Route::middleware(['auth', 'checkHasTenant'])->group(function () {
     // Panel de control (carga usuarios del tenant para la vista)
     Route::get('/controlpanel/home', [ControlPanelController::class, 'index'])
         ->name('controlpanel.home');
+
+    // Cambio de contraseña obligatorio (primer login)
+    Route::get('/change-password-first-time', [ChangePasswordFirstTimeController::class, 'show'])
+        ->name('password.change-first-time');
+    Route::post('/change-password-first-time', [ChangePasswordFirstTimeController::class, 'update'])
+        ->name('password.change-first-time.update');
+
+    // Gestión de usuarios del tenant (solo Admin)
+    Route::prefix('controlpanel/users')->name('controlpanel.users.')->group(function () {
+        Route::post('/', [UserManagementController::class, 'store'])->name('store');
+        Route::patch('/{userId}', [UserManagementController::class, 'update'])->name('update');
+        Route::delete('/{userId}', [UserManagementController::class, 'destroy'])->name('destroy');
+    });
 
     // Creación de empresa (reemplaza Livewire CreateCompanyModal)
     Route::post('/company', [CompanyController::class, 'store'])->name('company.store');

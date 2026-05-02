@@ -39,6 +39,7 @@ export default defineConfig({
                 // Settings & Control Panel JS
                 'resources/js/settings/settings.js',
                 'resources/js/controlPanel/navigation.js',
+                'resources/js/controlPanel/curl-generator.js',
                 // Landing section CSS
                 'resources/css/landing/sections/crm/cta.css',
                 'resources/css/landing/sections/crm/hero.css',

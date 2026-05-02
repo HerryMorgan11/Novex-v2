@@ -47,6 +47,7 @@ class CreateTenantAction
                 'user_id' => $user->id,
                 'tenant_id' => $tenant->id,
                 'is_owner' => true,
+                'role' => 'admin',
                 'status' => 'active',
                 'joined_at' => now(),
             ]);

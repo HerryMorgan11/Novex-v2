@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Features\ControlPanel;
 
 use App\Http\Controllers\Controller;
+use App\Models\Inventario\ApiTokenInventario;
 use App\Models\User;
 use Illuminate\View\View;
 
@@ -24,6 +25,7 @@ class ControlPanelController extends Controller
             'users' => $users,
             'tenant' => $tenant,
             'kpis' => $kpis,
+            'apiToken' => $this->loadApiToken(),
         ]);
     }
 
@@ -32,17 +34,41 @@ class ControlPanelController extends Controller
         return (function_exists('tenant') && tenant()) ? tenant() : null;
     }
 
+    private function loadApiToken(): ?string
+    {
+        if (! $this->currentTenant()) {
+            return null;
+        }
+
+        $token = ApiTokenInventario::where('activo', true)
+            ->where(function ($q) {
+                $q->whereNull('expira_en')->orWhere('expira_en', '>', now());
+            })
+            ->first();
+
+        return $token?->makeVisible('token')->token;
+    }
+
     private function loadTenantUsers($tenant)
     {
         if (! $tenant) {
             return collect();
         }
 
-        return User::whereHas('memberships', fn ($q) => $q
-            ->where('tenant_id', $tenant->id)
-            ->where('status', 'active'))
+        return User::whereHas('memberships', fn ($q) => $q->where('tenant_id', $tenant->id))
+            ->with(['memberships' => fn ($q) => $q->where('tenant_id', $tenant->id)])
             ->select('id', 'name', 'email', 'created_at')
-            ->get();
+            ->get()
+            ->map(function (User $user) {
+                $membership = $user->memberships->first();
+                $user->role = $membership?->role_label ?? '—';
+                $user->status = $membership?->status_label ?? '—';
+                $user->raw_status = $membership?->status ?? '';
+                $user->raw_role = $membership?->role ?? '';
+                $user->is_owner = (bool) ($membership?->is_owner ?? false);
+
+                return $user;
+            });
     }
 
     private function buildKpis($tenant, int $usersCount): array
@@ -61,9 +87,7 @@ class ControlPanelController extends Controller
             return 0;
         }
 
-        return User::whereHas('memberships', fn ($q) => $q
-            ->where('tenant_id', $tenant->id)
-            ->where('status', 'active'))
+        return User::whereHas('memberships', fn ($q) => $q->where('tenant_id', $tenant->id))
             ->where('created_at', '>=', now()->startOfMonth())
             ->count();
     }
