@@ -6,7 +6,7 @@
 <div class="settings-section">
     <h2>Mi Perfil</h2>
     <p class="sett-section-intro">
-        Actualiza tu nombre y correo electrónico. Estos datos se usan en toda la plataforma.
+        Actualiza tus datos personales. Estos datos se usan en toda la plataforma.
     </p>
 
     @if (session('success'))
@@ -29,6 +29,9 @@
         @csrf
         @method('PUT')
 
+        {{-- Datos de acceso --}}
+        <p class="sett-group-label">Datos de acceso</p>
+
         <div class="settings-field">
             <label for="settings-name">Nombre Completo</label>
             <input id="settings-name" type="text" name="name" required maxlength="255"
@@ -41,29 +44,31 @@
                    value="{{ old('email', $user->email) }}" class="settings-input">
         </div>
 
+        {{-- Información adicional --}}
+        <p class="sett-group-label sett-group-label--spaced">Información adicional</p>
+
+        <div class="settings-field">
+            <label for="settings-phone">Teléfono
+                <span class="sett-field-optional">Opcional</span>
+            </label>
+            <input id="settings-phone" type="tel" name="phone" maxlength="20"
+                   placeholder="+34 600 000 000"
+                   value="{{ old('phone', $user->phone) }}" class="settings-input">
+        </div>
+
+        <div class="settings-field">
+            <label for="settings-dni">DNI / Identidad Civil
+                <span class="sett-field-optional">Opcional</span>
+            </label>
+            <input id="settings-dni" type="text" name="dni" maxlength="15"
+                   placeholder="12345678A"
+                   value="{{ old('dni', $user->dni) }}" class="settings-input">
+        </div>
+
         <div class="sett-submit-wrap">
             <button type="submit" class="settings-btn settings-btn-primary">
                 Guardar Cambios
             </button>
         </div>
     </form>
-</div>
-
-<div class="settings-section sett-section-no-margin">
-    <h2>Información Adicional</h2>
-    <p class="sett-section-intro">
-        Datos complementarios usados para facturación y contacto (pendiente de implementar en backend).
-    </p>
-
-    <div class="settings-section-content">
-        <div class="settings-field">
-            <label>Teléfono Opcional</label>
-            <p>{{ $user->phone ?? 'No proporcionado' }}</p>
-        </div>
-
-        <div class="settings-field">
-            <label>DNI / Identidad Civil</label>
-            <p>{{ $user->dni ?? 'No proporcionado' }}</p>
-        </div>
-    </div>
 </div>

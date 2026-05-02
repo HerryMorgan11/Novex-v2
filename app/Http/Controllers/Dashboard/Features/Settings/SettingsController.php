@@ -23,7 +23,7 @@ class SettingsController extends Controller
 
     public function updateProfile(Request $request, UpdatesUserProfileInformation $updater): RedirectResponse
     {
-        $updater->update($request->user(), $request->only(['name', 'email']));
+        $updater->update($request->user(), $request->only(['name', 'email', 'phone', 'dni']));
 
         return back()->with('success', 'Perfil actualizado correctamente.');
     }
