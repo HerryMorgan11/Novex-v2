@@ -15,8 +15,8 @@ class SecureUrlHelper
     {
         $url = route($route, $parameters);
 
-        // If request is secure, ensure the URL is HTTPS
-        if (request()->isSecure() && str_starts_with($url, 'http://')) {
+        // In production, force HTTPS
+        if (app()->isProduction()) {
             $url = str_replace('http://', 'https://', $url);
         }
 
@@ -28,6 +28,13 @@ class SecureUrlHelper
      */
     public static function secureUrl(string $path, mixed $parameters = []): string
     {
-        return url($path, $parameters, request()->isSecure());
+        $url = url($path, $parameters);
+
+        // In production, force HTTPS
+        if (app()->isProduction()) {
+            $url = str_replace('http://', 'https://', $url);
+        }
+
+        return $url;
     }
 }

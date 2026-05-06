@@ -34,7 +34,7 @@
                 <button type="submit" class="btn-primary">Resend Verification Email</button>
             </form>
 
-            <form action="{{ url('/logout', [], request()->isSecure()) }}" method="POST" class="auth-verify-logout-form">
+            <form action="@if(app()->isProduction()){{ str_replace('http://', 'https://', url('/logout')) }}@else{{ url('/logout') }}@endif" method="POST" class="auth-verify-logout-form">
                 @csrf
                 <button type="submit" class="forgot-password auth-verify-logout-btn">
                     Log Out
