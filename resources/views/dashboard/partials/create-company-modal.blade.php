@@ -13,7 +13,7 @@
             </div>
 
             <form id="create-company-form"
-                  action="{{ route('company.store') }}"
+                  action="{{ url('/company', [], request()->isSecure()) }}"
                   method="POST"
                   class="create-company-modal__form">
                 @csrf
