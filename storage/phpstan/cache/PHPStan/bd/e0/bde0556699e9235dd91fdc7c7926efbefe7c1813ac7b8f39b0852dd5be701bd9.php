@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Auth/MustVerifyEmail.php-PHPStan\BetterReflection\Reflection\ReflectionClass-Illuminate\Auth\MustVerifyEmail
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-4a80ac1802a6f8da8d3ef13318caa9aece348cbc5f15519edb815751c00d5a6b-8.4.1-6.65.0.9',
+   'variableKey' => 'v2-4a80ac1802a6f8da8d3ef13318caa9aece348cbc5f15519edb815751c00d5a6b-8.4.1-6.70.0.0',
    'data' => 
   array (
     'locatedSource' => 

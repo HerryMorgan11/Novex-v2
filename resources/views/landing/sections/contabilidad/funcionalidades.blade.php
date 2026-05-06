@@ -1,6 +1,6 @@
-<style>
-    {!! file_get_contents(resource_path('css/landing/sections/contabilidad/funcionalidades.css')) !!}
-</style>
+@push('styles')
+@vite(['resources/css/landing/sections/contabilidad/funcionalidades.css'])
+@endpush
 
 <section class="conta2-func-section">
     <div class="conta2-func-inner">

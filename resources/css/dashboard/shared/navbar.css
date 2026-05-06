@@ -1,0 +1,180 @@
+/* Navbar styles for dashboard */
+.navbar {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0 18px;
+    background: transparent;
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-back {
+    display: inline-grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--muted);
+    cursor: pointer;
+}
+.nav-back:hover {
+    background: var(--surface-2);
+    border-color: transparent;
+}
+
+.breadcrumb {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    font-size: 14px;
+    color: var(--muted);
+}
+.breadcrumb-item {
+    color: var(--muted);
+    text-decoration: none;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+    content: '/';
+    margin-left: 4px;
+    margin-right: 4px;
+    color: var(--muted);
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.icon-btn {
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-auto-columns: auto;
+    align-items: center;
+    justify-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+}
+.icon-btn:hover {
+    background: var(--surface-2);
+    border-color: transparent;
+}
+
+.profile-menu {
+    position: relative;
+}
+.user-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    color: var(--fg);
+}
+.user-btn .avatar,
+.avatar {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    background: var(--surface-2);
+    color: var(--fg);
+    font-weight: 600;
+}
+.profile-dropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    min-width: 160px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    border-radius: 10px;
+    padding: 8px 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 40;
+}
+.profile-dropdown a,
+.profile-dropdown button {
+    padding: 8px 10px;
+    text-align: left;
+    border-radius: 8px;
+    color: var(--fg);
+    background: transparent;
+    border: 0;
+}
+.profile-dropdown a:hover,
+.profile-dropdown button:hover {
+    background: var(--surface-2);
+}
+
+/* ===== theme toggle ===== */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: var(--fg);
+    cursor: pointer;
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.05s ease;
+    font-weight: 400;
+    font-size: 14px;
+}
+.theme-toggle:hover {
+    background: var(--surface-2);
+    border-color: transparent;
+}
+.theme-toggle:active {
+    transform: translateY(0.5px);
+}
+.theme-toggle:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px var(--ring);
+}
+
+.mobile-toggle {
+    display: none;
+}
+
+/* responsive */
+@media (max-width: 920px) {
+    .mobile-toggle {
+        display: flex;
+    }
+
+    .navbar-left nav[aria-label='breadcrumb'] {
+        display: none; /* Ocultar breadcrumbs en móvil si es necesario */
+    }
+}
+@media (max-width: 640px) {
+    .navbar-right {
+        gap: 2px;
+    }
+}

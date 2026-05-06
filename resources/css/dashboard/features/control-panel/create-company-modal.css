@@ -1,0 +1,111 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   Modal: Crear Empresa (create-company-modal)
+   Se muestra al usuario sin tenant tras login para completar onboarding.
+   ──────────────────────────────────────────────────────────────────────── */
+
+.create-company-modal__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 40;
+}
+
+.create-company-modal__dialog {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    padding: 16px;
+}
+
+.create-company-modal__card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 440px;
+    padding: 32px;
+}
+
+.create-company-modal__header {
+    margin-bottom: 24px;
+}
+
+.create-company-modal__title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1c1c1e;
+    margin: 0 0 6px;
+}
+
+.create-company-modal__subtitle {
+    font-size: 14px;
+    color: #8e8e93;
+    margin: 0;
+}
+
+.create-company-modal__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.create-company-modal__field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1c1c1e;
+    margin-bottom: 6px;
+}
+
+.create-company-modal__input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid #e5e5ea;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.create-company-modal__input:focus {
+    border-color: #007aff;
+}
+
+.create-company-modal__error {
+    background: #fff5f5;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #dc2626;
+    display: none;
+}
+
+.create-company-modal__submit {
+    width: 100%;
+    background: #007aff;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 4px;
+}
+
+.create-company-modal__submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.create-company-modal__footer {
+    font-size: 12px;
+    color: #8e8e93;
+    text-align: center;
+    margin-top: 16px;
+    margin-bottom: 0;
+}

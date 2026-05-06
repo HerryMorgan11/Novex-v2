@@ -19,12 +19,12 @@
         <div class="login-container">
             <div class="login-header">
                 <h1>Verify Email</h1>
-                <p style="line-height: 1.5; margin-top: 8px;">Thanks for signing up! Before getting started, could you
+                <p class="auth-verify-desc">Thanks for signing up! Before getting started, could you
                     verify your email address by clicking on the link we just emailed to you?</p>
             </div>
 
             @if (session('status') == 'verification-link-sent')
-                <div style="margin-bottom: 24px; color: #10b981; font-size: 14px; font-weight: 500;">
+                <div class="auth-verify-status-msg">
                     A new verification link has been sent to the email address you provided during registration.
                 </div>
             @endif
@@ -34,10 +34,9 @@
                 <button type="submit" class="btn-primary">Resend Verification Email</button>
             </form>
 
-            <form action="{{ route('logout') }}" method="POST" style="margin-top: 16px; text-align: center;">
+            <form action="{{ route('logout') }}" method="POST" class="auth-verify-logout-form">
                 @csrf
-                <button type="submit" class="forgot-password"
-                    style="background: none; border: none; cursor: pointer; font-size: 14px;">
+                <button type="submit" class="forgot-password auth-verify-logout-btn">
                     Log Out
                 </button>
             </form>

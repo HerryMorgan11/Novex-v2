@@ -22,32 +22,60 @@
             <form action="{{ route('login') }}" method="POST" class="login-form">
                 @csrf
 
+                {{-- Mostrar errores generales --}}
+                @if ($errors->any())
+                    <div style="background:#fee2e2; border:1px solid #fca5a5; border-radius:8px; padding:0.75rem 1rem; margin-bottom:1rem; font-size:0.875rem; color:#dc2626;">
+                        <ul style="margin:0; padding-left:1.2rem;">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <div class="form-group">
                     <label for="email">EMAIL</label>
                     <div class="input-wrapper">
                         <span class="input-icon">
-                            <!-- Envelope Icon -->
                             <iconify-icon icon="uil:envelope"></iconify-icon>
                         </span>
-                        </span>
-                        <input type="email" id="email" name="email" placeholder="you@example.com" required
-                            autofocus>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="you@example.com" 
+                            required
+                            autofocus
+                            value="{{ old('email') }}"
+                            @if($errors->has('email')) style="border-color: #dc2626; background-color: #fef2f2;" @endif
+                        >
                     </div>
+                    @error('email')
+                        <span style="color:#dc2626; font-size:0.8rem; margin-top:0.25rem; display:block;">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="password">PASSWORD</label>
                     <div class="input-wrapper">
                         <span class="input-icon">
-                            <!-- Lock Icon -->
                             <iconify-icon icon="iconoir:lock"></iconify-icon>
                         </span>
-                        <input type="password" id="password" name="password" placeholder="Enter your password"
-                            required>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            placeholder="Enter your password"
+                            required
+                            @if($errors->has('password')) style="border-color: #dc2626; background-color: #fef2f2;" @endif
+                        >
                         <button type="button" class="toggle-password" onclick="togglePassword()">
                             <iconify-icon id="icon-eye-password" icon="iconoir:eye"></iconify-icon>
                         </button>
                     </div>
+                    @error('password')
+                        <span style="color:#dc2626; font-size:0.8rem; margin-top:0.25rem; display:block;">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="form-options">
@@ -70,7 +98,7 @@
                     Sign in with Google
                 </a>
 
-                <div style="margin-top: 24px;" class="alt-action">
+                <div class="alt-action">
 
                     Don't have an account? <a href="{{ route('register') }}">Create one</a>
                 </div>

@@ -2,7 +2,7 @@
 
 // odsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Foundation/helpers.php-PHPStan\BetterReflection\Reflection\ReflectionFunction-view
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-6.65.0.9-8.4.1-2d9187bdad3b402f1f4b5303e340e54159c650e23089ccd7154ff6251180fddc',
+   'variableKey' => 'v2-6.70.0.0-8.4.1-3fe9475e8c073a9c58af7e9cb8c74416031941413358f6082d558134d416ba86',
    'data' => 
   array (
     'name' => 'view',
@@ -16,12 +16,12 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
           'code' => '\\null',
           'attributes' => 
           array (
-            'startLine' => 1093,
-            'endLine' => 1093,
+            'startLine' => 1092,
+            'endLine' => 1092,
             'startTokenPos' => 4971,
-            'startFilePos' => 29557,
+            'startFilePos' => 29515,
             'endTokenPos' => 4971,
-            'endFilePos' => 29560,
+            'endFilePos' => 29518,
           ),
         ),
         'type' => NULL,
@@ -31,8 +31,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         'attributes' => 
         array (
         ),
-        'startLine' => 1093,
-        'endLine' => 1093,
+        'startLine' => 1092,
+        'endLine' => 1092,
         'startColumn' => 19,
         'endColumn' => 30,
         'parameterIndex' => 0,
@@ -46,12 +46,12 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
           'code' => '[]',
           'attributes' => 
           array (
-            'startLine' => 1093,
-            'endLine' => 1093,
+            'startLine' => 1092,
+            'endLine' => 1092,
             'startTokenPos' => 4978,
-            'startFilePos' => 29571,
+            'startFilePos' => 29529,
             'endTokenPos' => 4979,
-            'endFilePos' => 29572,
+            'endFilePos' => 29530,
           ),
         ),
         'type' => NULL,
@@ -61,8 +61,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         'attributes' => 
         array (
         ),
-        'startLine' => 1093,
-        'endLine' => 1093,
+        'startLine' => 1092,
+        'endLine' => 1092,
         'startColumn' => 33,
         'endColumn' => 42,
         'parameterIndex' => 1,
@@ -76,12 +76,12 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
           'code' => '[]',
           'attributes' => 
           array (
-            'startLine' => 1093,
-            'endLine' => 1093,
+            'startLine' => 1092,
+            'endLine' => 1092,
             'startTokenPos' => 4986,
-            'startFilePos' => 29588,
+            'startFilePos' => 29546,
             'endTokenPos' => 4987,
-            'endFilePos' => 29589,
+            'endFilePos' => 29547,
           ),
         ),
         'type' => NULL,
@@ -91,8 +91,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         'attributes' => 
         array (
         ),
-        'startLine' => 1093,
-        'endLine' => 1093,
+        'startLine' => 1092,
+        'endLine' => 1092,
         'startColumn' => 45,
         'endColumn' => 59,
         'parameterIndex' => 2,
@@ -139,8 +139,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
  * @param  array  $mergeData
  * @return ($view is null ? \\Illuminate\\Contracts\\View\\Factory : \\Illuminate\\Contracts\\View\\View)
  */',
-    'startLine' => 1093,
-    'endLine' => 1102,
+    'startLine' => 1092,
+    'endLine' => 1101,
     'startColumn' => 5,
     'endColumn' => 5,
     'couldThrow' => false,

@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Database/Concerns/BuildsWhereDateClauses.php-PHPStan\BetterReflection\Reflection\ReflectionClass-Illuminate\Database\Concerns\BuildsWhereDateClauses
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-63f2222578dc1dd4ba6e051e7136c277c0266eeba601cb7cd919ee9af964b984-8.4.1-6.65.0.9',
+   'variableKey' => 'v2-63f2222578dc1dd4ba6e051e7136c277c0266eeba601cb7cd919ee9af964b984-8.4.1-6.70.0.0',
    'data' => 
   array (
     'locatedSource' => 

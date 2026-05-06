@@ -16,6 +16,7 @@ class TenantMembership extends Model
         'user_id',
         'tenant_id',
         'is_owner',
+        'role',
         'status',
         'joined_at',
     ];
@@ -24,6 +25,27 @@ class TenantMembership extends Model
         'is_owner' => 'boolean',
         'joined_at' => 'datetime',
     ];
+
+    public function getRoleLabelAttribute(): string
+    {
+        return match ($this->role) {
+            'admin' => 'Admin',
+            'manager' => 'Manager',
+            'empleado' => 'Empleado',
+            default => ucfirst($this->role ?? ''),
+        };
+    }
+
+    public function getStatusLabelAttribute(): string
+    {
+        return match ($this->status) {
+            'active' => 'Activo',
+            'pending' => 'Pendiente',
+            'invited' => 'Pendiente',
+            'disabled' => 'Deshabilitado',
+            default => ucfirst($this->status ?? ''),
+        };
+    }
 
     public function user(): BelongsTo
     {

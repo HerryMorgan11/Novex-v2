@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasEvents.php-PHPStan\BetterReflection\Reflection\ReflectionClass-Illuminate\Database\Eloquent\Concerns\HasEvents
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-71152dc3e696b917c3e46dcf598285a882caa9f8bda386126e5f271a1cbd087d-8.4.1-6.65.0.9',
+   'variableKey' => 'v2-71152dc3e696b917c3e46dcf598285a882caa9f8bda386126e5f271a1cbd087d-8.4.1-6.70.0.0',
    'data' => 
   array (
     'locatedSource' => 

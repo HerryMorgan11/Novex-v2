@@ -51,4 +51,5 @@
 
 @push('scripts')
     @vite('resources/js/controlPanel/navigation.js')
+    @vite('resources/js/controlPanel/curl-generator.js')
 @endpush

@@ -1,10 +1,10 @@
 <?php declare(strict_types = 1);
 
 return [
-	'lastFullAnalysisTime' => 1770403500,
+	'lastFullAnalysisTime' => 1776798791,
 	'meta' => array (
   'cacheVersion' => 'v12-linesToIgnore',
-  'phpstanVersion' => '2.1.38',
+  'phpstanVersion' => '2.1.47',
   'fnsr' => false,
   'metaExtensions' => 
   array (
@@ -13,16 +13,116 @@ return [
   'projectConfig' => '{parameters: {level: 5, paths: [/Users/davidjacobocastillo/Documents/TFG/novex-v2/app, /Users/davidjacobocastillo/Documents/TFG/novex-v2/routes, /Users/davidjacobocastillo/Documents/TFG/novex-v2/config], excludePaths: {analyseAndScan: [routes/console.php], analyse: []}, tmpDir: /Users/davidjacobocastillo/Documents/TFG/novex-v2/storage/phpstan}}',
   'analysedPaths' => 
   array (
-    0 => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app',
-    1 => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/routes',
-    2 => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config',
+    0 => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/CompanyController.php',
+    1 => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/DashboardController.php',
+    2 => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/ControlPanelController.php',
+    3 => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/SettingsController.php',
+    4 => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Tenancy/CreateTenantAction.php',
+    5 => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Requests',
   ),
   'scannedFiles' => 
   array (
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Fortify/CreateNewUser.php' => 'acdd6bc319e7335e9b1c9ef30baf909f100e005951d4ae196e9cc3b7cf608244',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Fortify/PasswordValidationRules.php' => 'cffb686ef5ad2e1b87ac7f79d146ac04d56488afd926ca2a54707c74294637c9',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Fortify/ResetUserPassword.php' => '6ce42b4d4325c431fbc32d89f3584b432aaccf8f1d63258262544a0f3f152fc3',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Fortify/UpdateUserPassword.php' => '057624e208f36627246383521e90bb720f9972ca6716b0fd56c4aa7c0b86d4a1',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Fortify/UpdateUserProfileInformation.php' => 'f319c9af49750836a125b4184091837aaa9d9ede8654dd7dba2ee70cab62960e',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Inventario/ConfirmarEntregaExpedicion.php' => '80d8a04675807cc9f22e93dfefaad2bdac02c4de1a33a586b617815f59af24cc',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Inventario/MoverAProduccion.php' => 'fb653bb1aa1183be4bb46950716769178dc3454eb2dbf6998092e6f347a63ebc',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Inventario/PrepararExpedicion.php' => '618b37d2930b601a7f579a1f1d1364b0ee9e2279bbb229e58559703826307e9d',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Inventario/RecibirLote.php' => '6e0928e958ca24b7f4ae39aa56e31b8808b17863fc9686509951d16da8f1927b',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Inventario/RegistrarTransporteDesdeApi.php' => 'fd2b21bb9b99c01491f9baa8f7d557ed39eed3f9542a89e73289af876af24e34',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Console/Commands/ProvisionTenant.php' => '645ac8d714a7e44b224053ccd4e815cb8f8633ffc96bd38ed3577ba8df4e330f',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Enums/Inventario/ExpedicionEstado.php' => '40a17d4e29d86c637797cd3eff30ebee6ebae64016b10f36ba19c34ce1f70330',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Enums/Inventario/LoteEstado.php' => '76fe4474acc235c38ba25bf7da6aa941d6fc6baa7018004bacddd879e0c08e76',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Enums/Inventario/MovimientoTipo.php' => 'dc5c1c5393c5cfb81efe29f8598c2ed28f6a9e68acdbd9a90e54a8249616198d',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Enums/Inventario/ProductoValidacion.php' => '0f76b465e322e6add61ae76074c49ebe5a4923172d648335ab74877299d94e65',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Enums/Inventario/TransporteEstado.php' => '155a4e0858e4eca4fd2c7e4844008c3c617375ba4784716f406e59416c156aed',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/Api/Inventario/ExpedicionApiController.php' => '1d051921b4f86ad1de70da819ee233a5d8760df54279b02865f3f9b4ed961ab7',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/Api/Inventario/TransporteApiController.php' => '8809c586bb1696c9af78c8ea2c6b24da5cd1304f6924741775dca24171bfec01',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/Auth/GoogleController.php' => '2b430f44e5ac4f6e573ed0f2b9e7fa51be898cd65cd5ecfa9decc938811e4550',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/AuthController.php' => '31e350247586fa5f67cb763ccc1449047843ca6ad822217838c519682e3ac1a8',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/Controller.php' => 'e5ddafa07059bfc9f8310767b0fc04dd3b8a1f50bcec1fd693b19f5555697825',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/Dashboard/Features/Inventario/AlmacenController.php' => 'a7fc11e8cda1b7a2303a00b7d5f9cea67a946ecf09b09b504ff198ee0b40226b',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/Dashboard/Features/Inventario/DashboardInventarioController.php' => 'db39d8678ca84539f78a3f5570c104e310fa5c410a3d14c58ca6d20f5ad5db16',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/Dashboard/Features/Inventario/ExpedicionController.php' => '20e600de60093c6cce288bdd1bd0ef38ba1c01ae1fc289552aec305242c9e793',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/Dashboard/Features/Inventario/ProduccionController.php' => 'ef5b2425caef17744158be0e4b8b230b25979945fe1e1e7456f74ab0db369093',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/Dashboard/Features/Inventario/StockController.php' => 'da5f358e1fdaa95799ccf727543d20aebfaa669470d43cced57e3b79864c16d2',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/Dashboard/Features/Inventario/TransporteController.php' => 'a7b33741cb2784f2526dda8dff2a83e2485ef865f55eeefda16e8e06699d211c',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/Dashboard/Features/Inventario/TrazabilidadController.php' => 'eb1f966e112c29b3c06769b13080dcd5559f37e5280a0791aef2441da4165415',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/Dashboard/Features/NoteController.php' => 'd2cb32d5043646f5ef996b1c063435de74b23c457b51d3aae948edf1cc48ffa2',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/ProvisioningController.php' => '44481cd0c06e4838c9bd91f5651c16da01cc6a8d8e154687c38c77e3d841ad15',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/ReminderController.php' => 'ced06b5abde14c1971a35ae1f83d446632b84efeee33bf11b54579582b67f6de',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/ReminderListController.php' => 'a1b235710ac720c91fa7d527d6fb724f1ff6bcf50b5fd0ff749a1f01ac1fefff',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/SubtaskController.php' => '75735da0b85bd50c357abcee4067ff2c75a83efbdc3124f9636a41f76b22c38f',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Middleware/AutenticarApiInventario.php' => '3110fba2fac477b3f95daff115eca7e5449d02a898f840bb372a7d10b7ab89e6',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Middleware/CheckHasTenant.php' => '5f1f8d67a62176c5670a095f1b7736d63bad17b1b6e9059c1c2763212bc198a4',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Middleware/InitializeTenancyFromApi.php' => '26757fce819aa11fe27df4d7200b494831a4d8dc70f1419c755098b0bb4cb760',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Middleware/InitializeTenancyFromUser.php' => '8a3da1bd2483321df10b913f1ebc93249ab457976bb35e41839286c7f6e18e18',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Middleware/InitializeTenant.php' => '662b1d33f301fb4bcfbc1d90b6c4a075d61f8ddc7ab71edda3ed483bd590c3c2',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Domain.php' => '525322d5bfb8b69f4d5d72654c2e8de7fd28ec8e8d70f786277596cbd74569ca',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Inventario/Almacen.php' => '0184e829aa29eb403c90abbd47997a1e2883717cc17f6b1d94f788062c842d4a',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Inventario/ApiTokenInventario.php' => 'bac517da148599e21fc17e82efa11f1d4af44326838eced79d4782bc54e4d0dc',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Inventario/CategoriaProducto.php' => 'c3e4cf407565ed7eee46d87520191b9362e95f52aa91b8d8f77f68d16d8c35ea',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Inventario/DetalleMovimiento.php' => '89c992de0fbe1efbbc057d80f0fb9b5cd12d242bdc75758ecb517a8a8799d250',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Inventario/Estanteria.php' => '1e41dff113bee7ebf8834c9964be52b1e2c7291b4594dfe96ce4230f233341ae',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Inventario/Expedicion.php' => 'aa6e48a660f02c412c0e367299a4f80ab4c113658c5d34bc409e409352414c18',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Inventario/LineaExpedicion.php' => '3fd77c3b604570be8b9900d230d9292a89f00635a7e6d1b558a2293ff67eb4a2',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Inventario/LineaTransporte.php' => '9b086968695656fb69746a165c5a871cf63b009592f2a68d29fdb89366ffa955',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Inventario/Lote.php' => 'c8b460b4c0fd5f37b8d7da6f9560e7c3327d0594e0d26d7ef948a005f9609cf6',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Inventario/Movimiento.php' => '6a988df226ab813688b868e8149ce1b6b5d06e6412b839465903a4c165cd3ac2',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Inventario/Producto.php' => '0e2fca3fb32a772b75d98d7f8a1481f254ac3cb013a84ea632b9bd3068576f5b',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Inventario/Proveedor.php' => 'f058e453bce8efdcc92eb8429837e9d462d3e45fe4f31596666eadcdb994392b',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Inventario/Stock.php' => '20b6c315bb50ef4ae066ac53deab7d3e11a78297f6eb84baae084e64160ee9ec',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Inventario/Transporte.php' => 'deebd9331331f35e13a94f9fc361acf7bcdb039dd59116783eb708b5bf3a9f69',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Inventario/TrazabilidadEvento.php' => 'cd108a55c28674c0dc24d0b17f974d6ac4cda7040e6bf9fb411129ebef9d6152',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Inventario/Ubicacion.php' => '547e9726f62232260ad46785dbf8fbb390cc89a8a0f6e4384fada51ef4be999e',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Inventario/UnidadMedida.php' => '6f0104044b09517c9fe9bb2c287fbc251409a5665b5df204cea411917bb514f7',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Inventario/Zona.php' => '3fda992528d9dfe095c0662b6651603f92822ee167e62d2ef6cd8413f3021357',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Note.php' => 'a767bf89a9ba536be90020028cf665031d2bbcb6f8a3d52920c652fcec8eb568',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Reminder.php' => '867913ceb00d86d08913948dd888b6aed50c4b33b8a2c5bf31779b05be70b352',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/ReminderList.php' => 'd46e2d828c9b5c341156054c62d7ff7b788681922cf9f97fdaa26458bdd6d567',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/SocialAccount.php' => '60f6eecdce7bf708ba3e4fe8fe6d712a28ed27f59dcfea4643deb705c88afdcd',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Subtask.php' => '48e21f4bbf7093edf380dfda00e241bfad5c2c5100066ad9b622f0566ab9b796',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/Tenant.php' => '425a8008684c1e0180b217e64a8d2a0288c230a9e80c1de5eb4e7eaa08ce4d90',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/TenantAuditLog.php' => '0fe23f1b60ce52a32746e5568c113b4bb6d9b1fd54304b39211aaff1e4eebe12',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/TenantInvitation.php' => 'd5045a51682f623e95abd5d92a583b5b7eb3d7233152069f822bf9b9e4a9f43b',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/TenantMembership.php' => '21c4c50d07789a826cb056ec17163ec519bbc271168b0f31f78aa649c72fb726',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/TenantProvisioning.php' => 'dd83169bbea8dd456980728bee76427877e90cc4c83e80731b6465b0a60980e8',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/TenantSetting.php' => '301e0232aec340ac52df8c86b922e7d4b5427275fbe69067c093c7c434a1e2a5',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/User.php' => '307da59f4c2f4dd2549d0bb3de1615be3becc3ed84a16d0e913226412ebb19d8',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Notifications/CustomResetPassword.php' => '87ad198644e739a45e440a71555a8fa8a2f7513000adb36adf181891067fde49',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Policies/ReminderListPolicy.php' => '5c3f9c465d45c32bba93046d3e04e4e5e81ef625cb3b2a09f81ae2c116beee40',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Policies/ReminderPolicy.php' => '7ba43f28e87b7e09848f816d20f246f5b9e0a2c5804f79cc83b5bd33aed9880a',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Policies/SubtaskPolicy.php' => '5d70ef1e4bcea588683da8cf62887f702acb70dfb4d8151f618250fc60ad1b76',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Providers/AppServiceProvider.php' => 'f200ffa41b61321c8fa9b0f028e003446b31b5f4e8e9bc00ddfdbf42088d0fde',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Providers/FortifyServiceProvider.php' => '39fc2f430d3b6097c27ae0c6a70fca165d0faebd7815e4f450641997028d83f3',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Providers/ModuloInventarioServiceProvider.php' => '3c3d848ad43d3bf735d28c1c5481c6d5c29f5c431d41f005ed1481c9be1ef81e',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Providers/TenancyServiceProvider.php' => '9fb64f6caad6ea6d232782e3eeb3f282d833f23c6b874e03c982a31d20516337',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Services/DashboardService.php' => 'e240976598036c572519666a0e79f89a7718b4a313f3b7f84407bdb5d42d149f',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Tenancy/Jobs/FinalizeProvisioning.php' => 'd1ab05c692ec181163690e65cea6f3186254d998ad076b839fad9c3edf762a1c',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/mail/TestEmail.php' => '8b27e1c3282ec24167f1537cb8aa391a8c12e997efa748d2ba280e7d8d7b7cbb',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/app.php' => '78dcd36b226fd7b24057cb95f567cb6e96561c2406653892d8aef6dcea8461e4',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/auth.php' => 'e79822f8f7a18c87db9477d2a36d4bbc8d2a5c555cf937925e9a9ab172c2fcc3',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/cache.php' => 'b8bcf382283330b94c0a602ff06452de819041ea709e28eea5065d51d1d7d085',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/database.php' => 'fa2469d80e51b8600e0e8f1aeaaaf76d3870ceb383dd82cb9f41f7b054ba54fe',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/filesystems.php' => 'ba7060d7a23e490c3ce830656f6d24ad3ccf5b868e3293f2a12e411959dc5635',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/fortify.php' => '0d58acf9586b02ea874a3cc1b97760a56c28b6ba9a2d80f6bbfa6357ecdbe042',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/livewire.php' => '645b32d101a6bbd2e1282dc630f000ea7582e9df7a77f555f3d650e8916b8f7c',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/logging.php' => 'd90f24826a3330437f2f2fc12bb28680abe1281d35d62b082c234f4b69873835',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/mail.php' => 'e9674dcaaf92ae5ba74226f2e89961314db87d85013b5b8b4722a90e2adc7cf2',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/queue.php' => '6101774da7c8b79af46d0028f2b8b31a484c3f7eda10b76e5b27b6093ad364a4',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/services.php' => 'e87c7a9d4fca479c9952a073639ee6d4d6ed99df4925fdbd2bbe977755233af2',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/session.php' => 'f2e75e189021597e29940c0859c00c3088ec591e403768fff5143c5687a80f59',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/tenancy.php' => '9cf06c44d8a358de177bed6393b21d31e0b009fe10d2b080739aa71ee19997a7',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/routes/api.php' => '84dcb0937e4d5a64f149887b3aca72c29c5f159740a0293a38f88a64b18edd74',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/routes/central.php' => '37fbd4c4bf6916037b82e01daa649fb8a9f586f008379d4acd162e87f873e497',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/routes/tenant.php' => 'cc4908fe59b8b9dbd969f5f0be1274db88d09d5deb3cbaf4290376eaaeca61e9',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/routes/web.php' => '81f2a093d8d445eea83705b1b0c500784a16f1d68d0980ec9dc0eaec1d8feac9',
   ),
   'composerLocks' => 
   array (
-    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/composer.lock' => 'bb0ea93f2bac3cea7fa927247d46cc3e57e86818b89d4cd57304f468a89b767f',
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/composer.lock' => '664126b2665eaffb33e82c4cbea4ea0d1fcfaa18cc3e48ef2d871f7de1e20f4d',
   ),
   'composerInstalled' => 
   array (
@@ -30,11 +130,35 @@ return [
     array (
       'versions' => 
       array (
+        'bacon/bacon-qr-code' => 
+        array (
+          'pretty_version' => 'v3.1.1',
+          'version' => '3.1.1.0',
+          'reference' => '4da2233e72eeecd9be3b62e0dc2cc9ed8e2e31c2',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../bacon/bacon-qr-code',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
+        'beberlei/assert' => 
+        array (
+          'pretty_version' => 'v3.3.3',
+          'version' => '3.3.3.0',
+          'reference' => 'b5fd8eacd8915a1b627b8bfc027803f1939734dd',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../beberlei/assert',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
         'brick/math' => 
         array (
-          'pretty_version' => '0.14.6',
-          'version' => '0.14.6.0',
-          'reference' => '32498d5e1897e7642c0b961ace2df6d7dc9a3bc3',
+          'pretty_version' => '0.14.8',
+          'version' => '0.14.8.0',
+          'reference' => '63422359a44b7f06cae63c3b429b59e8efcc0629',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../brick/math',
           'aliases' => 
@@ -54,6 +178,18 @@ return [
           ),
           'dev_requirement' => false,
         ),
+        'clue/stream-filter' => 
+        array (
+          'pretty_version' => 'v1.7.0',
+          'version' => '1.7.0.0',
+          'reference' => '049509fef80032cb3f051595029ab75b49a3c2f7',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../clue/stream-filter',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
         'cordoval/hamcrest-php' => 
         array (
           'dev_requirement' => true,
@@ -61,6 +197,18 @@ return [
           array (
             0 => '*',
           ),
+        ),
+        'dasprid/enum' => 
+        array (
+          'pretty_version' => '1.0.7',
+          'version' => '1.0.7.0',
+          'reference' => 'b5874fa9ed0043116c72162ec7f4fb50e02e7cce',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../dasprid/enum',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
         ),
         'davedevelopment/hamcrest-php' => 
         array (
@@ -130,6 +278,18 @@ return [
           ),
           'dev_requirement' => false,
         ),
+        'facade/ignition-contracts' => 
+        array (
+          'pretty_version' => '1.0.2',
+          'version' => '1.0.2.0',
+          'reference' => '3c921a1cdba35b68a7f0ccffc6dffc1995b18267',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../facade/ignition-contracts',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
         'fakerphp/faker' => 
         array (
           'pretty_version' => 'v1.24.1',
@@ -153,6 +313,18 @@ return [
           array (
           ),
           'dev_requirement' => true,
+        ),
+        'firebase/php-jwt' => 
+        array (
+          'pretty_version' => 'v7.0.5',
+          'version' => '7.0.5.0',
+          'reference' => '47ad26bab5e7c70ae8a6f08ed25ff83631121380',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../firebase/php-jwt',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
         ),
         'fruitcake/php-cors' => 
         array (
@@ -204,9 +376,9 @@ return [
         ),
         'guzzlehttp/psr7' => 
         array (
-          'pretty_version' => '2.8.0',
-          'version' => '2.8.0.0',
-          'reference' => '21dc724a0583619cd1652f673303492272778051',
+          'pretty_version' => '2.9.0',
+          'version' => '2.9.0.0',
+          'reference' => '7d0ed42f28e42d61352a7a79de682e5e67fec884',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../guzzlehttp/psr7',
           'aliases' => 
@@ -243,7 +415,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/broadcasting' => 
@@ -251,7 +423,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/bus' => 
@@ -259,7 +431,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/cache' => 
@@ -267,7 +439,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/collections' => 
@@ -275,7 +447,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/concurrency' => 
@@ -283,7 +455,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/conditionable' => 
@@ -291,7 +463,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/config' => 
@@ -299,7 +471,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/console' => 
@@ -307,7 +479,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/container' => 
@@ -315,7 +487,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/contracts' => 
@@ -323,7 +495,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/cookie' => 
@@ -331,7 +503,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/database' => 
@@ -339,7 +511,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/encryption' => 
@@ -347,7 +519,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/events' => 
@@ -355,7 +527,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/filesystem' => 
@@ -363,7 +535,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/hashing' => 
@@ -371,7 +543,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/http' => 
@@ -379,7 +551,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/json-schema' => 
@@ -387,7 +559,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/log' => 
@@ -395,7 +567,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/macroable' => 
@@ -403,7 +575,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/mail' => 
@@ -411,7 +583,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/notifications' => 
@@ -419,7 +591,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/pagination' => 
@@ -427,7 +599,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/pipeline' => 
@@ -435,7 +607,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/process' => 
@@ -443,7 +615,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/queue' => 
@@ -451,7 +623,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/redis' => 
@@ -459,7 +631,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/reflection' => 
@@ -467,7 +639,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/routing' => 
@@ -475,7 +647,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/session' => 
@@ -483,7 +655,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/support' => 
@@ -491,7 +663,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/testing' => 
@@ -499,7 +671,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/translation' => 
@@ -507,7 +679,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/validation' => 
@@ -515,7 +687,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'illuminate/view' => 
@@ -523,7 +695,7 @@ return [
           'dev_requirement' => false,
           'replaced' => 
           array (
-            0 => 'v12.50.0',
+            0 => 'v12.56.0',
           ),
         ),
         'kodova/hamcrest-php' => 
@@ -534,11 +706,23 @@ return [
             0 => '*',
           ),
         ),
+        'laravel/fortify' => 
+        array (
+          'pretty_version' => 'v1.36.2',
+          'version' => '1.36.2.0',
+          'reference' => 'b36e0782e6f5f6cfbab34327895a63b7c4c031f9',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/fortify',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
         'laravel/framework' => 
         array (
-          'pretty_version' => 'v12.50.0',
-          'version' => '12.50.0.0',
-          'reference' => '174ffed91d794a35a541a5eb7c3785a02a34aaba',
+          'pretty_version' => 'v12.56.0',
+          'version' => '12.56.0.0',
+          'reference' => 'dac16d424b59debb2273910dde88eb7050a2a709',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework',
           'aliases' => 
@@ -548,9 +732,9 @@ return [
         ),
         'laravel/pail' => 
         array (
-          'pretty_version' => 'v1.2.5',
-          'version' => '1.2.5.0',
-          'reference' => 'fdb73f5eacf03db576c710d5a00101ba185f2254',
+          'pretty_version' => 'v1.2.6',
+          'version' => '1.2.6.0',
+          'reference' => 'aa71a01c309e7f66bc2ec4fb1a59291b82eb4abf',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/pail',
           'aliases' => 
@@ -560,9 +744,9 @@ return [
         ),
         'laravel/pint' => 
         array (
-          'pretty_version' => 'v1.27.0',
-          'version' => '1.27.0.0',
-          'reference' => 'c67b4195b75491e4dfc6b00b1c78b68d86f54c90',
+          'pretty_version' => 'v1.29.0',
+          'version' => '1.29.0.0',
+          'reference' => 'bdec963f53172c5e36330f3a400604c69bf02d39',
           'type' => 'project',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/pint',
           'aliases' => 
@@ -572,9 +756,9 @@ return [
         ),
         'laravel/prompts' => 
         array (
-          'pretty_version' => 'v0.3.12',
-          'version' => '0.3.12.0',
-          'reference' => '4861ded9003b7f8a158176a0b7666f74ee761be8',
+          'pretty_version' => 'v0.3.16',
+          'version' => '0.3.16.0',
+          'reference' => '11e7d5f93803a2190b00e145142cb00a33d17ad2',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/prompts',
           'aliases' => 
@@ -584,9 +768,9 @@ return [
         ),
         'laravel/sail' => 
         array (
-          'pretty_version' => 'v1.52.0',
-          'version' => '1.52.0.0',
-          'reference' => '64ac7d8abb2dbcf2b76e61289451bae79066b0b3',
+          'pretty_version' => 'v1.56.0',
+          'version' => '1.56.0.0',
+          'reference' => 'f43426bb42a1cb7a51a3861d9138063e54766d28',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/sail',
           'aliases' => 
@@ -596,9 +780,9 @@ return [
         ),
         'laravel/serializable-closure' => 
         array (
-          'pretty_version' => 'v2.0.9',
-          'version' => '2.0.9.0',
-          'reference' => '8f631589ab07b7b52fead814965f5a800459cb3e',
+          'pretty_version' => 'v2.0.11',
+          'version' => '2.0.11.0',
+          'reference' => 'd1af40ac4a6ccc12bd062a7184f63c9995a63bdd',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/serializable-closure',
           'aliases' => 
@@ -606,11 +790,23 @@ return [
           ),
           'dev_requirement' => false,
         ),
+        'laravel/socialite' => 
+        array (
+          'pretty_version' => 'v5.26.1',
+          'version' => '5.26.1.0',
+          'reference' => 'db6ec2ee967b7f06412c3a0cf1daaf072f4752a4',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/socialite',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
         'laravel/tinker' => 
         array (
-          'pretty_version' => 'v2.11.0',
-          'version' => '2.11.0.0',
-          'reference' => '3d34b97c9a1747a81a3fde90482c092bd8b66468',
+          'pretty_version' => 'v2.11.1',
+          'version' => '2.11.1.0',
+          'reference' => 'c9f80cc835649b5c1842898fb043f8cc098dd741',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/tinker',
           'aliases' => 
@@ -620,9 +816,9 @@ return [
         ),
         'league/commonmark' => 
         array (
-          'pretty_version' => '2.8.0',
-          'version' => '2.8.0.0',
-          'reference' => '4efa10c1e56488e658d10adf7b7b7dcd19940bfb',
+          'pretty_version' => '2.8.2',
+          'version' => '2.8.2.0',
+          'reference' => '59fb075d2101740c337c7216e3f32b36c204218b',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../league/commonmark',
           'aliases' => 
@@ -644,9 +840,9 @@ return [
         ),
         'league/flysystem' => 
         array (
-          'pretty_version' => '3.31.0',
-          'version' => '3.31.0.0',
-          'reference' => '1717e0b3642b0df65ecb0cc89cdd99fa840672ff',
+          'pretty_version' => '3.33.0',
+          'version' => '3.33.0.0',
+          'reference' => '570b8871e0ce693764434b29154c54b434905350',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../league/flysystem',
           'aliases' => 
@@ -678,11 +874,23 @@ return [
           ),
           'dev_requirement' => false,
         ),
+        'league/oauth1-client' => 
+        array (
+          'pretty_version' => 'v1.11.0',
+          'version' => '1.11.0.0',
+          'reference' => 'f9c94b088837eb1aae1ad7c4f23eb65cc6993055',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../league/oauth1-client',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
         'league/uri' => 
         array (
-          'pretty_version' => '7.8.0',
-          'version' => '7.8.0.0',
-          'reference' => '4436c6ec8d458e4244448b069cc572d088230b76',
+          'pretty_version' => '7.8.1',
+          'version' => '7.8.1.0',
+          'reference' => '08cf38e3924d4f56238125547b5720496fac8fd4',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../league/uri',
           'aliases' => 
@@ -692,9 +900,9 @@ return [
         ),
         'league/uri-interfaces' => 
         array (
-          'pretty_version' => '7.8.0',
-          'version' => '7.8.0.0',
-          'reference' => 'c5c5cd056110fc8afaba29fa6b72a43ced42acd4',
+          'pretty_version' => '7.8.1',
+          'version' => '7.8.1.0',
+          'reference' => '85d5c77c5d6d3af6c54db4a78246364908f3c928',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../league/uri-interfaces',
           'aliases' => 
@@ -702,13 +910,25 @@ return [
           ),
           'dev_requirement' => false,
         ),
-        'livewire/livewire' => 
+        'mailersend/laravel-driver' => 
         array (
-          'pretty_version' => 'v4.1.3',
-          'version' => '4.1.3.0',
-          'reference' => '69c871cb15fb95f10cda5acd1ee7e63cd3c494c8',
+          'pretty_version' => 'v3.1.0',
+          'version' => '3.1.0.0',
+          'reference' => '9452f4f7e3881494bc55f3521b960b1c233a4be1',
           'type' => 'library',
-          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../livewire/livewire',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../mailersend/laravel-driver',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
+        'mailersend/mailersend' => 
+        array (
+          'pretty_version' => 'v0.36.0',
+          'version' => '0.36.0.0',
+          'reference' => '0a28852bba61f31c3668a2af6426dc0b2c866432',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../mailersend/mailersend',
           'aliases' => 
           array (
           ),
@@ -760,9 +980,9 @@ return [
         ),
         'nesbot/carbon' => 
         array (
-          'pretty_version' => '3.11.1',
-          'version' => '3.11.1.0',
-          'reference' => 'f438fcc98f92babee98381d399c65336f3a3827f',
+          'pretty_version' => '3.11.4',
+          'version' => '3.11.4.0',
+          'reference' => 'e890471a3494740f7d9326d72ce6a8c559ffee60',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../nesbot/carbon',
           'aliases' => 
@@ -772,9 +992,9 @@ return [
         ),
         'nette/schema' => 
         array (
-          'pretty_version' => 'v1.3.3',
-          'version' => '1.3.3.0',
-          'reference' => '2befc2f42d7c715fd9d95efc31b1081e5d765004',
+          'pretty_version' => 'v1.3.5',
+          'version' => '1.3.5.0',
+          'reference' => 'f0ab1a3cda782dbc5da270d28545236aa80c4002',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../nette/schema',
           'aliases' => 
@@ -784,9 +1004,9 @@ return [
         ),
         'nette/utils' => 
         array (
-          'pretty_version' => 'v4.1.2',
-          'version' => '4.1.2.0',
-          'reference' => 'f76b5dc3d6c6d3043c8d937df2698515b99cbaf5',
+          'pretty_version' => 'v4.1.3',
+          'version' => '4.1.3.0',
+          'reference' => 'bb3ea637e3d131d72acc033cfc2746ee893349fe',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../nette/utils',
           'aliases' => 
@@ -808,9 +1028,9 @@ return [
         ),
         'nunomaduro/collision' => 
         array (
-          'pretty_version' => 'v8.8.3',
-          'version' => '8.8.3.0',
-          'reference' => '1dc9e88d105699d0fee8bb18890f41b274f6b4c4',
+          'pretty_version' => 'v8.9.3',
+          'version' => '8.9.3.0',
+          'reference' => 'b0d8ab95b29c3189aeeb902d81215231df4c1b64',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../nunomaduro/collision',
           'aliases' => 
@@ -820,11 +1040,47 @@ return [
         ),
         'nunomaduro/termwind' => 
         array (
-          'pretty_version' => 'v2.3.3',
-          'version' => '2.3.3.0',
-          'reference' => '6fb2a640ff502caace8e05fd7be3b503a7e1c017',
+          'pretty_version' => 'v2.4.0',
+          'version' => '2.4.0.0',
+          'reference' => '712a31b768f5daea284c2169a7d227031001b9a8',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../nunomaduro/termwind',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
+        'nyholm/psr7' => 
+        array (
+          'pretty_version' => '1.8.2',
+          'version' => '1.8.2.0',
+          'reference' => 'a71f2b11690f4b24d099d6b16690a90ae14fc6f3',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../nyholm/psr7',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
+        'paragonie/constant_time_encoding' => 
+        array (
+          'pretty_version' => 'v3.1.3',
+          'version' => '3.1.3.0',
+          'reference' => 'd5b01a39b3415c2cd581d3bd3a3575c1ebbd8e77',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../paragonie/constant_time_encoding',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
+        'paragonie/random_compat' => 
+        array (
+          'pretty_version' => 'v9.99.100',
+          'version' => '9.99.100.0',
+          'reference' => '996434e5492cb4c3edcb9168db6fbb1359ef965a',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../paragonie/random_compat',
           'aliases' => 
           array (
           ),
@@ -854,6 +1110,104 @@ return [
           ),
           'dev_requirement' => true,
         ),
+        'php-http/async-client-implementation' => 
+        array (
+          'dev_requirement' => false,
+          'provided' => 
+          array (
+            0 => '*',
+            1 => '1.0',
+          ),
+        ),
+        'php-http/client-common' => 
+        array (
+          'pretty_version' => '2.7.3',
+          'version' => '2.7.3.0',
+          'reference' => 'dcc6de29c90dd74faab55f71b79d89409c4bf0c1',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../php-http/client-common',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
+        'php-http/client-implementation' => 
+        array (
+          'dev_requirement' => false,
+          'provided' => 
+          array (
+            0 => '*',
+            1 => '1.0',
+          ),
+        ),
+        'php-http/discovery' => 
+        array (
+          'pretty_version' => '1.20.0',
+          'version' => '1.20.0.0',
+          'reference' => '82fe4c73ef3363caed49ff8dd1539ba06044910d',
+          'type' => 'composer-plugin',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../php-http/discovery',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
+        'php-http/guzzle7-adapter' => 
+        array (
+          'pretty_version' => '1.1.0',
+          'version' => '1.1.0.0',
+          'reference' => '03a415fde709c2f25539790fecf4d9a31bc3d0eb',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../php-http/guzzle7-adapter',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
+        'php-http/httplug' => 
+        array (
+          'pretty_version' => '2.4.1',
+          'version' => '2.4.1.0',
+          'reference' => '5cad731844891a4c282f3f3e1b582c46839d22f4',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../php-http/httplug',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
+        'php-http/message' => 
+        array (
+          'pretty_version' => '1.16.2',
+          'version' => '1.16.2.0',
+          'reference' => '06dd5e8562f84e641bf929bfe699ee0f5ce8080a',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../php-http/message',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
+        'php-http/message-factory-implementation' => 
+        array (
+          'dev_requirement' => false,
+          'provided' => 
+          array (
+            0 => '1.0',
+          ),
+        ),
+        'php-http/promise' => 
+        array (
+          'pretty_version' => '1.3.1',
+          'version' => '1.3.1.0',
+          'reference' => 'fc85b1fba37c169a69a07ef0d5a8075770cc1f83',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../php-http/promise',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
         'phpoption/phpoption' => 
         array (
           'pretty_version' => '1.9.5',
@@ -866,11 +1220,23 @@ return [
           ),
           'dev_requirement' => false,
         ),
+        'phpseclib/phpseclib' => 
+        array (
+          'pretty_version' => '3.0.51',
+          'version' => '3.0.51.0',
+          'reference' => 'd59c94077f9c9915abb51ddb52ce85188ece1748',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../phpseclib/phpseclib',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
         'phpstan/phpstan' => 
         array (
-          'pretty_version' => '2.1.38',
-          'version' => '2.1.38.0',
-          'reference' => 'dfaf1f530e1663aa167bc3e52197adb221582629',
+          'pretty_version' => '2.1.47',
+          'version' => '2.1.47.0',
+          'reference' => '79015445d8bd79e62b29140f12e5bfced1dcca65',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../phpstan/phpstan',
           'aliases' => 
@@ -940,15 +1306,27 @@ return [
         ),
         'phpunit/phpunit' => 
         array (
-          'pretty_version' => '11.5.51',
-          'version' => '11.5.51.0',
-          'reference' => 'ad14159f92910b0f0e3928c13e9b2077529de091',
+          'pretty_version' => '11.5.55',
+          'version' => '11.5.55.0',
+          'reference' => 'adc7262fccc12de2b30f12a8aa0b33775d814f00',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../phpunit/phpunit',
           'aliases' => 
           array (
           ),
           'dev_requirement' => true,
+        ),
+        'pragmarx/google2fa' => 
+        array (
+          'pretty_version' => 'v9.0.0',
+          'version' => '9.0.0.0',
+          'reference' => 'e6bc62dd6ae83acc475f57912e27466019a1f2cf',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../pragmarx/google2fa',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
         ),
         'psr/clock' => 
         array (
@@ -1027,7 +1405,8 @@ return [
           'dev_requirement' => false,
           'provided' => 
           array (
-            0 => '1.0',
+            0 => '*',
+            1 => '1.0',
           ),
         ),
         'psr/http-factory' => 
@@ -1047,7 +1426,8 @@ return [
           'dev_requirement' => false,
           'provided' => 
           array (
-            0 => '1.0',
+            0 => '*',
+            1 => '1.0',
           ),
         ),
         'psr/http-message' => 
@@ -1067,7 +1447,8 @@ return [
           'dev_requirement' => false,
           'provided' => 
           array (
-            0 => '1.0',
+            0 => '*',
+            1 => '1.0',
           ),
         ),
         'psr/log' => 
@@ -1113,9 +1494,9 @@ return [
         ),
         'psy/psysh' => 
         array (
-          'pretty_version' => 'v0.12.19',
-          'version' => '0.12.19.0',
-          'reference' => 'a4f766e5c5b6773d8399711019bb7d90875a50ee',
+          'pretty_version' => 'v0.12.22',
+          'version' => '0.12.22.0',
+          'reference' => '3be75d5b9244936dd4ac62ade2bfb004d13acf0f',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../psy/psysh',
           'aliases' => 
@@ -1367,11 +1748,47 @@ return [
           ),
           'dev_requirement' => true,
         ),
+        'stancl/jobpipeline' => 
+        array (
+          'pretty_version' => 'v1.9.0',
+          'version' => '1.9.0.0',
+          'reference' => 'be9481dff1e3d50d90ad4f618cdca5ec4d763ec1',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../stancl/jobpipeline',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
+        'stancl/tenancy' => 
+        array (
+          'pretty_version' => 'v3.10.0',
+          'version' => '3.10.0.0',
+          'reference' => 'ab64f4599daf1152830e7d9a3c4af2d3e151b2e7',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../stancl/tenancy',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
+        'stancl/virtualcolumn' => 
+        array (
+          'pretty_version' => 'v1.5.0',
+          'version' => '1.5.0.0',
+          'reference' => '75718edcfeeb19abc1970f5395043f7d43cce5bc',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../stancl/virtualcolumn',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
         'symfony/clock' => 
         array (
-          'pretty_version' => 'v8.0.0',
-          'version' => '8.0.0.0',
-          'reference' => '832119f9b8dbc6c8e6f65f30c5969eca1e88764f',
+          'pretty_version' => 'v8.0.8',
+          'version' => '8.0.8.0',
+          'reference' => 'b55a638b189a6faa875e0ccdb00908fb87af95b3',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/clock',
           'aliases' => 
@@ -1381,9 +1798,9 @@ return [
         ),
         'symfony/console' => 
         array (
-          'pretty_version' => 'v7.4.4',
-          'version' => '7.4.4.0',
-          'reference' => '41e38717ac1dd7a46b6bda7d6a82af2d98a78894',
+          'pretty_version' => 'v7.4.8',
+          'version' => '7.4.8.0',
+          'reference' => '1e92e39c51f95b88e3d66fa2d9f06d1fb45dd707',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/console',
           'aliases' => 
@@ -1393,9 +1810,9 @@ return [
         ),
         'symfony/css-selector' => 
         array (
-          'pretty_version' => 'v8.0.0',
-          'version' => '8.0.0.0',
-          'reference' => '6225bd458c53ecdee056214cb4a2ffaf58bd592b',
+          'pretty_version' => 'v8.0.8',
+          'version' => '8.0.8.0',
+          'reference' => '8db1c00226a94d8ab6aa89d9224eeee91e2ea2ed',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/css-selector',
           'aliases' => 
@@ -1417,9 +1834,9 @@ return [
         ),
         'symfony/error-handler' => 
         array (
-          'pretty_version' => 'v7.4.4',
-          'version' => '7.4.4.0',
-          'reference' => '8da531f364ddfee53e36092a7eebbbd0b775f6b8',
+          'pretty_version' => 'v7.4.8',
+          'version' => '7.4.8.0',
+          'reference' => '8dd79d8af777ee6cba2fd4d98da6ffb839f3c0fa',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/error-handler',
           'aliases' => 
@@ -1429,9 +1846,9 @@ return [
         ),
         'symfony/event-dispatcher' => 
         array (
-          'pretty_version' => 'v8.0.4',
-          'version' => '8.0.4.0',
-          'reference' => '99301401da182b6cfaa4700dbe9987bb75474b47',
+          'pretty_version' => 'v8.0.8',
+          'version' => '8.0.8.0',
+          'reference' => 'f662acc6ab22a3d6d716dcb44c381c6002940df6',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/event-dispatcher',
           'aliases' => 
@@ -1461,9 +1878,9 @@ return [
         ),
         'symfony/finder' => 
         array (
-          'pretty_version' => 'v7.4.5',
-          'version' => '7.4.5.0',
-          'reference' => 'ad4daa7c38668dcb031e63bc99ea9bd42196a2cb',
+          'pretty_version' => 'v7.4.8',
+          'version' => '7.4.8.0',
+          'reference' => 'e0be088d22278583a82da281886e8c3592fbf149',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/finder',
           'aliases' => 
@@ -1473,9 +1890,9 @@ return [
         ),
         'symfony/http-foundation' => 
         array (
-          'pretty_version' => 'v7.4.5',
-          'version' => '7.4.5.0',
-          'reference' => '446d0db2b1f21575f1284b74533e425096abdfb6',
+          'pretty_version' => 'v7.4.8',
+          'version' => '7.4.8.0',
+          'reference' => '9381209597ec66c25be154cbf2289076e64d1eab',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/http-foundation',
           'aliases' => 
@@ -1485,9 +1902,9 @@ return [
         ),
         'symfony/http-kernel' => 
         array (
-          'pretty_version' => 'v7.4.5',
-          'version' => '7.4.5.0',
-          'reference' => '229eda477017f92bd2ce7615d06222ec0c19e82a',
+          'pretty_version' => 'v7.4.8',
+          'version' => '7.4.8.0',
+          'reference' => '017e76ad089bac281553389269e259e155935e1a',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/http-kernel',
           'aliases' => 
@@ -1497,9 +1914,9 @@ return [
         ),
         'symfony/mailer' => 
         array (
-          'pretty_version' => 'v7.4.4',
-          'version' => '7.4.4.0',
-          'reference' => '7b750074c40c694ceb34cb926d6dffee231c5cd6',
+          'pretty_version' => 'v7.4.8',
+          'version' => '7.4.8.0',
+          'reference' => 'f6ea532250b476bfc1b56699b388a1bdbf168f62',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/mailer',
           'aliases' => 
@@ -1509,9 +1926,9 @@ return [
         ),
         'symfony/mime' => 
         array (
-          'pretty_version' => 'v7.4.5',
-          'version' => '7.4.5.0',
-          'reference' => 'b18c7e6e9eee1e19958138df10412f3c4c316148',
+          'pretty_version' => 'v7.4.8',
+          'version' => '7.4.8.0',
+          'reference' => '6df02f99998081032da3407a8d6c4e1dcb5d4379',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/mime',
           'aliases' => 
@@ -1519,11 +1936,23 @@ return [
           ),
           'dev_requirement' => false,
         ),
+        'symfony/options-resolver' => 
+        array (
+          'pretty_version' => 'v7.4.8',
+          'version' => '7.4.8.0',
+          'reference' => '2888fcdc4dc2fd5f7c7397be78631e8af12e02b4',
+          'type' => 'library',
+          'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/options-resolver',
+          'aliases' => 
+          array (
+          ),
+          'dev_requirement' => false,
+        ),
         'symfony/polyfill-ctype' => 
         array (
-          'pretty_version' => 'v1.33.0',
-          'version' => '1.33.0.0',
-          'reference' => 'a3cc8b044a6ea513310cbd48ef7333b384945638',
+          'pretty_version' => 'v1.34.0',
+          'version' => '1.34.0.0',
+          'reference' => '141046a8f9477948ff284fa65be2095baafb94f2',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/polyfill-ctype',
           'aliases' => 
@@ -1533,9 +1962,9 @@ return [
         ),
         'symfony/polyfill-intl-grapheme' => 
         array (
-          'pretty_version' => 'v1.33.0',
-          'version' => '1.33.0.0',
-          'reference' => '380872130d3a5dd3ace2f4010d95125fde5d5c70',
+          'pretty_version' => 'v1.34.0',
+          'version' => '1.34.0.0',
+          'reference' => 'ad1b7b9092976d6c948b8a187cec9faaea9ec1df',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/polyfill-intl-grapheme',
           'aliases' => 
@@ -1545,8 +1974,8 @@ return [
         ),
         'symfony/polyfill-intl-idn' => 
         array (
-          'pretty_version' => 'v1.33.0',
-          'version' => '1.33.0.0',
+          'pretty_version' => 'v1.34.0',
+          'version' => '1.34.0.0',
           'reference' => '9614ac4d8061dc257ecc64cba1b140873dce8ad3',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/polyfill-intl-idn',
@@ -1557,8 +1986,8 @@ return [
         ),
         'symfony/polyfill-intl-normalizer' => 
         array (
-          'pretty_version' => 'v1.33.0',
-          'version' => '1.33.0.0',
+          'pretty_version' => 'v1.34.0',
+          'version' => '1.34.0.0',
           'reference' => '3833d7255cc303546435cb650316bff708a1c75c',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/polyfill-intl-normalizer',
@@ -1569,9 +1998,9 @@ return [
         ),
         'symfony/polyfill-mbstring' => 
         array (
-          'pretty_version' => 'v1.33.0',
-          'version' => '1.33.0.0',
-          'reference' => '6d857f4d76bd4b343eac26d6b539585d2bc56493',
+          'pretty_version' => 'v1.34.0',
+          'version' => '1.34.0.0',
+          'reference' => '6a21eb99c6973357967f6ce3708cd55a6bec6315',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/polyfill-mbstring',
           'aliases' => 
@@ -1581,9 +2010,9 @@ return [
         ),
         'symfony/polyfill-php80' => 
         array (
-          'pretty_version' => 'v1.33.0',
-          'version' => '1.33.0.0',
-          'reference' => '0cc9dd0f17f61d8131e7df6b84bd344899fe2608',
+          'pretty_version' => 'v1.34.0',
+          'version' => '1.34.0.0',
+          'reference' => 'dfb55726c3a76ea3b6459fcfda1ec2d80a682411',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/polyfill-php80',
           'aliases' => 
@@ -1593,9 +2022,9 @@ return [
         ),
         'symfony/polyfill-php83' => 
         array (
-          'pretty_version' => 'v1.33.0',
-          'version' => '1.33.0.0',
-          'reference' => '17f6f9a6b1735c0f163024d959f700cfbc5155e5',
+          'pretty_version' => 'v1.34.0',
+          'version' => '1.34.0.0',
+          'reference' => '3600c2cb22399e25bb226e4a135ce91eeb2a6149',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/polyfill-php83',
           'aliases' => 
@@ -1605,9 +2034,9 @@ return [
         ),
         'symfony/polyfill-php84' => 
         array (
-          'pretty_version' => 'v1.33.0',
-          'version' => '1.33.0.0',
-          'reference' => 'd8ced4d875142b6a7426000426b8abc631d6b191',
+          'pretty_version' => 'v1.34.0',
+          'version' => '1.34.0.0',
+          'reference' => '88486db2c389b290bf87ff1de7ebc1e13e42bb06',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/polyfill-php84',
           'aliases' => 
@@ -1617,9 +2046,9 @@ return [
         ),
         'symfony/polyfill-php85' => 
         array (
-          'pretty_version' => 'v1.33.0',
-          'version' => '1.33.0.0',
-          'reference' => 'd4e5fcd4ab3d998ab16c0db48e6cbb9a01993f91',
+          'pretty_version' => 'v1.34.0',
+          'version' => '1.34.0.0',
+          'reference' => '2c408a6bb0313e6001a83628dc5506100474254e',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/polyfill-php85',
           'aliases' => 
@@ -1629,9 +2058,9 @@ return [
         ),
         'symfony/polyfill-uuid' => 
         array (
-          'pretty_version' => 'v1.33.0',
-          'version' => '1.33.0.0',
-          'reference' => '21533be36c24be3f4b1669c4725c7d1d2bab4ae2',
+          'pretty_version' => 'v1.34.0',
+          'version' => '1.34.0.0',
+          'reference' => '26dfec253c4cf3e51b541b52ddf7e42cb0908e94',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/polyfill-uuid',
           'aliases' => 
@@ -1641,9 +2070,9 @@ return [
         ),
         'symfony/process' => 
         array (
-          'pretty_version' => 'v7.4.5',
-          'version' => '7.4.5.0',
-          'reference' => '608476f4604102976d687c483ac63a79ba18cc97',
+          'pretty_version' => 'v7.4.8',
+          'version' => '7.4.8.0',
+          'reference' => '60f19cd3badc8de688421e21e4305eba50f8089a',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/process',
           'aliases' => 
@@ -1653,9 +2082,9 @@ return [
         ),
         'symfony/routing' => 
         array (
-          'pretty_version' => 'v7.4.4',
-          'version' => '7.4.4.0',
-          'reference' => '0798827fe2c79caeed41d70b680c2c3507d10147',
+          'pretty_version' => 'v7.4.8',
+          'version' => '7.4.8.0',
+          'reference' => '9608de9873ec86e754fb6c0a0fa7e5f1a960eb6b',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/routing',
           'aliases' => 
@@ -1677,9 +2106,9 @@ return [
         ),
         'symfony/string' => 
         array (
-          'pretty_version' => 'v8.0.4',
-          'version' => '8.0.4.0',
-          'reference' => '758b372d6882506821ed666032e43020c4f57194',
+          'pretty_version' => 'v8.0.8',
+          'version' => '8.0.8.0',
+          'reference' => 'ae9488f874d7603f9d2dfbf120203882b645d963',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/string',
           'aliases' => 
@@ -1689,9 +2118,9 @@ return [
         ),
         'symfony/translation' => 
         array (
-          'pretty_version' => 'v8.0.4',
-          'version' => '8.0.4.0',
-          'reference' => 'db70c8ce7db74fd2da7b1d268db46b2a8ce32c10',
+          'pretty_version' => 'v8.0.8',
+          'version' => '8.0.8.0',
+          'reference' => '27c03ae3940de24ba2f71cfdbac824f2aa1fdf2f',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/translation',
           'aliases' => 
@@ -1721,9 +2150,9 @@ return [
         ),
         'symfony/uid' => 
         array (
-          'pretty_version' => 'v7.4.4',
-          'version' => '7.4.4.0',
-          'reference' => '7719ce8aba76be93dfe249192f1fbfa52c588e36',
+          'pretty_version' => 'v7.4.8',
+          'version' => '7.4.8.0',
+          'reference' => '6883ebdf7bf6a12b37519dbc0df62b0222401b56',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/uid',
           'aliases' => 
@@ -1733,9 +2162,9 @@ return [
         ),
         'symfony/var-dumper' => 
         array (
-          'pretty_version' => 'v7.4.4',
-          'version' => '7.4.4.0',
-          'reference' => '0e4769b46a0c3c62390d124635ce59f66874b282',
+          'pretty_version' => 'v7.4.8',
+          'version' => '7.4.8.0',
+          'reference' => '9510c3966f749a1d1ff0059e1eabef6cc621e7fd',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/var-dumper',
           'aliases' => 
@@ -1745,9 +2174,9 @@ return [
         ),
         'symfony/yaml' => 
         array (
-          'pretty_version' => 'v7.4.1',
-          'version' => '7.4.1.0',
-          'reference' => '24dd4de28d2e3988b311751ac49e684d783e2345',
+          'pretty_version' => 'v8.0.8',
+          'version' => '8.0.8.0',
+          'reference' => '54174ab48c0c0f9e21512b304be17f8150ccf8f1',
           'type' => 'library',
           'install_path' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../symfony/yaml',
           'aliases' => 
@@ -1809,7 +2238,7 @@ return [
   'executedFilesHashes' => 
   array (
     'phar:///Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/phpstan/phpstan/phpstan.phar/stubs/runtime/Attribute85.php' => 'cb8b31e82c61ce197871c9e8a6f122256751f2ab606dd2be90846d4fa5f8933e',
-    'phar:///Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/phpstan/phpstan/phpstan.phar/stubs/runtime/ReflectionAttribute.php' => 'b2bdc83dac3ac930a2b5387546b2da05f7f5135340549604e06d3d0fd4bc4205',
+    'phar:///Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/phpstan/phpstan/phpstan.phar/stubs/runtime/ReflectionAttribute.php' => 'c0068e383717870a304781d462f7e2afe1c6f24e9133851852a2aca96b4fa26f',
     'phar:///Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/phpstan/phpstan/phpstan.phar/stubs/runtime/ReflectionIntersectionType.php' => '65fe0a8bc6fe285d8ddc8798ab5b9299920af70db5ad74596bc08df823e7c5d9',
     'phar:///Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/phpstan/phpstan/phpstan.phar/stubs/runtime/ReflectionUnionType.php' => '1e2fe940e4ba4e00d9ee6adb2af3ee1bf333e6f8afe61c61deb038886d293427',
   ),
@@ -1889,6 +2318,205 @@ return [
 	'projectExtensionFiles' => array (
 ),
 	'errorsCallback' => static function (): array { return array (
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Tenancy/CreateTenantAction.php' => 
+  array (
+    0 => 
+    \PHPStan\Analyser\Error::__set_state(array(
+       'message' => 'Call to an undefined static method App\\Models\\Tenant::create().',
+       'file' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Tenancy/CreateTenantAction.php',
+       'line' => 37,
+       'canBeIgnored' => true,
+       'filePath' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Tenancy/CreateTenantAction.php',
+       'traitFilePath' => NULL,
+       'tip' => NULL,
+       'nodeLine' => 37,
+       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
+       'identifier' => 'staticMethod.notFound',
+       'metadata' => 
+      array (
+      ),
+       'fixedErrorDiff' => NULL,
+    )),
+    1 => 
+    \PHPStan\Analyser\Error::__set_state(array(
+       'message' => 'Access to an undefined property App\\Models\\User::$id.',
+       'file' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Tenancy/CreateTenantAction.php',
+       'line' => 41,
+       'canBeIgnored' => true,
+       'filePath' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Tenancy/CreateTenantAction.php',
+       'traitFilePath' => NULL,
+       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
+       'nodeLine' => 41,
+       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
+       'identifier' => 'property.notFound',
+       'metadata' => 
+      array (
+      ),
+       'fixedErrorDiff' => NULL,
+    )),
+    2 => 
+    \PHPStan\Analyser\Error::__set_state(array(
+       'message' => 'Call to an undefined static method App\\Models\\TenantMembership::create().',
+       'file' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Tenancy/CreateTenantAction.php',
+       'line' => 46,
+       'canBeIgnored' => true,
+       'filePath' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Tenancy/CreateTenantAction.php',
+       'traitFilePath' => NULL,
+       'tip' => NULL,
+       'nodeLine' => 46,
+       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
+       'identifier' => 'staticMethod.notFound',
+       'metadata' => 
+      array (
+      ),
+       'fixedErrorDiff' => NULL,
+    )),
+    3 => 
+    \PHPStan\Analyser\Error::__set_state(array(
+       'message' => 'Access to an undefined property App\\Models\\User::$id.',
+       'file' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Tenancy/CreateTenantAction.php',
+       'line' => 47,
+       'canBeIgnored' => true,
+       'filePath' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Tenancy/CreateTenantAction.php',
+       'traitFilePath' => NULL,
+       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
+       'nodeLine' => 47,
+       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
+       'identifier' => 'property.notFound',
+       'metadata' => 
+      array (
+      ),
+       'fixedErrorDiff' => NULL,
+    )),
+  ),
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/ControlPanelController.php' => 
+  array (
+    0 => 
+    \PHPStan\Analyser\Error::__set_state(array(
+       'message' => 'Method App\\Http\\Controllers\\ControlPanelController::index() should return Illuminate\\View\\View but returns Illuminate\\Contracts\\View\\View.',
+       'file' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/ControlPanelController.php',
+       'line' => 22,
+       'canBeIgnored' => true,
+       'filePath' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/ControlPanelController.php',
+       'traitFilePath' => NULL,
+       'tip' => NULL,
+       'nodeLine' => 22,
+       'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
+       'identifier' => 'return.type',
+       'metadata' => 
+      array (
+      ),
+       'fixedErrorDiff' => NULL,
+    )),
+    1 => 
+    \PHPStan\Analyser\Error::__set_state(array(
+       'message' => 'Call to an undefined static method App\\Models\\User::whereHas().',
+       'file' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/ControlPanelController.php',
+       'line' => 40,
+       'canBeIgnored' => true,
+       'filePath' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/ControlPanelController.php',
+       'traitFilePath' => NULL,
+       'tip' => NULL,
+       'nodeLine' => 40,
+       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
+       'identifier' => 'staticMethod.notFound',
+       'metadata' => 
+      array (
+      ),
+       'fixedErrorDiff' => NULL,
+    )),
+    2 => 
+    \PHPStan\Analyser\Error::__set_state(array(
+       'message' => 'Using nullsafe property access "?->status" on left side of ?? is unnecessary. Use -> instead.',
+       'file' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/ControlPanelController.php',
+       'line' => 53,
+       'canBeIgnored' => true,
+       'filePath' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/ControlPanelController.php',
+       'traitFilePath' => NULL,
+       'tip' => NULL,
+       'nodeLine' => 53,
+       'nodeType' => 'PhpParser\\Node\\Expr\\BinaryOp\\Coalesce',
+       'identifier' => 'nullsafe.neverNull',
+       'metadata' => 
+      array (
+      ),
+       'fixedErrorDiff' => NULL,
+    )),
+    3 => 
+    \PHPStan\Analyser\Error::__set_state(array(
+       'message' => 'Call to an undefined static method App\\Models\\User::whereHas().',
+       'file' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/ControlPanelController.php',
+       'line' => 63,
+       'canBeIgnored' => true,
+       'filePath' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/ControlPanelController.php',
+       'traitFilePath' => NULL,
+       'tip' => NULL,
+       'nodeLine' => 63,
+       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
+       'identifier' => 'staticMethod.notFound',
+       'metadata' => 
+      array (
+      ),
+       'fixedErrorDiff' => NULL,
+    )),
+  ),
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/DashboardController.php' => 
+  array (
+    0 => 
+    \PHPStan\Analyser\Error::__set_state(array(
+       'message' => 'Call to an undefined method Illuminate\\Contracts\\Auth\\Factory::user().',
+       'file' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/DashboardController.php',
+       'line' => 23,
+       'canBeIgnored' => true,
+       'filePath' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/DashboardController.php',
+       'traitFilePath' => NULL,
+       'tip' => NULL,
+       'nodeLine' => 23,
+       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
+       'identifier' => 'method.notFound',
+       'metadata' => 
+      array (
+      ),
+       'fixedErrorDiff' => NULL,
+    )),
+    1 => 
+    \PHPStan\Analyser\Error::__set_state(array(
+       'message' => 'Method App\\Http\\Controllers\\DashboardController::index() should return Illuminate\\View\\View but returns Illuminate\\Contracts\\View\\View.',
+       'file' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/DashboardController.php',
+       'line' => 37,
+       'canBeIgnored' => true,
+       'filePath' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/DashboardController.php',
+       'traitFilePath' => NULL,
+       'tip' => NULL,
+       'nodeLine' => 37,
+       'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
+       'identifier' => 'return.type',
+       'metadata' => 
+      array (
+      ),
+       'fixedErrorDiff' => NULL,
+    )),
+  ),
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/SettingsController.php' => 
+  array (
+    0 => 
+    \PHPStan\Analyser\Error::__set_state(array(
+       'message' => 'Method App\\Http\\Controllers\\SettingsController::show() should return Illuminate\\View\\View but returns Illuminate\\Contracts\\View\\View.',
+       'file' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/SettingsController.php',
+       'line' => 20,
+       'canBeIgnored' => true,
+       'filePath' => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/SettingsController.php',
+       'traitFilePath' => NULL,
+       'tip' => NULL,
+       'nodeLine' => 20,
+       'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
+       'identifier' => 'return.type',
+       'metadata' => 
+      array (
+      ),
+       'fixedErrorDiff' => NULL,
+    )),
+  ),
 ); },
 	'locallyIgnoredErrorsCallback' => static function (): array { return array (
 ); },
@@ -1897,154 +2525,133 @@ return [
 	'unmatchedLineIgnores' => array (
 ),
 	'collectedDataCallback' => static function (): array { return array (
-  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/User.php' => 
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/DashboardController.php' => 
+  array (
+    'PHPStan\\Rules\\DeadCode\\ConstructorWithoutImpurePointsCollector' => 
+    array (
+      0 => 'App\\Http\\Controllers\\DashboardController',
+    ),
+  ),
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Requests/Company/StoreCompanyRequest.php' => 
   array (
     'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
     array (
       0 => 
       array (
-        0 => 'App\\Models\\User',
-        1 => 'casts',
-        2 => 'App\\Models\\User',
-      ),
-    ),
-    'PHPStan\\Rules\\Traits\\TraitUseCollector' => 
-    array (
-      0 => 
-      array (
-        0 => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
-        1 => 'Illuminate\\Notifications\\Notifiable',
-      ),
-    ),
-  ),
-  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Providers/AppServiceProvider.php' => 
-  array (
-    'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => 
-    array (
-      0 => 
-      array (
-        0 => 'Illuminate\\Support\\Facades\\Date',
-        1 => 'use',
-        2 => 34,
-      ),
-      1 => 
-      array (
-        0 => 'Illuminate\\Validation\\Rules\\Password',
-        1 => 'defaults',
-        2 => 40,
+        0 => 'App\\Http\\Requests\\Company\\StoreCompanyRequest',
+        1 => 'rules',
+        2 => 'App\\Http\\Requests\\Company\\StoreCompanyRequest',
       ),
     ),
   ),
 ); },
 	'dependencies' => array (
-  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/Controller.php' => 
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Tenancy/CreateTenantAction.php' => 
   array (
-    'fileHash' => '25d1c1ef8e6cc8a376553faacfba2b07d9dfaee9bdbb84f14f77517580e9deb1',
+    'fileHash' => '80b9b175b09391fa0b088a43a1b439c9328627ded524e8dc81e7931826147733',
+    'dependentFiles' => 
+    array (
+      0 => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/CompanyController.php',
+    ),
+  ),
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/CompanyController.php' => 
+  array (
+    'fileHash' => '72fa3761d116c5a85d7110061b5570913e21d6efadaaade99ee7ddebad558d38',
     'dependentFiles' => 
     array (
     ),
   ),
-  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/User.php' => 
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/ControlPanelController.php' => 
   array (
-    'fileHash' => 'ed92d069e32e73e5a7aed2c34a071b55ef4920d12fd3843151364f72c45259d6',
-    'dependentFiles' => 
-    array (
-      0 => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/auth.php',
-    ),
-  ),
-  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Providers/AppServiceProvider.php' => 
-  array (
-    'fileHash' => '37576499f122c00edd6d6bda207bb4cbb4d5fa71f694b05d0d0f87c466985bec',
+    'fileHash' => '3fae7781649aee0fe6b3f0af18a1f4b427b07253f766a2f2e67bae01b0fac388',
     'dependentFiles' => 
     array (
     ),
   ),
-  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/app.php' => 
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/DashboardController.php' => 
   array (
-    'fileHash' => '78dcd36b226fd7b24057cb95f567cb6e96561c2406653892d8aef6dcea8461e4',
+    'fileHash' => 'c471fec5439fb8963538e37d5484b68c600f30551cae56ae9d4d480ebef7d41d',
     'dependentFiles' => 
     array (
     ),
   ),
-  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/auth.php' => 
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/SettingsController.php' => 
   array (
-    'fileHash' => '50f8a6fabf848d20ea42a21e01066dd8a75bd822c8251a45f8939616432424dc',
+    'fileHash' => 'e9b76f8b32a3c5c16265c9991a8c9cf6df53752a69b8b1b3cf43fc9e118f9b31',
     'dependentFiles' => 
     array (
     ),
   ),
-  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/cache.php' => 
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Requests/Company/StoreCompanyRequest.php' => 
   array (
-    'fileHash' => 'b8bcf382283330b94c0a602ff06452de819041ea709e28eea5065d51d1d7d085',
+    'fileHash' => '651a1d30796a098f04afa5041127a45ebed37d7dc7451fe6ba7ae7d2933b170e',
+    'dependentFiles' => 
+    array (
+      0 => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/CompanyController.php',
+    ),
+  ),
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Requests/Reminders/ReminderRequest.php' => 
+  array (
+    'fileHash' => '15c9fa7b941bae7727a3b13037a55bd0a272c36fe4f69c4381732716ed46c44f',
+    'dependentFiles' => 
+    array (
+      0 => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Requests/Reminders/StoreReminderRequest.php',
+      1 => '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Requests/Reminders/UpdateReminderRequest.php',
+    ),
+  ),
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Requests/Reminders/StoreReminderRequest.php' => 
+  array (
+    'fileHash' => 'd13f8dc3d2bbf99c15cbee385d3f88d91618dd14bd7549e47df96edd510a417d',
     'dependentFiles' => 
     array (
     ),
   ),
-  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/database.php' => 
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Requests/Reminders/UpdateReminderRequest.php' => 
   array (
-    'fileHash' => '4f56083ec3874d216946401fb162b6ef50bc0909d004cd3337e2e33424fc6403',
-    'dependentFiles' => 
-    array (
-    ),
-  ),
-  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/filesystems.php' => 
-  array (
-    'fileHash' => 'ba7060d7a23e490c3ce830656f6d24ad3ccf5b868e3293f2a12e411959dc5635',
-    'dependentFiles' => 
-    array (
-    ),
-  ),
-  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/logging.php' => 
-  array (
-    'fileHash' => 'd90f24826a3330437f2f2fc12bb28680abe1281d35d62b082c234f4b69873835',
-    'dependentFiles' => 
-    array (
-    ),
-  ),
-  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/mail.php' => 
-  array (
-    'fileHash' => '825c4b149f2fe412a2e37199794e7c05df7ed86fb51811777faf80238f748aae',
-    'dependentFiles' => 
-    array (
-    ),
-  ),
-  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/queue.php' => 
-  array (
-    'fileHash' => '6101774da7c8b79af46d0028f2b8b31a484c3f7eda10b76e5b27b6093ad364a4',
-    'dependentFiles' => 
-    array (
-    ),
-  ),
-  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/services.php' => 
-  array (
-    'fileHash' => '8258c4487eb1d73a97e569eb0e411e3f25368044812df4cba807860432be1d92',
-    'dependentFiles' => 
-    array (
-    ),
-  ),
-  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/session.php' => 
-  array (
-    'fileHash' => 'f2e75e189021597e29940c0859c00c3088ec591e403768fff5143c5687a80f59',
-    'dependentFiles' => 
-    array (
-    ),
-  ),
-  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/routes/web.php' => 
-  array (
-    'fileHash' => '45632817b040fa27fe17293c024ebd10c8609b56b901fc5845665d561b6c2946',
+    'fileHash' => '7fc41426a3d049596c26182b6a9f110fb6895e17fd3668399b7ca81815e883e9',
     'dependentFiles' => 
     array (
     ),
   ),
 ),
 	'exportedNodesCallback' => static function (): array { return array (
-  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/Controller.php' => 
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Actions/Tenancy/CreateTenantAction.php' => 
   array (
     0 => 
     \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
-       'name' => 'App\\Http\\Controllers\\Controller',
-       'phpDoc' => NULL,
-       'abstract' => true,
+       'name' => 'App\\Actions\\Tenancy\\CreateTenantAction',
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+ * Crea una nueva empresa (tenant) para un usuario y provisiona su base de datos
+ * en modo síncrono.
+ *
+ * Responsabilidades:
+ *  1. Persistencia transaccional de Tenant + TenantMembership + asignación al usuario.
+ *  2. Provisioning síncrono: CreateDatabase + MigrateDatabase.
+ *  3. Marcar el tenant como \'active\' sólo si el provisioning ha sido correcto.
+ *
+ * Se usa `withoutEvents` al crear el Tenant para evitar que el pipeline queued
+ * de Stancl Tenancy se dispare en paralelo y duplique el provisioning.
+ */',
+         'namespace' => 'App\\Actions\\Tenancy',
+         'uses' => 
+        array (
+          'tenant' => 'App\\Models\\Tenant',
+          'tenantmembership' => 'App\\Models\\TenantMembership',
+          'user' => 'App\\Models\\User',
+          'db' => 'Illuminate\\Support\\Facades\\DB',
+          'log' => 'Illuminate\\Support\\Facades\\Log',
+          'str' => 'Illuminate\\Support\\Str',
+          'runtimeexception' => 'RuntimeException',
+          'createdatabase' => 'Stancl\\Tenancy\\Jobs\\CreateDatabase',
+          'migratedatabase' => 'Stancl\\Tenancy\\Jobs\\MigrateDatabase',
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
+       'abstract' => false,
        'final' => false,
        'extends' => NULL,
        'implements' => 
@@ -2058,47 +2665,89 @@ return [
       ),
        'statements' => 
       array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'execute',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * @param  array{company_name:string, industry:string, country:string}  $data
+     *
+     * @throws RuntimeException si la migración de la BD del tenant falla.
+     */',
+             'namespace' => 'App\\Actions\\Tenancy',
+             'uses' => 
+            array (
+              'tenant' => 'App\\Models\\Tenant',
+              'tenantmembership' => 'App\\Models\\TenantMembership',
+              'user' => 'App\\Models\\User',
+              'db' => 'Illuminate\\Support\\Facades\\DB',
+              'log' => 'Illuminate\\Support\\Facades\\Log',
+              'str' => 'Illuminate\\Support\\Str',
+              'runtimeexception' => 'RuntimeException',
+              'createdatabase' => 'Stancl\\Tenancy\\Jobs\\CreateDatabase',
+              'migratedatabase' => 'Stancl\\Tenancy\\Jobs\\MigrateDatabase',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'App\\Models\\Tenant',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'user',
+               'type' => 'App\\Models\\User',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => 'array',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
       ),
        'attributes' => 
       array (
       ),
     )),
   ),
-  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/User.php' => 
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/CompanyController.php' => 
   array (
     0 => 
     \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
-       'name' => 'App\\Models\\User',
-       'phpDoc' => 
-      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-         'phpDocString' => '/**
- * @property string $name
- * @property string $email
- * @property string $password
- * @property \\Illuminate\\Support\\Carbon|null $email_verified_at
- */',
-         'namespace' => 'App\\Models',
-         'uses' => 
-        array (
-          'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
-          'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
-          'notifiable' => 'Illuminate\\Notifications\\Notifiable',
-          'str' => 'Illuminate\\Support\\Str',
-        ),
-         'constUses' => 
-        array (
-        ),
-      )),
+       'name' => 'App\\Http\\Controllers\\CompanyController',
+       'phpDoc' => NULL,
        'abstract' => false,
        'final' => false,
-       'extends' => 'Illuminate\\Foundation\\Auth\\User',
+       'extends' => 'App\\Http\\Controllers\\Controller',
        'implements' => 
       array (
       ),
        'usedTraits' => 
       array (
-        0 => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
-        1 => 'Illuminate\\Notifications\\Notifiable',
       ),
        'traitUseAdaptations' => 
       array (
@@ -2106,115 +2755,469 @@ return [
        'statements' => 
       array (
         0 => 
-        \PHPStan\Dependency\ExportedNode\ExportedPropertiesNode::__set_state(array(
-           'names' => 
-          array (
-            0 => 'fillable',
-          ),
-           'phpDoc' => 
-          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-             'phpDocString' => '/**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */',
-             'namespace' => 'App\\Models',
-             'uses' => 
-            array (
-              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
-              'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
-              'notifiable' => 'Illuminate\\Notifications\\Notifiable',
-              'str' => 'Illuminate\\Support\\Str',
-            ),
-             'constUses' => 
-            array (
-            ),
-          )),
-           'type' => NULL,
-           'public' => false,
-           'private' => false,
-           'static' => false,
-           'readonly' => false,
-           'abstract' => false,
-           'final' => false,
-           'publicSet' => false,
-           'protectedSet' => false,
-           'privateSet' => false,
-           'virtual' => false,
-           'attributes' => 
-          array (
-          ),
-           'hooks' => 
-          array (
-          ),
-        )),
-        1 => 
-        \PHPStan\Dependency\ExportedNode\ExportedPropertiesNode::__set_state(array(
-           'names' => 
-          array (
-            0 => 'hidden',
-          ),
-           'phpDoc' => 
-          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-             'phpDocString' => '/**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */',
-             'namespace' => 'App\\Models',
-             'uses' => 
-            array (
-              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
-              'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
-              'notifiable' => 'Illuminate\\Notifications\\Notifiable',
-              'str' => 'Illuminate\\Support\\Str',
-            ),
-             'constUses' => 
-            array (
-            ),
-          )),
-           'type' => NULL,
-           'public' => false,
-           'private' => false,
-           'static' => false,
-           'readonly' => false,
-           'abstract' => false,
-           'final' => false,
-           'publicSet' => false,
-           'protectedSet' => false,
-           'privateSet' => false,
-           'virtual' => false,
-           'attributes' => 
-          array (
-          ),
-           'hooks' => 
-          array (
-          ),
-        )),
-        2 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'casts',
+           'name' => 'store',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
              'phpDocString' => '/**
-     * Get the attributes that should be cast.
+     * Crea una nueva empresa (tenant) para el usuario autenticado.
      *
-     * @return array<string, string>
+     * Delegación completa a CreateTenantAction: este controlador sólo hace de glue
+     * HTTP entre la request validada y la acción de dominio.
+     *
+     * Idempotencia: si el usuario ya tiene un tenant asignado, no se crea uno nuevo.
      */',
-             'namespace' => 'App\\Models',
+             'namespace' => 'App\\Http\\Controllers',
              'uses' => 
             array (
-              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
-              'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
-              'notifiable' => 'Illuminate\\Notifications\\Notifiable',
-              'str' => 'Illuminate\\Support\\Str',
+              'createtenantaction' => 'App\\Actions\\Tenancy\\CreateTenantAction',
+              'storecompanyrequest' => 'App\\Http\\Requests\\Company\\StoreCompanyRequest',
+              'redirectresponse' => 'Illuminate\\Http\\RedirectResponse',
+              'runtimeexception' => 'RuntimeException',
             ),
              'constUses' => 
             array (
             ),
           )),
            'byRef' => false,
-           'public' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'Illuminate\\Http\\RedirectResponse',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'request',
+               'type' => 'App\\Http\\Requests\\Company\\StoreCompanyRequest',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'createTenant',
+               'type' => 'App\\Actions\\Tenancy\\CreateTenantAction',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/ControlPanelController.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'App\\Http\\Controllers\\ControlPanelController',
+       'phpDoc' => NULL,
+       'abstract' => false,
+       'final' => false,
+       'extends' => 'App\\Http\\Controllers\\Controller',
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'index',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Muestra el panel de control con KPIs y datos reales del tenant actual.
+     *
+     * Los datos del tenant solo están disponibles si tenancy ha sido inicializado
+     * (lo hace el middleware checkHasTenant). En caso contrario, devuelve defaults seguros.
+     */',
+             'namespace' => 'App\\Http\\Controllers',
+             'uses' => 
+            array (
+              'user' => 'App\\Models\\User',
+              'view' => 'Illuminate\\View\\View',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'Illuminate\\View\\View',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/DashboardController.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'App\\Http\\Controllers\\DashboardController',
+       'phpDoc' => NULL,
+       'abstract' => false,
+       'final' => false,
+       'extends' => 'App\\Http\\Controllers\\Controller',
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => '__construct',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'dashboardService',
+               'type' => 'App\\Services\\DashboardService',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'index',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Muestra el dashboard principal.
+     * Determina si mostrar el modal de creación de empresa en base al estado del tenant del usuario.
+     *
+     * Nota: la inicialización de tenancy la realiza el middleware `checkHasTenant`;
+     * aquí no se debe llamar a Tenancy::initialize() para evitar doble inicialización.
+     */',
+             'namespace' => 'App\\Http\\Controllers',
+             'uses' => 
+            array (
+              'dashboardservice' => 'App\\Services\\DashboardService',
+              'jsonresponse' => 'Illuminate\\Http\\JsonResponse',
+              'request' => 'Illuminate\\Http\\Request',
+              'view' => 'Illuminate\\View\\View',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'Illuminate\\View\\View',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'request',
+               'type' => 'Illuminate\\Http\\Request',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'chartData',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Endpoint AJAX para actualizar datos del dashboard según período.
+     */',
+             'namespace' => 'App\\Http\\Controllers',
+             'uses' => 
+            array (
+              'dashboardservice' => 'App\\Services\\DashboardService',
+              'jsonresponse' => 'Illuminate\\Http\\JsonResponse',
+              'request' => 'Illuminate\\Http\\Request',
+              'view' => 'Illuminate\\View\\View',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'Illuminate\\Http\\JsonResponse',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'request',
+               'type' => 'Illuminate\\Http\\Request',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/SettingsController.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'App\\Http\\Controllers\\SettingsController',
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+ * Ajustes de cuenta del usuario (perfil + seguridad).
+ * Delega la lógica real a las Actions de Fortify para mantener una única fuente
+ * de verdad con el flujo estándar de Laravel Jetstream/Fortify.
+ */',
+         'namespace' => 'App\\Http\\Controllers',
+         'uses' => 
+        array (
+          'redirectresponse' => 'Illuminate\\Http\\RedirectResponse',
+          'request' => 'Illuminate\\Http\\Request',
+          'view' => 'Illuminate\\View\\View',
+          'updatesuserpasswords' => 'Laravel\\Fortify\\Contracts\\UpdatesUserPasswords',
+          'updatesuserprofileinformation' => 'Laravel\\Fortify\\Contracts\\UpdatesUserProfileInformation',
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
+       'abstract' => false,
+       'final' => false,
+       'extends' => 'App\\Http\\Controllers\\Controller',
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'show',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'Illuminate\\View\\View',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'updateProfile',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'Illuminate\\Http\\RedirectResponse',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'request',
+               'type' => 'Illuminate\\Http\\Request',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'updater',
+               'type' => 'Laravel\\Fortify\\Contracts\\UpdatesUserProfileInformation',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'updatePassword',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'Illuminate\\Http\\RedirectResponse',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'request',
+               'type' => 'Illuminate\\Http\\Request',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'updater',
+               'type' => 'Laravel\\Fortify\\Contracts\\UpdatesUserPasswords',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Requests/Company/StoreCompanyRequest.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'App\\Http\\Requests\\Company\\StoreCompanyRequest',
+       'phpDoc' => NULL,
+       'abstract' => false,
+       'final' => false,
+       'extends' => 'Illuminate\\Foundation\\Http\\FormRequest',
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'authorize',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'rules',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
            'private' => false,
            'abstract' => false,
            'final' => false,
@@ -2227,55 +3230,39 @@ return [
           array (
           ),
         )),
-        3 => 
-        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'initials',
-           'phpDoc' => 
-          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-             'phpDocString' => '/**
-     * Get the user\'s initials
-     */',
-             'namespace' => 'App\\Models',
-             'uses' => 
-            array (
-              'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
-              'authenticatable' => 'Illuminate\\Foundation\\Auth\\User',
-              'notifiable' => 'Illuminate\\Notifications\\Notifiable',
-              'str' => 'Illuminate\\Support\\Str',
-            ),
-             'constUses' => 
-            array (
-            ),
-          )),
-           'byRef' => false,
-           'public' => true,
-           'private' => false,
-           'abstract' => false,
-           'final' => false,
-           'static' => false,
-           'returnType' => 'string',
-           'parameters' => 
-          array (
-          ),
-           'attributes' => 
-          array (
-          ),
-        )),
       ),
        'attributes' => 
       array (
       ),
     )),
   ),
-  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Providers/AppServiceProvider.php' => 
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Requests/Reminders/ReminderRequest.php' => 
   array (
     0 => 
     \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
-       'name' => 'App\\Providers\\AppServiceProvider',
-       'phpDoc' => NULL,
-       'abstract' => false,
+       'name' => 'App\\Http\\Requests\\Reminders\\ReminderRequest',
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+ * Reglas de validación compartidas para crear y actualizar recordatorios.
+ *
+ * Se usa como base para StoreReminderRequest y UpdateReminderRequest para evitar
+ * duplicar las reglas y mantener una única fuente de verdad.
+ */',
+         'namespace' => 'App\\Http\\Requests\\Reminders',
+         'uses' => 
+        array (
+          'reminder' => 'App\\Models\\Reminder',
+          'formrequest' => 'Illuminate\\Foundation\\Http\\FormRequest',
+          'rule' => 'Illuminate\\Validation\\Rule',
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
+       'abstract' => true,
        'final' => false,
-       'extends' => 'Illuminate\\Support\\ServiceProvider',
+       'extends' => 'Illuminate\\Foundation\\Http\\FormRequest',
        'implements' => 
       array (
       ),
@@ -2289,32 +3276,15 @@ return [
       array (
         0 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'register',
-           'phpDoc' => 
-          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-             'phpDocString' => '/**
-     * Register any application services.
-     */',
-             'namespace' => 'App\\Providers',
-             'uses' => 
-            array (
-              'carbonimmutable' => 'Carbon\\CarbonImmutable',
-              'date' => 'Illuminate\\Support\\Facades\\Date',
-              'db' => 'Illuminate\\Support\\Facades\\DB',
-              'serviceprovider' => 'Illuminate\\Support\\ServiceProvider',
-              'password' => 'Illuminate\\Validation\\Rules\\Password',
-            ),
-             'constUses' => 
-            array (
-            ),
-          )),
+           'name' => 'authorize',
+           'phpDoc' => NULL,
            'byRef' => false,
            'public' => true,
            'private' => false,
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => 'void',
+           'returnType' => 'bool',
            'parameters' => 
           array (
           ),
@@ -2324,32 +3294,15 @@ return [
         )),
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'boot',
-           'phpDoc' => 
-          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-             'phpDocString' => '/**
-     * Bootstrap any application services.
-     */',
-             'namespace' => 'App\\Providers',
-             'uses' => 
-            array (
-              'carbonimmutable' => 'Carbon\\CarbonImmutable',
-              'date' => 'Illuminate\\Support\\Facades\\Date',
-              'db' => 'Illuminate\\Support\\Facades\\DB',
-              'serviceprovider' => 'Illuminate\\Support\\ServiceProvider',
-              'password' => 'Illuminate\\Validation\\Rules\\Password',
-            ),
-             'constUses' => 
-            array (
-            ),
-          )),
+           'name' => 'rules',
+           'phpDoc' => NULL,
            'byRef' => false,
            'public' => true,
            'private' => false,
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => 'void',
+           'returnType' => 'array',
            'parameters' => 
           array (
           ),
@@ -2357,41 +3310,58 @@ return [
           array (
           ),
         )),
-        2 => 
-        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'configureDefaults',
-           'phpDoc' => 
-          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-             'phpDocString' => '/**
-     * Configure default behaviors for production-ready applications.
-     */',
-             'namespace' => 'App\\Providers',
-             'uses' => 
-            array (
-              'carbonimmutable' => 'Carbon\\CarbonImmutable',
-              'date' => 'Illuminate\\Support\\Facades\\Date',
-              'db' => 'Illuminate\\Support\\Facades\\DB',
-              'serviceprovider' => 'Illuminate\\Support\\ServiceProvider',
-              'password' => 'Illuminate\\Validation\\Rules\\Password',
-            ),
-             'constUses' => 
-            array (
-            ),
-          )),
-           'byRef' => false,
-           'public' => false,
-           'private' => false,
-           'abstract' => false,
-           'final' => false,
-           'static' => false,
-           'returnType' => 'void',
-           'parameters' => 
-          array (
-          ),
-           'attributes' => 
-          array (
-          ),
-        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Requests/Reminders/StoreReminderRequest.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'App\\Http\\Requests\\Reminders\\StoreReminderRequest',
+       'phpDoc' => NULL,
+       'abstract' => false,
+       'final' => false,
+       'extends' => 'App\\Http\\Requests\\Reminders\\ReminderRequest',
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  '/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Requests/Reminders/UpdateReminderRequest.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'App\\Http\\Requests\\Reminders\\UpdateReminderRequest',
+       'phpDoc' => NULL,
+       'abstract' => false,
+       'final' => false,
+       'extends' => 'App\\Http\\Requests\\Reminders\\ReminderRequest',
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
       ),
        'attributes' => 
       array (

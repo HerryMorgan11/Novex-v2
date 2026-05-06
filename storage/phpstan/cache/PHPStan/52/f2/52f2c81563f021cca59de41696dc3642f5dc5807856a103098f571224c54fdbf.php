@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../nesbot/carbon/src/Carbon/Traits/Mixin.php-PHPStan\BetterReflection\Reflection\ReflectionClass-Carbon\Traits\Mixin
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-a38a48c31dc4bf5359224c14a3256e2fbb7a201752af9981e218e639c9e7e558-8.4.1-6.65.0.9',
+   'variableKey' => 'v2-5491a7cc283a03fb2240d193acfab173081a4e4132b9c805aac34771d5a89fb6-8.4.1-6.70.0.0',
    'data' => 
   array (
     'locatedSource' => 
@@ -30,8 +30,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     'attributes' => 
     array (
     ),
-    'startLine' => 31,
-    'endLine' => 208,
+    'startLine' => 32,
+    'endLine' => 239,
     'startColumn' => 1,
     'endColumn' => 1,
     'parentClassName' => NULL,
@@ -66,12 +66,12 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
           'code' => '[]',
           'attributes' => 
           array (
-            'startLine' => 36,
-            'endLine' => 36,
-            'startTokenPos' => 82,
-            'startFilePos' => 680,
-            'endTokenPos' => 83,
-            'endFilePos' => 681,
+            'startLine' => 37,
+            'endLine' => 37,
+            'startTokenPos' => 87,
+            'startFilePos' => 705,
+            'endTokenPos' => 88,
+            'endFilePos' => 706,
           ),
         ),
         'docComment' => '/**
@@ -80,8 +80,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         'attributes' => 
         array (
         ),
-        'startLine' => 36,
-        'endLine' => 36,
+        'startLine' => 37,
+        'endLine' => 37,
         'startColumn' => 5,
         'endColumn' => 51,
         'isPromoted' => false,
@@ -137,8 +137,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
             'attributes' => 
             array (
             ),
-            'startLine' => 65,
-            'endLine' => 65,
+            'startLine' => 66,
+            'endLine' => 66,
             'startColumn' => 34,
             'endColumn' => 53,
             'parameterIndex' => 0,
@@ -185,8 +185,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
  *
  * @throws ReflectionException
  */',
-        'startLine' => 65,
-        'endLine' => 70,
+        'startLine' => 66,
+        'endLine' => 71,
         'startColumn' => 5,
         'endColumn' => 5,
         'couldThrow' => false,
@@ -243,8 +243,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
             'attributes' => 
             array (
             ),
-            'startLine' => 75,
-            'endLine' => 75,
+            'startLine' => 76,
+            'endLine' => 76,
             'startColumn' => 44,
             'endColumn' => 63,
             'parameterIndex' => 0,
@@ -267,8 +267,69 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         'docComment' => '/**
  * @throws ReflectionException
  */',
-        'startLine' => 75,
-        'endLine' => 92,
+        'startLine' => 76,
+        'endLine' => 93,
+        'startColumn' => 5,
+        'endColumn' => 5,
+        'couldThrow' => false,
+        'isClosure' => false,
+        'isGenerator' => false,
+        'isVariadic' => false,
+        'modifiers' => 20,
+        'namespace' => 'Carbon\\Traits',
+        'declaringClassName' => 'Carbon\\Traits\\Mixin',
+        'implementingClassName' => 'Carbon\\Traits\\Mixin',
+        'currentClassName' => 'Carbon\\Traits\\Mixin',
+        'aliasName' => NULL,
+      ),
+      'cannotBeAMixinMethod' => 
+      array (
+        'name' => 'cannotBeAMixinMethod',
+        'parameters' => 
+        array (
+          'method' => 
+          array (
+            'name' => 'method',
+            'default' => NULL,
+            'type' => 
+            array (
+              'class' => 'PHPStan\\BetterReflection\\Reflection\\ReflectionNamedType',
+              'data' => 
+              array (
+                'name' => 'ReflectionMethod',
+                'isIdentifier' => false,
+              ),
+            ),
+            'isVariadic' => false,
+            'byRef' => false,
+            'isPromoted' => false,
+            'attributes' => 
+            array (
+            ),
+            'startLine' => 95,
+            'endLine' => 95,
+            'startColumn' => 50,
+            'endColumn' => 73,
+            'parameterIndex' => 0,
+            'isOptional' => false,
+          ),
+        ),
+        'returnsReference' => false,
+        'returnType' => 
+        array (
+          'class' => 'PHPStan\\BetterReflection\\Reflection\\ReflectionNamedType',
+          'data' => 
+          array (
+            'name' => 'bool',
+            'isIdentifier' => true,
+          ),
+        ),
+        'attributes' => 
+        array (
+        ),
+        'docComment' => NULL,
+        'startLine' => 95,
+        'endLine' => 123,
         'startColumn' => 5,
         'endColumn' => 5,
         'couldThrow' => false,
@@ -306,8 +367,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
             'attributes' => 
             array (
             ),
-            'startLine' => 94,
-            'endLine' => 94,
+            'startLine' => 125,
+            'endLine' => 125,
             'startColumn' => 44,
             'endColumn' => 56,
             'parameterIndex' => 0,
@@ -328,8 +389,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         array (
         ),
         'docComment' => NULL,
-        'startLine' => 94,
-        'endLine' => 161,
+        'startLine' => 125,
+        'endLine' => 192,
         'startColumn' => 5,
         'endColumn' => 5,
         'couldThrow' => false,
@@ -367,8 +428,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
             'attributes' => 
             array (
             ),
-            'startLine' => 163,
-            'endLine' => 163,
+            'startLine' => 194,
+            'endLine' => 194,
             'startColumn' => 59,
             'endColumn' => 71,
             'parameterIndex' => 0,
@@ -389,8 +450,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         array (
         ),
         'docComment' => NULL,
-        'startLine' => 163,
-        'endLine' => 166,
+        'startLine' => 194,
+        'endLine' => 197,
         'startColumn' => 5,
         'endColumn' => 5,
         'couldThrow' => false,
@@ -428,8 +489,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
             'attributes' => 
             array (
             ),
-            'startLine' => 168,
-            'endLine' => 168,
+            'startLine' => 199,
+            'endLine' => 199,
             'startColumn' => 47,
             'endColumn' => 59,
             'parameterIndex' => 0,
@@ -450,8 +511,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         array (
         ),
         'docComment' => NULL,
-        'startLine' => 168,
-        'endLine' => 177,
+        'startLine' => 199,
+        'endLine' => 208,
         'startColumn' => 5,
         'endColumn' => 5,
         'couldThrow' => false,
@@ -508,8 +569,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
             'attributes' => 
             array (
             ),
-            'startLine' => 182,
-            'endLine' => 182,
+            'startLine' => 213,
+            'endLine' => 213,
             'startColumn' => 48,
             'endColumn' => 61,
             'parameterIndex' => 0,
@@ -534,8 +595,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
             'attributes' => 
             array (
             ),
-            'startLine' => 182,
-            'endLine' => 182,
+            'startLine' => 213,
+            'endLine' => 213,
             'startColumn' => 64,
             'endColumn' => 81,
             'parameterIndex' => 1,
@@ -558,8 +619,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         'docComment' => '/**
  * Stack a Carbon context from inside calls of self::this() and execute a given action.
  */',
-        'startLine' => 182,
-        'endLine' => 191,
+        'startLine' => 213,
+        'endLine' => 222,
         'startColumn' => 5,
         'endColumn' => 5,
         'couldThrow' => false,
@@ -614,8 +675,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         'docComment' => '/**
  * Return the current context from inside a macro callee or a null if static.
  */',
-        'startLine' => 196,
-        'endLine' => 199,
+        'startLine' => 227,
+        'endLine' => 230,
         'startColumn' => 5,
         'endColumn' => 5,
         'couldThrow' => false,
@@ -651,8 +712,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         'docComment' => '/**
  * Return the current context from inside a macro callee or a new one if static.
  */',
-        'startLine' => 204,
-        'endLine' => 207,
+        'startLine' => 235,
+        'endLine' => 238,
         'startColumn' => 5,
         'endColumn' => 5,
         'couldThrow' => false,

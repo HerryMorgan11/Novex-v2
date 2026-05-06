@@ -1,13 +1,13 @@
 /* === Contabilidad Dashboard Section === */
 .conta2-dash-section {
     padding: 100px 48px;
-    background: #ffffff;
+    background: var(--card-bg);
     position: relative;
     overflow: hidden;
 }
 
 .dark-theme .conta2-dash-section {
-    background: #000000;
+    background: var(--card-bg);
 }
 
 .conta2-dash-section::before {
@@ -22,7 +22,7 @@
 }
 
 .conta2-dash-inner {
-    max-width: 1200px;
+    max-width: var(--landing-max-width, 80%);
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1.1fr;
@@ -45,7 +45,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #ff6b35;
+    color: var(--brand);
     margin-bottom: 14px;
 }
 
@@ -53,24 +53,24 @@
     font-size: 2.4rem;
     font-weight: 800;
     letter-spacing: -0.03em;
-    color: #111827;
+    color: var(--text);
     line-height: 1.2;
     margin: 0 0 20px;
 }
 
 .dark-theme .conta2-dash-title {
-    color: #f9fafb;
+    color: var(--text);
 }
 
 .conta2-dash-desc {
     font-size: 1rem;
-    color: #6b6b7b;
+    color: var(--muted);
     line-height: 1.7;
     margin: 0 0 32px;
 }
 
 .dark-theme .conta2-dash-desc {
-    color: #9ca3af;
+    color: var(--muted);
 }
 
 .conta2-dash-features {
@@ -87,7 +87,7 @@
     align-items: center;
     gap: 12px;
     font-size: 0.95rem;
-    color: #111827;
+    color: var(--text);
 }
 
 .dark-theme .conta2-dash-features li {
@@ -103,23 +103,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ff4081;
+    color: var(--brand);
     font-size: 0.75rem;
     flex-shrink: 0;
 }
 
 /* Dashboard mockup */
 .conta2-dashboard-mock {
-    background: #f3f4f6;
-    border: 1px solid #e5e7eb;
-    border-radius: 20px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
     padding: 28px;
     position: relative;
 }
 
 .dark-theme .conta2-dashboard-mock {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
 }
 
 .conta2-mock-topbar {
@@ -157,18 +157,18 @@
     padding: 4px 12px;
     border-radius: 6px;
     font-size: 0.72rem;
-    color: #6b6b7b;
+    color: var(--muted);
     cursor: pointer;
 }
 
 .dark-theme .conta2-mock-tab {
     background: rgba(255, 255, 255, 0.06);
-    color: #9ca3af;
+    color: var(--muted);
 }
 
 .conta2-mock-tab.active {
     background: rgba(255, 64, 129, 0.15);
-    color: #ff4081;
+    color: var(--brand);
 }
 
 /* KPI row */
@@ -180,15 +180,15 @@
 }
 
 .conta2-kpi-box {
-    background: #f3f4f6;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     padding: 16px;
 }
 
 .dark-theme .conta2-kpi-box {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
 }
 
 .conta2-kpi-label {
@@ -202,26 +202,26 @@
 .conta2-kpi-value {
     font-size: 1.3rem;
     font-weight: 800;
-    color: #1a1a24;
+    color: var(--text);
     letter-spacing: -0.02em;
 }
 
 .dark-theme .conta2-kpi-value {
-    color: #f9fafb;
+    color: var(--text);
 }
 
 .conta2-kpi-value.positive {
     color: #10b981;
 }
 .conta2-kpi-value.negative {
-    color: #ff4081;
+    color: var(--brand);
 }
 
 /* Bar chart */
 .conta2-chart-area {
-    background: #f3f4f6;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     padding: 20px;
     height: 120px;
     display: flex;
@@ -231,7 +231,7 @@
 
 .dark-theme .conta2-chart-area {
     background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
 }
 
 .conta2-bar {
@@ -245,7 +245,7 @@
     background: rgba(255, 64, 129, 0.5);
 }
 .conta2-bar.accent {
-    background: linear-gradient(180deg, #ff6b35, #ff4081);
+    background: linear-gradient(180deg, var(--brand), var(--brand));
 }
 
 /* Transaction list */
@@ -261,18 +261,18 @@
     align-items: center;
     justify-content: space-between;
     font-size: 0.82rem;
-    color: #6b6b7b;
+    color: var(--muted);
 }
 
 .dark-theme .conta2-txn-item {
-    color: #9ca3af;
+    color: var(--muted);
 }
 
 .conta2-txn-name {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #111827;
+    color: var(--text);
 }
 
 .dark-theme .conta2-txn-name {
@@ -297,4 +297,149 @@
 .conta2-txn-amount.red {
     color: #ef4444;
     font-weight: 600;
+}
+
+/* ── KPI Panel (nuevo diseño) ─────────────────────────────── */
+.conta2-kpi-panel {
+    background: var(--card-bg, #fff);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+}
+
+.dark-theme .conta2-kpi-panel {
+    background: var(--bg-subtle);
+    border-color: rgba(255, 255, 255, 0.07);
+}
+
+.conta2-kpi-panel-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--brand);
+    margin-bottom: 20px;
+}
+
+.conta2-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.conta2-kpi-card {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: var(--radius);
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.conta2-kpi-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.dark-theme .conta2-kpi-card {
+    background: var(--bg-subtle);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+.conta2-kpi-card.warning-card {
+    border-color: rgba(255, 171, 0, 0.3);
+    background: rgba(255, 171, 0, 0.04);
+}
+
+.conta2-kpi-card-icon {
+    font-size: 20px;
+    color: var(--brand);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.conta2-kpi-card-icon.negative-icon {
+    color: #10b981;
+}
+.conta2-kpi-card-icon.accent-icon {
+    color: var(--brand);
+}
+.conta2-kpi-card-icon.warning-icon {
+    color: #ffab00;
+}
+
+.conta2-kpi-card-label {
+    font-size: 0.72rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.conta2-kpi-card-value {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.dark-theme .conta2-kpi-card-value {
+    color: var(--text);
+}
+
+.conta2-kpi-card-value.positive {
+    color: #10b981;
+}
+.conta2-kpi-card-value.warning {
+    color: #ffab00;
+}
+
+.conta2-kpi-card-change {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 2px;
+}
+
+/* ── Extracted bar heights from dashboard.blade.php ── */
+.conta2-chart-area .conta2-bar:nth-child(1) {
+    height: 30%;
+}
+.conta2-chart-area .conta2-bar:nth-child(2) {
+    height: 55%;
+}
+.conta2-chart-area .conta2-bar:nth-child(3) {
+    height: 42%;
+}
+.conta2-chart-area .conta2-bar:nth-child(4) {
+    height: 70%;
+}
+.conta2-chart-area .conta2-bar:nth-child(5) {
+    height: 38%;
+}
+.conta2-chart-area .conta2-bar:nth-child(6) {
+    height: 95%;
+}
+.conta2-chart-area .conta2-bar:nth-child(7) {
+    height: 60%;
+}
+.conta2-chart-area .conta2-bar:nth-child(8) {
+    height: 48%;
+}
+.conta2-chart-area .conta2-bar:nth-child(9) {
+    height: 75%;
+}
+.conta2-chart-area .conta2-bar:nth-child(10) {
+    height: 50%;
+}
+.conta2-chart-area .conta2-bar:nth-child(11) {
+    height: 85%;
+}
+.conta2-chart-area .conta2-bar:nth-child(12) {
+    height: 65%;
 }

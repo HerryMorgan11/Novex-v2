@@ -320,7 +320,7 @@ body {
     text-align: center;
     font-size: 13px;
     color: #6b7280;
-    margin-top: 20px;
+    margin-top: 24px;
 }
 
 .alt-action a {
@@ -362,4 +362,54 @@ body {
         margin: 20px;
         padding: 32px;
     }
+}
+
+/* ── Provisioning page ────────────────────────────────────── */
+.auth-provisioning-container {
+    max-width: 540px;
+    text-align: center;
+}
+
+.login-container .auth-provisioning-logo {
+    height: 64px;
+    margin-bottom: 18px;
+}
+
+.auth-provisioning-status {
+    margin-top: 16px;
+    font-weight: 600;
+}
+
+.auth-provisioning-db {
+    margin-top: 8px;
+    color: #6b7280;
+}
+
+.auth-provisioning-back {
+    margin-top: 20px;
+}
+
+/* ── Verify Email page ────────────────────────────────────── */
+.auth-verify-desc {
+    line-height: 1.5;
+    margin-top: 8px;
+}
+
+.auth-verify-status-msg {
+    margin-bottom: 24px;
+    color: #10b981;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.auth-verify-logout-form {
+    margin-top: 16px;
+    text-align: center;
+}
+
+.auth-verify-logout-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
 }

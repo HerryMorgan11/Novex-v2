@@ -1,13 +1,14 @@
 /* === RH Métricas Section === */
 .rh-metricas-section {
+    font-family: var(--font-sans);
     padding: 100px 48px;
-    background: #ffffff;
+    background: var(--card-bg);
     position: relative;
     overflow: hidden;
 }
 
 .dark-theme .rh-metricas-section {
-    background: #000000;
+    background: var(--card-bg);
 }
 
 .rh-metricas-section::before {
@@ -23,7 +24,8 @@
 }
 
 .rh-metricas-inner {
-    max-width: 1200px;
+    max-width: var(--landing-max-width, 80%);
+    padding: var(--landing-padding, 0 48px);
     margin: 0 auto;
 }
 
@@ -37,7 +39,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #ff6b35;
+    color: var(--brand);
     margin-bottom: 14px;
 }
 
@@ -45,25 +47,25 @@
     font-size: 2.6rem;
     font-weight: 800;
     letter-spacing: -0.03em;
-    color: #111827;
+    color: var(--text);
     margin: 0 0 16px;
     line-height: 1.15;
 }
 
 .dark-theme .rh-metricas-title {
-    color: #f9fafb;
+    color: var(--text);
 }
 
 .rh-metricas-subtitle {
     font-size: 1.05rem;
-    color: #6b6b7b;
+    color: var(--muted);
     max-width: 520px;
     margin: 0 auto;
     line-height: 1.65;
 }
 
 .dark-theme .rh-metricas-subtitle {
-    color: #9ca3af;
+    color: var(--muted);
 }
 
 /* Stat cards */
@@ -78,14 +80,15 @@
         grid-template-columns: 1fr;
     }
     .rh-metricas-section {
+        font-family: var(--font-sans);
         padding: 60px 24px;
     }
 }
 
 .rh-metric-card {
-    background: #f3f4f6;
-    border: 1px solid #e5e7eb;
-    border-radius: 20px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
     padding: 40px 32px;
     text-align: center;
     transition:
@@ -94,28 +97,25 @@
 }
 
 .dark-theme .rh-metric-card {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
 }
 
 .rh-metric-card:hover {
-    background: #efe8e1;
-    border-color: #ff6b35;
+    background: var(--brand-light);
+    border-color: var(--brand);
 }
 
 .dark-theme .rh-metric-card:hover {
-    background: rgba(255, 107, 53, 0.06);
-    border-color: rgba(255, 107, 53, 0.2);
+    background: var(--brand-light);
+    border-color: var(--brand);
 }
 
 .rh-metric-value {
     font-size: 3.2rem;
     font-weight: 900;
     letter-spacing: -0.04em;
-    background: linear-gradient(135deg, #ff6b35 0%, #ff4081 50%, #9c27b0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--brand);
     line-height: 1;
     margin-bottom: 12px;
 }
@@ -123,37 +123,37 @@
 .rh-metric-label {
     font-size: 1.05rem;
     font-weight: 600;
-    color: #1a1a24;
+    color: var(--text);
     margin-bottom: 8px;
 }
 
 .dark-theme .rh-metric-label {
-    color: #f9fafb;
+    color: var(--text);
 }
 
 .rh-metric-desc {
     font-size: 0.88rem;
-    color: #6b6b7b;
+    color: var(--muted);
     line-height: 1.6;
 }
 
 .dark-theme .rh-metric-desc {
-    color: #9ca3af;
+    color: var(--muted);
 }
 
 /* Testimonial quote block */
 .rh-metricas-quote {
     margin-top: 64px;
-    background: #f3f4f6;
-    border: 1px solid #e5e7eb;
-    border-radius: 20px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
     padding: 48px 56px;
     text-align: center;
 }
 
 .dark-theme .rh-metricas-quote {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
 }
 
 @media (max-width: 768px) {
@@ -172,7 +172,7 @@
 
 .rh-quote-text {
     font-size: 1.2rem;
-    color: #111827;
+    color: var(--text);
     line-height: 1.7;
     font-style: italic;
     max-width: 700px;
@@ -180,7 +180,7 @@
 }
 
 .dark-theme .rh-quote-text {
-    color: #e5e7eb;
+    color: var(--text);
 }
 
 .rh-quote-author {
@@ -200,18 +200,18 @@
 .rh-quote-name {
     font-size: 0.95rem;
     font-weight: 700;
-    color: #1a1a24;
+    color: var(--text);
 }
 
 .dark-theme .rh-quote-name {
-    color: #f9fafb;
+    color: var(--text);
 }
 
 .rh-quote-role {
     font-size: 0.8rem;
-    color: #6b6b7b;
+    color: var(--muted);
 }
 
 .dark-theme .rh-quote-role {
-    color: #9ca3af;
+    color: var(--muted);
 }

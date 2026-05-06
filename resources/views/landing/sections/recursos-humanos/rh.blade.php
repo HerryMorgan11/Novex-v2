@@ -1,6 +1,6 @@
-<style>
-    {!! file_get_contents(resource_path('css/landing/sections/rh.css')) !!}
-</style>
+@push('styles')
+@vite(['resources/css/landing/sections/rh.css'])
+@endpush
 
 <div class="rh-wrapper">
     <!-- Hero Section -->
@@ -27,7 +27,7 @@
             <div class="rh-mockup-person">
                 <!-- Aquí está la foto que solicitaste. Por favor, asegúrate de guardar la imagen real en public/assets/logo/rh-hero.png o actualiza la ruta abajo -->
                 <img src="{{ asset('assets/logo/rh-hero.png') }}" alt="HR Hero" class="rh-hero-image" onerror="this.style.display='none'">
-                <div class="rh-person" style="display: none;"></div>
+                <div class="rh-person hidden"></div>
                 
                 <div class="rh-floating-badge">
                     <div class="rh-badge-top">

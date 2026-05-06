@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Database/Query/Builder.php-presentSymbols
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-05c06f8507991c55b584722696f56956285187efb57319241d48105ce9bcf3fa-8.4.1',
+   'variableKey' => 'v2-812f717ba4aa895f020b319c4fce4116dca8cab74eda36830d2c2f02b58aaed6-8.4.1',
    'data' => 
   array (
     'classes' => 

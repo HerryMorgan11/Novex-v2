@@ -1,6 +1,6 @@
-<style>
-    {!! file_get_contents(resource_path('css/landing/sections/inventario/metricas.css')) !!}
-</style>
+@push('styles')
+@vite(['resources/css/landing/sections/inventario/metricas.css'])
+@endpush
 
 <section class="inv-metricas-section">
     <div class="inv-metricas-inner">

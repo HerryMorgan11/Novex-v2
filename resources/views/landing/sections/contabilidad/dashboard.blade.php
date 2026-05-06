@@ -1,108 +1,97 @@
-<style>
-    {!! file_get_contents(resource_path('css/landing/sections/contabilidad/dashboard.css')) !!}
-</style>
+@push('styles')
+@vite(['resources/css/landing/sections/contabilidad/dashboard.css'])
+@endpush
 
 <section class="conta2-dash-section">
     <div class="conta2-dash-inner">
         <!-- Texto izquierdo -->
         <div class="conta2-dash-text">
-            <p class="conta2-dash-pretitle">Dashboard Financiero</p>
+            <p class="conta2-dash-pretitle">Visibilidad de Negocio</p>
             <h2 class="conta2-dash-title">
-                Visibilidad total sobre<br>la salud de tu negocio
+                Conoce el estado real<br>de tu empresa en todo momento
             </h2>
             <p class="conta2-dash-desc">
-                Un panel centralizado que muestra en tiempo real el estado financiero
-                de tu empresa. Desde el flujo de caja hasta los márgenes por producto,
-                toda la información que necesitas para tomar decisiones con confianza.
+                El módulo de Finanzas de Novex centraliza toda la información económica
+                de tu empresa en un único panel. Ve ingresos, gastos, márgenes y cobros
+                pendientes en tiempo real, sin esperar al cierre del mes.
             </p>
             <ul class="conta2-dash-features">
                 <li>
                     <span class="chk">✓</span>
-                    Actualización en tiempo real sin necesidad de refrescar
+                    KPIs financieros actualizados en tiempo real
                 </li>
                 <li>
                     <span class="chk">✓</span>
-                    KPIs financieros personalizables por rol y departamento
+                    Control de ingresos, gastos y márgenes
                 </li>
                 <li>
                     <span class="chk">✓</span>
-                    Alertas inteligentes cuando los valores se salen del umbral
+                    Alertas cuando los valores salen del umbral
                 </li>
                 <li>
                     <span class="chk">✓</span>
-                    Exportación de informes con un solo clic
+                    Exportación de informes con un clic
                 </li>
             </ul>
         </div>
 
-        <!-- Dashboard mockup -->
-        <div class="conta2-dashboard-mock">
-            <!-- Barra de título tipo macOS -->
-            <div class="conta2-mock-topbar">
-                <div class="conta2-mock-dot red"></div>
-                <div class="conta2-mock-dot yellow"></div>
-                <div class="conta2-mock-dot green"></div>
-                <div class="conta2-mock-tabs">
-                    <button class="conta2-mock-tab active">Resumen</button>
-                    <button class="conta2-mock-tab">Ingresos</button>
-                    <button class="conta2-mock-tab">Gastos</button>
-                </div>
-            </div>
+        <!-- Panel de KPIs -->
+        <div class="conta2-kpi-panel">
+            <div class="conta2-kpi-panel-title">Resumen Financiero</div>
 
-            <!-- KPI Row -->
-            <div class="conta2-kpi-row">
-                <div class="conta2-kpi-box">
-                    <div class="conta2-kpi-label">Ingresos</div>
-                    <div class="conta2-kpi-value">$284k</div>
+            <div class="conta2-kpi-grid">
+                <div class="conta2-kpi-card">
+                    <div class="conta2-kpi-card-icon">
+                        <iconify-icon icon="mdi:trending-up"></iconify-icon>
+                    </div>
+                    <div class="conta2-kpi-card-label">Ingresos del mes</div>
+                    <div class="conta2-kpi-card-value positive">$284.500</div>
+                    <div class="conta2-kpi-card-change">+12% vs mes anterior</div>
                 </div>
-                <div class="conta2-kpi-box">
-                    <div class="conta2-kpi-label">Margen</div>
-                    <div class="conta2-kpi-value positive">+24%</div>
-                </div>
-                <div class="conta2-kpi-box">
-                    <div class="conta2-kpi-label">Pendiente</div>
-                    <div class="conta2-kpi-value negative">-$12k</div>
-                </div>
-            </div>
 
-            <!-- Bar Chart -->
-            <div class="conta2-chart-area">
-                <div class="conta2-bar" style="height: 30%;"></div>
-                <div class="conta2-bar" style="height: 55%;"></div>
-                <div class="conta2-bar" style="height: 42%;"></div>
-                <div class="conta2-bar" style="height: 70%;"></div>
-                <div class="conta2-bar" style="height: 38%;"></div>
-                <div class="conta2-bar accent" style="height: 95%;"></div>
-                <div class="conta2-bar" style="height: 60%;"></div>
-                <div class="conta2-bar" style="height: 48%;"></div>
-                <div class="conta2-bar" style="height: 75%;"></div>
-                <div class="conta2-bar" style="height: 50%;"></div>
-                <div class="conta2-bar" style="height: 85%;"></div>
-                <div class="conta2-bar" style="height: 65%;"></div>
-            </div>
+                <div class="conta2-kpi-card">
+                    <div class="conta2-kpi-card-icon negative-icon">
+                        <iconify-icon icon="mdi:trending-down"></iconify-icon>
+                    </div>
+                    <div class="conta2-kpi-card-label">Gastos del mes</div>
+                    <div class="conta2-kpi-card-value">$198.200</div>
+                    <div class="conta2-kpi-card-change">-5% vs mes anterior</div>
+                </div>
 
-            <!-- Recent transactions -->
-            <div class="conta2-txn-list">
-                <div class="conta2-txn-item">
-                    <span class="conta2-txn-name">
-                        <span class="conta2-txn-icon">📥</span>
-                        Cobro cliente #8829
-                    </span>
-                    <span class="conta2-txn-amount green">+$4,500</span>
+                <div class="conta2-kpi-card">
+                    <div class="conta2-kpi-card-icon accent-icon">
+                        <iconify-icon icon="mdi:percent-outline"></iconify-icon>
+                    </div>
+                    <div class="conta2-kpi-card-label">Margen bruto</div>
+                    <div class="conta2-kpi-card-value">+24%</div>
+                    <div class="conta2-kpi-card-change">Sobre ingresos totales</div>
                 </div>
-                <div class="conta2-txn-item">
-                    <span class="conta2-txn-name">
-                        <span class="conta2-txn-icon">📤</span>
-                        Pago proveedor Nexo
-                    </span>
-                    <span class="conta2-txn-amount red">-$1,200</span>
+
+                <div class="conta2-kpi-card warning-card">
+                    <div class="conta2-kpi-card-icon warning-icon">
+                        <iconify-icon icon="mdi:clock-alert-outline"></iconify-icon>
+                    </div>
+                    <div class="conta2-kpi-card-label">Cobros pendientes</div>
+                    <div class="conta2-kpi-card-value warning">$12.000</div>
+                    <div class="conta2-kpi-card-change">3 facturas vencidas</div>
                 </div>
-                <div class="conta2-txn-item">
-                    <span class="conta2-txn-name">
-                        <span class="conta2-txn-icon">📥</span>
-                        Factura #9001
-                    </span>
-                    <span class="conta2-txn-amount green">+$8,200</span>
+
+                <div class="conta2-kpi-card">
+                    <div class="conta2-kpi-card-icon">
+                        <iconify-icon icon="mdi:bank-outline"></iconify-icon>
+                    </div>
+                    <div class="conta2-kpi-card-label">Flujo de caja</div>
+                    <div class="conta2-kpi-card-value positive">$86.300</div>
+                    <div class="conta2-kpi-card-change">Saldo disponible</div>
+                </div>
+
+                <div class="conta2-kpi-card">
+                    <div class="conta2-kpi-card-icon">
+                        <iconify-icon icon="mdi:receipt-text-outline"></iconify-icon>
+                    </div>
+                    <div class="conta2-kpi-card-label">Facturas emitidas</div>
+                    <div class="conta2-kpi-card-value">48</div>
+                    <div class="conta2-kpi-card-change">Este mes</div>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
-<style>
-    {!! file_get_contents(resource_path('css/landing/sections/inventario/hero.css')) !!}
-</style>
+@push('styles')
+@vite(['resources/css/landing/sections/inventario/hero.css'])
+@endpush
 
 <section class="inv-hero-section">
     <div class="inv-hero-inner">
@@ -18,14 +18,12 @@
             </h1>
 
             <p class="inv-hero-desc">
-                Gestiona tu stock, optimiza los niveles de reposición y elimina las
-                pérdidas por desabastecimiento o exceso. Visibilidad completa sobre
-                cada producto, en cada almacén, en todo momento.
+                Novex Inventario gestiona todo el ciclo de la mercancía: recibe envíos desde proveedores a través de un endpoint, los almacena en stock y te permite moverlos a producción o reparto cuando los necesites. Cuando el repartidor confirma la entrega, el artículo sale automáticamente del stock.
             </p>
 
             <div class="inv-hero-actions">
                 <a href="{{ route('register') }}" class="inv-btn-primary">Empieza Gratis</a>
-                <a href="{{ route('about') }}" class="inv-btn-secondary">Ver demostración</a>
+                <a href="{{ route('register') }}" class="inv-btn-secondary">Solicitar acceso</a>
             </div>
         </div>
 
@@ -41,41 +39,41 @@
                 <!-- Lista de stock -->
                 <div class="inv-stock-list">
                     <div class="inv-stock-item">
-                        <div class="inv-stock-icon">📦</div>
+                        <div class="inv-stock-icon"><iconify-icon icon="mdi:package-variant-closed"></iconify-icon></div>
                         <div class="inv-stock-info">
                             <div class="inv-stock-name">Producto A-201</div>
                             <div class="inv-stock-bar-track">
-                                <div class="inv-stock-bar-fill" style="width: 85%;"></div>
+                                <div class="inv-stock-bar-fill"></div>
                             </div>
                         </div>
                         <span class="inv-stock-qty">850 u.</span>
                     </div>
                     <div class="inv-stock-item">
-                        <div class="inv-stock-icon">🔧</div>
+                        <div class="inv-stock-icon"><iconify-icon icon="mdi:cog-outline"></iconify-icon></div>
                         <div class="inv-stock-info">
                             <div class="inv-stock-name">Componente B-047</div>
                             <div class="inv-stock-bar-track">
-                                <div class="inv-stock-bar-fill" style="width: 42%;"></div>
+                                <div class="inv-stock-bar-fill"></div>
                             </div>
                         </div>
                         <span class="inv-stock-qty">210 u.</span>
                     </div>
                     <div class="inv-stock-item">
-                        <div class="inv-stock-icon">🏷️</div>
+                        <div class="inv-stock-icon"><iconify-icon icon="mdi:tag-outline"></iconify-icon></div>
                         <div class="inv-stock-info">
                             <div class="inv-stock-name">SKU-C-933</div>
                             <div class="inv-stock-bar-track">
-                                <div class="inv-stock-bar-fill" style="width: 95%;"></div>
+                                <div class="inv-stock-bar-fill"></div>
                             </div>
                         </div>
                         <span class="inv-stock-qty">1,240 u.</span>
                     </div>
                     <div class="inv-stock-item">
-                        <div class="inv-stock-icon">📋</div>
+                        <div class="inv-stock-icon"><iconify-icon icon="mdi:clipboard-list-outline"></iconify-icon></div>
                         <div class="inv-stock-info">
                             <div class="inv-stock-name">Lote D-Serie 5</div>
                             <div class="inv-stock-bar-track">
-                                <div class="inv-stock-bar-fill" style="width: 18%;"></div>
+                                <div class="inv-stock-bar-fill"></div>
                             </div>
                         </div>
                         <span class="inv-stock-qty">45 u.</span>

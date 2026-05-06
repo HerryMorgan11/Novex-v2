@@ -1,6 +1,6 @@
-<style>
-    {!! file_get_contents(resource_path('css/landing/sections/crm/cta.css')) !!}
-</style>
+@push('styles')
+@vite(['resources/css/landing/sections/crm/cta.css'])
+@endpush
 
 <section class="crm-cta-section">
     <div class="crm-cta-inner">
@@ -14,7 +14,7 @@
         </p>
         <div class="crm-cta-actions">
             <a href="{{ route('register') }}" class="crm-cta-btn-primary">Comenzar Gratis</a>
-            <a href="{{ route('about') }}" class="crm-cta-btn-secondary">Hablar con ventas</a>
+            <a href="{{ route('register') }}" class="crm-cta-btn-secondary">Solicitar acceso</a>
         </div>
         <p class="crm-cta-note">Sin tarjeta de crédito &bull; Importa tus contactos en minutos &bull; Soporte incluido</p>
     </div>

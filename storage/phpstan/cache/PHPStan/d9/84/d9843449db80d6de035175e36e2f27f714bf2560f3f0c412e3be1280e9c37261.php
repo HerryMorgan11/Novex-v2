@@ -2,7 +2,7 @@
 
 // odsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Http/Controllers/Controller.php-PHPStan\BetterReflection\Reflection\ReflectionClass-App\Http\Controllers\Controller
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-6.65.0.9-8.4.1-25d1c1ef8e6cc8a376553faacfba2b07d9dfaee9bdbb84f14f77517580e9deb1',
+   'variableKey' => 'v2-6.70.0.0-8.4.1-e5ddafa07059bfc9f8310767b0fc04dd3b8a1f50bcec1fd693b19f5555697825',
    'data' => 
   array (
     'locatedSource' => 
@@ -26,8 +26,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     'attributes' => 
     array (
     ),
-    'startLine' => 5,
-    'endLine' => 8,
+    'startLine' => 7,
+    'endLine' => 10,
     'startColumn' => 1,
     'endColumn' => 1,
     'parentClassName' => NULL,
@@ -36,6 +36,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'traitClassNames' => 
     array (
+      0 => 'Illuminate\\Foundation\\Auth\\Access\\AuthorizesRequests',
     ),
     'immediateConstants' => 
     array (

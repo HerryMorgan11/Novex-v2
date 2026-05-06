@@ -5,7 +5,7 @@
         system-ui,
         -apple-system,
         sans-serif;
-    color: #1a1a24;
+    color: var(--text);
     background-color: #f8f8fa;
     padding-bottom: 80px;
     overflow: hidden;
@@ -37,14 +37,12 @@
     line-height: 1.1;
     margin: 0 auto 30px;
     max-width: 800px;
-    color: #1a1a24;
+    color: var(--text);
 }
 
 .conta-hero h1 .highlight {
-    background: linear-gradient(90deg, #e55c3c, #f28b6d);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--brand);
+    background: none;
 }
 
 .conta-hero p {
@@ -97,7 +95,7 @@
 /* Features Section */
 .conta-features {
     padding: 80px 20px;
-    max-width: 1200px;
+    max-width: var(--landing-max-width, 80%);
     margin: 0 auto;
 }
 
@@ -139,7 +137,7 @@
 
 .conta-card {
     background: white;
-    border-radius: 20px;
+    border-radius: var(--radius-lg);
     padding: 40px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
     transition: transform 0.3s ease;
@@ -159,7 +157,7 @@
 .conta-icon-wrapper {
     width: 48px;
     height: 48px;
-    border-radius: 12px;
+    border-radius: var(--radius);
     background: #ffefec;
     color: #df5a3c;
     display: flex;
@@ -258,7 +256,7 @@
     background: #ffb8c6;
     color: #d1225b;
     padding: 3px 10px;
-    border-radius: 20px;
+    border-radius: var(--radius-lg);
     font-size: 0.65rem;
 }
 
@@ -321,7 +319,7 @@
 
 .dashboard-mockup {
     background: #568a83;
-    border-radius: 12px;
+    border-radius: var(--radius);
     padding: 15px;
     display: flex;
     flex-direction: column;
@@ -384,7 +382,7 @@
     font-weight: 600;
     line-height: 1.5;
     margin-bottom: 30px;
-    color: #1a1a24;
+    color: var(--text);
 }
 
 .conta-author {
@@ -468,4 +466,49 @@
         margin: 20px;
         padding: 60px 20px;
     }
+}
+
+/* ── Extracted inline styles from contabilidad.blade.php ── */
+.conta-icon-size {
+    font-size: 24px;
+}
+
+.conta-icon-wrapper-red {
+    background: #fff0f3;
+    color: #d1225b;
+}
+
+.stat-item-divider {
+    border-left: 2px solid #eee;
+    padding-left: 20px;
+}
+
+.stat-value-accent {
+    color: #df5a3c;
+}
+
+.dash-full-width {
+    width: 100%;
+}
+
+.dash-body .dash-bar:nth-child(1) {
+    height: 30%;
+}
+.dash-body .dash-bar:nth-child(2) {
+    height: 45%;
+}
+.dash-body .dash-bar:nth-child(3) {
+    height: 60%;
+}
+.dash-body .dash-bar:nth-child(4) {
+    height: 35%;
+}
+.dash-body .dash-bar:nth-child(5) {
+    height: 80%;
+}
+.dash-body .dash-bar:nth-child(6) {
+    height: 100%;
+}
+.dash-body .dash-bar:nth-child(7) {
+    height: 50%;
 }

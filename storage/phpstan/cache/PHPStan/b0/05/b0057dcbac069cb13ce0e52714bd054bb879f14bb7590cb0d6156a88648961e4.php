@@ -434,7 +434,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     1 => 
     array (
-      'phar:///Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/phpstan/phpstan/phpstan.phar/vendor/jetbrains/phpstorm-stubs/json/json.stub' => 'f8a4cb1e6097f821f2f6b732a7dde6a18c4cc9973f3bb349e797f05be94cdbe4',
+      'phar:///Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/phpstan/phpstan/phpstan.phar/vendor/jetbrains/phpstorm-stubs/json/json.stub' => '2e507e6cc3e498f40630f61265b40c08688280fdb163be4432cf062df3dc0210',
     ),
   ),
 ));

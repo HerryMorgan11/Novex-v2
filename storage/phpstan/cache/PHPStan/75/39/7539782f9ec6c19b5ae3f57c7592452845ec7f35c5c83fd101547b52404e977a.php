@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Container/Container.php-PHPStan\BetterReflection\Reflection\ReflectionClass-Illuminate\Container\Container
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-d28f83f1219b4fada990ceaed856fdf3290f0026a3c420341138d7e8842b5011-8.4.1-6.65.0.9',
+   'variableKey' => 'v2-fae6eca6d7d0421c9d9d237349eb91ecdd5b33caebfa6fe3befc019f5f57daf8-8.4.1-6.70.0.0',
    'data' => 
   array (
     'locatedSource' => 
@@ -4580,6 +4580,63 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
             'parameterIndex' => 0,
             'isOptional' => false,
           ),
+          'className' => 
+          array (
+            'name' => 'className',
+            'default' => 
+            array (
+              'code' => 'null',
+              'attributes' => 
+              array (
+                'startLine' => 1320,
+                'endLine' => 1320,
+                'startTokenPos' => 5174,
+                'startFilePos' => 37781,
+                'endTokenPos' => 5174,
+                'endFilePos' => 37784,
+              ),
+            ),
+            'type' => 
+            array (
+              'class' => 'PHPStan\\BetterReflection\\Reflection\\ReflectionUnionType',
+              'data' => 
+              array (
+                'types' => 
+                array (
+                  0 => 
+                  array (
+                    'class' => 'PHPStan\\BetterReflection\\Reflection\\ReflectionNamedType',
+                    'data' => 
+                    array (
+                      'name' => 'string',
+                      'isIdentifier' => true,
+                    ),
+                  ),
+                  1 => 
+                  array (
+                    'class' => 'PHPStan\\BetterReflection\\Reflection\\ReflectionNamedType',
+                    'data' => 
+                    array (
+                      'name' => 'null',
+                      'isIdentifier' => true,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            'isVariadic' => false,
+            'byRef' => false,
+            'isPromoted' => false,
+            'attributes' => 
+            array (
+            ),
+            'startLine' => 1320,
+            'endLine' => 1320,
+            'startColumn' => 69,
+            'endColumn' => 93,
+            'parameterIndex' => 1,
+            'isOptional' => true,
+          ),
         ),
         'returnsReference' => false,
         'returnType' => NULL,
@@ -4866,10 +4923,10 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
               array (
                 'startLine' => 1434,
                 'endLine' => 1434,
-                'startTokenPos' => 5693,
-                'startFilePos' => 41405,
-                'endTokenPos' => 5693,
-                'endFilePos' => 41408,
+                'startTokenPos' => 5710,
+                'startFilePos' => 41459,
+                'endTokenPos' => 5710,
+                'endFilePos' => 41462,
               ),
             ),
             'type' => 
@@ -4973,10 +5030,10 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
               array (
                 'startLine' => 1453,
                 'endLine' => 1453,
-                'startTokenPos' => 5795,
-                'startFilePos' => 41940,
-                'endTokenPos' => 5795,
-                'endFilePos' => 41943,
+                'startTokenPos' => 5812,
+                'startFilePos' => 41994,
+                'endTokenPos' => 5812,
+                'endFilePos' => 41997,
               ),
             ),
             'type' => 
@@ -5080,10 +5137,10 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
               array (
                 'startLine' => 1472,
                 'endLine' => 1472,
-                'startTokenPos' => 5897,
-                'startFilePos' => 42488,
-                'endTokenPos' => 5897,
-                'endFilePos' => 42491,
+                'startTokenPos' => 5914,
+                'startFilePos' => 42542,
+                'endTokenPos' => 5914,
+                'endFilePos' => 42545,
               ),
             ),
             'type' => 
@@ -5270,10 +5327,10 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
               array (
                 'startLine' => 1502,
                 'endLine' => 1502,
-                'startTokenPos' => 6032,
-                'startFilePos' => 43356,
-                'endTokenPos' => 6033,
-                'endFilePos' => 43357,
+                'startTokenPos' => 6049,
+                'startFilePos' => 43410,
+                'endTokenPos' => 6050,
+                'endFilePos' => 43411,
               ),
             ),
             'type' => NULL,
@@ -6377,10 +6434,10 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
               array (
                 'startLine' => 1783,
                 'endLine' => 1783,
-                'startTokenPos' => 7122,
-                'startFilePos' => 50786,
-                'endTokenPos' => 7122,
-                'endFilePos' => 50789,
+                'startTokenPos' => 7139,
+                'startFilePos' => 50840,
+                'endTokenPos' => 7139,
+                'endFilePos' => 50843,
               ),
             ),
             'type' => 

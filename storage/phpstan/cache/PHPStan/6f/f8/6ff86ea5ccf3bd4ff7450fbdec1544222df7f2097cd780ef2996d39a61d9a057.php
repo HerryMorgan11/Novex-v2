@@ -37,7 +37,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/nette/utils/src/Utils/DateTime.php' => 
     array (
-      0 => '58906064cc0d9e3e59570eac5ab1fbe3c33ce8f034fe4df976818576c3f27228',
+      0 => 'db13ac298dce93b66406a9aee51a1ce5792ba408e0f4e290939d0c16b97a8fdc',
       1 => 
       array (
         0 => 'nette\\utils\\datetime',
@@ -64,7 +64,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/nette/utils/src/Utils/Finder.php' => 
     array (
-      0 => 'cb6a8ffda006e4d4cd614f0e66394e12308fcb8f294b68bc7e046fb907dde2ed',
+      0 => 'f1d7454d5e8fd66cf2653c613837efdb59c6857d33ae9560c4026bc32c0e5b25',
       1 => 
       array (
         0 => 'nette\\utils\\',
@@ -146,7 +146,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/nette/utils/src/Utils/Type.php' => 
     array (
-      0 => '206a8d7fbb32568b9380c096e836d1d67602836a3429a4b4a622df6c19f2f0fd',
+      0 => '88cb60903450a03a9e950cd3f47f014bfd9c7b94ea9bab8dd80a1f80e76ec3a1',
       1 => 
       array (
         0 => 'nette\\utils\\type',
@@ -199,7 +199,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/nette/utils/src/Utils/Paginator.php' => 
     array (
-      0 => 'b12e99e73f016aa1459d19bd0b8c71d86316dbdaeb316a7dc011c680e049a58b',
+      0 => 'f0fc154c6072a79ba0ea83721b3b09df8e4d24a759edebda1a3d9c39123501b0',
       1 => 
       array (
         0 => 'nette\\utils\\paginator',
@@ -232,7 +232,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/nette/utils/src/Utils/ImageColor.php' => 
     array (
-      0 => '6493b5eeb3a1b4354df397e497904c8a2abdfd9beec37175df0fcc1aeb384d65',
+      0 => '1c8810c881d036a1115e2e665b86c9c320749ecc02e203d7ce6ba825bc9764ce',
       1 => 
       array (
         0 => 'nette\\utils\\imagecolor',
@@ -250,7 +250,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/nette/utils/src/Utils/Arrays.php' => 
     array (
-      0 => 'c0e3ac7581b6fee62a8b5655d396ac076583f71b6d929da2a8f60169e8db95fe',
+      0 => '7c38532d6c667436240d0f4a2f9c46a075a9d62449c3799b00ffbba8a005f9d0',
       1 => 
       array (
         0 => 'nette\\utils\\',
@@ -295,7 +295,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/nette/utils/src/Utils/FileSystem.php' => 
     array (
-      0 => 'b06f2773099360599ec114a19c385e7673d9fa8259231f06d02989b92411e670',
+      0 => 'b3cfe20c8d93703e132f4634d65053f965b8f11fe3d8efb0f0226356d65c13de',
       1 => 
       array (
         0 => 'nette\\utils\\filesystem',
@@ -367,7 +367,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/nette/utils/src/Utils/Reflection.php' => 
     array (
-      0 => 'c7a53dde5eab043c0e2263e969ddfaf57740a7f8840fa48b3e1075ee92281734',
+      0 => '72b373b055cf2fb4434ddf2f5ab975814dbbbbea7ca027280ae4498444e96593',
       1 => 
       array (
         0 => 'nette\\utils\\',
@@ -416,7 +416,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/nette/utils/src/Utils/Strings.php' => 
     array (
-      0 => 'b64c46642ec879a559fd1d6309460615ba571e79deb95216b9af9496ee4ac66c',
+      0 => '3c229e198e0b3c478bb7ae41de157bdcce0fd55a193809e60594dcda9d64bc7f',
       1 => 
       array (
         0 => 'nette\\utils\\strings',
@@ -483,7 +483,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/nette/utils/src/Utils/Html.php' => 
     array (
-      0 => '1ef5d3ae29681c9b498c3aa692a5278c51044217eb144665e9875287ae47b957',
+      0 => 'edcd64d79ea3bc75b0a9824353ceeedc7db10040009f8a2ca98bb687b3ef2273',
       1 => 
       array (
         0 => 'nette\\utils\\',
@@ -597,7 +597,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/nette/utils/src/Utils/Iterables.php' => 
     array (
-      0 => 'f748e32f4f41fd0cc5f5528ea2d27a51368af1a30e81e5b7d95171a8fbb0a3e9',
+      0 => '990d4321a00a8e365950862c29e03c2849b789d4a1871b9bcb56afb0bcd0cd94',
       1 => 
       array (
         0 => 'nette\\utils\\iterables',
@@ -627,7 +627,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/nette/utils/src/Utils/Helpers.php' => 
     array (
-      0 => 'db5a4b23d73c9279b7bb3f6af6975f942adc793fa0a468b1cae3daee694fa931',
+      0 => 'c52d1e0fea8b584cb0f9128065c505ad5a62c64d161f3fb65f4e921cf3446f2e',
       1 => 
       array (
         0 => 'nette\\utils\\helpers',
@@ -666,7 +666,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/nette/utils/src/Utils/ReflectionMethod.php' => 
     array (
-      0 => '70ed5fd965f10c2d95268ffff0d11f08d77f58a3ab3bdc3ef10b33bb7a59e111',
+      0 => '143da57d1e35bba3a81c008ba8ca389813d9f051a903025bdb633eab01879196',
       1 => 
       array (
         0 => 'nette\\utils\\reflectionmethod',
@@ -682,7 +682,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/nette/utils/src/Utils/Callback.php' => 
     array (
-      0 => 'd61d6d6bb58ecec036cf49c2d713316520579dc4801490fb4bdb82b88e58ba61',
+      0 => 'e17c6fd3ca2d245da00d86d6330b4b55d3b927cb8642bc389b342b0664fe5c8c',
       1 => 
       array (
         0 => 'nette\\utils\\callback',
@@ -702,7 +702,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/nette/utils/src/Utils/Image.php' => 
     array (
-      0 => '9fd1df95b1fc9891a2b7a274180a5a050e045fc4139fbd0101e0dc19e2a9420c',
+      0 => '03dfc626dcf9fa4fc62c166a044872f6d18927ef6c3da2106fc80fb18f41b218',
       1 => 
       array (
         0 => 'nette\\utils\\',
@@ -746,7 +746,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         33 => 'nette\\utils\\ispercent',
         34 => 'nette\\utils\\__serialize',
         35 => 'nette\\utils\\resolvecolor',
-        36 => 'nette\\utils\\ensureextension',
+        36 => 'nette\\utils\\normalizecolor',
+        37 => 'nette\\utils\\ensureextension',
       ),
       3 => 
       array (
@@ -755,7 +756,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/nette/utils/src/SmartObject.php' => 
     array (
-      0 => 'dc5569ae839bbac6c94ce767a59fc2f5a281ce6a2e9714017866d44dadf6f20e',
+      0 => 'cc1ce6ad4e0d817377dfcac3c0720d96e9584cd107e50ab97634ad9029f6998a',
       1 => 
       array (
         0 => 'nette\\smartobject',
@@ -832,7 +833,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/nette/utils/src/Iterators/CachingIterator.php' => 
     array (
-      0 => '254de5857203b4842cd71e579f6e6cca5e7c2878050c93e34da5c91aff8c2a4e',
+      0 => '5a0a2b987bfc1d95c1e360c6bdb00178d22faeaf1910f35a09972fa67ea51365',
       1 => 
       array (
         0 => 'nette\\iterators\\cachingiterator',

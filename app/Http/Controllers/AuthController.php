@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 
+/**
+ * Flujos de autenticación clásicos (login, registro, logout) para el guard web.
+ *
+ * La creación de usuario se delega en la Action CreatesNewUsers de Fortify para
+ * compartir lógica con el registro automático tras login social.
+ */
 class AuthController extends Controller
 {
     /**
@@ -47,6 +53,11 @@ class AuthController extends Controller
         }
 
         $request->session()->regenerate();
+
+        // Si el usuario tiene contraseña provisional, redirigir a cambio obligatorio
+        if (Auth::user()->requiresPasswordChange()) {
+            return redirect()->route('password.change-first-time');
+        }
 
         return redirect()->intended(route('dashboard'));
     }

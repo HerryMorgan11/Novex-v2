@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Auth/Passwords/CanResetPassword.php-PHPStan\BetterReflection\Reflection\ReflectionClass-Illuminate\Auth\Passwords\CanResetPassword
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-b13e21923f19afa3f7d27913996b8c49da8d2e4790c8a4dbb5632b0d23b9bfea-8.4.1-6.65.0.9',
+   'variableKey' => 'v2-b13e21923f19afa3f7d27913996b8c49da8d2e4790c8a4dbb5632b0d23b9bfea-8.4.1-6.70.0.0',
    'data' => 
   array (
     'locatedSource' => 

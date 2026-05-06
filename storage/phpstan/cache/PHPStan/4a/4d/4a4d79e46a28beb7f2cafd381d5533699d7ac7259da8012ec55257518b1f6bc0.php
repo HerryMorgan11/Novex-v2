@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Collections/Traits/TransformsToResourceCollection.php-PHPStan\BetterReflection\Reflection\ReflectionClass-Illuminate\Support\Traits\TransformsToResourceCollection
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-226b1867a790e6da048a1b9a717b8af16ca169b1eac84605d5ae76a2aaf96f40-8.4.1-6.65.0.9',
+   'variableKey' => 'v2-226b1867a790e6da048a1b9a717b8af16ca169b1eac84605d5ae76a2aaf96f40-8.4.1-6.70.0.0',
    'data' => 
   array (
     'locatedSource' => 

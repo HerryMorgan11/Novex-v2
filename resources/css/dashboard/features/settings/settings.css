@@ -1,0 +1,87 @@
+/* ================================================
+   Settings
+   resources/css/dashboard/features/settings/settings.css
+   ================================================ */
+
+/* ================================================
+   Shared – section intro / error list
+   ================================================ */
+
+.sett-section-intro {
+    color: var(--muted);
+    padding-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.sett-error-list {
+    margin: 0;
+    padding-left: 1rem;
+}
+
+/* ================================================
+   Security – extracted inline styles
+   ================================================ */
+
+.sett-password-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    max-width: 400px;
+}
+
+.sett-form-actions {
+    margin-top: 1rem;
+}
+
+.sett-danger-heading {
+    color: var(--accent);
+}
+
+.sett-danger-actions {
+    margin-top: 1.5rem;
+}
+
+/* ================================================
+   Profile Content – extracted inline styles
+   ================================================ */
+
+.sett-submit-wrap {
+    padding-top: 0.5rem;
+}
+
+.sett-section-no-margin {
+    margin-bottom: 0;
+}
+
+/* ── Profile — group labels & optional badge ──────────────────────────────── */
+
+.sett-group-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.sett-group-label--spaced {
+    margin-top: 1.75rem;
+}
+
+.sett-field-optional {
+    display: inline-block;
+    margin-left: 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--muted-2, #9ca3af);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.05rem 0.4rem;
+    vertical-align: middle;
+    text-transform: none;
+    letter-spacing: 0;
+}

@@ -1,4 +1,4 @@
-<aside class="sidebar" :class="{ 'open': sidebarOpen }" aria-label="Sidebar">
+<aside id="main-sidebar" class="sidebar" :class="{ 'open': sidebarOpen }" aria-label="Sidebar">
         <!-- Top Section: Logo de marca -->
         <div class="sidebar-top">
           <img src="/assets/logo/logo-novex-color.png" alt="Novex Logo" class="sidebar-logo">
@@ -20,12 +20,12 @@
           </nav>
         </div>
 
-        <div class="sidebar-section" x-data="sidebarModules()" @modules-updated.window="loadModules()">
+        <div class="sidebar-section">
           <div class="sidebar-section-title">Modules</div>
 
           <nav class="nav" aria-label="Navegación de módulos">
             <!-- Inventario -->
-            <a class="nav-item" href="#" x-show="modules.inventory">
+            <a class="nav-item" href="{{ route('inventario.index') }}" data-module="inventory">
               <span class="nav-icon" aria-hidden="true">
                 <iconify-icon icon="streamline-ultimate:warehouse-cart-packages-2-bold"></iconify-icon>
               </span>
@@ -90,14 +90,18 @@
           <div class="user-dropdown" id="user-dropdown-container">
             <!-- User Button -->
             <button
-              id="user-dropdown-button"
+              id="user-dropdown-btn"
               type="button"
               class="user"
+              aria-haspopup="menu"
+              aria-expanded="false"
+              aria-controls="user-dropdown-panel"
             >
-              <div class="avatar">DJ</div>
+              @php($sidebarUser = auth()->user())
+              <div class="avatar">{{ strtoupper(substr($sidebarUser?->name ?? 'U', 0, 1)) }}</div>
               <div class="user-meta">
-                <span class="user-name">David Jacobo</span>
-                <span class="user-email">Admin</span>
+                <span class="user-name">{{ $sidebarUser?->name ?? 'Usuario' }}</span>
+                <span class="user-email">{{ $sidebarUser?->email ?? 'Cuenta' }}</span>
               </div>
               <iconify-icon icon="lucide:chevron-right" width="16" class="user-icon"></iconify-icon>
             </button>
@@ -106,12 +110,14 @@
             <div
               id="user-dropdown-panel"
               class="dropdown-panel"
-              style="display: none;"
+              role="menu"
+              style="display: none"
             >
               <!-- Profile Settings -->
               <a 
                 href="{{ route('settings.profile') }}"
                 class="dropdown-item"
+                role="menuitem"
               >
                 <iconify-icon icon="lucide:user" width="16"></iconify-icon>
                 <span>Profile Settings</span>
@@ -121,17 +127,19 @@
               <a 
                 href="{{ route('controlpanel.home') }}"
                 class="dropdown-item"
+                role="menuitem"
               >
                 <iconify-icon icon="lucide:sliders" width="16"></iconify-icon>
                 <span>Control Panel</span>
               </a>
 
               <!-- Logout -->
-              <form method="POST" action="{{ route('logout') }}" style="display: contents;">
+              <form method="POST" action="{{ route('logout') }}" class="dash-sidebar-logout-form">
                 @csrf
                 <button 
                   type="submit"
                   class="dropdown-item logout"
+                  role="menuitem"
                 >
                   <iconify-icon icon="lucide:log-out" width="16"></iconify-icon>
                   <span>Logout</span>
@@ -141,56 +149,3 @@
           </div>
         </div>
       </aside>
-
-<script>
-  function sidebarModules() {
-    return {
-      modules: {
-        inventory: true,
-        accounting: true,
-        hr: true
-      },
-      init() {
-        this.loadModules();
-      },
-      loadModules() {
-        const saved = localStorage.getItem('novex_modules');
-        if (saved) {
-          this.modules = JSON.parse(saved);
-        }
-      }
-    }
-  }
-
-  // User Dropdown functionality
-  document.addEventListener('DOMContentLoaded', function() {
-    const button = document.getElementById('user-dropdown-button');
-    const panel = document.getElementById('user-dropdown-panel');
-    const container = document.getElementById('user-dropdown-container');
-
-    if (!button || !panel) return;
-
-    // Toggle dropdown on button click
-    button.addEventListener('click', function(e) {
-      e.stopPropagation();
-      const isOpen = panel.style.display !== 'none';
-      panel.style.display = isOpen ? 'none' : 'block';
-    });
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-      const isClickInside = container.contains(e.target);
-      if (!isClickInside && panel.style.display !== 'none') {
-        panel.style.display = 'none';
-      }
-    });
-
-    // Close dropdown on Escape key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && panel.style.display !== 'none') {
-        panel.style.display = 'none';
-        button.focus();
-      }
-    });
-  });
-</script>

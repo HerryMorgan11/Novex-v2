@@ -2,7 +2,7 @@
 
 // odsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Models/User.php-PHPStan\BetterReflection\Reflection\ReflectionClass-App\Models\User
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-6.65.0.9-8.4.1-ed92d069e32e73e5a7aed2c34a071b55ef4920d12fd3843151364f72c45259d6',
+   'variableKey' => 'v2-6.70.0.0-8.4.1-307da59f4c2f4dd2549d0bb3de1615be3becc3ed84a16d0e913226412ebb19d8',
    'data' => 
   array (
     'locatedSource' => 
@@ -22,17 +22,12 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     'isEnum' => false,
     'isBackedEnum' => false,
     'modifiers' => 0,
-    'docComment' => '/**
- * @property string $name
- * @property string $email
- * @property string $password
- * @property \\Illuminate\\Support\\Carbon|null $email_verified_at
- */',
+    'docComment' => NULL,
     'attributes' => 
     array (
     ),
-    'startLine' => 17,
-    'endLine' => 67,
+    'startLine' => 16,
+    'endLine' => 85,
     'startColumn' => 1,
     'endColumn' => 1,
     'parentClassName' => 'Illuminate\\Foundation\\Auth\\User',
@@ -41,8 +36,11 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'traitClassNames' => 
     array (
-      0 => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
-      1 => 'Illuminate\\Notifications\\Notifiable',
+      0 => 'Stancl\\Tenancy\\Database\\Concerns\\CentralConnection',
+      1 => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+      2 => 'Illuminate\\Database\\Eloquent\\Concerns\\HasUlids',
+      3 => 'Illuminate\\Database\\Eloquent\\SoftDeletes',
+      4 => 'Illuminate\\Notifications\\Notifiable',
     ),
     'immediateConstants' => 
     array (
@@ -58,27 +56,23 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         'type' => NULL,
         'default' => 
         array (
-          'code' => '[\'name\', \'email\', \'password\']',
+          'code' => '[\'name\', \'email\', \'password\', \'is_active\', \'current_tenant_id\']',
           'attributes' => 
           array (
-            'startLine' => 27,
-            'endLine' => 31,
-            'startTokenPos' => 63,
-            'startFilePos' => 668,
-            'endTokenPos' => 74,
-            'endFilePos' => 727,
+            'startLine' => 22,
+            'endLine' => 28,
+            'startTokenPos' => 98,
+            'startFilePos' => 691,
+            'endTokenPos' => 115,
+            'endFilePos' => 800,
           ),
         ),
-        'docComment' => '/**
- * The attributes that are mass assignable.
- *
- * @var list<string>
- */',
+        'docComment' => NULL,
         'attributes' => 
         array (
         ),
-        'startLine' => 27,
-        'endLine' => 31,
+        'startLine' => 22,
+        'endLine' => 28,
         'startColumn' => 5,
         'endColumn' => 6,
         'isPromoted' => false,
@@ -88,36 +82,32 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         array (
         ),
       ),
-      'hidden' => 
+      'casts' => 
       array (
         'declaringClassName' => 'App\\Models\\User',
         'implementingClassName' => 'App\\Models\\User',
-        'name' => 'hidden',
+        'name' => 'casts',
         'modifiers' => 2,
         'type' => NULL,
         'default' => 
         array (
-          'code' => '[\'password\', \'remember_token\']',
+          'code' => '[\'email_verified_at\' => \'datetime\', \'is_active\' => \'boolean\', \'last_login_at\' => \'datetime\']',
           'attributes' => 
           array (
-            'startLine' => 38,
-            'endLine' => 41,
-            'startTokenPos' => 85,
-            'startFilePos' => 866,
-            'endTokenPos' => 93,
-            'endFilePos' => 918,
+            'startLine' => 30,
+            'endLine' => 34,
+            'startTokenPos' => 124,
+            'startFilePos' => 827,
+            'endTokenPos' => 147,
+            'endFilePos' => 949,
           ),
         ),
-        'docComment' => '/**
- * The attributes that should be hidden for serialization.
- *
- * @var list<string>
- */',
+        'docComment' => NULL,
         'attributes' => 
         array (
         ),
-        'startLine' => 38,
-        'endLine' => 41,
+        'startLine' => 30,
+        'endLine' => 34,
         'startColumn' => 5,
         'endColumn' => 6,
         'isPromoted' => false,
@@ -130,9 +120,9 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'immediateMethods' => 
     array (
-      'casts' => 
+      'membership' => 
       array (
-        'name' => 'casts',
+        'name' => 'membership',
         'parameters' => 
         array (
         ),
@@ -142,19 +132,120 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
           'class' => 'PHPStan\\BetterReflection\\Reflection\\ReflectionNamedType',
           'data' => 
           array (
-            'name' => 'array',
-            'isIdentifier' => true,
+            'name' => 'Illuminate\\Database\\Eloquent\\Relations\\HasOne',
+            'isIdentifier' => false,
           ),
         ),
         'attributes' => 
         array (
         ),
-        'docComment' => '/**
- * Get the attributes that should be cast.
- *
- * @return array<string, string>
- */',
-        'startLine' => 48,
+        'docComment' => NULL,
+        'startLine' => 36,
+        'endLine' => 39,
+        'startColumn' => 5,
+        'endColumn' => 5,
+        'couldThrow' => false,
+        'isClosure' => false,
+        'isGenerator' => false,
+        'isVariadic' => false,
+        'modifiers' => 1,
+        'namespace' => 'App\\Models',
+        'declaringClassName' => 'App\\Models\\User',
+        'implementingClassName' => 'App\\Models\\User',
+        'currentClassName' => 'App\\Models\\User',
+        'aliasName' => NULL,
+      ),
+      'memberships' => 
+      array (
+        'name' => 'memberships',
+        'parameters' => 
+        array (
+        ),
+        'returnsReference' => false,
+        'returnType' => 
+        array (
+          'class' => 'PHPStan\\BetterReflection\\Reflection\\ReflectionNamedType',
+          'data' => 
+          array (
+            'name' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+            'isIdentifier' => false,
+          ),
+        ),
+        'attributes' => 
+        array (
+        ),
+        'docComment' => NULL,
+        'startLine' => 41,
+        'endLine' => 44,
+        'startColumn' => 5,
+        'endColumn' => 5,
+        'couldThrow' => false,
+        'isClosure' => false,
+        'isGenerator' => false,
+        'isVariadic' => false,
+        'modifiers' => 1,
+        'namespace' => 'App\\Models',
+        'declaringClassName' => 'App\\Models\\User',
+        'implementingClassName' => 'App\\Models\\User',
+        'currentClassName' => 'App\\Models\\User',
+        'aliasName' => NULL,
+      ),
+      'createdTenants' => 
+      array (
+        'name' => 'createdTenants',
+        'parameters' => 
+        array (
+        ),
+        'returnsReference' => false,
+        'returnType' => 
+        array (
+          'class' => 'PHPStan\\BetterReflection\\Reflection\\ReflectionNamedType',
+          'data' => 
+          array (
+            'name' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+            'isIdentifier' => false,
+          ),
+        ),
+        'attributes' => 
+        array (
+        ),
+        'docComment' => NULL,
+        'startLine' => 46,
+        'endLine' => 49,
+        'startColumn' => 5,
+        'endColumn' => 5,
+        'couldThrow' => false,
+        'isClosure' => false,
+        'isGenerator' => false,
+        'isVariadic' => false,
+        'modifiers' => 1,
+        'namespace' => 'App\\Models',
+        'declaringClassName' => 'App\\Models\\User',
+        'implementingClassName' => 'App\\Models\\User',
+        'currentClassName' => 'App\\Models\\User',
+        'aliasName' => NULL,
+      ),
+      'currentTenant' => 
+      array (
+        'name' => 'currentTenant',
+        'parameters' => 
+        array (
+        ),
+        'returnsReference' => false,
+        'returnType' => 
+        array (
+          'class' => 'PHPStan\\BetterReflection\\Reflection\\ReflectionNamedType',
+          'data' => 
+          array (
+            'name' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+            'isIdentifier' => false,
+          ),
+        ),
+        'attributes' => 
+        array (
+        ),
+        'docComment' => NULL,
+        'startLine' => 51,
         'endLine' => 54,
         'startColumn' => 5,
         'endColumn' => 5,
@@ -162,16 +253,16 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         'isClosure' => false,
         'isGenerator' => false,
         'isVariadic' => false,
-        'modifiers' => 2,
+        'modifiers' => 1,
         'namespace' => 'App\\Models',
         'declaringClassName' => 'App\\Models\\User',
         'implementingClassName' => 'App\\Models\\User',
         'currentClassName' => 'App\\Models\\User',
         'aliasName' => NULL,
       ),
-      'initials' => 
+      'socialAccounts' => 
       array (
-        'name' => 'initials',
+        'name' => 'socialAccounts',
         'parameters' => 
         array (
         ),
@@ -181,18 +272,209 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
           'class' => 'PHPStan\\BetterReflection\\Reflection\\ReflectionNamedType',
           'data' => 
           array (
-            'name' => 'string',
+            'name' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+            'isIdentifier' => false,
+          ),
+        ),
+        'attributes' => 
+        array (
+        ),
+        'docComment' => NULL,
+        'startLine' => 56,
+        'endLine' => 59,
+        'startColumn' => 5,
+        'endColumn' => 5,
+        'couldThrow' => false,
+        'isClosure' => false,
+        'isGenerator' => false,
+        'isVariadic' => false,
+        'modifiers' => 1,
+        'namespace' => 'App\\Models',
+        'declaringClassName' => 'App\\Models\\User',
+        'implementingClassName' => 'App\\Models\\User',
+        'currentClassName' => 'App\\Models\\User',
+        'aliasName' => NULL,
+      ),
+      'auditLogs' => 
+      array (
+        'name' => 'auditLogs',
+        'parameters' => 
+        array (
+        ),
+        'returnsReference' => false,
+        'returnType' => 
+        array (
+          'class' => 'PHPStan\\BetterReflection\\Reflection\\ReflectionNamedType',
+          'data' => 
+          array (
+            'name' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+            'isIdentifier' => false,
+          ),
+        ),
+        'attributes' => 
+        array (
+        ),
+        'docComment' => NULL,
+        'startLine' => 61,
+        'endLine' => 64,
+        'startColumn' => 5,
+        'endColumn' => 5,
+        'couldThrow' => false,
+        'isClosure' => false,
+        'isGenerator' => false,
+        'isVariadic' => false,
+        'modifiers' => 1,
+        'namespace' => 'App\\Models',
+        'declaringClassName' => 'App\\Models\\User',
+        'implementingClassName' => 'App\\Models\\User',
+        'currentClassName' => 'App\\Models\\User',
+        'aliasName' => NULL,
+      ),
+      'reminderLists' => 
+      array (
+        'name' => 'reminderLists',
+        'parameters' => 
+        array (
+        ),
+        'returnsReference' => false,
+        'returnType' => 
+        array (
+          'class' => 'PHPStan\\BetterReflection\\Reflection\\ReflectionNamedType',
+          'data' => 
+          array (
+            'name' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+            'isIdentifier' => false,
+          ),
+        ),
+        'attributes' => 
+        array (
+        ),
+        'docComment' => NULL,
+        'startLine' => 66,
+        'endLine' => 69,
+        'startColumn' => 5,
+        'endColumn' => 5,
+        'couldThrow' => false,
+        'isClosure' => false,
+        'isGenerator' => false,
+        'isVariadic' => false,
+        'modifiers' => 1,
+        'namespace' => 'App\\Models',
+        'declaringClassName' => 'App\\Models\\User',
+        'implementingClassName' => 'App\\Models\\User',
+        'currentClassName' => 'App\\Models\\User',
+        'aliasName' => NULL,
+      ),
+      'reminders' => 
+      array (
+        'name' => 'reminders',
+        'parameters' => 
+        array (
+        ),
+        'returnsReference' => false,
+        'returnType' => 
+        array (
+          'class' => 'PHPStan\\BetterReflection\\Reflection\\ReflectionNamedType',
+          'data' => 
+          array (
+            'name' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+            'isIdentifier' => false,
+          ),
+        ),
+        'attributes' => 
+        array (
+        ),
+        'docComment' => NULL,
+        'startLine' => 71,
+        'endLine' => 74,
+        'startColumn' => 5,
+        'endColumn' => 5,
+        'couldThrow' => false,
+        'isClosure' => false,
+        'isGenerator' => false,
+        'isVariadic' => false,
+        'modifiers' => 1,
+        'namespace' => 'App\\Models',
+        'declaringClassName' => 'App\\Models\\User',
+        'implementingClassName' => 'App\\Models\\User',
+        'currentClassName' => 'App\\Models\\User',
+        'aliasName' => NULL,
+      ),
+      'tags' => 
+      array (
+        'name' => 'tags',
+        'parameters' => 
+        array (
+        ),
+        'returnsReference' => false,
+        'returnType' => 
+        array (
+          'class' => 'PHPStan\\BetterReflection\\Reflection\\ReflectionNamedType',
+          'data' => 
+          array (
+            'name' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+            'isIdentifier' => false,
+          ),
+        ),
+        'attributes' => 
+        array (
+        ),
+        'docComment' => NULL,
+        'startLine' => 76,
+        'endLine' => 79,
+        'startColumn' => 5,
+        'endColumn' => 5,
+        'couldThrow' => false,
+        'isClosure' => false,
+        'isGenerator' => false,
+        'isVariadic' => false,
+        'modifiers' => 1,
+        'namespace' => 'App\\Models',
+        'declaringClassName' => 'App\\Models\\User',
+        'implementingClassName' => 'App\\Models\\User',
+        'currentClassName' => 'App\\Models\\User',
+        'aliasName' => NULL,
+      ),
+      'sendPasswordResetNotification' => 
+      array (
+        'name' => 'sendPasswordResetNotification',
+        'parameters' => 
+        array (
+          'token' => 
+          array (
+            'name' => 'token',
+            'default' => NULL,
+            'type' => NULL,
+            'isVariadic' => false,
+            'byRef' => false,
+            'isPromoted' => false,
+            'attributes' => 
+            array (
+            ),
+            'startLine' => 81,
+            'endLine' => 81,
+            'startColumn' => 51,
+            'endColumn' => 56,
+            'parameterIndex' => 0,
+            'isOptional' => false,
+          ),
+        ),
+        'returnsReference' => false,
+        'returnType' => 
+        array (
+          'class' => 'PHPStan\\BetterReflection\\Reflection\\ReflectionNamedType',
+          'data' => 
+          array (
+            'name' => 'void',
             'isIdentifier' => true,
           ),
         ),
         'attributes' => 
         array (
         ),
-        'docComment' => '/**
- * Get the user\'s initials
- */',
-        'startLine' => 59,
-        'endLine' => 66,
+        'docComment' => NULL,
+        'startLine' => 81,
+        'endLine' => 84,
         'startColumn' => 5,
         'endColumn' => 5,
         'couldThrow' => false,

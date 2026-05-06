@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Contracts/Auth/Access/Authorizable.php-PHPStan\BetterReflection\Reflection\ReflectionClass-Illuminate\Contracts\Auth\Access\Authorizable
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-3c38451b2504a6e098246c57be042c48c857cda17e4b8a14904f9c93bfed2a1a-8.4.1-6.65.0.9',
+   'variableKey' => 'v2-3c38451b2504a6e098246c57be042c48c857cda17e4b8a14904f9c93bfed2a1a-8.4.1-6.70.0.0',
    'data' => 
   array (
     'locatedSource' => 

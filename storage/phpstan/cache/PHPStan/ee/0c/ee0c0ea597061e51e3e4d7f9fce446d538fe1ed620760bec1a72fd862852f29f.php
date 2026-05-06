@@ -2,7 +2,7 @@
 
 // odsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Foundation/helpers.php-PHPStan\BetterReflection\Reflection\ReflectionFunction-app
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-6.65.0.9-8.4.1-2d9187bdad3b402f1f4b5303e340e54159c650e23089ccd7154ff6251180fddc',
+   'variableKey' => 'v2-6.70.0.0-8.4.1-3fe9475e8c073a9c58af7e9cb8c74416031941413358f6082d558134d416ba86',
    'data' => 
   array (
     'name' => 'app',

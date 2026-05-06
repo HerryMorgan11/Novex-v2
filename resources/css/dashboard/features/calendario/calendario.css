@@ -1,0 +1,295 @@
+/**
+ * Hoja de Estilos del Módulo Calendario - Novex ERP
+ * Adaptación de la Interfaz UI de FullCalendar mediante variables CSS y selectores específicos.
+ * Se implementa la paleta cromática de la marca para mantener la cohesión en la experiencia de usuario.
+ */
+
+/* Distribución de variables cromáticas globales accesibles para toda la jerarquía del DOM */
+:root {
+    --brand-orange: #f26722; /* Identificador de acción principal y estado actual */
+    --brand-pink: #e3185c; /* Identificador de selección activa en sistemas de pestañas/vistas */
+    --brand-purple: #79348d; /* Base primaria para estructuras de contenido y eventos */
+}
+
+/* Contenedor principal para la correcta delegación del espacio Flexbox */
+.calendar-wrapper {
+    height: calc(100vh - 100px);
+    width: 100%;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#calendar {
+    flex-grow: 1;
+    font-family: var(--font);
+    color: var(--fg);
+}
+
+/* Normalización estructural y asociación con el sistema de tokens del ERP */
+.fc {
+    --fc-border-color: var(--border);
+    --fc-page-bg-color: var(--card);
+}
+
+/* Despliegue de estructura plana y eliminación de rebordes por defecto */
+.fc-theme-standard td,
+.fc-theme-standard th {
+    border-color: var(--border) !important;
+}
+
+.fc-theme-standard .fc-scrollgrid {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+/* --- Control de la Cabecera de Navegación --- */
+
+.fc .fc-toolbar.fc-header-toolbar {
+    margin-bottom: 24px;
+    padding: 0 10px;
+}
+
+/* Tipografía del encabezado jerárquico del periodo actual */
+.fc .fc-toolbar-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--fg);
+    letter-spacing: -0.5px;
+}
+
+/* Reset y base de los botones nativos del motor FullCalendar */
+.fc .fc-button {
+    border-radius: 8px;
+    padding: 0.45rem 1.2rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    transition: all 0.2s ease;
+    box-shadow: none !important;
+}
+
+/* Control del botón de Fecha Actual (Mapeado a Naranja por prioridad de atención) */
+.fc .fc-today-button {
+    background: var(--brand-orange) !important;
+    border: none !important;
+    color: white !important;
+}
+.fc .fc-today-button:disabled {
+    background: var(--surface) !important;
+    color: var(--muted-2) !important;
+    border: 1px solid var(--border) !important;
+    opacity: 0.6;
+}
+.fc .fc-today-button:not(:disabled):hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(242, 103, 34, 0.3) !important;
+}
+
+/* Controles de paginación de Calendario (Estilo neutro "Outline" para no sobrecargar cognitivamente) */
+.fc .fc-prev-button,
+.fc .fc-next-button {
+    background: transparent !important;
+    border: 1px solid var(--border) !important;
+    color: var(--fg) !important;
+}
+.fc .fc-prev-button:hover,
+.fc .fc-next-button:hover {
+    background: transparent !important;
+    color: var(--brand-purple) !important;
+    border-color: var(--brand-purple) !important;
+}
+
+/* Grupo de botones para alteración de Vistas por Periodo */
+.fc .fc-button-group > .fc-button-primary {
+    background: var(--surface) !important;
+    color: var(--fg) !important;
+    border: 1px solid var(--border) !important;
+}
+.fc .fc-button-group > .fc-button-primary:hover {
+    background: transparent !important;
+    color: var(--brand-pink) !important;
+    border-color: var(--brand-pink) !important;
+}
+
+/* Estado activo del selector de vistas (Mapeado a Rosa) */
+.fc .fc-button-group > .fc-button-active {
+    background: var(--brand-pink) !important;
+    color: white !important;
+    border-color: var(--brand-pink) !important;
+    box-shadow: 0 2px 8px rgba(227, 24, 92, 0.3) !important;
+    z-index: 2 !important;
+}
+
+/* --- Renderizado de Flujos de Carga (Eventos) --- */
+
+.fc-event {
+    border: none !important;
+    background: transparent !important;
+}
+
+.fc-h-event .fc-event-main,
+.fc-v-event .fc-event-main {
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: var(--brand-purple); /* Color morado por defecto en jerarquía de tareas */
+    border: none;
+    color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilización tipográfica de días */
+.fc-col-header-cell-cushion {
+    color: var(--muted);
+    font-weight: 600;
+    padding: 12px 0 !important;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    text-decoration: none !important;
+}
+
+.fc-daygrid-day-number {
+    color: var(--fg);
+    font-weight: 500;
+    text-decoration: none !important;
+    padding: 10px !important;
+    transition: color 0.2s ease;
+}
+
+.fc-daygrid-day-number:hover {
+    color: var(--brand-pink);
+}
+
+/* Resaltado del Día Presente en la Matriz (Consistencia con botón Hoy en Naranja) */
+.fc-day-today .fc-daygrid-day-number {
+    background: var(--brand-orange);
+    color: white !important;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 6px;
+    box-shadow: 0 2px 8px rgba(242, 103, 34, 0.4);
+}
+
+.fc-day-today {
+    background-color: rgba(242, 103, 34, 0.04) !important; /* Capa sutil de opacidad */
+}
+
+/* 
+   SISTEMA MODAL: CAPA SUPERIOR DE INTERACCIÓN NATIVA
+
+
+/* Definición del componente <dialog> superponiéndose a reset states de frameworks CSS */
+.event-modal {
+    border: none;
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px;
+    width: 420px;
+    max-width: 90%;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
+    color: var(--fg);
+    font-family: var(--font);
+
+    /* Configuración Absolute Centering independiente para máxima compatibilidad cross-browser */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+/* Definición de la Pseudo-clase ::backdrop inyectada nativamente tras .showModal() */
+.event-modal::backdrop {
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.event-modal:focus {
+    outline: none; /* Prevención de ring borders generados por agentes de validación estricta */
+}
+
+.event-modal h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--fg);
+}
+
+/* Form inputs del Modal */
+.modal-input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--input, var(--surface));
+    color: var(--fg);
+    font-size: 1rem;
+    margin-bottom: 24px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.modal-input:focus {
+    border-color: var(--brand-pink);
+    box-shadow: 0 0 0 3px rgba(227, 24, 92, 0.15);
+}
+
+/* Contenedor Flexbox de iteración para sub-acciones */
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+/* Botonera de control Modal */
+.modal-btn {
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.btn-cancel {
+    background: var(--surface-2);
+    color: var(--muted-2);
+}
+.btn-cancel:hover {
+    background: var(--border);
+    color: var(--fg);
+}
+
+.btn-save {
+    background: var(--brand-orange);
+    color: white;
+}
+.btn-save:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(242, 103, 34, 0.3);
+}
+
+.btn-delete {
+    background: transparent;
+    color: #ef4444;
+    margin-right: auto; /* Propiedad que alinea el flujo de flex para separar nodos hermanos */
+}
+.btn-delete:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+/* ── Extracted from calendario.blade.php ── */
+.hidden {
+    display: none;
+}

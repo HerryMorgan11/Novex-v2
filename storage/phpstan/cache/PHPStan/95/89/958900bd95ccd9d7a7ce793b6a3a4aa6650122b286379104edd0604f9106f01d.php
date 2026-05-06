@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../nesbot/carbon/src/Carbon/Traits/Mixin.php-presentSymbols
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-a38a48c31dc4bf5359224c14a3256e2fbb7a201752af9981e218e639c9e7e558-8.4.1',
+   'variableKey' => 'v2-5491a7cc283a03fb2240d193acfab173081a4e4132b9c805aac34771d5a89fb6-8.4.1',
    'data' => 
   array (
     'classes' => 

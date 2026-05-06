@@ -27,7 +27,7 @@
     align-items: center;
     gap: 8px;
     background-color: #fff4ed;
-    color: #ff8c42;
+    color: var(--brand);
     padding: 6px 16px;
     border-radius: 20px;
     font-size: 13px;
@@ -50,7 +50,7 @@
 }
 
 .about-title .highlight {
-    color: #ff8c42;
+    color: var(--brand);
 }
 
 .about-description {
@@ -79,7 +79,7 @@
     top: 0;
     bottom: 0;
     width: 4px;
-    background-color: #ff8c42;
+    background-color: var(--brand);
     border-radius: 2px;
 }
 
@@ -91,7 +91,7 @@
 }
 
 .btn-gradient {
-    background: linear-gradient(135deg, #ff8c42 0%, #ff5277 100%);
+    background: var(--brand);
     color: white;
     padding: 14px 28px;
     border-radius: 12px;
@@ -186,7 +186,7 @@
 }
 
 .form-label svg {
-    color: #ff8c42;
+    color: var(--brand);
     width: 16px;
     height: 16px;
 }
@@ -209,7 +209,7 @@
 
 .form-input:focus,
 .form-textarea:focus {
-    border-color: #ff8c42;
+    border-color: var(--brand);
     background-color: #fff;
     box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.1);
 }
@@ -257,7 +257,7 @@
     width: 48px;
     height: 48px;
     background-color: #fff4ed;
-    color: #ff8c42;
+    color: var(--brand);
     border-radius: 50%;
     display: flex;
     align-items: center;

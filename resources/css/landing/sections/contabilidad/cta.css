@@ -1,5 +1,6 @@
 /* === Contabilidad CTA Section === */
 .conta2-cta-section {
+    font-family: var(--font-sans);
     padding: 120px 48px;
     background: var(--bg, #f5f5f5);
     text-align: center;
@@ -13,6 +14,7 @@
 
 .conta2-cta-inner {
     max-width: 680px;
+    padding: var(--landing-padding, 0 48px);
     margin: 0 auto;
     position: relative;
     z-index: 1;
@@ -23,7 +25,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #ff4081;
+    color: var(--brand);
     margin-bottom: 20px;
 }
 
@@ -37,25 +39,22 @@
 }
 
 .dark-theme .conta2-cta-title {
-    color: #e6eef8;
+    color: var(--text);
 }
 
 .conta2-cta-title span {
-    background: linear-gradient(135deg, #ff6b35 0%, #ff4081 50%, #9c27b0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--brand);
 }
 
 .conta2-cta-desc {
     font-size: 1.05rem;
-    color: #6b6b7b;
+    color: var(--muted);
     line-height: 1.7;
     margin: 0 0 40px;
 }
 
 .dark-theme .conta2-cta-desc {
-    color: #9aa6bd;
+    color: var(--muted);
 }
 
 .conta2-cta-actions {
@@ -66,11 +65,11 @@
 }
 
 .conta2-cta-btn-primary {
-    background: linear-gradient(135deg, #ff6b35 0%, #ff4081 50%, #9c27b0 100%);
+    background: var(--brand);
     color: #fff;
     border: none;
     padding: 16px 36px;
-    border-radius: 12px;
+    border-radius: var(--radius);
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
@@ -83,7 +82,7 @@
 
 .conta2-cta-btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(255, 64, 129, 0.35);
+    box-shadow: 0 8px 24px rgba(234, 88, 12, 0.3);
 }
 
 .conta2-cta-btn-secondary {
@@ -91,7 +90,7 @@
     color: var(--text, #1a1a24);
     border: 1.5px solid rgba(0, 0, 0, 0.15);
     padding: 16px 36px;
-    border-radius: 12px;
+    border-radius: var(--radius);
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
@@ -101,16 +100,16 @@
 }
 
 .dark-theme .conta2-cta-btn-secondary {
-    color: #e6eef8;
+    color: var(--text);
     border-color: rgba(255, 255, 255, 0.15);
 }
 
 .conta2-cta-btn-secondary:hover {
-    border-color: #ff4081;
+    border-color: var(--brand);
 }
 
 .conta2-cta-note {
     margin-top: 20px;
     font-size: 0.82rem;
-    color: #9ca3af;
+    color: var(--muted);
 }

@@ -5,7 +5,7 @@
         system-ui,
         -apple-system,
         sans-serif;
-    color: #1a1a24;
+    color: var(--text);
     background-color: #f6f7f8; /* Color gris mega-claro de fondo de la imagen */
     padding-bottom: 80px;
     overflow: hidden;
@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 1200px;
+    max-width: var(--landing-max-width, 80%);
     margin: 0 auto;
     padding: 100px 20px 80px;
     position: relative;
@@ -177,7 +177,7 @@
     bottom: -20px;
     left: -30px;
     background: linear-gradient(180deg, #ffffff 0%, #f0f2f5 100%);
-    border-radius: 12px;
+    border-radius: var(--radius);
     padding: 15px 20px;
     display: flex;
     flex-direction: column;
@@ -235,7 +235,7 @@
 .rh-badge-value {
     font-size: 1.1rem;
     font-weight: 800;
-    color: #1a1a24;
+    color: var(--text);
     line-height: 1.2;
 }
 
@@ -337,7 +337,7 @@
 
 .rh-testi-card {
     background: white;
-    border-radius: 20px;
+    border-radius: var(--radius-lg);
     padding: 50px 60px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
     position: relative;
@@ -398,7 +398,7 @@
 .rh-cta {
     background: linear-gradient(135deg, #e34c2d, #df5a3c);
     color: white;
-    border-radius: 20px;
+    border-radius: var(--radius-lg);
     padding: 70px 40px;
     max-width: 800px;
     margin: 40px auto 80px;
@@ -483,4 +483,9 @@
 
 .btn-cta-sec:hover {
     background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Extracted from recursos-humanos/rh.blade.php ── */
+.hidden {
+    display: none;
 }

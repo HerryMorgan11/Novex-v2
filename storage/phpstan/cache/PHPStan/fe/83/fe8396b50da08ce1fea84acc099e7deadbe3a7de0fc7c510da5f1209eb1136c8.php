@@ -7,7 +7,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
   array (
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/auth.php' => 
     array (
-      0 => '50f8a6fabf848d20ea42a21e01066dd8a75bd822c8251a45f8939616432424dc',
+      0 => 'e79822f8f7a18c87db9477d2a36d4bbc8d2a5c555cf937925e9a9ab172c2fcc3',
       1 => 
       array (
       ),
@@ -33,7 +33,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/mail.php' => 
     array (
-      0 => '825c4b149f2fe412a2e37199794e7c05df7ed86fb51811777faf80238f748aae',
+      0 => 'e9674dcaaf92ae5ba74226f2e89961314db87d85013b5b8b4722a90e2adc7cf2',
       1 => 
       array (
       ),
@@ -46,7 +46,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/services.php' => 
     array (
-      0 => '8258c4487eb1d73a97e569eb0e411e3f25368044812df4cba807860432be1d92',
+      0 => 'e87c7a9d4fca479c9952a073639ee6d4d6ed99df4925fdbd2bbe977755233af2',
       1 => 
       array (
       ),
@@ -59,7 +59,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/database.php' => 
     array (
-      0 => '4f56083ec3874d216946401fb162b6ef50bc0909d004cd3337e2e33424fc6403',
+      0 => 'fa2469d80e51b8600e0e8f1aeaaaf76d3870ceb383dd82cb9f41f7b054ba54fe',
       1 => 
       array (
       ),
@@ -125,6 +125,45 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/filesystems.php' => 
     array (
       0 => 'ba7060d7a23e490c3ce830656f6d24ad3ccf5b868e3293f2a12e411959dc5635',
+      1 => 
+      array (
+      ),
+      2 => 
+      array (
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/fortify.php' => 
+    array (
+      0 => '0d58acf9586b02ea874a3cc1b97760a56c28b6ba9a2d80f6bbfa6357ecdbe042',
+      1 => 
+      array (
+      ),
+      2 => 
+      array (
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/livewire.php' => 
+    array (
+      0 => '645b32d101a6bbd2e1282dc630f000ea7582e9df7a77f555f3d650e8916b8f7c',
+      1 => 
+      array (
+      ),
+      2 => 
+      array (
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/tenancy.php' => 
+    array (
+      0 => '9cf06c44d8a358de177bed6393b21d31e0b009fe10d2b080739aa71ee19997a7',
       1 => 
       array (
       ),

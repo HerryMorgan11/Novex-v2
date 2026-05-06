@@ -1,6 +1,6 @@
-<style>
-    {!! file_get_contents(resource_path('css/landing/sections/crm/hero.css')) !!}
-</style>
+@push('styles')
+@vite(['resources/css/landing/sections/crm/hero.css'])
+@endpush
 
 <section class="crm-hero-section">
     <div class="crm-hero-inner">
@@ -18,14 +18,14 @@
             </h1>
 
             <p class="crm-hero-desc">
-                Un CRM diseñado para equipos de ventas modernos. Gestiona contactos,
-                automatiza seguimientos y cierra más negocios con menos esfuerzo gracias
-                a pipelines visuales e inteligencia sobre tus clientes.
+                Novex CRM centraliza todos tus contactos, empresas y oportunidades de venta
+                en un único lugar. Gestiona el pipeline comercial, haz seguimiento de cada
+                negociación y sabe en todo momento en qué punto está cada cliente.
             </p>
 
             <div class="crm-hero-actions">
                 <a href="{{ route('register') }}" class="crm-btn-primary">Empieza Gratis</a>
-                <a href="{{ route('about') }}" class="crm-btn-secondary">Ver demostración</a>
+                <a href="{{ route('register') }}" class="crm-btn-secondary">Solicitar acceso</a>
             </div>
         </div>
 
@@ -43,35 +43,35 @@
                     <div class="crm-pipeline-stage">
                         <span class="crm-stage-label">Contacto</span>
                         <div class="crm-stage-bar-track">
-                            <div class="crm-stage-bar-fill" style="width: 100%;"></div>
+                        <div class="crm-stage-bar-fill"></div>
                         </div>
                         <span class="crm-stage-count">24</span>
                     </div>
                     <div class="crm-pipeline-stage">
                         <span class="crm-stage-label">Calificado</span>
                         <div class="crm-stage-bar-track">
-                            <div class="crm-stage-bar-fill" style="width: 75%;"></div>
+                        <div class="crm-stage-bar-fill"></div>
                         </div>
                         <span class="crm-stage-count">18</span>
                     </div>
                     <div class="crm-pipeline-stage">
                         <span class="crm-stage-label">Propuesta</span>
                         <div class="crm-stage-bar-track">
-                            <div class="crm-stage-bar-fill" style="width: 50%;"></div>
+                        <div class="crm-stage-bar-fill"></div>
                         </div>
                         <span class="crm-stage-count">12</span>
                     </div>
                     <div class="crm-pipeline-stage">
                         <span class="crm-stage-label">Negociación</span>
                         <div class="crm-stage-bar-track">
-                            <div class="crm-stage-bar-fill" style="width: 33%;"></div>
+                        <div class="crm-stage-bar-fill"></div>
                         </div>
                         <span class="crm-stage-count">8</span>
                     </div>
                     <div class="crm-pipeline-stage">
                         <span class="crm-stage-label">Cierre</span>
                         <div class="crm-stage-bar-track">
-                            <div class="crm-stage-bar-fill" style="width: 20%;"></div>
+                        <div class="crm-stage-bar-fill"></div>
                         </div>
                         <span class="crm-stage-count">5</span>
                     </div>

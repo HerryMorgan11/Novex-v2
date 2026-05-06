@@ -1,6 +1,6 @@
-<style>
-    {!! file_get_contents(resource_path('css/landing/sections/crm/metricas.css')) !!}
-</style>
+@push('styles')
+@vite(['resources/css/landing/sections/crm/metricas.css'])
+@endpush
 
 <section class="crm-metricas-section">
     <div class="crm-metricas-inner">

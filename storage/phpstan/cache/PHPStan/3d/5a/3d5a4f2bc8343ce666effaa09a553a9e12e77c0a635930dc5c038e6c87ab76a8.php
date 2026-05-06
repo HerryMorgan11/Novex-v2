@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../nesbot/carbon/src/Carbon/Traits/Localization.php-PHPStan\BetterReflection\Reflection\ReflectionClass-Carbon\Traits\Localization
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-ff5044a67f182b8a5586842c1aee15094b77a699fe3779692aa38e482a6beb4e-8.4.1-6.65.0.9',
+   'variableKey' => 'v2-ff5044a67f182b8a5586842c1aee15094b77a699fe3779692aa38e482a6beb4e-8.4.1-6.70.0.0',
    'data' => 
   array (
     'locatedSource' => 

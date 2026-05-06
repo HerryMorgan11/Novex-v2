@@ -2,7 +2,7 @@
 
 // osfsl-/Users/davidjacobocastillo/Documents/TFG/novex-v2/vendor/composer/../laravel/framework/src/Illuminate/Macroable/Traits/Macroable.php-PHPStan\BetterReflection\Reflection\ReflectionClass-Illuminate\Support\Traits\Macroable
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => 'v2-50fa4e0aa4e5c0b0e7fb6566fb3fc991808681fba5c81db09e0f8641c7e9d524-8.4.1-6.65.0.9',
+   'variableKey' => 'v2-50fa4e0aa4e5c0b0e7fb6566fb3fc991808681fba5c81db09e0f8641c7e9d524-8.4.1-6.70.0.0',
    'data' => 
   array (
     'locatedSource' => 
