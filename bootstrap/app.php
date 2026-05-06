@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Middleware\AutenticarApiInventario;
 use App\Http\Middleware\CheckHasTenant;
+use App\Http\Middleware\InitializeTenancyFromApi;
 use App\Http\Middleware\InitializeTenancyFromUser;
 use App\Http\Middleware\InitializeTenant;
 use Illuminate\Foundation\Application;
@@ -16,11 +18,11 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
-            'initializeTenant'        => InitializeTenant::class,
-            'checkHasTenant'          => CheckHasTenant::class,
+            'initializeTenant' => InitializeTenant::class,
+            'checkHasTenant' => CheckHasTenant::class,
             'initializeTenancyFromUser' => InitializeTenancyFromUser::class,
-            'initializeTenancyFromApi' => \App\Http\Middleware\InitializeTenancyFromApi::class,
-            'auth.api.inventario'     => \App\Http\Middleware\AutenticarApiInventario::class,
+            'initializeTenancyFromApi' => InitializeTenancyFromApi::class,
+            'auth.api.inventario' => AutenticarApiInventario::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Middleware\InitializeTenancyFromUser;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -32,7 +33,7 @@ class ModuloInventarioServiceProvider extends ServiceProvider
         Route::middleware([
             'web',
             'auth',
-            \App\Http\Middleware\InitializeTenancyFromUser::class,
+            InitializeTenancyFromUser::class,
         ])
             ->group(base_path('modulo-inventario/web.php'));
     }
