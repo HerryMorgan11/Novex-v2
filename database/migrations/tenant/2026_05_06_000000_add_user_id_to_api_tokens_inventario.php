@@ -10,8 +10,9 @@ return new class extends Migration
     {
         Schema::table('api_tokens_inventario', function (Blueprint $table) {
             // Add user_id column if it doesn't exist
+            // User model uses HasUlids, so user_id must be string, not bigInteger
             if (! Schema::hasColumn('api_tokens_inventario', 'user_id')) {
-                $table->unsignedBigInteger('user_id')->nullable()->after('id');
+                $table->char('user_id', 26)->nullable()->after('id');
             }
         });
     }
