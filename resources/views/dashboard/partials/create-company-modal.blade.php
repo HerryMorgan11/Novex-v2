@@ -13,7 +13,7 @@
             </div>
 
             <form id="create-company-form"
-                  action="@if(app()->isProduction()){{ str_replace('http://', 'https://', url('/company')) }}@else{{ url('/company') }}@endif"
+                  action="{{ route('company.store') }}"
                   method="POST"
                   class="create-company-modal__form">
                 @csrf

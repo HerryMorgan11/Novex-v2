@@ -134,7 +134,7 @@
               </a>
 
               <!-- Logout -->
-              <form method="POST" action="@if(app()->isProduction()){{ str_replace('http://', 'https://', url('/logout')) }}@else{{ url('/logout') }}@endif" class="dash-sidebar-logout-form">
+              <form method="POST" action="{{ route('logout') }}" class="dash-sidebar-logout-form">
                 @csrf
                 <button 
                   type="submit"
