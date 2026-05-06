@@ -134,7 +134,7 @@
               </a>
 
               <!-- Logout -->
-              <form method="POST" action="{{ route('logout') }}" class="dash-sidebar-logout-form">
+              <form method="POST" action="{{ url('/logout', [], request()->isSecure()) }}" class="dash-sidebar-logout-form">
                 @csrf
                 <button 
                   type="submit"

@@ -36,7 +36,7 @@
 ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) }}
             </pre>
 
-            <form method="POST" action="{{ route('logout') }}" class="dash-debug-logout-form">
+            <form method="POST" action="{{ url('/logout', [], request()->isSecure()) }}" class="dash-debug-logout-form">
                 @csrf
                 <button type="submit" class="dash-debug-logout-btn">Logout</button>
             </form>

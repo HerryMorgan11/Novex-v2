@@ -34,7 +34,7 @@
                 <button type="submit" class="btn-primary">Resend Verification Email</button>
             </form>
 
-            <form action="{{ route('logout') }}" method="POST" class="auth-verify-logout-form">
+            <form action="{{ url('/logout', [], request()->isSecure()) }}" method="POST" class="auth-verify-logout-form">
                 @csrf
                 <button type="submit" class="forgot-password auth-verify-logout-btn">
                     Log Out
