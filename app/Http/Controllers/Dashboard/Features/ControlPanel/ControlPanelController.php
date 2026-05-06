@@ -46,30 +46,40 @@ class ControlPanelController extends Controller
             return null;
         }
 
-        // Buscar un token activo existente para este usuario
-        $token = ApiTokenInventario::where('user_id', $user->id)
-            ->where('activo', true)
-            ->where(function ($q) {
-                $q->whereNull('expira_en')->orWhere('expira_en', '>', now());
-            })
-            ->first();
+        try {
+            // Buscar un token activo existente para este usuario
+            $token = ApiTokenInventario::where('user_id', $user->id)
+                ->where('activo', true)
+                ->where(function ($q) {
+                    $q->whereNull('expira_en')->orWhere('expira_en', '>', now());
+                })
+                ->first();
 
-        // Si no existe, generar uno nuevo automáticamente
-        if (! $token) {
-            $plainToken = Str::random(64);
-            $token = ApiTokenInventario::create([
-                'user_id' => $user->id,
-                'nombre' => "Token API - {$user->name}",
-                'token' => hash('sha256', $plainToken),
-                'permisos' => 'full',
-                'activo' => true,
+            // Si no existe, generar uno nuevo automáticamente
+            if (! $token) {
+                $plainToken = Str::random(64);
+                $token = ApiTokenInventario::create([
+                    'user_id' => $user->id,
+                    'nombre' => "Token API - {$user->name}",
+                    'token' => hash('sha256', $plainToken),
+                    'permisos' => 'full',
+                    'activo' => true,
+                ]);
+
+                // Devolver el token en texto plano (solo una vez)
+                return $plainToken;
+            }
+
+            return $token->makeVisible('token')->token;
+        } catch (\Throwable $e) {
+            // Si la migración aún no se ejecutó, devolver null silenciosamente
+            // Esto evita que falle el dashboard si la columna user_id no existe
+            \Log::warning('ApiTokenInventario query failed, migration may not have run yet', [
+                'error' => $e->getMessage(),
             ]);
 
-            // Devolver el token en texto plano (solo una vez)
-            return $plainToken;
+            return null;
         }
-
-        return $token->makeVisible('token')->token;
     }
 
     private function loadTenantUsers($tenant)
