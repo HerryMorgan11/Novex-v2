@@ -26,6 +26,13 @@ class DashboardService
      */
     public function getMetrics(): array
     {
+        $notasTotal = 0;
+        try {
+            $notasTotal = Note::where('user_id', $this->authenticatedUserId())->count();
+        } catch (\Throwable) {
+            // Si la tabla no existe, devolver 0
+        }
+
         return [
             'productos_activos' => Producto::where('estado_validacion', 'activo')->count(),
             'productos_borrador' => Producto::where('estado_validacion', 'borrador')->count(),
@@ -44,7 +51,7 @@ class DashboardService
                 ->where('status', Reminder::STATUS_ACTIVE)
                 ->where('is_completed', false)
                 ->count(),
-            'notas_total' => Note::where('user_id', $this->authenticatedUserId())->count(),
+            'notas_total' => $notasTotal,
         ];
     }
 
@@ -170,10 +177,15 @@ class DashboardService
      */
     public function getRecentNotes(int $limit = 5): Collection
     {
-        return Note::where('user_id', $this->authenticatedUserId())
-            ->latest()
-            ->limit($limit)
-            ->get();
+        try {
+            return Note::where('user_id', $this->authenticatedUserId())
+                ->latest()
+                ->limit($limit)
+                ->get();
+        } catch (\Throwable $e) {
+            // Si la tabla no existe o hay error de conexión, devolver colección vacía
+            return collect();
+        }
     }
 
     /**
