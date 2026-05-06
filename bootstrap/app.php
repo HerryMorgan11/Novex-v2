@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\AutenticarApiInventario;
 use App\Http\Middleware\CheckHasTenant;
+use App\Http\Middleware\ForceHttps;
 use App\Http\Middleware\InitializeTenancyFromApi;
 use App\Http\Middleware\InitializeTenancyFromUser;
 use App\Http\Middleware\InitializeTenant;
@@ -17,6 +18,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Force HTTPS in production and trust proxy headers
+        $middleware->append(ForceHttps::class);
+
         $middleware->alias([
             'initializeTenant' => InitializeTenant::class,
             'checkHasTenant' => CheckHasTenant::class,
