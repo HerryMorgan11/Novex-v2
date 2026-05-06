@@ -15,7 +15,7 @@ if (form) {
 
         // Mostrar estado de carga
         submitBtn.disabled = true;
-        submitBtn.textContent = '⌛ Creando...';
+        submitBtn.textContent = 'Cargando';
         errorContainer?.classList.add('hidden');
 
         const formData = new FormData(form);
