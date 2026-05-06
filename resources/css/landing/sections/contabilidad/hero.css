@@ -4,7 +4,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(160deg, #fafafa 0%, #fff8f0 40%, #fff5f5 70%, #fafafa 100%);
+    background-color: var(--card-bg);
+    background-image:
+        radial-gradient(circle, var(--border) 1px, transparent 1px),
+        linear-gradient(
+            160deg,
+            transparent 0%,
+            rgba(234, 88, 12, 0.04) 35%,
+            rgba(234, 88, 12, 0.07) 65%,
+            transparent 100%
+        );
+    background-size:
+        28px 28px,
+        100% 100%;
     margin-top: -80px;
     padding: 140px 48px 80px;
     text-align: center;
@@ -13,7 +25,19 @@
 }
 
 .dark-theme .conta2-hero-section {
-    background: linear-gradient(160deg, #0f1724 0%, #16100a 40%, #160909 70%, #0f1724 100%);
+    background-color: var(--card-bg);
+    background-image:
+        radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(
+            160deg,
+            transparent 0%,
+            rgba(234, 88, 12, 0.05) 35%,
+            rgba(234, 88, 12, 0.09) 65%,
+            transparent 100%
+        );
+    background-size:
+        28px 28px,
+        100% 100%;
 }
 
 .conta2-hero-section::before {
@@ -24,7 +48,18 @@
     transform: translateX(-50%);
     width: 900px;
     height: 700px;
-    background: radial-gradient(circle, rgba(255, 107, 53, 0.07) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(234, 88, 12, 0.06) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+.conta2-hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 180px;
+    background: linear-gradient(to bottom, transparent, var(--card-bg));
     pointer-events: none;
 }
 
@@ -39,7 +74,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(156, 39, 176, 0.08);
+    background: var(--brand-light);
     border: 1px solid rgba(255, 64, 129, 0.2);
     color: #c0401e;
     padding: 6px 16px;
@@ -52,21 +87,21 @@
 }
 
 .dark-theme .conta2-hero-badge {
-    background: rgba(255, 107, 53, 0.08);
-    border-color: rgba(255, 107, 53, 0.2);
-    color: #ff6b35;
+    background: var(--brand-light);
+    border-color: var(--brand);
+    color: var(--brand);
 }
 
 .conta2-hero-badge-dot {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #ff4081;
+    background: var(--brand);
     animation: conta2-pulse 1.8s ease infinite;
 }
 
 .dark-theme .conta2-hero-badge-dot {
-    background: #ff6b35;
+    background: var(--brand);
 }
 
 @keyframes conta2-pulse {
@@ -91,26 +126,24 @@
 }
 
 .dark-theme .conta2-hero-title {
-    color: #e6eef8;
+    color: var(--text);
 }
 
 .conta2-hero-title span {
-    background: linear-gradient(90deg, #ff4081 0%, #ff6b35 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--brand);
+    background: none;
 }
 
 .conta2-hero-desc {
     font-size: 1.15rem;
-    color: #6b6b7b;
+    color: var(--muted);
     line-height: 1.7;
     margin: 0 auto 40px;
     max-width: 560px;
 }
 
 .dark-theme .conta2-hero-desc {
-    color: #9aa6bd;
+    color: var(--muted);
 }
 
 .conta2-hero-actions {
@@ -122,11 +155,11 @@
 }
 
 .conta2-btn-primary {
-    background: linear-gradient(135deg, #ff6b35 0%, #ff4081 50%, #9c27b0 100%);
+    background: var(--brand);
     color: #fff;
     border: none;
     padding: 15px 32px;
-    border-radius: 12px;
+    border-radius: var(--radius);
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
@@ -139,7 +172,7 @@
 
 .conta2-btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(255, 64, 129, 0.35);
+    box-shadow: 0 8px 24px rgba(234, 88, 12, 0.3);
 }
 
 .conta2-btn-outline {
@@ -147,7 +180,7 @@
     color: var(--text, #1a1a24);
     border: 1.5px solid rgba(0, 0, 0, 0.15);
     padding: 15px 32px;
-    border-radius: 12px;
+    border-radius: var(--radius);
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
@@ -157,12 +190,12 @@
 }
 
 .dark-theme .conta2-btn-outline {
-    color: #e6eef8;
+    color: var(--text);
     border-color: rgba(255, 255, 255, 0.15);
 }
 
 .conta2-btn-outline:hover {
-    border-color: #ff4081;
+    border-color: var(--brand);
 }
 
 /* Stats bar */
@@ -186,16 +219,16 @@
 }
 
 .dark-theme .conta2-stat-num {
-    color: #e6eef8;
+    color: var(--text);
 }
 
 .conta2-stat-num span {
-    color: #ff4081;
+    color: var(--brand);
 }
 
 .conta2-stat-label {
     font-size: 0.82rem;
-    color: #9ca3af;
+    color: var(--muted);
     margin-top: 4px;
 }
 

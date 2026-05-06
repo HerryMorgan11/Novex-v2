@@ -14,7 +14,7 @@
         </p>
         <div class="inv-cta-actions">
             <a href="{{ route('register') }}" class="inv-cta-btn-primary">Comenzar Gratis</a>
-            <a href="{{ route('about') }}" class="inv-cta-btn-secondary">Hablar con ventas</a>
+            <a href="{{ route('register') }}" class="inv-cta-btn-secondary">Solicitar acceso</a>
         </div>
         <p class="inv-cta-note">Sin tarjeta de crédito &bull; Configuración guiada &bull; Datos de prueba incluidos</p>
     </div>

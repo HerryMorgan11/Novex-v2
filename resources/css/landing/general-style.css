@@ -1,43 +1,63 @@
 :root {
-    --bg: #f5f5f5;
+    /* ── Colores base ────────────────────────────── */
+    --bg: #f8fafc;
+    --bg-subtle: #f1f5f9;
     --card-bg: #ffffff;
-    --text: #222222;
-    --muted: #6b6b6b;
-    --primary: #0066ff;
-    --accent: #00bfa6;
-    /* Hero gradient stops (light theme) */
-    --hero-left:
-        #e8e5fa 0%, #ede8fa 10%, #f3e5f8 25%, #f9e5f5 40%, #fde8f5 55%, #fef0f5 70%, #fef5f0 85%,
-        transparent 100%;
-    --hero-right:
-        #e8e5fa 0%, #ede8fa 10%, #f3e5f8 25%, #f9e5f5 40%, #fde8f5 55%, #fef0f5 70%, #fef5f0 85%,
-        transparent 100%;
+    --text: #0f172a;
+    --text-secondary: #334155;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --border-subtle: #f1f5f9;
+
+    /* ── Marca — un único color de acento ────────── */
+    --brand: #ea580c;
+    --brand-hover: #c2410c;
+    --brand-light: #fff7ed;
+    --brand-muted: rgba(234, 88, 12, 0.08);
+
+    /* ── Tipografía ──────────────────────────────── */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* ── Radios ──────────────────────────────────── */
+    --radius-sm: 6px;
+    --radius: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+
+    /* ── Sombras ─────────────────────────────────── */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+
+    /* ── Anchura landing consistente con navbar ──── */
+    --landing-max-width: 80%;
+    --landing-padding: 0 48px;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-sans);
     margin: 0;
     padding: 0;
     background-color: var(--bg);
     color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     transition:
         background-color 200ms ease,
         color 200ms ease;
 }
 
-/* Dark theme overrides */
+/* Dark theme */
 .dark-theme {
-    --bg: #0f1724;
-    --card-bg: #0b1220;
-    --text: #e6eef8;
-    --muted: #9aa6bd;
-    --primary: #60a5fa;
-    --accent: #34d399;
-    /* Subtle, desaturated gradients for dark theme to avoid high-contrast bright blobs */
-    --hero-left:
-        rgba(99, 102, 241, 0.06) 0%, rgba(99, 102, 241, 0.04) 10%, rgba(99, 102, 241, 0.02) 25%,
-        transparent 60%;
-    --hero-right:
-        rgba(236, 72, 153, 0.05) 0%, rgba(236, 72, 153, 0.03) 12%, rgba(236, 72, 153, 0.02) 30%,
-        transparent 65%;
+    --bg: #0a0f1a;
+    --bg-subtle: #111827;
+    --card-bg: #111827;
+    --text: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --muted: #94a3b8;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-subtle: rgba(255, 255, 255, 0.04);
+    --brand-light: rgba(234, 88, 12, 0.12);
+    --brand-muted: rgba(234, 88, 12, 0.08);
 }

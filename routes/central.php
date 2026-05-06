@@ -42,7 +42,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => view('landing.pages.home'))->name('home');
 Route::get('/precios', fn () => view('landing.pages.pricing'))->name('precios');
-Route::get('/about', fn () => view('landing.pages.about'))->name('about');
+Route::redirect('/about', '/register', 301);
 Route::get('/contabilidad', fn () => view('landing.pages.contabilidad'))->name('contabilidad');
 Route::get('/inventario', fn () => view('landing.pages.inventario'))->name('inventario');
 Route::get('/crm', fn () => view('landing.pages.crm'))->name('crm');

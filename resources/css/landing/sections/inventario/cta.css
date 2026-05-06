@@ -1,5 +1,6 @@
 /* === Inventario CTA Section === */
 .inv-cta-section {
+    font-family: var(--font-sans);
     padding: 120px 48px;
     background: var(--bg, #f5f5f5);
     text-align: center;
@@ -11,6 +12,7 @@
 
 .inv-cta-inner {
     max-width: 680px;
+    padding: var(--landing-padding, 0 48px);
     margin: 0 auto;
 }
 
@@ -19,7 +21,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #ff6b35;
+    color: var(--brand);
     margin-bottom: 20px;
 }
 
@@ -33,25 +35,22 @@
 }
 
 .dark-theme .inv-cta-title {
-    color: #e6eef8;
+    color: var(--text);
 }
 
 .inv-cta-title span {
-    background: linear-gradient(135deg, #ff6b35 0%, #ff4081 50%, #9c27b0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--brand);
 }
 
 .inv-cta-desc {
     font-size: 1.05rem;
-    color: #6b6b7b;
+    color: var(--muted);
     line-height: 1.7;
     margin: 0 0 40px;
 }
 
 .dark-theme .inv-cta-desc {
-    color: #9aa6bd;
+    color: var(--muted);
 }
 
 .inv-cta-actions {
@@ -62,11 +61,11 @@
 }
 
 .inv-cta-btn-primary {
-    background: linear-gradient(135deg, #ff6b35 0%, #ff4081 50%, #9c27b0 100%);
+    background: var(--brand);
     color: #fff;
     border: none;
     padding: 16px 36px;
-    border-radius: 12px;
+    border-radius: var(--radius);
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
@@ -79,7 +78,7 @@
 
 .inv-cta-btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+    box-shadow: 0 8px 24px rgba(234, 88, 12, 0.3);
 }
 
 .inv-cta-btn-secondary {
@@ -87,7 +86,7 @@
     color: var(--text, #1a1a24);
     border: 1.5px solid rgba(0, 0, 0, 0.15);
     padding: 16px 36px;
-    border-radius: 12px;
+    border-radius: var(--radius);
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
@@ -97,16 +96,16 @@
 }
 
 .dark-theme .inv-cta-btn-secondary {
-    color: #e6eef8;
+    color: var(--text);
     border-color: rgba(255, 255, 255, 0.15);
 }
 
 .inv-cta-btn-secondary:hover {
-    border-color: #ff6b35;
+    border-color: var(--brand);
 }
 
 .inv-cta-note {
     margin-top: 20px;
     font-size: 0.82rem;
-    color: #9ca3af;
+    color: var(--muted);
 }

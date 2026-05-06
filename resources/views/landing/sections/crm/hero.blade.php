@@ -18,14 +18,14 @@
             </h1>
 
             <p class="crm-hero-desc">
-                Un CRM diseñado para equipos de ventas modernos. Gestiona contactos,
-                automatiza seguimientos y cierra más negocios con menos esfuerzo gracias
-                a pipelines visuales e inteligencia sobre tus clientes.
+                Novex CRM centraliza todos tus contactos, empresas y oportunidades de venta
+                en un único lugar. Gestiona el pipeline comercial, haz seguimiento de cada
+                negociación y sabe en todo momento en qué punto está cada cliente.
             </p>
 
             <div class="crm-hero-actions">
                 <a href="{{ route('register') }}" class="crm-btn-primary">Empieza Gratis</a>
-                <a href="{{ route('about') }}" class="crm-btn-secondary">Ver demostración</a>
+                <a href="{{ route('register') }}" class="crm-btn-secondary">Solicitar acceso</a>
             </div>
         </div>
 

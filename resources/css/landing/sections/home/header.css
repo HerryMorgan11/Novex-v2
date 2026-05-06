@@ -1,90 +1,164 @@
-/* Section container */
+/* ── Hero Section ──────────────────────────────── */
 .hero-section {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Gradientes radiales duales - uno en cada lado */
-    /* Use theme-aware gradient stops defined in general-style.css */
-    background:
-        radial-gradient(ellipse 1000px 600px at 10% 20%, var(--hero-left)),
-        radial-gradient(ellipse 1000px 600px at 90% 80%, var(--hero-right)), var(--bg); /* Color de fondo base */
-
-    /* Pull the hero up so its background sits behind the navbar */
+    background-color: var(--card-bg);
+    /* Dot grid + warm tint */
+    background-image:
+        radial-gradient(circle, var(--border) 1px, transparent 1px),
+        linear-gradient(
+            160deg,
+            transparent 0%,
+            rgba(234, 88, 12, 0.04) 35%,
+            rgba(234, 88, 12, 0.07) 65%,
+            transparent 100%
+        );
+    background-size:
+        28px 28px,
+        100% 100%;
     margin-top: -80px;
-    padding: 150px 24px 80px;
+    padding: 150px 24px 100px;
+    position: relative;
+}
+
+/* Gradiente de desvanecimiento inferior */
+.hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 220px;
+    background: linear-gradient(to bottom, transparent, var(--card-bg));
+    pointer-events: none;
+}
+
+.dark-theme .hero-section {
+    background-color: var(--card-bg);
+    background-image:
+        radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(
+            160deg,
+            transparent 0%,
+            rgba(234, 88, 12, 0.05) 35%,
+            rgba(234, 88, 12, 0.09) 65%,
+            transparent 100%
+        );
+    background-size:
+        28px 28px,
+        100% 100%;
+}
+
+.dark-theme .hero-section::after {
+    background: linear-gradient(to bottom, transparent, var(--card-bg));
 }
 
 .hero-content {
     text-align: center;
-    max-width: 900px;
+    max-width: var(--landing-max-width, 80%);
+    width: 100%;
     margin: 0 auto;
+    padding: var(--landing-padding, 0 48px);
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+/* Badge encima del título */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--brand-light);
+    border: 1px solid rgba(234, 88, 12, 0.2);
+    color: var(--brand);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 28px;
 }
 
 .hero-title {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 32px;
+    gap: 0;
+    margin-bottom: 28px;
 }
 
-/* Titles */
 .title-black {
-    font-size: 72px;
+    font-size: 64px;
     font-weight: 800;
     color: var(--text);
-    line-height: 1.1;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
 }
 
+/* Acento limpio — solo naranja */
 .title-gradient {
-    font-size: 78px;
+    font-size: 64px;
     font-weight: 800;
-    background: linear-gradient(135deg, #ff6b35 0%, #ff4081 50%, #9c27b0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1.1;
+    color: var(--brand);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
 }
 
-/* Description */
+.dark-theme .title-gradient {
+    color: #fb923c;
+}
+
 .hero-description {
-    font-size: 16px;
+    font-size: 17px;
     color: var(--muted);
-    margin-bottom: 48px;
-    max-width: 720px;
+    margin-bottom: 40px;
+    max-width: 560px;
     margin-left: auto;
     margin-right: auto;
+    line-height: 1.7;
 }
 
+/* ── Botón primario limpio ───────────────────────── */
 .hero-btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     text-decoration: none;
-    background: linear-gradient(135deg, #ff6b35 0%, #ff4081 50%, #9c27b0 100%);
-    color: white;
-    font-size: 18px;
+    background: var(--brand);
+    color: #ffffff;
+    font-size: 15px;
     font-weight: 600;
-    padding: 18px 48px;
-    border-radius: 35px;
+    padding: 13px 28px;
+    border-radius: var(--radius);
     transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-    box-shadow: 0 8px 24px rgba(255, 64, 129, 0.3);
+        background 150ms ease,
+        transform 150ms ease,
+        box-shadow 150ms ease;
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.12),
+        0 0 0 1px rgba(234, 88, 12, 0.15);
+    letter-spacing: 0.01em;
 }
 
 .hero-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(255, 64, 129, 0.4);
+    background: var(--brand-hover);
+    transform: translateY(-1px);
+    box-shadow:
+        0 4px 12px rgba(234, 88, 12, 0.25),
+        0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive Styles */
+/* Responsive */
 @media (max-width: 1024px) {
     .title-black,
     .title-gradient {
-        font-size: 56px;
+        font-size: 52px;
     }
-
     .hero-description {
-        font-size: 17px;
+        font-size: 16px;
     }
 }
 
@@ -92,37 +166,28 @@
     .hero-section {
         min-height: calc(100vh - 70px);
         margin-top: -70px;
-        padding: 130px 16px 60px;
+        padding: 130px 16px 80px;
     }
-
     .title-black,
     .title-gradient {
-        font-size: 42px;
+        font-size: 40px;
     }
-
     .hero-description {
-        font-size: 16px;
-        margin-bottom: 36px;
+        font-size: 15px;
+        margin-bottom: 32px;
     }
-
     .hero-btn {
-        font-size: 16px;
-        padding: 16px 40px;
+        font-size: 14px;
+        padding: 12px 24px;
     }
 }
 
 @media (max-width: 480px) {
     .title-black,
     .title-gradient {
-        font-size: 36px;
+        font-size: 34px;
     }
-
     .hero-description {
-        font-size: 15px;
-    }
-
-    .hero-btn {
-        padding: 14px 32px;
-        font-size: 15px;
+        font-size: 14px;
     }
 }

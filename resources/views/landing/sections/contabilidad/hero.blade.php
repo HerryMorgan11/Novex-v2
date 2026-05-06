@@ -22,7 +22,7 @@
 
         <div class="conta2-hero-actions">
             <a href="{{ route('register') }}" class="conta2-btn-primary">Comenzar Gratis</a>
-            <a href="{{ route('about') }}" class="conta2-btn-outline">Ver demostración</a>
+            <a href="{{ route('register') }}" class="conta2-btn-outline">Solicitar acceso</a>
         </div>
 
         <!-- Stats bar -->

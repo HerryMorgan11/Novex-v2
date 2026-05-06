@@ -14,7 +14,7 @@
         </p>
         <div class="rh-cta-actions">
             <a href="{{ route('register') }}" class="rh-cta-btn-primary">Comenzar Gratis</a>
-            <a href="{{ route('about') }}" class="rh-cta-btn-secondary">Hablar con un experto</a>
+            <a href="{{ route('register') }}" class="rh-cta-btn-secondary">Solicitar acceso</a>
         </div>
         <p class="rh-cta-note">Sin tarjeta de crédito &bull; Configuración en minutos &bull; Soporte incluido</p>
     </div>

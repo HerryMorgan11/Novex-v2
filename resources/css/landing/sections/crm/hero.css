@@ -3,7 +3,19 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(160deg, #fafafa 0%, #fff5f0 35%, #fdf0ff 65%, #fafafa 100%);
+    background-color: var(--card-bg);
+    background-image:
+        radial-gradient(circle, var(--border) 1px, transparent 1px),
+        linear-gradient(
+            160deg,
+            transparent 0%,
+            rgba(234, 88, 12, 0.04) 35%,
+            rgba(234, 88, 12, 0.07) 65%,
+            transparent 100%
+        );
+    background-size:
+        28px 28px,
+        100% 100%;
     margin-top: -80px;
     padding: 140px 48px 80px;
     overflow: hidden;
@@ -11,11 +23,34 @@
 }
 
 .dark-theme .crm-hero-section {
-    background: linear-gradient(160deg, #0f1724 0%, #1a0e0a 40%, #130a1a 70%, #0f1724 100%);
+    background-color: var(--card-bg);
+    background-image:
+        radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(
+            160deg,
+            transparent 0%,
+            rgba(234, 88, 12, 0.05) 35%,
+            rgba(234, 88, 12, 0.09) 65%,
+            transparent 100%
+        );
+    background-size:
+        28px 28px,
+        100% 100%;
+}
+
+.crm-hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 180px;
+    background: linear-gradient(to bottom, transparent, var(--card-bg));
+    pointer-events: none;
 }
 
 .crm-hero-inner {
-    max-width: 1200px;
+    max-width: var(--landing-max-width, 80%);
     margin: 0 auto;
     width: 100%;
     display: grid;
@@ -39,9 +74,9 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 107, 53, 0.08);
+    background: var(--brand-light);
     border: 1px solid rgba(255, 107, 53, 0.22);
-    color: #c0206a;
+    color: var(--brand);
     padding: 6px 14px;
     border-radius: 30px;
     font-size: 0.65rem;
@@ -52,16 +87,16 @@
 }
 
 .dark-theme .crm-hero-badge {
-    background: rgba(255, 107, 53, 0.07);
+    background: var(--brand-light);
     border-color: rgba(255, 107, 53, 0.18);
-    color: #ff6b35;
+    color: var(--brand);
 }
 
 .crm-hero-badge-dot {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #ff6b35;
+    background: var(--brand);
     animation: crm-pulse 1.8s ease infinite;
 }
 
@@ -87,26 +122,23 @@
 }
 
 .dark-theme .crm-hero-title {
-    color: #e6eef8;
+    color: var(--text);
 }
 
 .crm-hero-title span {
-    background: linear-gradient(135deg, #ff6b35 0%, #ff4081 50%, #9c27b0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--brand);
 }
 
 .crm-hero-desc {
     font-size: 1.1rem;
-    color: #6b6b7b;
+    color: var(--muted);
     line-height: 1.7;
     margin: 0 0 36px;
     max-width: 480px;
 }
 
 .dark-theme .crm-hero-desc {
-    color: #9aa6bd;
+    color: var(--muted);
 }
 
 .crm-hero-actions {
@@ -116,7 +148,7 @@
 }
 
 .crm-btn-primary {
-    background: linear-gradient(135deg, #ff6b35 0%, #ff4081 50%, #9c27b0 100%);
+    background: var(--brand);
     color: #fff;
     border: none;
     padding: 14px 28px;
@@ -151,12 +183,12 @@
 }
 
 .dark-theme .crm-btn-secondary {
-    color: #e6eef8;
+    color: var(--text);
     border-color: rgba(255, 255, 255, 0.15);
 }
 
 .crm-btn-secondary:hover {
-    border-color: #ff6b35;
+    border-color: var(--brand);
 }
 
 /* Visual: CRM pipeline card */
@@ -167,9 +199,9 @@
 }
 
 .crm-hero-card {
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.07);
-    border-radius: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
     padding: 28px;
     width: 100%;
     max-width: 420px;
@@ -177,7 +209,7 @@
 }
 
 .dark-theme .crm-hero-card {
-    background: #0b1220;
+    background: var(--card-bg);
     border-color: rgba(255, 255, 255, 0.06);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
@@ -196,13 +228,13 @@
 }
 
 .dark-theme .crm-card-heading {
-    color: #e6eef8;
+    color: var(--text);
 }
 
 .crm-card-value {
     font-size: 1.1rem;
     font-weight: 800;
-    color: #ff6b35;
+    color: var(--brand);
 }
 
 /* Pipeline stages */
@@ -227,7 +259,7 @@
 }
 
 .dark-theme .crm-stage-label {
-    color: #9ca3af;
+    color: var(--muted);
 }
 
 .crm-stage-bar-track {
@@ -245,7 +277,7 @@
 .crm-stage-bar-fill {
     height: 100%;
     border-radius: 99px;
-    background: linear-gradient(135deg, #ff6b35 0%, #ff4081 50%, #9c27b0 100%);
+    background: var(--brand);
 }
 
 .crm-stage-count {
@@ -257,7 +289,7 @@
 }
 
 .dark-theme .crm-stage-count {
-    color: #e6eef8;
+    color: var(--text);
 }
 
 /* Won deal badge */

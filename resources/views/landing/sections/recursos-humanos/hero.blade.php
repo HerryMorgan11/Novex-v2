@@ -17,14 +17,14 @@
             </h1>
 
             <p class="rh-hero-desc">
-                Una plataforma completa para gestionar personas, automatizar la nómina,
-                medir el desempeño y construir culturas organizacionales de alto impacto.
-                Todo en un solo lugar, totalmente integrado.
+                Novex RRHH centraliza la gestión de tu equipo: fichas de empleados, nómina
+                automatizada, control de ausencias y evaluación del desempeño. Todo en un
+                solo sistema, integrado con el resto de módulos de Novex.
             </p>
 
             <div class="rh-hero-actions">
                 <a href="{{ route('register') }}" class="rh-btn-primary">Empieza Gratis</a>
-                <a href="{{ route('about') }}" class="rh-btn-secondary">Ver demostración</a>
+                <a href="{{ route('register') }}" class="rh-btn-secondary">Solicitar acceso</a>
             </div>
         </div>
 

@@ -2,13 +2,12 @@
     <div class="choose-text-container">
 
         <div class="titulos-texto">
-            <h2>Why Modern Enterprises</h2>
-            <h2 class="title-gradient">Choose NOVEX</h2>
+            <h2>Por qué las empresas</h2>
+            <h2 class="title-gradient">eligen Novex</h2>
         </div>
 
         <div class="texto">
-            <p>In an era of rapid digital transformation, having a rigid ERP system is a liability. NOVEX provides the
-                flexibility, security, and intelligence you need to lead your industry.</p>
+            <p>Novex es una plataforma de gestión empresarial pensada para empresas que necesitan orden, claridad y control sin depender de sistemas complejos o costosos.</p>
         </div>
 
         <div class="lista">
@@ -21,8 +20,8 @@
                         </svg>
                     </div>
                     <div class="list-text">
-                        <h4>99.9% Uptime SLA</h4>
-                        <p>Reliable cloud infrastructure that never lets your business sleep.</p>
+                        <h4>Todo en un solo sistema</h4>
+                        <p>Inventario, finanzas, ventas y RRHH integrados. No necesitas más herramientas sueltas ni hojas de cálculo.</p>
                     </div>
                 </li>
                 <li>
@@ -33,8 +32,8 @@
                         </svg>
                     </div>
                     <div class="list-text">
-                        <h4>Bank-Grade Security</h4>
-                        <p>End-to-end encryption and SOC2 compliance to protect your data.</p>
+                        <h4>Fácil de usar desde el primer día</h4>
+                        <p>Interfaz limpia y flujos de trabajo claros. Tu equipo entiende cómo funciona sin necesidad de formación prolongada.</p>
                     </div>
                 </li>
                 <li>
@@ -45,8 +44,8 @@
                         </svg>
                     </div>
                     <div class="list-text">
-                        <h4>AI-Powered Insights</h4>
-                        <p>Predictive analytics that help you make better business decisions.</p>
+                        <h4>Datos siempre actualizados</h4>
+                        <p>Cada acción en un módulo se refleja automáticamente en los demás. Sin duplicidades, sin errores manuales.</p>
                     </div>
                 </li>
             </ul>
@@ -56,26 +55,26 @@
     <div class="box">
         <!-- Columna Izquierda -->
         <div class="box-eficiencia">
-            <p>45%</p>
-            <p>Efficiency Boost</p>
+            <p>4</p>
+            <p>Módulos integrados</p>
         </div>
 
         <!-- Columna Derecha -->
         <div class="box-roi right-col">
-            <p>2.5x</p>
-            <p>ROI in 6 Months</p>
+            <p>100%</p>
+            <p>En la nube</p>
         </div>
 
         <!-- Columna Izquierda -->
         <div class="box-user">
-            <p>10k+</p>
-            <p>Daily Users</p>
+            <p>Multi</p>
+            <p>Usuario y roles</p>
         </div>
 
         <!-- Columna Derecha -->
         <div class="box-support right-col colored">
-            <p>24/7</p>
-            <p>Expert Support</p>
+            <p>Real</p>
+            <p>Datos en tiempo real</p>
         </div>
     </div>
 </section>

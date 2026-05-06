@@ -14,7 +14,7 @@
         </p>
         <div class="crm-cta-actions">
             <a href="{{ route('register') }}" class="crm-cta-btn-primary">Comenzar Gratis</a>
-            <a href="{{ route('about') }}" class="crm-cta-btn-secondary">Hablar con ventas</a>
+            <a href="{{ route('register') }}" class="crm-cta-btn-secondary">Solicitar acceso</a>
         </div>
         <p class="crm-cta-note">Sin tarjeta de crédito &bull; Importa tus contactos en minutos &bull; Soporte incluido</p>
     </div>

@@ -14,7 +14,7 @@
         </p>
         <div class="conta2-cta-actions">
             <a href="{{ route('register') }}" class="conta2-cta-btn-primary">Comenzar Gratis</a>
-            <a href="{{ route('about') }}" class="conta2-cta-btn-secondary">Solicitar demo</a>
+            <a href="{{ route('register') }}" class="conta2-cta-btn-secondary">Solicitar acceso</a>
         </div>
         <p class="conta2-cta-note">Sin tarjeta de crédito &bull; Configura en minutos &bull; Soporte incluido</p>
     </div>
