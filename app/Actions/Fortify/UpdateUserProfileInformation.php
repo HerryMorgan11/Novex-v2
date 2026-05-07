@@ -25,7 +25,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'string',
                 'email',
                 'max:255',
-                Rule::unique('users')->ignore($user->id),
+                Rule::unique('mysql.users')->ignore($user->id),
             ],
 
             'phone' => ['nullable', 'string', 'max:20', 'regex:/^[+\d\s\-()\/.]+$/'],

@@ -27,8 +27,8 @@
                 <strong>{{ $note->title }}</strong>
             </div>
             <hr>
-            <div class="note-body">
-                <p>{{ Str::limit(strip_tags($note->content), 120) }}</p>
+            <div class="note-body note-preview">
+                {!! $note->content !!}
             </div>
             <hr>
             <div class="note-actions">

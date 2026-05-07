@@ -37,13 +37,6 @@
         <button class="theme-toggle icon-btn" type="button" onclick="themeToggle()" aria-label="Cambiar tema">
             <iconify-icon icon="mynaui:sun" width="16"></iconify-icon>
         </button>
-
-        <div class="profile-menu">
-            <button class="user-btn" aria-haspopup="true" aria-expanded="false">
-                <span class="avatar">JD</span>
-            </button>
-           
-        </div>
     </div>
 </nav>
 

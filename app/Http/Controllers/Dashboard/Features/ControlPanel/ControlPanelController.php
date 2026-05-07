@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard\Features\ControlPanel;
 use App\Http\Controllers\Controller;
 use App\Models\Inventario\ApiTokenInventario;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class ControlPanelController extends Controller
@@ -40,13 +41,35 @@ class ControlPanelController extends Controller
             return null;
         }
 
-        $token = ApiTokenInventario::where('activo', true)
+        $user = auth()->user();
+        if (! $user) {
+            return null;
+        }
+
+        // Buscar un token activo existente para este usuario
+        $token = ApiTokenInventario::where('user_id', $user->id)
+            ->where('activo', true)
             ->where(function ($q) {
                 $q->whereNull('expira_en')->orWhere('expira_en', '>', now());
             })
             ->first();
 
-        return $token?->makeVisible('token')->token;
+        // Si no existe, generar uno nuevo automáticamente
+        if (! $token) {
+            $plainToken = Str::random(64);
+            $token = ApiTokenInventario::create([
+                'user_id' => $user->id,
+                'nombre' => "Token API - {$user->name}",
+                'token' => hash('sha256', $plainToken),
+                'permisos' => 'full',
+                'activo' => true,
+            ]);
+
+            // Devolver el token en texto plano (solo una vez)
+            return $plainToken;
+        }
+
+        return $token->makeVisible('token')->token;
     }
 
     private function loadTenantUsers($tenant)

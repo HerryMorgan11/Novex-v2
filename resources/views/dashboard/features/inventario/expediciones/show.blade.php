@@ -115,10 +115,20 @@
             <div class="inv-detail-card">
                 <h3>Confirmación externa</h3>
                 <p class="inv-modal-desc">
-                    Endpoint para que el destinatario confirme la recepción de la mercancía:
+                    Curl listo para confirmar la recepción de la mercancía desde un sistema externo:
                 </p>
+                @php
+                    $curlToken = $apiToken ?: 'TU_TOKEN_API';
+                    $curlTenantId = $tenantId ?: 'TU_TENANT_ID';
+                    $curlEndpoint = $baseUrl.'/api/inventario/expediciones/'.$expedicion->referencia_expedicion.'/confirmar-entrega';
+                @endphp
                 <div class="inv-code-block">
-                    POST /api/inventario/expediciones/{{ $expedicion->referencia_expedicion }}/confirmar-entrega
+<pre><code>curl -X POST \
+  "{{ $curlEndpoint }}" \
+  -H "Authorization: Bearer {{ $curlToken }}" \
+  -H "X-Tenant-Id: {{ $curlTenantId }}" \
+  -H "Content-Type: application/json" \
+  -d '{}'</code></pre>
                 </div>
                 @if($expedicion->estado?->value !== 'entregada')
                 <p class="inv-confirm-status">

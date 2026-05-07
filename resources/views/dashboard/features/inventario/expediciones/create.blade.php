@@ -44,10 +44,8 @@
             <div class="inv-form-grid inv-form-grid-4">
                 <div class="inv-form-group">
                     <label>Tipo <span class="inv-required">*</span></label>
-                    <select name="tipo" required>
-                        <option value="reparto" {{ old('tipo') !== 'produccion' ? 'selected' : '' }}>Reparto</option>
-                        <option value="produccion" {{ old('tipo') === 'produccion' ? 'selected' : '' }}>Producción</option>
-                    </select>
+                    <input type="hidden" name="tipo" value="reparto">
+                    <input type="text" value="Reparto" readonly>
                 </div>
                 <div class="inv-form-group inv-form-span-2">
                     <label>Destino <span class="inv-required">*</span></label>

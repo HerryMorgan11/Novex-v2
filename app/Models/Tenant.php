@@ -15,6 +15,8 @@ class Tenant extends BaseTenant implements TenantWithDatabase
 {
     use HasDatabase, HasUuids, SoftDeletes;
 
+    protected $connection = 'mysql';
+
     protected $fillable = [
         'id',
         'name',

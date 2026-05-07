@@ -53,6 +53,14 @@
                 <div id="editor"></div>
             </div>
             <input type="hidden" name="content" id="content-input" value="{{ old('content') }}">
+            <div class="char-counter" id="char-counter">
+                <div class="char-counter-bar"><div class="char-counter-bar-fill" id="char-bar" style="width:0%"></div></div>
+                <span id="char-count">0</span> / 10 000
+            </div>
+            <div class="char-limit-error" id="char-limit-error">
+                <iconify-icon icon="lucide:alert-circle"></iconify-icon>
+                Has alcanzado el límite de 10 000 caracteres. No puedes añadir más texto.
+            </div>
         </div>
 
         <div class="notes-form-actions">
@@ -68,9 +76,24 @@
     import { Editor } from 'https://esm.sh/@tiptap/core'
     import StarterKit from 'https://esm.sh/@tiptap/starter-kit'
 
+    const MAX_CHARS = 10000
     const editorElement = document.querySelector('#editor')
     const contentInput = document.querySelector('#content-input')
     const toolbarButtons = document.querySelectorAll('.toolbar-btn')
+    const charCountEl = document.querySelector('#char-count')
+    const charBar = document.querySelector('#char-bar')
+    const charCounter = document.querySelector('#char-counter')
+    const charLimitError = document.querySelector('#char-limit-error')
+
+    function updateCharCounter(text) {
+        const len = text.length
+        const pct = Math.min((len / MAX_CHARS) * 100, 100)
+        charCountEl.textContent = len.toLocaleString('es-ES')
+        charBar.style.width = pct + '%'
+        charCounter.classList.toggle('is-warning', len >= MAX_CHARS * 0.85 && len < MAX_CHARS)
+        charCounter.classList.toggle('is-danger', len >= MAX_CHARS)
+        charLimitError.classList.toggle('is-visible', len >= MAX_CHARS)
+    }
 
     const editor = new Editor({
         element: editorElement,
@@ -78,10 +101,17 @@
         content: @js(old('content', '')),
         onCreate({ editor }) {
             contentInput.value = editor.getHTML()
+            updateCharCounter(editor.getText())
             updateToolbarState()
         },
         onUpdate({ editor }) {
+            const text = editor.getText()
+            if (text.length > MAX_CHARS) {
+                editor.commands.undo()
+                return
+            }
             contentInput.value = editor.getHTML()
+            updateCharCounter(text)
             updateToolbarState()
         },
         onSelectionUpdate: updateToolbarState,
