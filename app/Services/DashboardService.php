@@ -47,10 +47,16 @@ class DashboardService
                 ExpedicionEstado::EnTransito->value,
             ])->count(),
             'lotes_almacenados' => Lote::where('estado', LoteEstado::Stored->value)->count(),
-            'recordatorios_activos' => Reminder::where('user_id', $this->authenticatedUserId())
-                ->where('status', Reminder::STATUS_ACTIVE)
-                ->where('is_completed', false)
-                ->count(),
+            'recordatorios_activos' => (function () {
+                try {
+                    return Reminder::where('user_id', $this->authenticatedUserId())
+                        ->where('status', Reminder::STATUS_ACTIVE)
+                        ->where('is_completed', false)
+                        ->count();
+                } catch (\Throwable) {
+                    return 0;
+                }
+            })(),
             'notas_total' => $notasTotal,
         ];
     }
@@ -193,12 +199,16 @@ class DashboardService
      */
     public function getActiveReminders(int $limit = 5): Collection
     {
-        return Reminder::where('user_id', $this->authenticatedUserId())
-            ->where('status', Reminder::STATUS_ACTIVE)
-            ->where('is_completed', false)
-            ->orderBy('due_at')
-            ->limit($limit)
-            ->get();
+        try {
+            return Reminder::where('user_id', $this->authenticatedUserId())
+                ->where('status', Reminder::STATUS_ACTIVE)
+                ->where('is_completed', false)
+                ->orderBy('due_at')
+                ->limit($limit)
+                ->get();
+        } catch (\Throwable) {
+            return collect();
+        }
     }
 
     /**
@@ -206,15 +216,19 @@ class DashboardService
      */
     public function getUpcomingEvents(int $days = 7): Collection
     {
-        return Reminder::where('user_id', $this->authenticatedUserId())
-            ->where('status', Reminder::STATUS_ACTIVE)
-            ->where('is_completed', false)
-            ->whereNotNull('due_at')
-            ->where('due_at', '>=', now())
-            ->where('due_at', '<=', now()->addDays($days))
-            ->orderBy('due_at')
-            ->limit(8)
-            ->get();
+        try {
+            return Reminder::where('user_id', $this->authenticatedUserId())
+                ->where('status', Reminder::STATUS_ACTIVE)
+                ->where('is_completed', false)
+                ->whereNotNull('due_at')
+                ->where('due_at', '>=', now())
+                ->where('due_at', '<=', now()->addDays($days))
+                ->orderBy('due_at')
+                ->limit(8)
+                ->get();
+        } catch (\Throwable) {
+            return collect();
+        }
     }
 
     private function authenticatedUserId(): int|string|null

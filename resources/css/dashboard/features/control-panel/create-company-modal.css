@@ -84,6 +84,10 @@
     display: none;
 }
 
+.create-company-modal__error.hidden {
+    display: none !important;
+}
+
 .create-company-modal__submit {
     width: 100%;
     background: linear-gradient(135deg, #f26722, #ea580c);

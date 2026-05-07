@@ -28,28 +28,57 @@ if (form) {
                     Accept: 'application/json',
                 },
                 body: formData,
+                credentials: 'same-origin', // Important for CSRF
+                redirect: 'follow', // Follow redirects automatically
             });
 
+            // Handle redirect responses
             if (response.redirected) {
-                // Redirección exitosa — seguir la redirección
                 window.location.href = response.url;
                 return;
             }
 
+            // Handle successful responses
             if (response.ok) {
+                const data = await response.json().catch(() => ({}));
+
+                // Check if response contains a redirect URL
+                if (data?.redirect) {
+                    window.location.href = data.redirect;
+                    return;
+                }
+
+                // Otherwise reload the page
                 window.location.reload();
                 return;
             }
 
-            // Manejar errores de validación (422)
-            const data = await response.json().catch(() => null);
-            const message = data?.message || 'Error al crear la empresa. Inténtalo de nuevo.';
+            // Handle error responses
+            if (response.status === 422) {
+                // Validation errors
+                const data = await response.json().catch(() => ({}));
+                const message = data?.message || 'Error al validar los datos. Inténtalo de nuevo.';
 
-            if (errorContainer) {
-                errorContainer.textContent = message;
-                errorContainer.classList.remove('hidden');
+                if (errorContainer) {
+                    errorContainer.textContent = message;
+                    errorContainer.classList.remove('hidden');
+                }
+            } else if (response.status >= 400) {
+                // Other HTTP errors
+                const data = await response.json().catch(() => ({}));
+                const message =
+                    data?.message || `Error ${response.status}: No se pudo crear la empresa.`;
+
+                if (errorContainer) {
+                    errorContainer.textContent = message;
+                    errorContainer.classList.remove('hidden');
+                }
+
+                console.error('Company creation error:', response.status, data);
             }
-        } catch {
+        } catch (error) {
+            console.error('Network or fetch error:', error);
+
             if (errorContainer) {
                 errorContainer.textContent = 'Error de conexión. Inténtalo de nuevo.';
                 errorContainer.classList.remove('hidden');

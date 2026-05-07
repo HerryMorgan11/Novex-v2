@@ -12,6 +12,8 @@ class Reminder extends Model
 {
     use SoftDeletes;
 
+    protected $connection = 'tenant';
+
     // Prioridades
     const PRIORITY_NONE = 0;
 
