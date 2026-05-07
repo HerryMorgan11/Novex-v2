@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard\Features\Inventario;
 use App\Actions\Inventario\PrepararExpedicion;
 use App\Enums\Inventario\LoteEstado;
 use App\Http\Controllers\Controller;
+use App\Models\Inventario\ApiTokenInventario;
 use App\Models\Inventario\Expedicion;
 use App\Models\Inventario\Lote;
 use Illuminate\Http\RedirectResponse;
@@ -46,7 +47,7 @@ class ExpedicionController extends Controller
             'conductor' => ['nullable', 'string', 'max:150'],
             'fecha_salida' => ['nullable', 'date'],
             'observaciones' => ['nullable', 'string', 'max:500'],
-            'tipo' => ['required', 'in:reparto,produccion'],
+            'tipo' => ['required', 'in:reparto'],
             'lineas' => ['required', 'array', 'min:1'],
             'lineas.*.id_lote' => ['required', 'integer', 'exists:lotes,id_lote'],
             'lineas.*.cantidad' => ['required', 'numeric', 'min:0.0001'],
@@ -73,6 +74,26 @@ class ExpedicionController extends Controller
         $expedicion = Expedicion::whereKey($expedicion)->firstOrFail();
         $expedicion->load(['lineas.lote.producto', 'lineas.lote.ubicacion']);
 
-        return view('dashboard.features.inventario.expediciones.show', compact('expedicion'));
+        return view('dashboard.features.inventario.expediciones.show', [
+            'expedicion' => $expedicion,
+            'apiToken' => $this->loadApiToken(),
+            'tenantId' => function_exists('tenant') && tenant() ? tenant()->id : null,
+            'baseUrl' => rtrim(config('app.url'), '/'),
+        ]);
+    }
+
+    private function loadApiToken(): ?string
+    {
+        if (! function_exists('tenant') || ! tenant()) {
+            return null;
+        }
+
+        $token = ApiTokenInventario::where('activo', true)
+            ->where(function ($q) {
+                $q->whereNull('expira_en')->orWhere('expira_en', '>', now());
+            })
+            ->first();
+
+        return $token?->makeVisible('token')->token;
     }
 }

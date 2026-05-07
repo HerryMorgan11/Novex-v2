@@ -62,7 +62,7 @@ class ReminderController extends Controller
                 COUNT(CASE WHEN DATE(due_at) = CURDATE() AND status = ? THEN 1 END) as today_count,
                 COUNT(CASE WHEN is_completed = 0 AND status = ? THEN 1 END) as pending_count,
                 COUNT(CASE WHEN is_completed = 1 THEN 1 END) as completed_count,
-                COUNT(CASE WHEN DATE(due_at) < CURDATE() AND is_completed = 0 AND status = ? THEN 1 END) as overdue_count
+                COUNT(CASE WHEN due_at IS NOT NULL AND due_at < NOW() AND is_completed = 0 AND status = ? THEN 1 END) as overdue_count
             ', [
                 Reminder::STATUS_ACTIVE,
                 Reminder::STATUS_ACTIVE,

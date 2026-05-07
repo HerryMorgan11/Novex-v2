@@ -13,10 +13,7 @@
     font-size: 2rem;
     font-weight: 700;
     margin: 0;
-    background: linear-gradient(135deg, var(--fg) 0%, var(--muted) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--fg);
 }
 
 .btn-create-note {
@@ -54,7 +51,7 @@
     padding: 16px;
     display: flex;
     flex-direction: column;
-    min-height: 220px;
+    min-height: 280px;
     transition: all 0.3s ease;
     box-shadow: none;
     position: relative;
@@ -91,16 +88,65 @@
     flex: 1;
     overflow: hidden;
     color: var(--muted);
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     line-height: 1.5;
+    max-height: 140px;
+    position: relative;
 }
 
-.note-card .note-body p {
+.note-card .note-body::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(transparent, var(--card));
+    pointer-events: none;
+}
+
+/* HTML preview styles inside card */
+.note-preview p {
+    margin: 0 0 0.4rem;
+}
+
+.note-preview h1,
+.note-preview h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--fg);
+    margin: 0 0 0.35rem;
+    line-height: 1.2;
+}
+
+.note-preview ul,
+.note-preview ol {
+    margin: 0 0 0.4rem 1.1rem;
+    padding-left: 0.8rem;
+}
+
+.note-preview ul {
+    list-style: disc;
+}
+
+.note-preview ol {
+    list-style: decimal;
+}
+
+.note-preview li {
+    margin: 0.15rem 0;
+}
+
+.note-preview li p {
     margin: 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+}
+
+.note-preview strong {
+    color: var(--fg);
+}
+
+.note-preview em {
+    font-style: italic;
 }
 
 .note-card .note-actions {
@@ -249,6 +295,69 @@
 
 .ProseMirror li p {
     margin: 0;
+}
+
+/* Character counter */
+.char-counter {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    transition: color 0.2s;
+}
+
+.char-counter.is-warning {
+    color: #f59e0b;
+}
+
+.char-counter.is-danger {
+    color: #ef4444;
+    font-weight: 600;
+}
+
+.char-counter-bar {
+    flex: 1;
+    height: 3px;
+    background: var(--border);
+    border-radius: 99px;
+    overflow: hidden;
+    max-width: 120px;
+}
+
+.char-counter-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 99px;
+    transition:
+        width 0.2s,
+        background 0.2s;
+}
+
+.char-counter.is-warning .char-counter-bar-fill {
+    background: #f59e0b;
+}
+
+.char-counter.is-danger .char-counter-bar-fill {
+    background: #ef4444;
+}
+
+.char-limit-error {
+    display: none;
+    margin-top: 6px;
+    padding: 8px 12px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    border-radius: 6px;
+    color: #ef4444;
+    font-size: 0.82rem;
+    font-weight: 500;
+}
+
+.char-limit-error.is-visible {
+    display: block;
 }
 
 .form-group {

@@ -114,7 +114,7 @@
                 ] as [$val, $label, $icon])
                 <a href="{{ route('reminders.index', ['list' => $listId, 'filter' => $val]) }}"
                    class="reminders-list-filter-tab"
-                   style="background:{{ $lf === $val ? 'var(--accent,#007aff)' : 'var(--surface-2,#f2f2f7)' }}; color:{{ $lf === $val ? 'var(--accent-fg,#fff)' : 'var(--fg,#555)' }};">
+                   style="background:{{ $lf === $val ? '#000' : 'var(--surface-2,#f2f2f7)' }}; color:{{ $lf === $val ? '#fff' : 'var(--fg,#555)' }};">
                     <iconify-icon icon="{{ $icon }}" width="13"></iconify-icon>
                     {{ $label }}
                     @if($val === 'overdue' && $currentList->overdueRemindersCount() > 0)
@@ -125,10 +125,10 @@
             </div>
             @endif
             <span class="reminders-subtitle">{{ now()->format('l, M d') }}</span>
-            <button onclick="document.getElementById('modalNewReminder').style.display='flex'"
+            <a href="{{ route('reminders.create') }}"
                     class="btn-primary reminders-add-btn">
                 + Agregar recordatorio
-            </button>
+            </a>
         </div>
 
         <!-- Reminders List -->
@@ -216,31 +216,6 @@
             </div>
         @endif
     </main>
-</div>
-
-{{-- Modal: Nuevo Recordatorio --}}
-<div id="modalNewReminder"
-     class="reminder-modal-overlay"
-     onclick="if(event.target===this)this.style.display='none'">
-    <div class="modal-panel rem-modal-panel-md">
-        <div class="modal-header">
-            <h2 class="modal-title">Nuevo recordatorio</h2>
-            <button onclick="document.getElementById('modalNewReminder').style.display='none'" class="modal-close-btn">&times;</button>
-        </div>
-        <form action="{{ route('reminders.store') }}" method="POST">
-            @csrf
-            @include('dashboard.features.reminders.reminders._form', ['selectedList' => null])
-            <div class="modal-footer">
-                <button type="submit" class="btn-primary rem-modal-submit-btn">
-                    Crear recordatorio
-                </button>
-                <button type="button" class="modal-cancel-btn"
-                        onclick="document.getElementById('modalNewReminder').style.display='none'">
-                    Cancelar
-                </button>
-            </div>
-        </form>
-    </div>
 </div>
 
 {{-- Modal: Nueva Lista --}}
