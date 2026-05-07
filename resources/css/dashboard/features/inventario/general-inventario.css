@@ -524,6 +524,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 16px;
+    min-width: 0;
 }
 
 .inv-form-group {
@@ -611,11 +612,12 @@
 /* Lote selector en expedición */
 .lote-selector-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 8px;
     max-height: 520px;
     overflow-y: auto;
     padding-right: 4px;
+    min-width: 0;
 }
 
 .lote-selector-item {
@@ -789,6 +791,12 @@
     font-size: 0.8rem;
     padding: 6px 14px;
 }
+.inv-btn[disabled],
+.inv-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+}
 
 /* Required star */
 .inv-required {
@@ -840,9 +848,15 @@
 }
 .inv-form-span-2 {
     grid-column: span 2;
+    min-width: 0;
+}
+@media (max-width: 540px) {
+    .inv-form-span-2 {
+        grid-column: 1 / -1;
+    }
 }
 .inv-form-grid-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 .inv-form-actions {
     display: flex;
@@ -927,6 +941,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.inv-modal-overlay[hidden] {
+    display: none;
 }
 
 /* Modal dialog sizes */

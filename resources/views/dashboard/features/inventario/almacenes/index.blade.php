@@ -111,7 +111,7 @@
                 <iconify-icon icon="lucide:plus" width="13"></iconify-icon>
                 Añadir zona
             </button>
-            <button onclick="abrirModalEstanteria({{ \Illuminate\Support\Js::from(route('inventario.almacenes.estanterias.store', $almacen->id_almacen)) }}, {{ \Illuminate\Support\Js::from($almacen->zonas->map->only(['id_zona', 'nombre'])->values()) }})" class="inv-btn inv-btn-outline inv-btn-sm-action">
+            <button onclick="abrirModalEstanteria({{ \Illuminate\Support\Js::from(route('inventario.almacenes.estanterias.store', $almacen->id_almacen)) }}, {{ \Illuminate\Support\Js::from($almacen->zonas->map->only(['id_zona', 'nombre'])->values()) }})" class="inv-btn inv-btn-outline inv-btn-sm-action" @if($almacen->zonas->isEmpty()) disabled title="Primero crea una zona" @endif>
                 <iconify-icon icon="lucide:layers" width="13"></iconify-icon>
                 Añadir estantería
             </button>

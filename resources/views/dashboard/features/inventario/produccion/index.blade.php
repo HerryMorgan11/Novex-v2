@@ -44,7 +44,6 @@
                         <th>Categoría</th>
                         <th>Ubicación</th>
                         <th>Disponible</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,7 +51,13 @@
                     <tr>
                         <td class="mono">{{ $lote->numero_lote }}</td>
                         <td>
-                            <div class="inv-text-bold">{{ $lote->producto?->nombre ?? '—' }}</div>
+                            <button
+                                type="button"
+                                onclick="abrirModalProduccion({{ $lote->id_lote }}, {{ \Illuminate\Support\Js::from($lote->numero_lote) }}, {{ \Illuminate\Support\Js::from($lote->producto?->nombre ?? 'Sin producto') }})"
+                                class="inv-btn inv-btn-ghost inv-btn-block"
+                                style="justify-content:flex-start; padding-left:0; padding-right:0;">
+                                <span class="inv-text-bold">{{ $lote->producto?->nombre ?? '—' }}</span>
+                            </button>
                             <div class="inv-text-sm-muted">{{ $lote->producto?->sku ?? '' }}</div>
                         </td>
                         <td class="inv-td-muted">{{ $lote->producto?->categoria?->nombre ?? '—' }}</td>
@@ -60,13 +65,6 @@
                         <td class="inv-td-bold">
                             {{ number_format($lote->cantidadDisponible(), 0) }}
                             <span class="inv-text-unit">{{ $lote->producto?->unidadMedida?->abreviatura ?? '' }}</span>
-                        </td>
-                        <td>
-                            <button onclick="abrirModalProduccion({{ $lote->id_lote }}, '{{ $lote->numero_lote }}', '{{ $lote->producto?->nombre }}')"
-                                class="inv-btn inv-btn-outline inv-btn-icon">
-                                <iconify-icon icon="lucide:factory" width="13"></iconify-icon>
-                                Mover a producción
-                            </button>
                         </td>
                     </tr>
                     @endforeach

@@ -38,7 +38,15 @@ class ProduccionController extends Controller
 
     public function mover(Request $request, int $lote): RedirectResponse
     {
-        $lote = Lote::whereKey($lote)->firstOrFail();
+        $lote = Lote::with('producto')->whereKey($lote)->first();
+
+        if (! $lote) {
+            return back()->with('error', 'No se encontró el lote seleccionado.');
+        }
+
+        if (! $lote->producto) {
+            return back()->with('error', "El lote {$lote->numero_lote} no tiene un producto asociado.");
+        }
 
         $request->validate([
             'observaciones' => ['nullable', 'string', 'max:500'],
@@ -48,6 +56,10 @@ class ProduccionController extends Controller
             (new MoverAProduccion)->ejecutar($lote, auth()->id(), $request->observaciones);
         } catch (\RuntimeException $e) {
             return back()->with('error', $e->getMessage());
+        } catch (\Throwable $e) {
+            report($e);
+
+            return back()->with('error', 'No se pudo mover el lote a producción. Revisa los datos e inténtalo de nuevo.');
         }
 
         return back()->with('success', "Lote {$lote->numero_lote} movido a producción.");
