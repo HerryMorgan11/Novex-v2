@@ -70,12 +70,6 @@
                             <td>
                                 <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
                                     @if (!($user->is_owner ?? false))
-                                        <select onchange="changeUserRole('{{ $user->id }}', this.value)"
-                                            style="font-size:0.75rem; padding:3px 6px; border-radius:6px; border:1px solid #cbd5e1; color:#475569; cursor:pointer;" title="Cambiar rol">
-                                            <option value="admin"    {{ ($user->raw_role ?? '') === 'admin'    ? 'selected' : '' }}>Admin</option>
-                                            <option value="manager"  {{ ($user->raw_role ?? '') === 'manager'  ? 'selected' : '' }}>Manager</option>
-                                            <option value="empleado" {{ ($user->raw_role ?? '') === 'empleado' ? 'selected' : '' }}>Empleado</option>
-                                        </select>
                                         @if (($user->raw_status ?? '') === 'disabled')
                                             <button type="button" onclick="toggleUserStatus('{{ $user->id }}', 'active')"
                                                 style="font-size:0.75rem; padding:3px 8px; border-radius:6px; border:1px solid #86efac; background:#dcfce7; color:#15803d; cursor:pointer;">Activar</button>
@@ -83,10 +77,16 @@
                                             <button type="button" onclick="toggleUserStatus('{{ $user->id }}', 'disabled')"
                                                 style="font-size:0.75rem; padding:3px 8px; border-radius:6px; border:1px solid #fca5a5; background:#fee2e2; color:#dc2626; cursor:pointer;">Deshabilitar</button>
                                         @endif
-                                        <button type="button" onclick="deleteUser('{{ $user->id }}', '{{ addslashes($user->name) }}')"
+                                        <button type="button" onclick="openDeleteUserModal('{{ $user->id }}', '{{ addslashes($user->name) }}')"
                                             style="font-size:0.75rem; padding:3px 8px; border-radius:6px; border:1px solid #fca5a5; background:#fff; color:#dc2626; cursor:pointer;" title="Eliminar usuario">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
                                         </button>
+                                        <select onchange="changeUserRole('{{ $user->id }}', this.value)"
+                                            style="font-size:0.75rem; padding:3px 6px; border-radius:6px; border:1px solid #cbd5e1; color:#475569; cursor:pointer;" title="Cambiar rol">
+                                            <option value="admin"    {{ ($user->raw_role ?? '') === 'admin'    ? 'selected' : '' }}>Admin</option>
+                                            <option value="manager"  {{ ($user->raw_role ?? '') === 'manager'  ? 'selected' : '' }}>Manager</option>
+                                            <option value="empleado" {{ ($user->raw_role ?? '') === 'empleado' ? 'selected' : '' }}>Empleado</option>
+                                        </select>
                                     @else
                                         <span style="font-size:0.75rem; color:#94a3b8;">—</span>
                                     @endif
@@ -105,6 +105,31 @@
 </div>
 
 @if ($isAdmin)
+{{-- ──────────────────── MODAL CONFIRMAR ELIMINAR USUARIO ──────────────────── --}}
+<div id="delete-user-modal"
+    style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.5); backdrop-filter:blur(2px); align-items:center; justify-content:center; padding:20px;"
+    onclick="if(event.target===this)closeDeleteUserModal()">
+    <div style="background:#fff; border-radius:16px; padding:28px; width:100%; max-width:420px; box-shadow:0 20px 60px rgba(0,0,0,0.25);">
+        <div style="width:44px; height:44px; border-radius:50%; background:rgba(220,38,38,0.12); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 4v4m0 4h.01" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <h3 style="font-size:18px; font-weight:700; color:#1e293b; margin:0 0 8px;">Eliminar usuario</h3>
+        <p style="font-size:14px; color:#64748b; margin:0 0 24px; line-height:1.5;">¿Estás seguro de eliminar a <strong id="delete-user-name" style="color:#1e293b; font-weight:600;"></strong>? Esta acción no se puede deshacer.</p>
+        <div style="display:flex; gap:10px;">
+            <button type="button" onclick="closeDeleteUserModal()"
+                style="flex:1; background:#f1f5f9; color:#1e293b; padding:11px; border-radius:10px; border:1px solid #e2e8f0; font-size:14px; font-weight:600; cursor:pointer;">
+                Cancelar
+            </button>
+            <button type="button" id="delete-user-confirm-btn" onclick="confirmDeleteUser()"
+                style="flex:1; background:#dc2626; color:#fff; padding:11px; border-radius:10px; border:none; font-size:14px; font-weight:600; cursor:pointer;">
+                Eliminar
+            </button>
+        </div>
+    </div>
+</div>
+
 {{-- ──────────────────── MODAL AÑADIR USUARIO ──────────────────── --}}
 <div id="add-user-modal"
     style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.5); backdrop-filter:blur(2px); align-items:center; justify-content:center;">
@@ -258,16 +283,16 @@ function appendUserRow(user) {
         <td>${escHtml(user.created_at)}</td>
         <td>
             <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+                <button type="button" onclick="openDeleteUserModal('${escHtml(user.id)}','${escHtml(user.name)}')"
+                    style="font-size:0.75rem; padding:3px 8px; border-radius:6px; border:1px solid #fca5a5; background:#fff; color:#dc2626; cursor:pointer;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                </button>
                 <select onchange="changeUserRole('${escHtml(user.id)}', this.value)"
                     style="font-size:0.75rem; padding:3px 6px; border-radius:6px; border:1px solid #cbd5e1; color:#475569; cursor:pointer;">
                     <option value="admin"    ${user.role==='admin'    ?'selected':''}>Admin</option>
                     <option value="manager"  ${user.role==='manager'  ?'selected':''}>Manager</option>
                     <option value="empleado" ${user.role==='empleado' ?'selected':''}>Empleado</option>
                 </select>
-                <button type="button" onclick="deleteUser('${escHtml(user.id)}','${escHtml(user.name)}')"
-                    style="font-size:0.75rem; padding:3px 8px; border-radius:6px; border:1px solid #fca5a5; background:#fff; color:#dc2626; cursor:pointer;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
-                </button>
             </div>
         </td>`;
     tbody.appendChild(row);
@@ -304,15 +329,40 @@ async function toggleUserStatus(userId, newStatus) {
     if (res.ok) { location.reload(); } else { const d = await res.json(); alert(d.message || 'Error.'); }
 }
 
-async function deleteUser(userId, name) {
-    if (!confirm(`¿Eliminar a "${name}" del tenant? Esta acción no se puede deshacer.`)) return;
+let _deleteUserId = null;
+
+function openDeleteUserModal(userId, name) {
+    _deleteUserId = userId;
+    document.getElementById('delete-user-name').textContent = name;
+    document.getElementById('delete-user-modal').style.display = 'flex';
+}
+
+function closeDeleteUserModal() {
+    document.getElementById('delete-user-modal').style.display = 'none';
+    _deleteUserId = null;
+}
+
+async function confirmDeleteUser() {
+    if (!_deleteUserId) return;
+    const userId = _deleteUserId;
+    const btn = document.getElementById('delete-user-confirm-btn');
+    btn.disabled = true;
+    btn.textContent = 'Eliminando...';
     const csrfToken = '{{ csrf_token() }}';
     const res = await fetch(`/controlpanel/users/${userId}`, {
         method: 'DELETE',
         headers: { 'X-CSRF-TOKEN': csrfToken, 'Accept': 'application/json' },
     });
-    if (res.ok) { document.getElementById('user-row-' + userId)?.remove(); }
-    else { const d = await res.json(); alert(d.message || 'Error al eliminar.'); }
+    btn.disabled = false;
+    btn.textContent = 'Eliminar';
+    if (res.ok) {
+        closeDeleteUserModal();
+        document.getElementById('user-row-' + userId)?.remove();
+    } else {
+        const d = await res.json();
+        closeDeleteUserModal();
+        alert(d.message || 'Error al eliminar.');
+    }
 }
 
 function escHtml(str) {

@@ -96,7 +96,7 @@
 }
 
 .reminders-sidebar-add-list {
-    color: #000;
+    color: var(--fg);
     font-size: 18px;
     line-height: 1;
     text-decoration: none;
@@ -133,8 +133,8 @@
 }
 
 .reminders-list-badge {
-    background: #000;
-    color: #fff;
+    background: var(--fg);
+    color: var(--bg);
     border-radius: 10px;
     padding: 1px 6px;
     font-size: 11px;
@@ -256,7 +256,7 @@
 .filter-card-count {
     font-size: 16px;
     font-weight: 700;
-    color: #000;
+    color: var(--fg);
     margin-top: 4px;
 }
 
@@ -450,12 +450,12 @@
 
 .reminder-item:hover {
     background: var(--surface-2, #f5f5f5);
-    border-color: #000;
+    border-color: var(--fg);
 }
 
 .dark-theme .reminder-item:hover {
     background: var(--surface-2);
-    border-color: #000;
+    border-color: var(--fg);
 }
 
 .reminder-item.completed {
@@ -500,7 +500,7 @@
 }
 
 .reminder-checkbox-circle:hover:not(.is-checked) {
-    border-color: #000;
+    border-color: var(--fg);
 }
 
 .reminder-checkbox-circle.is-checked {
@@ -518,7 +518,7 @@
 }
 
 .dark-theme .reminder-checkbox-circle:hover:not(.is-checked) {
-    border-color: #000;
+    border-color: var(--fg);
 }
 
 .reminder-content {
@@ -536,7 +536,7 @@
 }
 
 .reminder-title:hover {
-    color: #000;
+    color: var(--fg);
 }
 
 .reminder-item.completed .reminder-title {
@@ -597,8 +597,8 @@
 
 .btn-primary {
     display: inline-block;
-    background: #000;
-    color: #fff;
+    background: var(--fg);
+    color: var(--bg);
     padding: 10px 20px;
     border-radius: 6px;
     text-decoration: none;
@@ -700,8 +700,8 @@
 
 .btn-primary-lists {
     flex: 1;
-    background: #000;
-    color: #fff;
+    background: var(--fg);
+    color: var(--bg);
     padding: 12px;
     border-radius: 10px;
     border: none;
@@ -828,7 +828,7 @@
 }
 
 .lists-back-link {
-    color: #000;
+    color: var(--fg);
     font-size: 14px;
     text-decoration: none;
 }
@@ -841,8 +841,8 @@
 }
 
 .lists-new-btn {
-    background: #000;
-    color: #fff;
+    background: var(--fg);
+    color: var(--bg);
     padding: 10px 18px;
     border-radius: 10px;
     border: none;
@@ -933,7 +933,7 @@
 }
 
 .reminder-form-back-link {
-    color: #000;
+    color: var(--fg);
     font-size: 14px;
     text-decoration: none;
 }
@@ -969,8 +969,8 @@
 
 .reminder-form-submit {
     flex: 1;
-    background: #000;
-    color: #fff;
+    background: var(--fg);
+    color: var(--bg);
     padding: 12px;
     border-radius: 10px;
     border: none;
@@ -1148,7 +1148,7 @@
 .reminder-checkbox-input {
     width: 18px;
     height: 18px;
-    accent-color: #000;
+    accent-color: var(--fg);
     cursor: pointer;
 }
 
@@ -1372,8 +1372,8 @@
 }
 
 .reminder-show-edit-btn {
-    background: #000;
-    color: #fff;
+    background: var(--fg);
+    color: var(--bg);
     padding: 9px 16px;
     border-radius: 10px;
     text-decoration: none;
@@ -1466,7 +1466,7 @@
 
 .reminder-move-btn {
     background: #f2f2f7;
-    color: #000;
+    color: var(--fg);
     padding: 9px 16px;
     border-radius: 10px;
     border: none;
@@ -1529,7 +1529,7 @@
 .subtask-edit-input {
     flex: 1;
     padding: 4px 8px;
-    border: 1.5px solid #000;
+    border: 1.5px solid var(--fg);
     border-radius: 7px;
     font-size: 14px;
     outline: none;
@@ -1538,8 +1538,8 @@
 }
 
 .subtask-edit-save {
-    background: #000;
-    color: #fff;
+    background: var(--fg);
+    color: var(--bg);
     padding: 4px 10px;
     border-radius: 7px;
     border: none;
@@ -1595,8 +1595,8 @@
 }
 
 .subtask-add-btn {
-    background: #000;
-    color: #fff;
+    background: var(--fg);
+    color: var(--bg);
     padding: 10px 18px;
     border-radius: 10px;
     border: none;
@@ -1617,8 +1617,8 @@
    ================================================ */
 
 .rem-lists-create-btn {
-    background: #000;
-    color: #fff;
+    background: var(--fg);
+    color: var(--bg);
     padding: 10px 20px;
     font-size: 14px;
 }
@@ -1643,8 +1643,8 @@
 }
 
 .rem-lists-action-primary {
-    background: #000;
-    color: #fff;
+    background: var(--fg);
+    color: var(--bg);
 }
 
 .rem-lists-action-secondary {
@@ -1673,7 +1673,7 @@
 }
 
 .rem-subtask-icon-primary {
-    color: #000;
+    color: var(--fg);
 }
 
 .rem-modal-panel-md {
@@ -1785,7 +1785,7 @@
 
 .dark-theme .subtask-edit-input {
     background: var(--input);
-    border-color: #000;
+    border-color: var(--fg);
     color: var(--fg);
 }
 
@@ -1850,8 +1850,8 @@
 }
 
 .dark-theme .reminder-form-submit {
-    background: #000;
-    color: #fff;
+    background: var(--fg);
+    color: var(--bg);
 }
 
 .dark-theme .reminder-form-cancel {
@@ -1877,8 +1877,8 @@
 }
 
 .dark-theme .btn-primary-lists {
-    background: #000;
-    color: #fff;
+    background: var(--fg);
+    color: var(--bg);
 }
 
 /* ================================================
@@ -1899,7 +1899,7 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    color: #000;
+    color: var(--fg);
     font-size: 14px;
     font-weight: 500;
     text-decoration: none;
@@ -1924,7 +1924,7 @@
 }
 
 .priority-badge-low {
-    color: #000;
+    color: var(--fg);
     background: rgba(0, 0, 0, 0.08);
 }
 
@@ -1939,7 +1939,7 @@
 }
 
 .dark-theme .priority-badge-low {
-    color: #fff;
+    color: var(--fg);
     background: rgba(255, 255, 255, 0.14);
 }
 

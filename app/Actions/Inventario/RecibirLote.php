@@ -4,6 +4,7 @@ namespace App\Actions\Inventario;
 
 use App\Enums\Inventario\LoteEstado;
 use App\Enums\Inventario\MovimientoTipo;
+use App\Enums\Inventario\ProductoValidacion;
 use App\Enums\Inventario\TransporteEstado;
 use App\Models\Inventario\DetalleMovimiento;
 use App\Models\Inventario\LineaTransporte;
@@ -75,6 +76,12 @@ class RecibirLote
                 'estado' => LoteEstado::Stored,
                 'id_ubicacion' => $ubicacion->id_ubicacion,
             ]);
+
+            // Auto-validar el producto si estaba en borrador al confirmar la recepción física
+            $producto = $linea->producto;
+            if ($producto && $producto->estado_validacion === ProductoValidacion::Borrador) {
+                $producto->update(['estado_validacion' => ProductoValidacion::Activo]);
+            }
 
             // Registrar movimiento de inventario
             $movimiento = Movimiento::create([
