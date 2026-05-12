@@ -17,6 +17,14 @@ use Illuminate\Support\Facades\DB;
  */
 class MoverAProduccion
 {
+    /**
+     * Ejecuta la transición del lote de almacenado a producción.
+     *
+     * Reserva toda la cantidad del stock y registra movimiento + trazabilidad.
+     *
+     *
+     * @throws \RuntimeException Si el lote no está en estado 'almacenado'
+     */
     public function ejecutar(Lote $lote, int|string|null $usuarioId, ?string $observaciones = null): Lote
     {
         return DB::transaction(function () use ($lote, $usuarioId, $observaciones) {

@@ -16,6 +16,9 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class InitializeTenant
 {
+    /**
+     * Resuelve e inicializa el tenant; aborta 403 si no se encuentra.
+     */
     public function handle(Request $request, Closure $next): Response
     {
         if (! Auth::check()) {

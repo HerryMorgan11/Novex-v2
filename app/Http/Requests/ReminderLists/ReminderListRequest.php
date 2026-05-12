@@ -4,13 +4,24 @@ namespace App\Http\Requests\ReminderLists;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Reglas de validación base compartidas para crear y actualizar listas de recordatorios.
+ */
 abstract class ReminderListRequest extends FormRequest
 {
+    /**
+     * Autoriza la petición si hay un usuario autenticado.
+     */
     public function authorize(): bool
     {
         return $this->user() !== null;
     }
 
+    /**
+     * Reglas de validación para una lista de recordatorios.
+     *
+     * @return array<string, mixed>
+     */
     public function rules(): array
     {
         return [

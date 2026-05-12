@@ -6,17 +6,37 @@ use App\Http\Controllers\Controller;
 use App\Models\SocialAccount;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
+/**
+ * Controlador de autenticación OAuth con Google.
+ *
+ * Gestiona la redirección a Google y el callback posterior.
+ * Si el usuario no existe, lo crea sin tenant asignado.
+ */
 class GoogleController extends Controller
 {
+    /**
+     * Redirige al usuario al flujo de autenticación de Google.
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function redirect()
     {
         return Socialite::driver('google')->redirect();
     }
 
+    /**
+     * Procesa el callback de Google tras la autenticación.
+     *
+     * Si ya existe una cuenta social vinculada, inicia sesión directamente.
+     * Si no, crea el usuario y/o la cuenta social y redirige al dashboard.
+     *
+     * @return RedirectResponse
+     */
     public function callback()
     {
         try {

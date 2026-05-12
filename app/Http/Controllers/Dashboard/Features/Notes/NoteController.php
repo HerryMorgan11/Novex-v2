@@ -17,6 +17,9 @@ use Illuminate\View\View;
  */
 class NoteController extends Controller
 {
+    /**
+     * Muestra el listado de notas del usuario autenticado.
+     */
     public function index(): View
     {
         $usuarioId = request()->user()?->getAuthIdentifier();
@@ -30,11 +33,17 @@ class NoteController extends Controller
         return view('dashboard.features.notes.index', compact('notes'));
     }
 
+    /**
+     * Muestra el formulario de creación de nota.
+     */
     public function create(): View
     {
         return view('dashboard.features.notes.create');
     }
 
+    /**
+     * Almacena una nueva nota en la base de datos del tenant.
+     */
     public function store(StoreNoteRequest $request): RedirectResponse
     {
         $usuarioId = $request->user()?->getAuthIdentifier();
@@ -47,11 +56,17 @@ class NoteController extends Controller
         return $this->backToIndex('Nota creada correctamente.');
     }
 
+    /**
+     * Muestra el formulario de edición de una nota.
+     */
     public function edit(int $id): View
     {
         return view('dashboard.features.notes.edit', ['note' => $this->findOwned($id)]);
     }
 
+    /**
+     * Actualiza una nota existente del usuario.
+     */
     public function update(UpdateNoteRequest $request, int $id): RedirectResponse
     {
         $this->findOwned($id)->update($request->validated());
@@ -59,6 +74,9 @@ class NoteController extends Controller
         return $this->backToIndex('Nota actualizada.');
     }
 
+    /**
+     * Elimina una nota del usuario.
+     */
     public function destroy(int $id): RedirectResponse
     {
         $this->findOwned($id)->delete();
@@ -76,6 +94,9 @@ class NoteController extends Controller
         return Note::where('user_id', $usuarioId)->findOrFail($id);
     }
 
+    /**
+     * Redirige al listado de notas con un mensaje flash.
+     */
     private function backToIndex(string $message): RedirectResponse
     {
         return redirect()->route('dashboard.features.notes.index')->with('success', $message);

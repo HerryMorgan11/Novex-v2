@@ -25,6 +25,15 @@ use Illuminate\Support\Facades\DB;
  */
 class RecibirLote
 {
+    /**
+     * Ejecuta la recepción física de un lote y lo ubica en el almacén.
+     *
+     * Crea stock, actualiza la línea del transporte, registra movimiento
+     * y trazabilidad dentro de una transacción.
+     *
+     *
+     * @throws \RuntimeException Si el lote no está pendiente de recepción
+     */
     public function ejecutar(
         LineaTransporte $linea,
         Ubicacion $ubicacion,

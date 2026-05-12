@@ -5,6 +5,11 @@ namespace App\Policies;
 use App\Models\Subtask;
 use App\Models\User;
 
+/**
+ * Política de autorización para subtareas de recordatorios.
+ *
+ * Verifica que la subtarea pertenece a un recordatorio del usuario autenticado.
+ */
 class SubtaskPolicy
 {
     public function view(User $user, Subtask $subtask): bool

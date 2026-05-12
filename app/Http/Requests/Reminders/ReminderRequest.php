@@ -14,11 +14,19 @@ use Illuminate\Validation\Rule;
  */
 abstract class ReminderRequest extends FormRequest
 {
+    /**
+     * Autoriza la petición si hay un usuario autenticado.
+     */
     public function authorize(): bool
     {
         return $this->user() !== null;
     }
 
+    /**
+     * Reglas de validación compartidas para un recordatorio.
+     *
+     * @return array<string, mixed>
+     */
     public function rules(): array
     {
         $userId = $this->user()->id;

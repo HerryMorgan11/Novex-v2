@@ -17,12 +17,18 @@ use Illuminate\Contracts\Auth\Factory as AuthFactory;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Servicio que proporciona métricas, datos de gráficas y contenido resumido
+ * para el dashboard principal de la aplicación.
+ */
 class DashboardService
 {
     public function __construct(private AuthFactory $auth) {}
 
     /**
-     * KPIs principales para las cards de métricas.
+     * Obtiene las métricas principales para las cards del dashboard.
+     *
+     * @return array<string, mixed>
      */
     public function getMetrics(): array
     {
@@ -62,7 +68,9 @@ class DashboardService
     }
 
     /**
-     * Datos de gráficas según período seleccionado.
+     * Obtiene datos de gráficas según el período seleccionado (today, week, month).
+     *
+     * @return array<string, array<string, mixed>>
      */
     public function getChartData(string $period = 'week'): array
     {
@@ -179,7 +187,7 @@ class DashboardService
     }
 
     /**
-     * Últimas notas del usuario.
+     * Obtiene las últimas notas del usuario autenticado.
      */
     public function getRecentNotes(int $limit = 5): Collection
     {
@@ -195,7 +203,7 @@ class DashboardService
     }
 
     /**
-     * Recordatorios activos pendientes.
+     * Obtiene los recordatorios activos y pendientes del usuario.
      */
     public function getActiveReminders(int $limit = 5): Collection
     {

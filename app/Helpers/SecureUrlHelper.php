@@ -3,13 +3,18 @@
 namespace App\Helpers;
 
 /**
- * Blade helper for generating secure URLs for forms in production.
- * Ensures HTTPS protocol is used when the request uses HTTPS.
+ * Helper de Blade para generar URLs seguras (HTTPS) en producción.
+ *
+ * Garantiza que las URLs generadas utilicen el protocolo HTTPS
+ * cuando la aplicación se ejecuta en entorno de producción.
  */
 class SecureUrlHelper
 {
     /**
-     * Generate a secure route URL that respects HTTPS in production.
+     * Genera una URL de ruta con nombre forzando HTTPS en producción.
+     *
+     * @param  string  $route  Nombre de la ruta.
+     * @param  mixed  $parameters  Parámetros de la ruta.
      */
     public static function secureRoute(string $route, mixed $parameters = []): string
     {
@@ -24,7 +29,10 @@ class SecureUrlHelper
     }
 
     /**
-     * Generate a secure URL that respects HTTPS in production.
+     * Genera una URL absoluta forzando HTTPS en producción.
+     *
+     * @param  string  $path  Ruta relativa.
+     * @param  mixed  $parameters  Parámetros adicionales.
      */
     public static function secureUrl(string $path, mixed $parameters = []): string
     {

@@ -8,12 +8,26 @@ use Illuminate\Console\Command;
 use Stancl\Tenancy\Jobs\CreateDatabase;
 use Stancl\Tenancy\Jobs\MigrateDatabase;
 
+/**
+ * Comando Artisan para aprovisionar (o reaprovisionar) un tenant manualmente.
+ *
+ * Crea la base de datos, ejecuta migraciones y establece el estado como 'active'.
+ *
+ * Uso: `php artisan tenants:provision {id}`
+ */
 class ProvisionTenant extends Command
 {
+    /** @var string */
     protected $signature = 'tenants:provision {id}';
 
+    /** @var string */
     protected $description = 'Provision a specific tenant (create database and run migrations)';
 
+    /**
+     * Ejecuta el aprovisionamiento del tenant indicado.
+     *
+     * @return int Código de salida (0 = éxito, 1 = error).
+     */
     public function handle()
     {
         $tenantId = $this->argument('id');

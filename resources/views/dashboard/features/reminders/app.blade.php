@@ -16,27 +16,27 @@
 
             <a href="{{ route('reminders.index', ['filter' => 'pending']) }}"
                class="reminders-nav-link {{ request('filter', 'pending') === 'pending' && !request('list') ? 'active' : '' }}">
-                <span class="rem-nav-icon">⏰</span> Pendientes
+                Pendientes
             </a>
 
             <a href="{{ route('reminders.index', ['filter' => 'today']) }}"
                class="reminders-nav-link {{ request('filter') === 'today' ? 'active' : '' }}">
-                <span class="rem-nav-icon">📅</span> Hoy
+                Hoy
             </a>
 
             <a href="{{ route('reminders.index', ['filter' => 'overdue']) }}"
                class="reminders-nav-link overdue {{ request('filter') === 'overdue' ? 'active' : '' }}">
-                <span class="rem-nav-icon">🔴</span> Vencidos
+                Vencidos
             </a>
 
             <a href="{{ route('reminders.index', ['filter' => 'completed']) }}"
                class="reminders-nav-link {{ request('filter') === 'completed' ? 'active' : '' }}">
-                <span class="rem-nav-icon">✅</span> Completados
+               Completados
             </a>
 
             <a href="{{ route('reminders.index', ['filter' => 'all']) }}"
                class="reminders-nav-link {{ request('filter') === 'all' ? 'active' : '' }}">
-                <span class="rem-nav-icon">📋</span> Todos
+                Todos
             </a>
         </div>
 
@@ -73,12 +73,12 @@
         {{-- Flash Messages --}}
         @if(session('success'))
             <div class="reminders-flash-success">
-                <span>✅</span> {{ session('success') }}
+                {{ session('success') }}
             </div>
         @endif
         @if(session('error'))
             <div class="reminders-flash-error">
-                <span>❌</span> {{ session('error') }}
+                {{ session('error') }}
             </div>
         @endif
 

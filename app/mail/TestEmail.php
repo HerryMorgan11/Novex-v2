@@ -10,10 +10,20 @@ use Illuminate\Support\Arr;
 use MailerSend\Helpers\Builder\Personalization;
 use MailerSend\LaravelDriver\MailerSendTrait;
 
+/**
+ * Mailable de prueba para verificar la integración con MailerSend.
+ *
+ * Incluye personalización de variables, tags y adjuntos de ejemplo.
+ */
 class TestEmail extends Mailable
 {
     use MailerSendTrait, Queueable, SerializesModels;
 
+    /**
+     * Construye el mensaje de correo de prueba.
+     *
+     * @return $this
+     */
     public function build()
     {
         // Recipient for use with variables and/or personalization

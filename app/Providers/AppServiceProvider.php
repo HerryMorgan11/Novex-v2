@@ -20,10 +20,16 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
 use Stancl\Tenancy\Facades\Tenancy;
 
+/**
+ * Proveedor principal de la aplicación.
+ *
+ * Configura políticas de autorización, route model bindings con tenancy
+ * y valores por defecto (fechas inmutables, contraseñas, HTTPS).
+ */
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Registra servicios en el contenedor.
      */
     public function register(): void
     {
@@ -31,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Arranca los servicios de la aplicación.
      */
     public function boot(): void
     {

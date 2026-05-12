@@ -27,6 +27,17 @@ use Illuminate\Support\Str;
  */
 class PrepararExpedicion
 {
+    /**
+     * Crea una expedición de reparto con las líneas indicadas.
+     *
+     * Valida disponibilidad, descuenta stock y registra trazabilidad
+     * para cada lote dentro de una transacción.
+     *
+     * @param  array<string, mixed>  $datos
+     * @param  array<int, array{id_lote: int, cantidad: float, unidad?: string}>  $lineas
+     *
+     * @throws \RuntimeException Si algún lote no está disponible o el stock es insuficiente
+     */
     public function ejecutar(array $datos, array $lineas, int|string|null $usuarioId): Expedicion
     {
         return DB::transaction(function () use ($datos, $lineas, $usuarioId) {

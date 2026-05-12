@@ -12,6 +12,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
+/**
+ * Controlador de gestión de usuarios dentro de un tenant.
+ *
+ * Solo accesible por administradores. Permite crear, editar roles/estados
+ * y eliminar usuarios del tenant actual.
+ */
 class UserManagementController extends Controller
 {
     /**

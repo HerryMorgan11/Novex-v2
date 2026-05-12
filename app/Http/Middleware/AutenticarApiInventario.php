@@ -15,6 +15,9 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class AutenticarApiInventario
 {
+    /**
+     * Valida el Bearer token y lo inyecta como `_api_token` en el request.
+     */
     public function handle(Request $request, Closure $next): Response
     {
         $token = $request->bearerToken();

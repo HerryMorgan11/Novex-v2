@@ -8,10 +8,15 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 
+/**
+ * Acción de Fortify para actualizar la información de perfil del usuario.
+ *
+ * Gestiona también la re-verificación de email si cambia la dirección.
+ */
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
     /**
-     * Validate and update the given user's profile information.
+     * Valida y actualiza nombre, email, teléfono y DNI del usuario.
      *
      * @param  array<string, string>  $input
      */
@@ -46,7 +51,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     }
 
     /**
-     * Update the given verified user's profile information.
+     * Actualiza el perfil e invalida la verificación de email.
      *
      * @param  array<string, string>  $input
      */

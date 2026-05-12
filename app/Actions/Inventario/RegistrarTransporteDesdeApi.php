@@ -19,6 +19,14 @@ use Illuminate\Support\Str;
  */
 class RegistrarTransporteDesdeApi
 {
+    /**
+     * Registra un transporte entrante desde un sistema externo.
+     *
+     * Crea el transporte, procesa cada línea (creando productos borrador
+     * si no existen) y genera lotes en estado pending_inbound.
+     *
+     * @param  array<string, mixed>  $payload
+     */
     public function ejecutar(array $payload, string $origenEvento = 'api'): Transporte
     {
         $transporte = Transporte::create([

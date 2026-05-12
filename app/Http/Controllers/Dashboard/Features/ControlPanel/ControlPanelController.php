@@ -8,6 +8,11 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
+/**
+ * Controlador del panel de control del tenant.
+ *
+ * Muestra KPIs, usuarios y tokens de API del tenant actual.
+ */
 class ControlPanelController extends Controller
 {
     /**

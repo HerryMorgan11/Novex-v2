@@ -15,6 +15,12 @@ use Stancl\Tenancy\Jobs;
 use Stancl\Tenancy\Listeners;
 use Stancl\Tenancy\Middleware;
 
+/**
+ * Proveedor de tenancy multi-tenant (Stancl/Tenancy v3).
+ *
+ * Configura eventos del ciclo de vida del tenant, rutas protegidas
+ * por dominio y prioridad de middlewares de tenancy.
+ */
 class TenancyServiceProvider extends ServiceProvider
 {
     /**
@@ -97,11 +103,17 @@ class TenancyServiceProvider extends ServiceProvider
         ];
     }
 
+    /**
+     * Registra servicios en el contenedor.
+     */
     public function register(): void
     {
         //
     }
 
+    /**
+     * Arranca eventos, rutas y prioridades de middleware.
+     */
     public function boot(): void
     {
         $this->bootEvents();
@@ -109,6 +121,9 @@ class TenancyServiceProvider extends ServiceProvider
         $this->makeTenancyMiddlewareHighestPriority();
     }
 
+    /**
+     * Registra listeners para cada evento de tenancy definido en {@see Events()}.
+     */
     protected function bootEvents(): void
     {
         foreach ($this->events() as $event => $listeners) {

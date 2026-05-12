@@ -2,13 +2,18 @@
 
 namespace App\View\Components;
 
+use App\Providers\BladeServiceProvider;
 use Illuminate\Support\Facades\Blade;
 
+/**
+ * Registra directivas Blade para generar URLs seguras (HTTPS) en producción.
+ *
+ * @deprecated Usar {@see BladeServiceProvider} que ya registra las mismas directivas.
+ */
 class SecureRoute
 {
     /**
-     * Register the Blade directive for secure routes.
-     * Usage in Blade: {{ secure_route('login') }} or secure_action('action.name')
+     * Registra las directivas `@secureRoute` y `@secureUrl` en Blade.
      */
     public static function register(): void
     {

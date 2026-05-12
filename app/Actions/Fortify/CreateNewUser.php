@@ -7,12 +7,18 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 
+/**
+ * Acción de Fortify para registrar un nuevo usuario.
+ *
+ * Crea el usuario sin tenant; el onboarding de empresa se realiza
+ * después del primer inicio de sesión mediante un modal.
+ */
 class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
 
     /**
-     * Validate and create a newly registered user.
+     * Valida los datos de entrada y crea el usuario.
      *
      * @param  array<string, string>  $input
      */

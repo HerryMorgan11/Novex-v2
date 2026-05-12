@@ -16,11 +16,17 @@ use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
  */
 class SettingsController extends Controller
 {
+    /**
+     * Muestra la página de ajustes del perfil.
+     */
     public function show(): View
     {
         return view('dashboard.features.settings.settingsApp');
     }
 
+    /**
+     * Actualiza el perfil del usuario (nombre, email, teléfono, DNI).
+     */
     public function updateProfile(Request $request, UpdatesUserProfileInformation $updater): RedirectResponse
     {
         $updater->update($request->user(), $request->only(['name', 'email', 'phone', 'dni']));
@@ -28,6 +34,9 @@ class SettingsController extends Controller
         return back()->with('success', 'Perfil actualizado correctamente.');
     }
 
+    /**
+     * Actualiza la contraseña del usuario autenticado.
+     */
     public function updatePassword(Request $request, UpdatesUserPasswords $updater): RedirectResponse
     {
         $updater->update($request->user(), $request->only([

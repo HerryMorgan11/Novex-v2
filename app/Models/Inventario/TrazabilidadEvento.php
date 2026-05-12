@@ -4,7 +4,34 @@ namespace App\Models\Inventario;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 
+/**
+ * Modelo que representa un evento de trazabilidad de un lote.
+ *
+ * Registra cada cambio de estado o movimiento significativo
+ * de un lote a lo largo de la cadena logística.
+ *
+ * @property int $id
+ * @property int $id_lote
+ * @property int|null $id_producto
+ * @property string $tipo_evento
+ * @property string|null $estado_anterior
+ * @property string|null $estado_nuevo
+ * @property string|null $origen_evento
+ * @property int|null $id_usuario
+ * @property int|null $id_recepcion
+ * @property int|null $id_expedicion
+ * @property array|null $payload
+ * @property string|null $observaciones
+ * @property Carbon|null $fecha_evento
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Lote $lote
+ * @property-read Producto|null $producto
+ * @property-read Transporte|null $recepcion
+ * @property-read Expedicion|null $expedicion
+ */
 class TrazabilidadEvento extends Model
 {
     protected $table = 'trazabilidad_eventos';
@@ -29,26 +56,41 @@ class TrazabilidadEvento extends Model
         'fecha_evento' => 'datetime',
     ];
 
+    /**
+     * Obtiene el lote asociado al evento.
+     */
     public function lote(): BelongsTo
     {
         return $this->belongsTo(Lote::class, 'id_lote', 'id_lote');
     }
 
+    /**
+     * Obtiene el producto asociado al evento.
+     */
     public function producto(): BelongsTo
     {
         return $this->belongsTo(Producto::class, 'id_producto', 'id_producto');
     }
 
+    /**
+     * Obtiene la recepción (transporte) asociada al evento.
+     */
     public function recepcion(): BelongsTo
     {
         return $this->belongsTo(Transporte::class, 'id_recepcion', 'id_recepcion');
     }
 
+    /**
+     * Obtiene la expedición asociada al evento.
+     */
     public function expedicion(): BelongsTo
     {
         return $this->belongsTo(Expedicion::class, 'id_expedicion', 'id_expedicion');
     }
 
+    /**
+     * Devuelve el icono Iconify correspondiente al tipo de evento.
+     */
     public function iconoEvento(): string
     {
         return match ($this->tipo_evento) {

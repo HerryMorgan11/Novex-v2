@@ -2,18 +2,35 @@
 
 namespace App\Enums\Inventario;
 
+/**
+ * Estados del ciclo de vida de un lote en el módulo de inventario.
+ *
+ * Define las transiciones válidas entre estados mediante {@see allowedTransitions()}.
+ */
 enum LoteEstado: string
 {
+    /** Lote anunciado, pendiente de recepción física. */
     case PendingInbound = 'pending_inbound';
+    /** Lote recibido en el almacén. */
     case Received = 'received';
+    /** Lote almacenado en una ubicación. */
     case Stored = 'stored';
+    /** Lote en uso dentro de producción. */
     case InProduction = 'in_production';
+    /** Lote preparado para expedición. */
     case ReadyForDispatch = 'ready_for_dispatch';
+    /** Lote expedido (en ruta). */
     case Dispatched = 'dispatched';
+    /** Lote entregado al destinatario. */
     case Delivered = 'delivered';
+    /** Lote bloqueado (calidad, incidencia, etc.). */
     case Blocked = 'blocked';
+    /** Lote con incidencia abierta. */
     case Incident = 'incident';
 
+    /**
+     * Devuelve la etiqueta legible del estado.
+     */
     public function label(): string
     {
         return match ($this) {
@@ -29,6 +46,9 @@ enum LoteEstado: string
         };
     }
 
+    /**
+     * Devuelve la clase de color asociada al estado.
+     */
     public function color(): string
     {
         return match ($this) {
@@ -44,7 +64,11 @@ enum LoteEstado: string
         };
     }
 
-    /** Transiciones permitidas desde este estado */
+    /**
+     * Transiciones permitidas desde este estado.
+     *
+     * @return self[]
+     */
     public function allowedTransitions(): array
     {
         return match ($this) {
@@ -60,6 +84,9 @@ enum LoteEstado: string
         };
     }
 
+    /**
+     * Comprueba si se puede transicionar a un nuevo estado.
+     */
     public function canTransitionTo(self $new): bool
     {
         return in_array($new, $this->allowedTransitions(), true);

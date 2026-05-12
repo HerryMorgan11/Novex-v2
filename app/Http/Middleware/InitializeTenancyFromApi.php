@@ -13,6 +13,9 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class InitializeTenancyFromApi
 {
+    /**
+     * Lee el header X-Tenant-Id, busca el tenant e inicializa tenancy.
+     */
     public function handle(Request $request, Closure $next): Response
     {
         $tenantId = $request->header('X-Tenant-Id');

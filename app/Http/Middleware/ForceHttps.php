@@ -6,14 +6,16 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Fuerza el uso de HTTPS en producción.
+ *
+ * Confía en los headers de proxy (X-Forwarded-Proto) para detectar
+ * el esquema original de la petición.
+ */
 class ForceHttps
 {
     /**
-     * Handle an incoming request.
-     *
-     * Force HTTPS protocol in production and ensure URL generation uses HTTPS.
-     *
-     * @param  Closure(Request): (Response)  $next
+     * Redirige a HTTPS si la petición no es segura en producción.
      */
     public function handle(Request $request, Closure $next): Response
     {

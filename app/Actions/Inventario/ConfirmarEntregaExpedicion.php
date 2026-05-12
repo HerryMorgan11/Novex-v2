@@ -6,6 +6,7 @@ use App\Enums\Inventario\ExpedicionEstado;
 use App\Enums\Inventario\LoteEstado;
 use App\Models\Inventario\Expedicion;
 use App\Models\Inventario\TrazabilidadEvento;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -14,6 +15,15 @@ use Illuminate\Support\Facades\DB;
  */
 class ConfirmarEntregaExpedicion
 {
+    /**
+     * Confirma la entrega de una expedición y cierra el ciclo logístico.
+     *
+     * Actualiza el estado de la expedición a 'entregada' y los lotes a 'delivered'.
+     *
+     * @param  array<string, mixed>  $datos
+     *
+     * @throws \RuntimeException Si la expedición no está en estado válido
+     */
     public function ejecutar(
         Expedicion $expedicion,
         array $datos = [],
@@ -60,7 +70,13 @@ class ConfirmarEntregaExpedicion
         });
     }
 
-    /** Confirma por token de acceso (endpoint público seguro) */
+    /**
+     * Confirma la entrega mediante token de acceso público.
+     *
+     * @param  array<string, mixed>  $datos
+     *
+     * @throws ModelNotFoundException
+     */
     public function ejecutarPorToken(string $token, array $datos = []): Expedicion
     {
         $expedicion = Expedicion::where('token_confirmacion', $token)->firstOrFail();

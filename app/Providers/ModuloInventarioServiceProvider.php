@@ -6,10 +6,15 @@ use App\Http\Middleware\InitializeTenancyFromUser;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Proveedor del módulo de inventario.
+ *
+ * Registra las rutas web del módulo protegidas con autenticación y tenancy.
+ */
 class ModuloInventarioServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Registra servicios en el contenedor.
      */
     public function register(): void
     {
@@ -17,7 +22,7 @@ class ModuloInventarioServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Arranca el módulo registrando sus rutas.
      */
     public function boot(): void
     {

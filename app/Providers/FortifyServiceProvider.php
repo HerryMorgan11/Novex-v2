@@ -14,10 +14,13 @@ use Illuminate\Support\Str;
 use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
 use Laravel\Fortify\Fortify;
 
+/**
+ * Configura Laravel Fortify: acciones de autenticación, vistas y rate limiting.
+ */
 class FortifyServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Registra servicios en el contenedor.
      */
     public function register(): void
     {
@@ -25,7 +28,7 @@ class FortifyServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Vincula las acciones de Fortify, define las vistas de auth y los limitadores de tasa.
      */
     public function boot(): void
     {

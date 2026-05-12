@@ -8,7 +8,7 @@
 <div class="reminder-show-page">
 
     <a href="{{ route('reminders.index') }}" class="reminder-back-link">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <iconify-icon icon="lucide:chevron-left" width="16" height="16"></iconify-icon>
         Recordatorios
     </a>
 
@@ -19,7 +19,7 @@
                 @method('PATCH')
                 <button type="submit" class="reminder-show-complete-btn {{ $reminder->is_completed ? 'is-completed' : '' }}">
                     @if($reminder->is_completed)
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-6" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <iconify-icon icon="lucide:check" width="14" height="14"></iconify-icon>
                     @endif
                 </button>
             </form>
@@ -111,7 +111,7 @@
                     @method('PATCH')
                     <button type="submit" class="subtask-toggle-btn {{ $subtask->is_completed ? 'is-completed' : '' }}">
                         @if($subtask->is_completed)
-                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <iconify-icon icon="lucide:check" width="10" height="10"></iconify-icon>
                         @endif
                     </button>
                 </form>
@@ -126,15 +126,21 @@
                         @csrf
                         @method('PUT')
                         <input type="text" name="title" value="{{ $subtask->title }}" class="subtask-edit-input">
-                        <button type="submit" class="subtask-edit-save">✓</button>
-                        <button type="button" class="subtask-cancel subtask-edit-cancel">✕</button>
+                        <button type="submit" class="subtask-edit-save">
+                            <iconify-icon icon="lucide:check" width="14" height="14"></iconify-icon>
+                        </button>
+                        <button type="button" class="subtask-cancel subtask-edit-cancel">
+                            <iconify-icon icon="lucide:x" width="14" height="14"></iconify-icon>
+                        </button>
                     </form>
                 </div>
 
                 <form action="{{ route('reminders.subtasks.destroy', [$reminder, $subtask]) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="subtask-delete-btn">✕</button>
+                    <button type="submit" class="subtask-delete-btn">
+                        <iconify-icon icon="lucide:x" width="14" height="14"></iconify-icon>
+                    </button>
                 </form>
             </div>
         @empty
@@ -158,4 +164,3 @@
     @vite('resources/js/dashboard/subtasks.js')
 @endpush
 @endsection
-

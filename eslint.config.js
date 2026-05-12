@@ -49,6 +49,7 @@ export default [
             'public/build/**',
             'storage/**',
             'bootstrap/cache/**',
+            'docs/**',
         ],
     },
 ];
