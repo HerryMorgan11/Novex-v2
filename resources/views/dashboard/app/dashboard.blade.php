@@ -10,8 +10,6 @@
     @vite(['resources/css/dashboard/shared/sidebar.css'])
     @vite(['resources/css/dashboard/features/dashboard-main/general-dashboard.css'])
     @vite(['resources/css/dashboard/shared/navbar.css'])
-    @vite(['resources/css/dashboard/features/settings-profile/settings-profile.css'])
-    @vite(['resources/css/dashboard/features/control-panel/control-panel.css'])
 
     @stack('styles')
     <script>
@@ -49,9 +47,4 @@
     @vite('resources/js/dashboard/sidebar.js')
     @stack('scripts')
 </body>
-
-</html>
-
-</body>
-
 </html>

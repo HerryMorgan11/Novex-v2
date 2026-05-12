@@ -175,7 +175,7 @@ if (!builderEl) {
             <input type="number" data-line-cantidad placeholder="Cantidad"        value="${data.cantidad ?? ''}"                     min="0.0001" step="any" />
             <input type="text"   data-line-unidad   placeholder="piezas / kg …"  value="${escHtml(data.unidad ?? '')}"              autocomplete="off" />
             <button class="curl-remove-line" type="button" title="Eliminar línea">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                <iconify-icon icon="lucide:x" width="12" height="12"></iconify-icon>
             </button>
         `;
 
@@ -254,13 +254,13 @@ if (!builderEl) {
                 .writeText(curl)
                 .then(() => {
                     btn.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <iconify-icon icon="lucide:check" width="14" height="14"></iconify-icon>
                     Copiado!
                 `;
                     btn.classList.add('copied');
                     setTimeout(() => {
                         btn.innerHTML = `
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                        <iconify-icon icon="lucide:copy" width="14" height="14"></iconify-icon>
                         Copiar
                     `;
                         btn.classList.remove('copied');

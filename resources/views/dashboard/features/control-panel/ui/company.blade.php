@@ -52,15 +52,15 @@
         <div class="curl-status-badges">
             <span class="curl-badge {{ $apiToken ? 'curl-badge--ok' : 'curl-badge--warn' }}">
                 @if($apiToken)
-                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <iconify-icon icon="lucide:check" width="13" height="13"></iconify-icon>
                     Token configurado
                 @else
-                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <iconify-icon icon="lucide:x" width="13" height="13"></iconify-icon>
                     Sin token API
                 @endif
             </span>
             <span class="curl-badge curl-badge--info">
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></svg>
+                <iconify-icon icon="lucide:building-2" width="13" height="13"></iconify-icon>
                 Tenant: {{ optional(tenant())->id ?? 'N/A' }}
             </span>
         </div>
@@ -69,9 +69,9 @@
     {{-- Preload templates --}}
     <div class="curl-preload-bar">
         <span class="curl-preload-label">Precargar plantilla:</span>
-        <button class="curl-tpl-btn" data-curl-template="tornillos">🔩 Tornillos</button>
-        <button class="curl-tpl-btn" data-curl-template="paletas">📦 Paletas</button>
-        <button class="curl-tpl-btn" data-curl-template="quimicos">⚗️ Químicos</button>
+        <button class="curl-tpl-btn" data-curl-template="tornillos">Tornillos</button>
+        <button class="curl-tpl-btn" data-curl-template="paletas">Paletas</button>
+        <button class="curl-tpl-btn" data-curl-template="quimicos">Químicos</button>
         <button class="curl-tpl-btn curl-tpl-btn--clear" data-curl-template="vaciar">✕ Limpiar</button>
     </div>
 
@@ -121,7 +121,7 @@
                 <div class="curl-lines-header">
                     <p class="curl-form-title">Líneas de productos</p>
                     <button id="curl-add-line" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        <iconify-icon icon="lucide:plus" width="14" height="14"></iconify-icon>
                         Añadir línea
                     </button>
                 </div>
@@ -141,14 +141,14 @@
             <div class="curl-preview-header">
                 <span>Vista previa del cURL</span>
                 <button id="curl-copy-btn" type="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                    <iconify-icon icon="lucide:copy" width="14" height="14"></iconify-icon>
                     Copiar
                 </button>
             </div>
             <pre id="curl-preview" class="curl-code-block"><code></code></pre>
             @if(!$apiToken)
                 <div class="curl-warn-box">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                    <iconify-icon icon="lucide:triangle-alert" width="16" height="16"></iconify-icon>
                     No hay ningún token API activo para este tenant. Crea uno en la sección de API para usar este endpoint.
                 </div>
             @endif

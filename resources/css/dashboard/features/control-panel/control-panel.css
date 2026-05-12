@@ -547,6 +547,387 @@ input:disabled + .slider:before {
     text-align: center;
 }
 
+/* Header row */
+.cp-users-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Add-user button */
+.cp-users-add-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #6366f1;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.cp-users-add-btn:hover {
+    background: #4f46e5;
+}
+
+/* Badges */
+.cp-users-badge-owner {
+    font-size: 0.7rem;
+    background: #fef3c7;
+    color: #b45309;
+    border-radius: 4px;
+    padding: 1px 6px;
+    margin-left: 4px;
+    font-weight: 600;
+}
+
+.cp-users-badge-role {
+    font-size: 0.8rem;
+    background: #ede9fe;
+    color: #6d28d9;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-weight: 500;
+}
+
+.cp-users-badge-status {
+    font-size: 0.8rem;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-weight: 500;
+}
+
+.cp-users-status-active {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.cp-users-status-pending {
+    background: #fef9c3;
+    color: #a16207;
+}
+
+.cp-users-status-disabled {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.cp-users-status-default {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+/* Action cell */
+.cp-users-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.cp-users-btn-activate {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid #86efac;
+    background: #dcfce7;
+    color: #15803d;
+    cursor: pointer;
+}
+
+.cp-users-btn-disable {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid #fca5a5;
+    background: #fee2e2;
+    color: #dc2626;
+    cursor: pointer;
+}
+
+.cp-users-btn-delete {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid #fca5a5;
+    background: #fff;
+    color: #dc2626;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cp-users-role-select {
+    font-size: 0.75rem;
+    padding: 3px 6px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    cursor: pointer;
+    background: #fff;
+}
+
+.cp-users-owner-dash {
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+/* ── Users modals ─────────────────────────────────────────── */
+
+.cp-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.cp-modal-box {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.cp-modal-box--form {
+    max-width: 440px;
+    padding: 2rem;
+    margin: 1rem;
+    position: relative;
+}
+
+.cp-modal-icon-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.cp-modal-icon-circle--danger {
+    background: rgba(220, 38, 38, 0.12);
+    color: #dc2626;
+}
+
+.cp-modal-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 8px;
+}
+
+.cp-modal-desc {
+    font-size: 14px;
+    color: #64748b;
+    margin: 0 0 24px;
+    line-height: 1.5;
+}
+
+.cp-modal-footer-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.cp-modal-cancel-btn {
+    flex: 1;
+    background: #f1f5f9;
+    color: #1e293b;
+    padding: 11px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cp-modal-danger-btn {
+    flex: 1;
+    background: #dc2626;
+    color: #fff;
+    padding: 11px;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Form modal header */
+.cp-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.cp-modal-header-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.cp-modal-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #94a3b8;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cp-modal-error {
+    display: none;
+    background: #fee2e2;
+    border: 1px solid #fca5a5;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    color: #dc2626;
+}
+
+/* Form fields */
+.cp-form-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 0.4rem;
+}
+
+.cp-form-group {
+    margin-bottom: 1rem;
+}
+
+.cp-form-input,
+.cp-form-select {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #1e293b;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.cp-form-input:focus,
+.cp-form-select:focus {
+    border-color: #6366f1;
+}
+
+.cp-form-select {
+    background: #fff;
+    cursor: pointer;
+}
+
+.cp-modal-submit-btn {
+    width: 100%;
+    background: #6366f1;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+}
+
+.cp-modal-submit-btn:hover {
+    background: #4f46e5;
+}
+
+/* Password reveal panel */
+.cp-password-reveal {
+    display: none;
+    margin-top: 1.5rem;
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+}
+
+.cp-password-reveal-title {
+    font-size: 0.8rem;
+    color: #15803d;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+}
+
+.cp-password-reveal-desc {
+    font-size: 0.8rem;
+    color: #475569;
+    margin: 0 0 0.75rem;
+}
+
+.cp-password-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cp-password-code {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #86efac;
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e293b;
+    letter-spacing: 0.05em;
+}
+
+.cp-copy-btn {
+    background: #15803d;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+}
+
+.cp-copy-btn--copied {
+    background: #166534;
+}
+
+.cp-password-close-btn {
+    margin-top: 1rem;
+    width: 100%;
+    background: transparent;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    color: #475569;
+    cursor: pointer;
+}
+
 /* ── cURL Generator ───────────────────────────────────────────────────────── */
 
 .curl-builder {
