@@ -34,15 +34,17 @@ return new class extends Migration
         Schema::create('stock', function (Blueprint $table) {
             $table->unsignedBigInteger('id_producto');
             $table->unsignedBigInteger('id_ubicacion');
+            $table->unsignedBigInteger('id_lote')->nullable();
             $table->decimal('cantidad_actual', 18, 4)->default(0);
             $table->decimal('cantidad_reservada', 18, 4)->default(0);
             $table->decimal('stock_minimo', 18, 4)->default(0);
             $table->decimal('stock_maximo', 18, 4)->default(0);
-            $table->primary(['id_producto', 'id_ubicacion']);
+            $table->unique(['id_producto', 'id_ubicacion', 'id_lote'], 'stock_producto_ubicacion_lote_unique');
             $table->timestamps();
 
             $table->foreign('id_producto')->references('id_producto')->on('productos')->onDelete('cascade');
             $table->foreign('id_ubicacion')->references('id_ubicacion')->on('ubicaciones')->onDelete('cascade');
+            $table->foreign('id_lote')->references('id_lote')->on('lotes')->onDelete('set null');
         });
     }
 

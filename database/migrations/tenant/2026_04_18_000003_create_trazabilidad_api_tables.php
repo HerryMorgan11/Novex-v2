@@ -38,6 +38,7 @@ return new class extends Migration
         // Tokens de API para integraciones externas (autenticación simple Bearer)
         Schema::create('api_tokens_inventario', function (Blueprint $table) {
             $table->id();
+            $table->char('user_id', 26)->nullable();
             $table->string('nombre'); // descripción del sistema externo
             $table->string('token', 64)->unique();
             $table->string('permisos')->default('full'); // full | read | transport_only | delivery_only

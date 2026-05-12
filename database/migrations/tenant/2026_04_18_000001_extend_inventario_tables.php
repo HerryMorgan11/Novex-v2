@@ -37,32 +37,26 @@ return new class extends Migration
             $table->foreign('id_lote')->references('id_lote')->on('lotes')->onDelete('set null');
         });
 
-        // 5. Extender stock para tracking por lote
-        Schema::table('stock', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_lote')->nullable()->after('id_ubicacion');
-            $table->foreign('id_lote')->references('id_lote')->on('lotes')->onDelete('set null');
-        });
-
-        // 6. Extender movimientos_inventario con lote y usuario
+        // 5. Extender movimientos_inventario con lote y usuario
         Schema::table('movimientos_inventario', function (Blueprint $table) {
             $table->unsignedBigInteger('id_lote')->nullable()->after('usuario');
             $table->unsignedBigInteger('id_usuario')->nullable()->after('id_lote');
             $table->foreign('id_lote')->references('id_lote')->on('lotes')->onDelete('set null');
         });
 
-        // 7. Agregar id_lote + ubicacion en detalle_movimientos_inventario
+        // 6. Agregar id_lote + ubicacion en detalle_movimientos_inventario
         Schema::table('detalle_movimientos_inventario', function (Blueprint $table) {
             $table->unsignedBigInteger('id_lote')->nullable()->after('id_producto');
             $table->foreign('id_lote')->references('id_lote')->on('lotes')->onDelete('set null');
         });
 
-        // 8. Agregar código de ubicación concatenado y estado a ubicaciones
+        // 7. Agregar código de ubicación concatenado y estado a ubicaciones
         Schema::table('ubicaciones', function (Blueprint $table) {
             $table->string('codigo_ubicacion')->nullable()->after('posicion');
             $table->boolean('activa')->default(true)->after('codigo_ubicacion');
         });
 
-        // 9. Agregar descripciones a almacenes y zonas
+        // 8. Agregar descripciones a almacenes y zonas
         Schema::table('almacenes', function (Blueprint $table) {
             $table->boolean('activo')->default(true)->after('responsable');
         });
@@ -86,11 +80,6 @@ return new class extends Migration
         Schema::table('movimientos_inventario', function (Blueprint $table) {
             $table->dropForeign(['id_lote']);
             $table->dropColumn(['id_lote', 'id_usuario']);
-        });
-
-        Schema::table('stock', function (Blueprint $table) {
-            $table->dropForeign(['id_lote']);
-            $table->dropColumn('id_lote');
         });
 
         Schema::table('recepcion_productos', function (Blueprint $table) {

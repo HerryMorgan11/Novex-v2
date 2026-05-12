@@ -15,8 +15,10 @@ return new class extends Migration
             $table->string('tenant_id')->index();
 
             $table->boolean('is_owner')->default(false);
+            $table->enum('role', ['admin', 'manager', 'empleado'])
+                ->default('empleado');
 
-            $table->enum('status', ['active', 'invited', 'disabled'])
+            $table->enum('status', ['active', 'invited', 'pending', 'disabled'])
                 ->default('active')
                 ->index();
 
