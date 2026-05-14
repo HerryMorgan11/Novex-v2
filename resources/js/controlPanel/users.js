@@ -217,3 +217,16 @@ async function confirmDeleteUser() {
         alert(d.message || 'Error al eliminar.');
     }
 }
+
+// La vista usa handlers inline (`onclick`, `onsubmit`, `onchange`), pero este
+// archivo se carga como módulo ES con Vite. Exponemos explícitamente las
+// funciones necesarias en `window` para que esos handlers puedan resolverlas.
+window.openAddUserModal = openAddUserModal;
+window.closeAddUserModal = closeAddUserModal;
+window.submitAddUser = submitAddUser;
+window.copyPassword = copyPassword;
+window.changeUserRole = changeUserRole;
+window.toggleUserStatus = toggleUserStatus;
+window.openDeleteUserModal = openDeleteUserModal;
+window.closeDeleteUserModal = closeDeleteUserModal;
+window.confirmDeleteUser = confirmDeleteUser;

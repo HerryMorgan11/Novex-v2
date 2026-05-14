@@ -1,366 +1,399 @@
-# 🚀 Novex v2 - ERP Multi-Tenant
+<p align="center">
+  <img src="public/assets/logo/logo-novex-color.png" alt="Novex" width="220">
+</p>
 
-Sistema ERP completo con multi-tenancy, construido con Laravel 12 y Clean Architecture.
+# Novex v2
 
-> ## 🚨 ¿No ves las Issues en GitHub?
->
-> **Las issues NO están creadas todavía.** Lee [LEEME_ISSUES.md](LEEME_ISSUES.md) para instrucciones simples de cómo crearlas.
->
-> **TL;DR:** Copia el contenido de `docs/issues/fase-1/issue-1.1-....md` y pégalo en https://github.com/HerryMorgan11/Novex-v2/issues/new
+ERP multi-tenant desarrollado con Laravel 12 para la gestión operativa de múltiples empresas en una única plataforma, con aislamiento por tenant a nivel de base de datos.
 
-## 📋 Descripción
+## Tabla de contenidos
 
-Novex v2 es un sistema ERP (Enterprise Resource Planning) moderno y escalable que permite a múltiples empresas (tenants) gestionar sus operaciones de forma independiente y segura. Incluye módulos de:
+- [Descripción general](#descripción-general)
+- [Stack tecnológico](#stack-tecnológico)
+- [Arquitectura y multi-tenancy](#arquitectura-y-multi-tenancy)
+- [Requisitos previos](#requisitos-previos)
+- [Instalación completa con Laravel Sail](#instalación-completa-con-laravel-sail)
+- [Configuración del entorno](#configuración-del-entorno)
+- [Puesta en marcha](#puesta-en-marcha)
+- [Base de datos y tenants](#base-de-datos-y-tenants)
+- [Comandos útiles](#comandos-útiles)
+- [Testing y calidad de código](#testing-y-calidad-de-código)
+- [Estructura relevante del proyecto](#estructura-relevante-del-proyecto)
+- [Documentación adicional](#documentación-adicional)
 
-- 📦 **Inventario**: Gestión de productos, categorías, stock y almacenes
-- 💰 **Ventas**: Órdenes, facturas y punto de venta
-- 👥 **CRM**: Gestión de clientes y relaciones
-- 📊 **Contabilidad**: Cuentas, transacciones y reportes
-- 👔 **RRHH**: Empleados, departamentos y nómina
+## Descripción general
 
-## 🏗️ Arquitectura
+Novex v2 es una aplicación ERP orientada a entornos multiempresa. La aplicación central gestiona autenticación, registro y aprovisionamiento de empresas, mientras que cada tenant opera sobre su propia base de datos.
 
-El proyecto está construido siguiendo los principios de **Clean Architecture** para mantener el código:
+Actualmente el proyecto incluye, entre otros, estos bloques funcionales:
 
-- ✅ Independiente de frameworks
-- ✅ Altamente testeable
-- ✅ Independiente de la UI
-- ✅ Independiente de la base de datos
+- Autenticación web con Laravel Fortify.
+- Login social con Google mediante Socialite.
+- Dashboard interno para usuarios autenticados.
+- Módulo de inventario.
+- Módulo de recordatorios.
+- Gestión de usuarios y panel de control.
+- Aprovisionamiento automático de tenants.
 
-### Multi-Tenancy
-
-Utilizamos el paquete [stancl/tenancy](https://tenancyforlaravel.com/) con estrategia de **database por tenant** para:
-
-- Máximo aislamiento de datos
-- Backups independientes por cliente
-- Escalado por cliente
-- Cumplimiento normativo (GDPR, etc.)
-
-## 🛠️ Stack Tecnológico
-
-- **Backend**: Laravel 12
-- **Frontend**: Livewire 4, Alpine.js, Tailwind CSS
-- **Database**: MySQL 8
-- **Cache**: Redis
-- **Testing**: PHPUnit, Laravel Dusk
-- **Code Quality**: Laravel Pint, PHPStan, ESLint
-
-## 📚 Documentación
-
-### 🗺️ Planificación del Proyecto
-
-- **[QUICK START](docs/QUICK_START.md)** - 🔥 **EMPIEZA AQUÍ** - Guía de inicio rápido
-- **[ROADMAP](docs/ROADMAP.md)** - Resumen ejecutivo y progreso general
-- **[PROJECT PHASES](docs/PROJECT_PHASES.md)** - Plan detallado de todas las fases
-- **[GITHUB ISSUES TEMPLATES](docs/GITHUB_ISSUES_TEMPLATES.md)** - Templates para crear issues
-
-### 🏛️ Arquitectura y Diseño
-
-- **[Arquitectura](docs/arquitectura.md)** - Clean Architecture y Multi-Tenancy
-- **[Base de Datos](docs/baseDeDatos.md)** - Esquema completo de la BD
-- **[Landing Design](docs/landingDesign.md)** - Estructura de vistas
-- **[Landing Pública](docs/landingPublica.md)** - Arquitectura landing + dashboard
-
-## 🚀 Getting Started
-
-### Prerrequisitos
+## Stack tecnológico
 
 - PHP 8.2+
-- Composer
-- Node.js 18+
-- Docker y Docker Compose (para Laravel Sail)
+- Laravel 12
+- Laravel Sail
+- MySQL 8.4
+- Vite
+- Alpine.js
+- Tailwind CSS
+- Stancl Tenancy
+- PHPUnit
+- Laravel Pint
+- PHPStan
+- ESLint
+- Prettier
 
-### Instalación
+## Arquitectura y multi-tenancy
+
+La aplicación utiliza `stancl/tenancy` con estrategia `database-per-tenant`.
+
+Esto implica:
+
+- La aplicación central usa una base de datos principal para usuarios, tenants, dominios y estado del aprovisionamiento.
+- Cada tenant dispone de su propia base de datos para sus datos operativos.
+- Las migraciones de tenant viven en `database/migrations/tenant`.
+- El enrutado principal carga `routes/central.php` desde [bootstrap/app.php](/Users/davidjacobocastillo/Documents/TFG/novex-v2/bootstrap/app.php:13).
+
+Archivos clave:
+
+- [config/tenancy.php](/Users/davidjacobocastillo/Documents/TFG/novex-v2/config/tenancy.php:1)
+- [routes/central.php](/Users/davidjacobocastillo/Documents/TFG/novex-v2/routes/central.php:1)
+- [routes/tenant.php](/Users/davidjacobocastillo/Documents/TFG/novex-v2/routes/tenant.php:1)
+- [app/Console/Commands/ProvisionTenant.php](/Users/davidjacobocastillo/Documents/TFG/novex-v2/app/Console/Commands/ProvisionTenant.php:1)
+
+## Requisitos previos
+
+Antes de empezar, asegúrate de tener instalado:
+
+- Git
+- Docker Desktop o Docker Engine + Docker Compose
+- Composer
+- Node.js 18 o superior
+- npm
+
+Versiones del proyecto:
+
+- PHP requerido por Composer: `^8.2`
+- Runtime de Sail definido en `compose.yaml`: `8.5`
+
+Nota: si vas a trabajar exclusivamente con Sail, PHP local no es imprescindible para ejecutar la app, pero sí suele ser útil para algunos comandos fuera de contenedor.
+
+## Instalación completa con Laravel Sail
+
+### 1. Clonar el repositorio
 
 ```bash
-# 1. Clonar el repositorio
 git clone https://github.com/HerryMorgan11/Novex-v2.git
 cd Novex-v2
+```
 
-# 2. Instalar dependencias PHP
+### 2. Instalar dependencias PHP con Composer
+
+```bash
 composer install
+```
 
-# 3. Instalar dependencias JavaScript
-npm install
+### 3. Crear el archivo de entorno
 
-# 4. Configurar variables de entorno
+```bash
 cp .env.example .env
-# Editar .env con tus credenciales
+```
 
-# 5. Generar key de aplicación
+### 4. Revisar y ajustar variables de entorno
+
+Edita `.env` antes de levantar el entorno. Como mínimo revisa:
+
+```dotenv
+APP_NAME=Novex
+APP_ENV=local
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=password
+
+TENANT_DB_HOST=mysql
+TENANT_DB_PORT=3306
+TENANT_DB_USERNAME=root
+TENANT_DB_PASSWORD=password
+
+APP_DOMAIN=localhost
+TENANT_DB_PREFIX=tenant_
+```
+
+También debes sustituir cualquier credencial externa por tus propios valores:
+
+- `MAILERSEND_API_KEY`
+- `GOOGLE_CLIENT_ID`
+- `GOOGLE_CLIENT_SECRET`
+- `GOOGLE_REDIRECT_URI`
+
+### 5. Generar una nueva clave de aplicación
+
+Hazlo después de crear `.env` y antes de usar la app:
+
+```bash
 php artisan key:generate
+```
 
-# 6. Iniciar servicios con Sail (Docker)
+### 6. Instalar dependencias frontend
+
+```bash
+npm install
+```
+
+### 7. Levantar los contenedores con Sail
+
+El repositorio ya incluye [compose.yaml](/Users/davidjacobocastillo/Documents/TFG/novex-v2/compose.yaml:1), por lo que no necesitas ejecutar `sail:install`.
+
+```bash
 ./vendor/bin/sail up -d
+```
 
-# 7. Ejecutar migraciones
+### 8. Ejecutar las migraciones de la base de datos central
+
+```bash
 ./vendor/bin/sail artisan migrate
+```
 
-# 8. Compilar assets
+### 9. Compilar o servir los assets frontend
+
+Para desarrollo:
+
+```bash
 npm run dev
-
-# 9. Acceder a la aplicación
-# http://localhost
 ```
 
-### Instalación de Multi-Tenancy (Fase 2)
+Para una build de producción:
 
 ```bash
-# 1. Instalar paquete
-composer require stancl/tenancy
-
-# 2. Publicar configuración
-php artisan tenancy:install
-
-# 3. Ejecutar migraciones de tenancy
-php artisan migrate
-
-# 4. Crear tenant de prueba
-php artisan tinker
-$tenant = Tenant::create(['id' => 'test']);
-$tenant->domains()->create(['domain' => 'test.localhost']);
+npm run build
 ```
 
-## 📊 Estado del Proyecto
+### 10. Acceder a la aplicación
 
-### Progreso General: 6% (Semana 1 de 16)
+Con la configuración por defecto:
 
-#### ✅ Completado (Fase 0)
+- App web: `http://localhost`
+- Vite dev server: `http://localhost:5173`
 
-- [x] Proyecto Laravel 12 inicializado
-- [x] Livewire 4 instalado
-- [x] Estructura básica de vistas
-- [x] Rutas básicas configuradas
-- [x] Planificación completa del proyecto
+## Configuración del entorno
 
-#### 🔄 En Progreso (Fase 1)
+### Variables importantes
 
-- [ ] Estructura Clean Architecture (40%)
-- [ ] Configuración de Base de Datos (20%)
-- [ ] Landing page básica (20%)
+- `APP_URL`: URL base de la aplicación central.
+- `APP_DOMAIN`: dominio central que no inicializa tenancy.
+- `DB_*`: conexión de la base de datos central.
+- `TENANT_DB_*`: credenciales usadas para crear y operar bases de datos de tenants.
+- `QUEUE_CONNECTION`: por defecto está en `sync`.
+- `CACHE_STORE`: está configurado como `database`.
 
-#### ⏳ Pendiente
+### Sobre MySQL y credenciales de tenant
 
-- [ ] Multi-tenancy (Fase 2)
-- [ ] Sistema de autenticación (Fase 2)
-- [ ] Dashboard foundation (Fase 4)
-- [ ] Módulo Inventario (Fase 5)
-- [ ] Módulos adicionales (Fase 6)
+El aprovisionamiento de tenants crea bases de datos por empresa. Para que eso funcione correctamente, el usuario configurado en `TENANT_DB_USERNAME` debe tener permisos suficientes para crear bases de datos en MySQL.
 
-Ver [ROADMAP.md](docs/ROADMAP.md) para detalles completos.
+En un entorno local con Sail, usar `root` para `DB_USERNAME` y `TENANT_DB_USERNAME` simplifica el aprovisionamiento. Si decides usar otro usuario, tendrás que conceder permisos adecuados de creación y migración.
 
-## 🎯 Próximos Pasos
+## Puesta en marcha
 
-### Esta Semana (Fase 1)
-
-1. ✅ Completar planificación
-2. ⏳ Configurar entorno de desarrollo
-3. ⏳ Instalar multi-tenancy
-4. ⏳ Crear estructura Clean Architecture
-5. ⏳ Configurar herramientas de desarrollo
-
-### Próxima Semana (Fase 2)
-
-1. Implementar sistema de autenticación
-2. Configurar flujo multi-tenant
-3. Crear migraciones de BD central
-4. Tests de autenticación
-
-Ver [QUICK_START.md](docs/QUICK_START.md) para guía detallada.
-
-## 🧪 Testing
+Flujo recomendado una vez instalado:
 
 ```bash
-# Ejecutar todos los tests
-./vendor/bin/sail test
-
-# Tests específicos
-./vendor/bin/sail test --filter=AuthTest
-
-# Con cobertura
-./vendor/bin/sail test --coverage
-
-# Tests de Feature
-./vendor/bin/sail test tests/Feature
-
-# Tests Unit
-./vendor/bin/sail test tests/Unit
-```
-
-## 🔧 Comandos Útiles
-
-### Desarrollo
-
-```bash
-# Iniciar servidor
 ./vendor/bin/sail up -d
-
-# Ver logs
-./vendor/bin/sail logs -f
-
-# Acceder al contenedor
-./vendor/bin/sail shell
-
-# Detener servicios
-./vendor/bin/sail down
-```
-
-### Code Quality
-
-```bash
-# Formatear código PHP (Laravel Pint)
-./vendor/bin/pint
-
-# Análisis estático PHP (PHPStan)
-./vendor/bin/phpstan analyse
-
-# Lint JavaScript
-npm run lint
-
-# Formatear JavaScript/CSS
-npm run format
-```
-
-### Base de Datos
-
-```bash
-# Ejecutar migraciones
 ./vendor/bin/sail artisan migrate
-
-# Rollback
-./vendor/bin/sail artisan migrate:rollback
-
-# Fresh + seed
-./vendor/bin/sail artisan migrate:fresh --seed
-
-# Crear migración
-./vendor/bin/sail artisan make:migration create_products_table
+npm run dev
 ```
 
-## 📁 Estructura del Proyecto
+Si es la primera vez que levantas el proyecto, luego:
 
-```
-novex-v2/
-├── app/
-│   ├── Core/                      # Clean Architecture Core
-│   │   ├── Domain/               # Lógica de negocio
-│   │   ├── Application/          # Casos de uso
-│   │   └── Infrastructure/       # Implementaciones técnicas
-│   ├── Modules/                  # Módulos del ERP
-│   │   ├── Inventory/
-│   │   ├── Sales/
-│   │   ├── CRM/
-│   │   └── Accounting/
-│   ├── Http/
-│   │   ├── Controllers/
-│   │   ├── Livewire/            # Componentes Livewire
-│   │   ├── Middleware/
-│   │   └── Requests/
-│   └── Models/
-├── resources/
-│   ├── views/
-│   │   ├── landing/             # Landing page pública
-│   │   ├── auth/                # Autenticación
-│   │   └── dashboard/           # Dashboard privado
-│   ├── js/
-│   └── css/
-├── routes/
-│   ├── web.php                  # Rutas públicas
-│   ├── tenant.php               # Rutas tenant
-│   └── api.php                  # API
-├── database/
-│   ├── migrations/
-│   ├── seeders/
-│   └── factories/
-├── tests/
-│   ├── Feature/
-│   └── Unit/
-└── docs/                        # 📚 Documentación del proyecto
-    ├── QUICK_START.md          # Inicio rápido
-    ├── ROADMAP.md              # Roadmap y progreso
-    ├── PROJECT_PHASES.md       # Plan detallado
-    ├── arquitectura.md         # Arquitectura
-    ├── baseDeDatos.md          # Diseño de BD
-    └── ...
+1. Abre `http://localhost`.
+2. Registra un usuario.
+3. Accede al dashboard.
+4. Crea una empresa desde el flujo de onboarding.
+5. El sistema aprovisionará el tenant y ejecutará sus migraciones automáticamente.
+
+## Base de datos y tenants
+
+### Migraciones
+
+Hay dos tipos de migraciones:
+
+- Migraciones centrales en `database/migrations`
+- Migraciones de tenant en `database/migrations/tenant`
+
+Las migraciones de tenant se ejecutan automáticamente durante el aprovisionamiento de la empresa.
+
+### Reaprovisionar un tenant manualmente
+
+Si un tenant queda en estado incompleto o necesitas reprovisionarlo:
+
+```bash
+./vendor/bin/sail artisan tenants:provision {tenant_id}
 ```
 
-## 🤝 Contribuir
+Ejemplo:
 
-Este es un proyecto en desarrollo activo. Si quieres contribuir:
-
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
-### Guías de Contribución
-
-- Sigue los principios de Clean Architecture
-- Escribe tests para nuevas funcionalidades
-- Usa Laravel Pint para formatear código
-- Documenta cambios importantes
-
-## 📝 Convenciones de Código
-
-### PHP
-
-- PSR-12 (enforced by Laravel Pint)
-- Type hints en todos los métodos
-- PHPDoc para métodos públicos
-- Use statements ordenados alfabéticamente
-
-### JavaScript
-
-- ESLint Standard config
-- Prettier para formateo
-- Comentarios JSDoc para funciones complejas
-
-### Git Commits
-
-```
-[Fase X.Y] Título del commit
-
-Descripción detallada de los cambios
-- Punto 1
-- Punto 2
-
-Refs: #123
+```bash
+./vendor/bin/sail artisan tenants:provision 01JXYZABCDEF1234567890ABCD
 ```
 
-## 👥 Equipo
+### Semillas de datos
 
-- **Desarrollo**: [Tu Nombre]
-- **Arquitectura**: [Tu Nombre]
-- **Diseño**: [Diseñador]
+Seeder central por defecto:
 
-## 🔗 Enlaces Útiles
+```bash
+./vendor/bin/sail artisan db:seed
+```
 
-### Documentación Externa
+Para seeders de tenant, la tenancy debe estar inicializada. Un ejemplo documentado en el proyecto es:
 
-- [Laravel 12 Docs](https://laravel.com/docs/12.x)
-- [Livewire 4 Docs](https://livewire.laravel.com/docs)
-- [Tenancy for Laravel](https://tenancyforlaravel.com/docs)
-- [Tailwind CSS](https://tailwindcss.com/docs)
-- [Alpine.js](https://alpinejs.dev/start-here)
+```bash
+./vendor/bin/sail artisan tenants:run db:seed --option="class=ReminderSeeder"
+```
 
-### Clean Architecture
+## Comandos útiles
 
-- [Clean Architecture - Uncle Bob](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
-- [Domain-Driven Design](https://martinfowler.com/bliki/DomainDrivenDesign.html)
+### Laravel Sail
 
-## 📞 Soporte
+```bash
+./vendor/bin/sail up -d
+./vendor/bin/sail down
+./vendor/bin/sail restart
+./vendor/bin/sail ps
+./vendor/bin/sail logs -f
+./vendor/bin/sail shell
+```
 
-Para preguntas o problemas:
+### Artisan
 
-1. Revisa la [documentación](docs/)
-2. Busca en [Issues](https://github.com/HerryMorgan11/Novex-v2/issues)
-3. Crea un nuevo Issue si es necesario
+```bash
+./vendor/bin/sail artisan migrate
+./vendor/bin/sail artisan migrate:fresh
+./vendor/bin/sail artisan db:seed
+./vendor/bin/sail artisan optimize:clear
+./vendor/bin/sail artisan route:list
+./vendor/bin/sail artisan about
+```
 
----
+### Frontend
 
-**Última actualización**: 2026-02-09
+```bash
+npm run dev
+npm run build
+npm run lint
+npm run lint:fix
+npm run format
+npm run format:check
+```
 
-**Versión**: 1.0.0
+### Composer scripts del proyecto
 
-**Estado**: 🔄 En Desarrollo Activo
+```bash
+composer setup
+composer dev
+composer lint
+composer test
+composer stan
+composer stan:baseline
+```
+
+Notas:
+
+- `composer dev` lanza servidor Laravel, cola, logs y Vite en paralelo.
+- `composer setup` ejecuta una instalación rápida local, pero para este proyecto se recomienda seguir la guía manual de este README para controlar bien Sail y la configuración multi-tenant.
+
+## Testing y calidad de código
+
+Ejecutar tests:
+
+```bash
+composer test
+```
+
+O directamente con Sail:
+
+```bash
+./vendor/bin/sail artisan test
+```
+
+Lint PHP:
+
+```bash
+composer lint
+```
+
+Análisis estático:
+
+```bash
+composer stan
+```
+
+## Estructura relevante del proyecto
+
+```text
+app/
+bootstrap/
+config/
+database/
+  migrations/
+  migrations/tenant/
+docs/
+public/
+resources/
+routes/
+  central.php
+  tenant.php
+tests/
+compose.yaml
+Dockerfile
+```
+
+## Documentación adicional
+
+El repositorio incluye documentación técnica generada con PHPDoc en:
+
+- [docs/phpdoc/index.html](/Users/davidjacobocastillo/Documents/TFG/novex-v2/docs/phpdoc/index.html)
+
+## Solución de problemas
+
+### Error al conectar con MySQL
+
+Verifica:
+
+- Que los contenedores estén levantados con `./vendor/bin/sail up -d`
+- Que `DB_HOST=mysql`
+- Que el contenedor `mysql` esté sano
+- Que el usuario de MySQL tenga permisos para crear bases de datos de tenant
+
+### Error al aprovisionar una empresa
+
+Revisa:
+
+- El estado del tenant en la base de datos central
+- Los logs de Laravel con `./vendor/bin/sail logs -f`
+- Si el tenant necesita reprovisión manual con `./vendor/bin/sail artisan tenants:provision {tenant_id}`
+
+### La app carga pero no se ven estilos
+
+Inicia Vite en modo desarrollo:
+
+```bash
+npm run dev
+```
+
+O genera la build:
+
+```bash
+npm run build
+```
