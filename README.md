@@ -2,7 +2,7 @@
   <img src="public/assets/logo/logo-novex-color.png" alt="Novex" width="220">
 </p>
 
-# Novex v2
+git # Novex v2
 
 ERP multi-tenant desarrollado con Laravel 12 para la gestión operativa de múltiples empresas en una única plataforma, con aislamiento por tenant a nivel de base de datos.
 
