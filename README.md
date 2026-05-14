@@ -42,8 +42,6 @@ Actualmente el proyecto incluye, entre otros, estos bloques funcionales:
 - Laravel Sail
 - MySQL 8.4
 - Vite
-- Alpine.js
-- Tailwind CSS
 - Stancl Tenancy
 - PHPUnit
 - Laravel Pint
